@@ -1,0 +1,99 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Alumno {
+  id         Int          @id @default(autoincrement())
+  legajo     String       @db.VarChar(30)
+  nombre     String       @db.VarChar(30)
+  apellido   String       @db.VarChar(30)
+  celular    String       @db.VarChar(30)
+  activo     Boolean      @default(true)
+  createdAt  DateTime     @default(now()) @db.Timestamp()
+  updatedAt  DateTime?    @db.Timestamp()
+  deletedAt  DateTime?    @db.Timestamp()
+  Asistencia Asistencia[]
+  cursos     Curso[]
+}
+
+model Clase {
+  id         Int          @id @default(autoincrement())
+  fechaHora  DateTime     @db.Timestamp()
+  idMateria  Int
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime?    @db.Timestamp()
+  deletedAt  DateTime?    @db.Timestamp()
+  Asistencia Asistencia[]
+}
+
+model Asistencia {
+  id        Int       @id @default(autoincrement())
+  idAlumno  Int
+  idClase   Int
+  estado    Estado
+  createdAt DateTime  @default(now()) @db.Timestamp()
+  updatedAt DateTime? @db.Timestamp()
+  alumno    Alumno    @relation(fields: [idAlumno], references: [id]) 
+  clase     Clase     @relation(fields: [idClase], references: [id])
+}
+
+model UserDocente {
+  id        Int       @id @default(autoincrement())
+  email     String    @unique
+  password  String
+  nombre    String    @db.VarChar(30)
+  apellido  String    @db.VarChar(30)
+  idRol     Int
+  createdAt DateTime  @default(now()) @db.Timestamp()
+  updatedAt DateTime? @db.Timestamp()
+  deletedAt DateTime? @db.Timestamp()
+  rol       Roles     @relation(fields: [idRol], references: [id])
+  Materia   Materia[]
+}
+
+model Roles {
+  id          Int           @id @default(autoincrement())
+  nombre      String        @db.VarChar(30)
+  descripcion String        @db.Text()
+  UserDocente UserDocente[]
+}
+
+model Materia {
+  id            Int         @id @default(autoincrement())
+  nombre        String      @db.VarChar(30)
+  idUserDocente Int
+  idCurso       Int
+  createdAt     DateTime    @default(now()) @db.Timestamp()
+  updatedAt     DateTime?   @db.Timestamp()
+  deletedAt     DateTime?   @db.Timestamp()
+  userDocente   UserDocente @relation(fields: [idUserDocente], references: [id])
+  curso         Curso       @relation(fields: [idCurso], references: [id])
+}
+
+model Curso {
+  id        Int       @id @default(autoincrement())
+  nombre    String    @db.VarChar(50)
+  createdAt DateTime  @default(now()) @db.Timestamp()
+  updatedAt DateTime? @db.Timestamp()
+  deletedAt DateTime? @db.Timestamp()
+  Materia   Materia[]
+  alumnos   Alumno[]
+}
+
+enum Estado {
+  PRESENTE
+  AUSENTE
+  JUSTIFICADO
+}
