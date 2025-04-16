@@ -1631,7 +1631,6 @@ export namespace Prisma {
     nombre: string | null
     apellido: string | null
     celular: string | null
-    activo: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
     deletedAt: Date | null
@@ -1643,7 +1642,6 @@ export namespace Prisma {
     nombre: string | null
     apellido: string | null
     celular: string | null
-    activo: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
     deletedAt: Date | null
@@ -1655,7 +1653,6 @@ export namespace Prisma {
     nombre: number
     apellido: number
     celular: number
-    activo: number
     createdAt: number
     updatedAt: number
     deletedAt: number
@@ -1677,7 +1674,6 @@ export namespace Prisma {
     nombre?: true
     apellido?: true
     celular?: true
-    activo?: true
     createdAt?: true
     updatedAt?: true
     deletedAt?: true
@@ -1689,7 +1685,6 @@ export namespace Prisma {
     nombre?: true
     apellido?: true
     celular?: true
-    activo?: true
     createdAt?: true
     updatedAt?: true
     deletedAt?: true
@@ -1701,7 +1696,6 @@ export namespace Prisma {
     nombre?: true
     apellido?: true
     celular?: true
-    activo?: true
     createdAt?: true
     updatedAt?: true
     deletedAt?: true
@@ -1800,7 +1794,6 @@ export namespace Prisma {
     nombre: string
     apellido: string
     celular: string
-    activo: boolean
     createdAt: Date
     updatedAt: Date | null
     deletedAt: Date | null
@@ -1831,7 +1824,6 @@ export namespace Prisma {
     nombre?: boolean
     apellido?: boolean
     celular?: boolean
-    activo?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
@@ -1846,7 +1838,6 @@ export namespace Prisma {
     nombre?: boolean
     apellido?: boolean
     celular?: boolean
-    activo?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
@@ -1858,7 +1849,6 @@ export namespace Prisma {
     nombre?: boolean
     apellido?: boolean
     celular?: boolean
-    activo?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
@@ -1870,13 +1860,12 @@ export namespace Prisma {
     nombre?: boolean
     apellido?: boolean
     celular?: boolean
-    activo?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
   }
 
-  export type AlumnoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "legajo" | "nombre" | "apellido" | "celular" | "activo" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["alumno"]>
+  export type AlumnoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "legajo" | "nombre" | "apellido" | "celular" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["alumno"]>
   export type AlumnoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Asistencia?: boolean | Alumno$AsistenciaArgs<ExtArgs>
     cursos?: boolean | Alumno$cursosArgs<ExtArgs>
@@ -1897,7 +1886,6 @@ export namespace Prisma {
       nombre: string
       apellido: string
       celular: string
-      activo: boolean
       createdAt: Date
       updatedAt: Date | null
       deletedAt: Date | null
@@ -2331,7 +2319,6 @@ export namespace Prisma {
     readonly nombre: FieldRef<"Alumno", 'String'>
     readonly apellido: FieldRef<"Alumno", 'String'>
     readonly celular: FieldRef<"Alumno", 'String'>
-    readonly activo: FieldRef<"Alumno", 'Boolean'>
     readonly createdAt: FieldRef<"Alumno", 'DateTime'>
     readonly updatedAt: FieldRef<"Alumno", 'DateTime'>
     readonly deletedAt: FieldRef<"Alumno", 'DateTime'>
@@ -9573,7 +9560,6 @@ export namespace Prisma {
     nombre: 'nombre',
     apellido: 'apellido',
     celular: 'celular',
-    activo: 'activo',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     deletedAt: 'deletedAt'
@@ -9712,13 +9698,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Boolean'
-   */
-  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
-    
-
-
-  /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -9772,7 +9751,6 @@ export namespace Prisma {
     nombre?: StringFilter<"Alumno"> | string
     apellido?: StringFilter<"Alumno"> | string
     celular?: StringFilter<"Alumno"> | string
-    activo?: BoolFilter<"Alumno"> | boolean
     createdAt?: DateTimeFilter<"Alumno"> | Date | string
     updatedAt?: DateTimeNullableFilter<"Alumno"> | Date | string | null
     deletedAt?: DateTimeNullableFilter<"Alumno"> | Date | string | null
@@ -9786,7 +9764,6 @@ export namespace Prisma {
     nombre?: SortOrder
     apellido?: SortOrder
     celular?: SortOrder
-    activo?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     deletedAt?: SortOrderInput | SortOrder
@@ -9803,7 +9780,6 @@ export namespace Prisma {
     nombre?: StringFilter<"Alumno"> | string
     apellido?: StringFilter<"Alumno"> | string
     celular?: StringFilter<"Alumno"> | string
-    activo?: BoolFilter<"Alumno"> | boolean
     createdAt?: DateTimeFilter<"Alumno"> | Date | string
     updatedAt?: DateTimeNullableFilter<"Alumno"> | Date | string | null
     deletedAt?: DateTimeNullableFilter<"Alumno"> | Date | string | null
@@ -9817,7 +9793,6 @@ export namespace Prisma {
     nombre?: SortOrder
     apellido?: SortOrder
     celular?: SortOrder
-    activo?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     deletedAt?: SortOrderInput | SortOrder
@@ -9837,7 +9812,6 @@ export namespace Prisma {
     nombre?: StringWithAggregatesFilter<"Alumno"> | string
     apellido?: StringWithAggregatesFilter<"Alumno"> | string
     celular?: StringWithAggregatesFilter<"Alumno"> | string
-    activo?: BoolWithAggregatesFilter<"Alumno"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"Alumno"> | Date | string
     updatedAt?: DateTimeNullableWithAggregatesFilter<"Alumno"> | Date | string | null
     deletedAt?: DateTimeNullableWithAggregatesFilter<"Alumno"> | Date | string | null
@@ -10232,7 +10206,6 @@ export namespace Prisma {
     nombre: string
     apellido: string
     celular: string
-    activo?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
@@ -10246,7 +10219,6 @@ export namespace Prisma {
     nombre: string
     apellido: string
     celular: string
-    activo?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
@@ -10259,7 +10231,6 @@ export namespace Prisma {
     nombre?: StringFieldUpdateOperationsInput | string
     apellido?: StringFieldUpdateOperationsInput | string
     celular?: StringFieldUpdateOperationsInput | string
-    activo?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -10273,7 +10244,6 @@ export namespace Prisma {
     nombre?: StringFieldUpdateOperationsInput | string
     apellido?: StringFieldUpdateOperationsInput | string
     celular?: StringFieldUpdateOperationsInput | string
-    activo?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -10287,7 +10257,6 @@ export namespace Prisma {
     nombre: string
     apellido: string
     celular: string
-    activo?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
@@ -10298,7 +10267,6 @@ export namespace Prisma {
     nombre?: StringFieldUpdateOperationsInput | string
     apellido?: StringFieldUpdateOperationsInput | string
     celular?: StringFieldUpdateOperationsInput | string
-    activo?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -10310,7 +10278,6 @@ export namespace Prisma {
     nombre?: StringFieldUpdateOperationsInput | string
     apellido?: StringFieldUpdateOperationsInput | string
     celular?: StringFieldUpdateOperationsInput | string
-    activo?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -10717,11 +10684,6 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type BoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -10775,7 +10737,6 @@ export namespace Prisma {
     nombre?: SortOrder
     apellido?: SortOrder
     celular?: SortOrder
-    activo?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrder
@@ -10791,7 +10752,6 @@ export namespace Prisma {
     nombre?: SortOrder
     apellido?: SortOrder
     celular?: SortOrder
-    activo?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrder
@@ -10803,7 +10763,6 @@ export namespace Prisma {
     nombre?: SortOrder
     apellido?: SortOrder
     celular?: SortOrder
-    activo?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrder
@@ -10845,14 +10804,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
-  }
-
-  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -11205,10 +11156,6 @@ export namespace Prisma {
 
   export type StringFieldUpdateOperationsInput = {
     set?: string
-  }
-
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
@@ -11586,11 +11533,6 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type NestedBoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -11655,14 +11597,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
-  }
-
-  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -11869,7 +11803,6 @@ export namespace Prisma {
     nombre: string
     apellido: string
     celular: string
-    activo?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
@@ -11882,7 +11815,6 @@ export namespace Prisma {
     nombre: string
     apellido: string
     celular: string
-    activo?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
@@ -11932,7 +11864,6 @@ export namespace Prisma {
     nombre?: StringFieldUpdateOperationsInput | string
     apellido?: StringFieldUpdateOperationsInput | string
     celular?: StringFieldUpdateOperationsInput | string
-    activo?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -11945,7 +11876,6 @@ export namespace Prisma {
     nombre?: StringFieldUpdateOperationsInput | string
     apellido?: StringFieldUpdateOperationsInput | string
     celular?: StringFieldUpdateOperationsInput | string
-    activo?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12282,7 +12212,6 @@ export namespace Prisma {
     nombre: string
     apellido: string
     celular: string
-    activo?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
@@ -12295,7 +12224,6 @@ export namespace Prisma {
     nombre: string
     apellido: string
     celular: string
-    activo?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
@@ -12348,7 +12276,6 @@ export namespace Prisma {
     nombre?: StringFilter<"Alumno"> | string
     apellido?: StringFilter<"Alumno"> | string
     celular?: StringFilter<"Alumno"> | string
-    activo?: BoolFilter<"Alumno"> | boolean
     createdAt?: DateTimeFilter<"Alumno"> | Date | string
     updatedAt?: DateTimeNullableFilter<"Alumno"> | Date | string | null
     deletedAt?: DateTimeNullableFilter<"Alumno"> | Date | string | null
@@ -12561,7 +12488,6 @@ export namespace Prisma {
     nombre?: StringFieldUpdateOperationsInput | string
     apellido?: StringFieldUpdateOperationsInput | string
     celular?: StringFieldUpdateOperationsInput | string
-    activo?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12574,7 +12500,6 @@ export namespace Prisma {
     nombre?: StringFieldUpdateOperationsInput | string
     apellido?: StringFieldUpdateOperationsInput | string
     celular?: StringFieldUpdateOperationsInput | string
-    activo?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -12587,7 +12512,6 @@ export namespace Prisma {
     nombre?: StringFieldUpdateOperationsInput | string
     apellido?: StringFieldUpdateOperationsInput | string
     celular?: StringFieldUpdateOperationsInput | string
-    activo?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null

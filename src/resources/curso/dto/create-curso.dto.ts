@@ -1,1 +1,3 @@
-export class CreateCursoDto {}
+export class CreateCursoDto {
+    nombre: string    
+}

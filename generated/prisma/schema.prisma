@@ -20,7 +20,6 @@ model Alumno {
   nombre     String       @db.VarChar(30)
   apellido   String       @db.VarChar(30)
   celular    String       @db.VarChar(30)
-  activo     Boolean      @default(true)
   createdAt  DateTime     @default(now()) @db.Timestamp()
   updatedAt  DateTime?    @db.Timestamp()
   deletedAt  DateTime?    @db.Timestamp()

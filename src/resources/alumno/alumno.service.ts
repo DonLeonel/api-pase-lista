@@ -26,8 +26,7 @@ export class AlumnoService {
   async findAll() {
     try {
       return await this.prisma.alumno.findMany({
-        where: {
-          activo: true,
+        where: {          
           deletedAt: null
         }
       })
@@ -69,11 +68,10 @@ export class AlumnoService {
 
   async removeOrAdd(id: number) {
     try {
-      const alumno = await this.findOne(id);     
+      const alumno = await this.findOne(id);           
       return await this.prisma.alumno.update({
-        data: {
-          activo: !alumno?.activo,
-          deletedAt: !alumno?.activo ? null : new Date()
+        data: {          
+          deletedAt: alumno?.deletedAt ?  null : new Date()
         },
         where: {
           id

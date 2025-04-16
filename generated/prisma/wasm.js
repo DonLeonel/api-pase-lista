@@ -123,7 +123,6 @@ exports.Prisma.AlumnoScalarFieldEnum = {
   nombre: 'nombre',
   apellido: 'apellido',
   celular: 'celular',
-  activo: 'activo',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   deletedAt: 'deletedAt'

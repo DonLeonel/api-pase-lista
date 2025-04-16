@@ -8,7 +8,6 @@ CREATE TABLE "Alumno" (
     "nombre" VARCHAR(30) NOT NULL,
     "apellido" VARCHAR(30) NOT NULL,
     "celular" VARCHAR(30) NOT NULL,
-    "activo" BOOLEAN NOT NULL DEFAULT true,
     "createdAt" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP,
     "deletedAt" TIMESTAMP,

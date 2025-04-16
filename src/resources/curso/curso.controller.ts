@@ -28,7 +28,7 @@ export class CursoController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.cursoService.remove(+id);
+  removeOrAdd(@Param('id') id: string) {
+    return this.cursoService.removeOrAdd(+id);
   }
 }
