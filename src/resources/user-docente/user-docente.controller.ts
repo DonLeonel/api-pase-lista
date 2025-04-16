@@ -28,7 +28,7 @@ export class UserDocenteController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.userDocenteService.remove(+id);
+  removeOrAdd(@Param('id') id: string) {
+    return this.userDocenteService.removeOrAdd(+id);
   }
 }

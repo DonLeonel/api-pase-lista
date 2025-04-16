@@ -19,7 +19,7 @@ model Alumno {
   legajo     String       @db.VarChar(30)
   nombre     String       @db.VarChar(30)
   apellido   String       @db.VarChar(30)
-  celular    String       @db.VarChar(30)  
+  celular    String       @db.VarChar(30)
   createdAt  DateTime     @default(now()) @db.Timestamp()
   updatedAt  DateTime?    @db.Timestamp()
   deletedAt  DateTime?    @db.Timestamp()
@@ -44,7 +44,7 @@ model Asistencia {
   estado    Estado
   createdAt DateTime  @default(now()) @db.Timestamp()
   updatedAt DateTime? @db.Timestamp()
-  alumno    Alumno    @relation(fields: [idAlumno], references: [id]) 
+  alumno    Alumno    @relation(fields: [idAlumno], references: [id])
   clase     Clase     @relation(fields: [idClase], references: [id])
 }
 
@@ -54,19 +54,11 @@ model UserDocente {
   password  String
   nombre    String    @db.VarChar(30)
   apellido  String    @db.VarChar(30)
-  idRol     Int
+  rol       String    @default("DOCENTE") @db.VarChar(15)
   createdAt DateTime  @default(now()) @db.Timestamp()
   updatedAt DateTime? @db.Timestamp()
   deletedAt DateTime? @db.Timestamp()
-  rol       Roles     @relation(fields: [idRol], references: [id])
   Materia   Materia[]
-}
-
-model Roles {
-  id          Int           @id @default(autoincrement())
-  nombre      String        @db.VarChar(30)
-  descripcion String        @db.Text()
-  UserDocente UserDocente[]
 }
 
 model Materia {

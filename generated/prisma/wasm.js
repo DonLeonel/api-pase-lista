@@ -152,16 +152,10 @@ exports.Prisma.UserDocenteScalarFieldEnum = {
   password: 'password',
   nombre: 'nombre',
   apellido: 'apellido',
-  idRol: 'idRol',
+  rol: 'rol',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   deletedAt: 'deletedAt'
-};
-
-exports.Prisma.RolesScalarFieldEnum = {
-  id: 'id',
-  nombre: 'nombre',
-  descripcion: 'descripcion'
 };
 
 exports.Prisma.MateriaScalarFieldEnum = {
@@ -207,7 +201,6 @@ exports.Prisma.ModelName = {
   Clase: 'Clase',
   Asistencia: 'Asistencia',
   UserDocente: 'UserDocente',
-  Roles: 'Roles',
   Materia: 'Materia',
   Curso: 'Curso'
 };

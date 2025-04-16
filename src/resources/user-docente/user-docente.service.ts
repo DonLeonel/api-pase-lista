@@ -1,82 +1,86 @@
 import { Injectable } from '@nestjs/common';
 import { CreateUserDocenteDto } from './dto/create-user-docente.dto';
 import { UpdateUserDocenteDto } from './dto/update-user-docente.dto';
-
-let USERS_DOCENTES = [
-  {
-    id: 1,
-    email: 'franco.perez@example.com',
-    password: 'pass123',
-    nombre: 'Franco',
-    apellido: 'Pérez',
-    id_rol: 1,
-  },
-  {
-    id: 2,
-    email: 'lucia.gomez@example.com',
-    password: 'lucia456',
-    nombre: 'Lucía',
-    apellido: 'Gómez',
-    id_rol: 2,
-
-  },
-  {
-    id: 3,
-    email: 'matias.fernandez@example.com',
-    password: 'matias789',
-    nombre: 'Matías',
-    apellido: 'Fernández',
-    id_rol: 3,
-
-  },
-  {
-    id: 4,
-    email: 'carla.romero@example.com',
-    password: 'carla321',
-    nombre: 'Carla',
-    apellido: 'Romero',
-    id_rol: 2,
-
-  },
-  {
-    id: 5,
-    email: 'juan.lopez@example.com',
-    password: 'juan654',
-    nombre: 'Juan',
-    apellido: 'López',
-    id_rol: 1,
-
-  }
-]
+import { PrismaService } from 'src/prisma/prisma.service';
 
 
 @Injectable()
 export class UserDocenteService {
-  create(createUserDocenteDto: CreateUserDocenteDto) {
-    const ultID = Math.max(...USERS_DOCENTES.map(a => a.id), 0)
 
-    const newX = {
-      id: ultID + 1,
-      ...createUserDocenteDto
+  constructor(private readonly prisma: PrismaService) {
+  }
+
+  async create(createUserDocenteDto: CreateUserDocenteDto) {
+    try {
+      const nuevo = await this.prisma.userDocente.create({
+        data: {
+          ...createUserDocenteDto                
+        },
+      })
+      return nuevo
+    } catch (error) {
+      console.error('Error al crear docente. ', error)
+      throw error // relanza el error para que el controller lo pueda manejar
     }
-    USERS_DOCENTES.push(newX);
-    return newX;
   }
 
-  findAll() {
-    return USERS_DOCENTES
+  async findAll() {
+    try {
+      return await this.prisma.userDocente.findMany({
+        where: {
+          deletedAt: null
+        }
+      })
+    } catch (error) {
+      console.error('Error al buscar los docentes.', error)
+      throw error // relanza el error para que el controller lo pueda manejar
+    }
   }
 
-  findOne(id: number) {
-    return USERS_DOCENTES.find((a) => a.id === id);
+  async findOne(id: number) {
+    try {
+      return await this.prisma.userDocente.findUnique({
+        where: {
+          id
+        }
+      })
+    } catch (error) {
+      console.error('Error al buscar el docente. ', error)
+      throw error // relanza el error para que el controller lo pueda manejar
+    }
   }
 
-  update(id: number, updateUserDocenteDto: UpdateUserDocenteDto) {
-    return USERS_DOCENTES.map(u => u.id === id ? { ...u, ...updateUserDocenteDto } : u)
-      .find((u) => u.id === id);
+  async update(id: number, updateUserDocenteDto: UpdateUserDocenteDto) {
+    try {
+      return await this.prisma.userDocente.update({
+        data: {
+          ...updateUserDocenteDto,
+          updatedAt: new Date()
+        },
+        where: {
+          id
+        }
+      })
+    } catch (error) {
+      console.error('Error al actualizar el docente. ', error)
+      throw error // relanza el error para que el controller lo pueda manejar
+    }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} userDocente`;
+  async removeOrAdd(id: number) {
+    try {
+      const docente = await this.findOne(id);           
+      return await this.prisma.userDocente.update({
+        data: {          
+          deletedAt: docente?.deletedAt ?  null : new Date()
+        },
+        where: {
+          id
+        }
+      })
+    } catch (error) {
+      console.error('Error al borrar o recuperar el docente. ', error)
+      throw error // relanza el error para que el controller lo pueda manejar
+    }
   }
 }

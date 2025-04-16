@@ -46,21 +46,12 @@ CREATE TABLE "UserDocente" (
     "password" TEXT NOT NULL,
     "nombre" VARCHAR(30) NOT NULL,
     "apellido" VARCHAR(30) NOT NULL,
-    "idRol" INTEGER NOT NULL,
+    "rol" VARCHAR(15) NOT NULL DEFAULT 'DOCENTE',
     "createdAt" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP,
     "deletedAt" TIMESTAMP,
 
     CONSTRAINT "UserDocente_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
-CREATE TABLE "Roles" (
-    "id" SERIAL NOT NULL,
-    "nombre" VARCHAR(30) NOT NULL,
-    "descripcion" TEXT NOT NULL,
-
-    CONSTRAINT "Roles_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -106,9 +97,6 @@ ALTER TABLE "Asistencia" ADD CONSTRAINT "Asistencia_idAlumno_fkey" FOREIGN KEY (
 
 -- AddForeignKey
 ALTER TABLE "Asistencia" ADD CONSTRAINT "Asistencia_idClase_fkey" FOREIGN KEY ("idClase") REFERENCES "Clase"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "UserDocente" ADD CONSTRAINT "UserDocente_idRol_fkey" FOREIGN KEY ("idRol") REFERENCES "Roles"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Materia" ADD CONSTRAINT "Materia_idUserDocente_fkey" FOREIGN KEY ("idUserDocente") REFERENCES "UserDocente"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
