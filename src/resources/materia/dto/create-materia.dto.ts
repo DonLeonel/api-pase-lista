@@ -1,1 +1,5 @@
-export class CreateMateriaDto {}
+export class CreateMateriaDto {
+    nombre: string
+    idUserDocente: number
+    idCurso: number
+}

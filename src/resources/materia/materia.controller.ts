@@ -28,7 +28,7 @@ export class MateriaController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.materiaService.remove(+id);
+  removeOrAdd(@Param('id') id: string) {
+    return this.materiaService.removeOrAdd(+id);
   }
 }
