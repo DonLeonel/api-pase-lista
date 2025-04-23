@@ -7,17 +7,17 @@ import { construirDataActualizacion } from 'src/helper/construirDataActualizacio
 @Injectable()
 export class ClaseService {
 
-  constructor(private readonly prisma: PrismaService) {
+  constructor(private readonly prisma: PrismaService) { }
 
-  }
   async create(createClaseDto: CreateClaseDto) {
     try {
+      const { idMateria, ...resto } = createClaseDto
       const nuevo = await this.prisma.clase.create({
         data: {
-          fechaHora: createClaseDto.fechaHora,
+          ...resto,
           materia: {
             connect: {
-              id: +createClaseDto.idMateria
+              id: +idMateria
             }
           }
         },
@@ -46,8 +46,13 @@ export class ClaseService {
   async findOne(id: number) {
     try {
       return await this.prisma.clase.findUnique({
-        include:{
-          materia: true
+        include: {
+          materia: {
+            select: {
+              id: true,
+              nombre: true,
+            }
+          }
         },
         where: {
           id

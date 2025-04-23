@@ -142,8 +142,10 @@ exports.Prisma.AsistenciaScalarFieldEnum = {
   idAlumno: 'idAlumno',
   idClase: 'idClase',
   estado: 'estado',
+  nota: 'nota',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
 };
 
 exports.Prisma.UserDocenteScalarFieldEnum = {

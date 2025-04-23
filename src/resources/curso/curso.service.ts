@@ -6,15 +6,14 @@ import { PrismaService } from 'src/prisma/prisma.service';
 @Injectable()
 export class CursoService {
 
-  constructor(private readonly prisma: PrismaService) {
-  }
+  constructor(private readonly prisma: PrismaService) { }
 
   async create(createCursoDto: CreateCursoDto) {
     try {
       const nuevo = await this.prisma.curso.create({
         data: {
           ...createCursoDto,
-        },
+        }
       })
       return nuevo
     } catch (error) {
@@ -39,6 +38,9 @@ export class CursoService {
   async findOne(id: number) {
     try {
       return await this.prisma.curso.findUnique({
+        include: {
+          Materia: true
+        },
         where: {
           id
         }
@@ -68,10 +70,10 @@ export class CursoService {
 
   async removeOrAdd(id: number) {
     try {
-      const curso = await this.findOne(id);           
+      const curso = await this.findOne(id);
       return await this.prisma.curso.update({
-        data: {          
-          deletedAt: curso?.deletedAt ?  null : new Date()
+        data: {
+          deletedAt: curso?.deletedAt ? null : new Date()
         },
         where: {
           id

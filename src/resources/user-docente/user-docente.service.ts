@@ -14,7 +14,7 @@ export class UserDocenteService {
     try {
       const nuevo = await this.prisma.userDocente.create({
         data: {
-          ...createUserDocenteDto                
+          ...createUserDocenteDto
         },
       })
       return nuevo
@@ -40,6 +40,14 @@ export class UserDocenteService {
   async findOne(id: number) {
     try {
       return await this.prisma.userDocente.findUnique({
+        include: {
+          Materia: {
+            select: {
+              id: true,
+              nombre: true,
+            }
+          }
+        },
         where: {
           id
         }
@@ -69,10 +77,10 @@ export class UserDocenteService {
 
   async removeOrAdd(id: number) {
     try {
-      const docente = await this.findOne(id);           
+      const docente = await this.findOne(id);
       return await this.prisma.userDocente.update({
-        data: {          
-          deletedAt: docente?.deletedAt ?  null : new Date()
+        data: {
+          deletedAt: docente?.deletedAt ? null : new Date()
         },
         where: {
           id

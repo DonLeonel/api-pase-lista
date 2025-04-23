@@ -3853,8 +3853,10 @@ export namespace Prisma {
     idAlumno: number | null
     idClase: number | null
     estado: $Enums.Estado | null
+    nota: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    deletedAt: Date | null
   }
 
   export type AsistenciaMaxAggregateOutputType = {
@@ -3862,8 +3864,10 @@ export namespace Prisma {
     idAlumno: number | null
     idClase: number | null
     estado: $Enums.Estado | null
+    nota: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    deletedAt: Date | null
   }
 
   export type AsistenciaCountAggregateOutputType = {
@@ -3871,8 +3875,10 @@ export namespace Prisma {
     idAlumno: number
     idClase: number
     estado: number
+    nota: number
     createdAt: number
     updatedAt: number
+    deletedAt: number
     _all: number
   }
 
@@ -3894,8 +3900,10 @@ export namespace Prisma {
     idAlumno?: true
     idClase?: true
     estado?: true
+    nota?: true
     createdAt?: true
     updatedAt?: true
+    deletedAt?: true
   }
 
   export type AsistenciaMaxAggregateInputType = {
@@ -3903,8 +3911,10 @@ export namespace Prisma {
     idAlumno?: true
     idClase?: true
     estado?: true
+    nota?: true
     createdAt?: true
     updatedAt?: true
+    deletedAt?: true
   }
 
   export type AsistenciaCountAggregateInputType = {
@@ -3912,8 +3922,10 @@ export namespace Prisma {
     idAlumno?: true
     idClase?: true
     estado?: true
+    nota?: true
     createdAt?: true
     updatedAt?: true
+    deletedAt?: true
     _all?: true
   }
 
@@ -4008,8 +4020,10 @@ export namespace Prisma {
     idAlumno: number
     idClase: number
     estado: $Enums.Estado
+    nota: string | null
     createdAt: Date
     updatedAt: Date | null
+    deletedAt: Date | null
     _count: AsistenciaCountAggregateOutputType | null
     _avg: AsistenciaAvgAggregateOutputType | null
     _sum: AsistenciaSumAggregateOutputType | null
@@ -4036,8 +4050,10 @@ export namespace Prisma {
     idAlumno?: boolean
     idClase?: boolean
     estado?: boolean
+    nota?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    deletedAt?: boolean
     alumno?: boolean | AlumnoDefaultArgs<ExtArgs>
     clase?: boolean | ClaseDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["asistencia"]>
@@ -4047,8 +4063,10 @@ export namespace Prisma {
     idAlumno?: boolean
     idClase?: boolean
     estado?: boolean
+    nota?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    deletedAt?: boolean
     alumno?: boolean | AlumnoDefaultArgs<ExtArgs>
     clase?: boolean | ClaseDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["asistencia"]>
@@ -4058,8 +4076,10 @@ export namespace Prisma {
     idAlumno?: boolean
     idClase?: boolean
     estado?: boolean
+    nota?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    deletedAt?: boolean
     alumno?: boolean | AlumnoDefaultArgs<ExtArgs>
     clase?: boolean | ClaseDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["asistencia"]>
@@ -4069,11 +4089,13 @@ export namespace Prisma {
     idAlumno?: boolean
     idClase?: boolean
     estado?: boolean
+    nota?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    deletedAt?: boolean
   }
 
-  export type AsistenciaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "idAlumno" | "idClase" | "estado" | "createdAt" | "updatedAt", ExtArgs["result"]["asistencia"]>
+  export type AsistenciaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "idAlumno" | "idClase" | "estado" | "nota" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["asistencia"]>
   export type AsistenciaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     alumno?: boolean | AlumnoDefaultArgs<ExtArgs>
     clase?: boolean | ClaseDefaultArgs<ExtArgs>
@@ -4098,8 +4120,10 @@ export namespace Prisma {
       idAlumno: number
       idClase: number
       estado: $Enums.Estado
+      nota: string | null
       createdAt: Date
       updatedAt: Date | null
+      deletedAt: Date | null
     }, ExtArgs["result"]["asistencia"]>
     composites: {}
   }
@@ -4529,8 +4553,10 @@ export namespace Prisma {
     readonly idAlumno: FieldRef<"Asistencia", 'Int'>
     readonly idClase: FieldRef<"Asistencia", 'Int'>
     readonly estado: FieldRef<"Asistencia", 'Estado'>
+    readonly nota: FieldRef<"Asistencia", 'String'>
     readonly createdAt: FieldRef<"Asistencia", 'DateTime'>
     readonly updatedAt: FieldRef<"Asistencia", 'DateTime'>
+    readonly deletedAt: FieldRef<"Asistencia", 'DateTime'>
   }
     
 
@@ -8442,8 +8468,10 @@ export namespace Prisma {
     idAlumno: 'idAlumno',
     idClase: 'idClase',
     estado: 'estado',
+    nota: 'nota',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    deletedAt: 'deletedAt'
   };
 
   export type AsistenciaScalarFieldEnum = (typeof AsistenciaScalarFieldEnum)[keyof typeof AsistenciaScalarFieldEnum]
@@ -8738,8 +8766,10 @@ export namespace Prisma {
     idAlumno?: IntFilter<"Asistencia"> | number
     idClase?: IntFilter<"Asistencia"> | number
     estado?: EnumEstadoFilter<"Asistencia"> | $Enums.Estado
+    nota?: StringNullableFilter<"Asistencia"> | string | null
     createdAt?: DateTimeFilter<"Asistencia"> | Date | string
     updatedAt?: DateTimeNullableFilter<"Asistencia"> | Date | string | null
+    deletedAt?: DateTimeNullableFilter<"Asistencia"> | Date | string | null
     alumno?: XOR<AlumnoScalarRelationFilter, AlumnoWhereInput>
     clase?: XOR<ClaseScalarRelationFilter, ClaseWhereInput>
   }
@@ -8749,8 +8779,10 @@ export namespace Prisma {
     idAlumno?: SortOrder
     idClase?: SortOrder
     estado?: SortOrder
+    nota?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
+    deletedAt?: SortOrderInput | SortOrder
     alumno?: AlumnoOrderByWithRelationInput
     clase?: ClaseOrderByWithRelationInput
   }
@@ -8763,8 +8795,10 @@ export namespace Prisma {
     idAlumno?: IntFilter<"Asistencia"> | number
     idClase?: IntFilter<"Asistencia"> | number
     estado?: EnumEstadoFilter<"Asistencia"> | $Enums.Estado
+    nota?: StringNullableFilter<"Asistencia"> | string | null
     createdAt?: DateTimeFilter<"Asistencia"> | Date | string
     updatedAt?: DateTimeNullableFilter<"Asistencia"> | Date | string | null
+    deletedAt?: DateTimeNullableFilter<"Asistencia"> | Date | string | null
     alumno?: XOR<AlumnoScalarRelationFilter, AlumnoWhereInput>
     clase?: XOR<ClaseScalarRelationFilter, ClaseWhereInput>
   }, "id">
@@ -8774,8 +8808,10 @@ export namespace Prisma {
     idAlumno?: SortOrder
     idClase?: SortOrder
     estado?: SortOrder
+    nota?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
+    deletedAt?: SortOrderInput | SortOrder
     _count?: AsistenciaCountOrderByAggregateInput
     _avg?: AsistenciaAvgOrderByAggregateInput
     _max?: AsistenciaMaxOrderByAggregateInput
@@ -8791,8 +8827,10 @@ export namespace Prisma {
     idAlumno?: IntWithAggregatesFilter<"Asistencia"> | number
     idClase?: IntWithAggregatesFilter<"Asistencia"> | number
     estado?: EnumEstadoWithAggregatesFilter<"Asistencia"> | $Enums.Estado
+    nota?: StringNullableWithAggregatesFilter<"Asistencia"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Asistencia"> | Date | string
     updatedAt?: DateTimeNullableWithAggregatesFilter<"Asistencia"> | Date | string | null
+    deletedAt?: DateTimeNullableWithAggregatesFilter<"Asistencia"> | Date | string | null
   }
 
   export type UserDocenteWhereInput = {
@@ -9151,9 +9189,11 @@ export namespace Prisma {
   }
 
   export type AsistenciaCreateInput = {
-    estado: $Enums.Estado
+    estado?: $Enums.Estado
+    nota?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
+    deletedAt?: Date | string | null
     alumno: AlumnoCreateNestedOneWithoutAsistenciaInput
     clase: ClaseCreateNestedOneWithoutAsistenciaInput
   }
@@ -9162,15 +9202,19 @@ export namespace Prisma {
     id?: number
     idAlumno: number
     idClase: number
-    estado: $Enums.Estado
+    estado?: $Enums.Estado
+    nota?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
+    deletedAt?: Date | string | null
   }
 
   export type AsistenciaUpdateInput = {
     estado?: EnumEstadoFieldUpdateOperationsInput | $Enums.Estado
+    nota?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     alumno?: AlumnoUpdateOneRequiredWithoutAsistenciaNestedInput
     clase?: ClaseUpdateOneRequiredWithoutAsistenciaNestedInput
   }
@@ -9180,23 +9224,29 @@ export namespace Prisma {
     idAlumno?: IntFieldUpdateOperationsInput | number
     idClase?: IntFieldUpdateOperationsInput | number
     estado?: EnumEstadoFieldUpdateOperationsInput | $Enums.Estado
+    nota?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type AsistenciaCreateManyInput = {
     id?: number
     idAlumno: number
     idClase: number
-    estado: $Enums.Estado
+    estado?: $Enums.Estado
+    nota?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
+    deletedAt?: Date | string | null
   }
 
   export type AsistenciaUpdateManyMutationInput = {
     estado?: EnumEstadoFieldUpdateOperationsInput | $Enums.Estado
+    nota?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type AsistenciaUncheckedUpdateManyInput = {
@@ -9204,8 +9254,10 @@ export namespace Prisma {
     idAlumno?: IntFieldUpdateOperationsInput | number
     idClase?: IntFieldUpdateOperationsInput | number
     estado?: EnumEstadoFieldUpdateOperationsInput | $Enums.Estado
+    nota?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type UserDocenteCreateInput = {
@@ -9648,6 +9700,21 @@ export namespace Prisma {
     not?: NestedEnumEstadoFilter<$PrismaModel> | $Enums.Estado
   }
 
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type AlumnoScalarRelationFilter = {
     is?: AlumnoWhereInput
     isNot?: AlumnoWhereInput
@@ -9663,8 +9730,10 @@ export namespace Prisma {
     idAlumno?: SortOrder
     idClase?: SortOrder
     estado?: SortOrder
+    nota?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    deletedAt?: SortOrder
   }
 
   export type AsistenciaAvgOrderByAggregateInput = {
@@ -9678,8 +9747,10 @@ export namespace Prisma {
     idAlumno?: SortOrder
     idClase?: SortOrder
     estado?: SortOrder
+    nota?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    deletedAt?: SortOrder
   }
 
   export type AsistenciaMinOrderByAggregateInput = {
@@ -9687,8 +9758,10 @@ export namespace Prisma {
     idAlumno?: SortOrder
     idClase?: SortOrder
     estado?: SortOrder
+    nota?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    deletedAt?: SortOrder
   }
 
   export type AsistenciaSumOrderByAggregateInput = {
@@ -9705,6 +9778,24 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumEstadoFilter<$PrismaModel>
     _max?: NestedEnumEstadoFilter<$PrismaModel>
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type MateriaListRelationFilter = {
@@ -10035,6 +10126,10 @@ export namespace Prisma {
 
   export type EnumEstadoFieldUpdateOperationsInput = {
     set?: $Enums.Estado
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
   }
 
   export type AlumnoUpdateOneRequiredWithoutAsistenciaNestedInput = {
@@ -10382,6 +10477,20 @@ export namespace Prisma {
     not?: NestedEnumEstadoFilter<$PrismaModel> | $Enums.Estado
   }
 
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type NestedEnumEstadoWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.Estado | EnumEstadoFieldRefInput<$PrismaModel>
     in?: $Enums.Estado[] | ListEnumEstadoFieldRefInput<$PrismaModel>
@@ -10392,19 +10501,40 @@ export namespace Prisma {
     _max?: NestedEnumEstadoFilter<$PrismaModel>
   }
 
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
   export type AsistenciaCreateWithoutAlumnoInput = {
-    estado: $Enums.Estado
+    estado?: $Enums.Estado
+    nota?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
+    deletedAt?: Date | string | null
     clase: ClaseCreateNestedOneWithoutAsistenciaInput
   }
 
   export type AsistenciaUncheckedCreateWithoutAlumnoInput = {
     id?: number
     idClase: number
-    estado: $Enums.Estado
+    estado?: $Enums.Estado
+    nota?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
+    deletedAt?: Date | string | null
   }
 
   export type AsistenciaCreateOrConnectWithoutAlumnoInput = {
@@ -10463,8 +10593,10 @@ export namespace Prisma {
     idAlumno?: IntFilter<"Asistencia"> | number
     idClase?: IntFilter<"Asistencia"> | number
     estado?: EnumEstadoFilter<"Asistencia"> | $Enums.Estado
+    nota?: StringNullableFilter<"Asistencia"> | string | null
     createdAt?: DateTimeFilter<"Asistencia"> | Date | string
     updatedAt?: DateTimeNullableFilter<"Asistencia"> | Date | string | null
+    deletedAt?: DateTimeNullableFilter<"Asistencia"> | Date | string | null
   }
 
   export type CursoUpsertWithWhereUniqueWithoutAlumnosInput = {
@@ -10519,18 +10651,22 @@ export namespace Prisma {
   }
 
   export type AsistenciaCreateWithoutClaseInput = {
-    estado: $Enums.Estado
+    estado?: $Enums.Estado
+    nota?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
+    deletedAt?: Date | string | null
     alumno: AlumnoCreateNestedOneWithoutAsistenciaInput
   }
 
   export type AsistenciaUncheckedCreateWithoutClaseInput = {
     id?: number
     idAlumno: number
-    estado: $Enums.Estado
+    estado?: $Enums.Estado
+    nota?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
+    deletedAt?: Date | string | null
   }
 
   export type AsistenciaCreateOrConnectWithoutClaseInput = {
@@ -11032,15 +11168,19 @@ export namespace Prisma {
   export type AsistenciaCreateManyAlumnoInput = {
     id?: number
     idClase: number
-    estado: $Enums.Estado
+    estado?: $Enums.Estado
+    nota?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
+    deletedAt?: Date | string | null
   }
 
   export type AsistenciaUpdateWithoutAlumnoInput = {
     estado?: EnumEstadoFieldUpdateOperationsInput | $Enums.Estado
+    nota?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     clase?: ClaseUpdateOneRequiredWithoutAsistenciaNestedInput
   }
 
@@ -11048,16 +11188,20 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     idClase?: IntFieldUpdateOperationsInput | number
     estado?: EnumEstadoFieldUpdateOperationsInput | $Enums.Estado
+    nota?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type AsistenciaUncheckedUpdateManyWithoutAlumnoInput = {
     id?: IntFieldUpdateOperationsInput | number
     idClase?: IntFieldUpdateOperationsInput | number
     estado?: EnumEstadoFieldUpdateOperationsInput | $Enums.Estado
+    nota?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type CursoUpdateWithoutAlumnosInput = {
@@ -11088,15 +11232,19 @@ export namespace Prisma {
   export type AsistenciaCreateManyClaseInput = {
     id?: number
     idAlumno: number
-    estado: $Enums.Estado
+    estado?: $Enums.Estado
+    nota?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
+    deletedAt?: Date | string | null
   }
 
   export type AsistenciaUpdateWithoutClaseInput = {
     estado?: EnumEstadoFieldUpdateOperationsInput | $Enums.Estado
+    nota?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     alumno?: AlumnoUpdateOneRequiredWithoutAsistenciaNestedInput
   }
 
@@ -11104,16 +11252,20 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     idAlumno?: IntFieldUpdateOperationsInput | number
     estado?: EnumEstadoFieldUpdateOperationsInput | $Enums.Estado
+    nota?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type AsistenciaUncheckedUpdateManyWithoutClaseInput = {
     id?: IntFieldUpdateOperationsInput | number
     idAlumno?: IntFieldUpdateOperationsInput | number
     estado?: EnumEstadoFieldUpdateOperationsInput | $Enums.Estado
+    nota?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type MateriaCreateManyUserDocenteInput = {

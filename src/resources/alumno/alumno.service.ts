@@ -39,6 +39,9 @@ export class AlumnoService {
   async findOne(id: number) {
     try {
       return await this.prisma.alumno.findUnique({
+        include:{
+          Asistencia: true,
+        },
         where: {
           id
         }

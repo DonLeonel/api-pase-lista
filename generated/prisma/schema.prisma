@@ -42,9 +42,11 @@ model Asistencia {
   id        Int       @id @default(autoincrement())
   idAlumno  Int
   idClase   Int
-  estado    Estado
+  estado    Estado    @default(PRESENTE)
+  nota      String?   @db.Text
   createdAt DateTime  @default(now()) @db.Timestamp()
   updatedAt DateTime? @db.Timestamp()
+  deletedAt DateTime? @db.Timestamp()
   alumno    Alumno    @relation(fields: [idAlumno], references: [id])
   clase     Clase     @relation(fields: [idClase], references: [id])
 }

@@ -32,9 +32,11 @@ CREATE TABLE "Asistencia" (
     "id" SERIAL NOT NULL,
     "idAlumno" INTEGER NOT NULL,
     "idClase" INTEGER NOT NULL,
-    "estado" "Estado" NOT NULL,
+    "estado" "Estado" NOT NULL DEFAULT 'PRESENTE',
+    "nota" TEXT,
     "createdAt" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP,
+    "deletedAt" TIMESTAMP,
 
     CONSTRAINT "Asistencia_pkey" PRIMARY KEY ("id")
 );
