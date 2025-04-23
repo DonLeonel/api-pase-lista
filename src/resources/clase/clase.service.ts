@@ -1,26 +1,108 @@
 import { Injectable } from '@nestjs/common';
 import { CreateClaseDto } from './dto/create-clase.dto';
 import { UpdateClaseDto } from './dto/update-clase.dto';
+import { PrismaService } from 'src/prisma/prisma.service';
+import { construirDataActualizacion } from 'src/helper/construirDataActualizacion';
 
 @Injectable()
 export class ClaseService {
-  create(createClaseDto: CreateClaseDto) {
-    return 'This action adds a new clase';
+
+  constructor(private readonly prisma: PrismaService) {
+
+  }
+  async create(createClaseDto: CreateClaseDto) {
+    try {
+      const nuevo = await this.prisma.clase.create({
+        data: {
+          fechaHora: createClaseDto.fechaHora,
+          materia: {
+            connect: {
+              id: +createClaseDto.idMateria
+            }
+          }
+        },
+      })
+      return nuevo
+
+    } catch (error) {
+      console.error('Error al crear la clase. ', error)
+      throw error // relanza el error para que el controller lo pueda manejar
+    }
   }
 
-  findAll() {
-    return `This action returns all clase`;
+  async findAll() {
+    try {
+      return await this.prisma.clase.findMany({
+        where: {
+          deletedAt: null
+        }
+      })
+    } catch (error) {
+      console.error('Error al buscar las clase.', error)
+      throw error // relanza el error para que el controller lo pueda manejar
+    }
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} clase`;
+  async findOne(id: number) {
+    try {
+      return await this.prisma.clase.findUnique({
+        include:{
+          materia: true
+        },
+        where: {
+          id
+        }
+      })
+    } catch (error) {
+      console.error('Error al buscar la clase. ', error)
+      throw error // relanza el error para que el controller lo pueda manejar
+    }
   }
 
-  update(id: number, updateClaseDto: UpdateClaseDto) {
-    return `This action updates a #${id} clase`;
+  async update(id: number, updateClaseDto: UpdateClaseDto) {
+    try {
+      const actual = await this.prisma.clase.findUnique({
+        include: {
+          materia: {
+            select: {
+              id: true,
+            }
+          }
+        },
+        where: {
+          id
+        }
+      })
+      if (!actual) throw new Error('Clase no encontrada')
+
+      return await this.prisma.clase.update({
+        data: construirDataActualizacion(actual, updateClaseDto, {
+          idMateria: 'materia'
+        }),
+        where: {
+          id
+        }
+      })
+    } catch (error) {
+      console.error('Error al actualizar la clase. ', error)
+      throw error // relanza el error para que el controller lo pueda manejar
+    }
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} clase`;
+  async removeOrAdd(id: number) {
+    try {
+      const clase = await this.findOne(id);
+      return await this.prisma.clase.update({
+        data: {
+          deletedAt: clase?.deletedAt ? null : new Date()
+        },
+        where: {
+          id
+        }
+      })
+    } catch (error) {
+      console.error('Error al borrar o recuperar la clase. ', error)
+      throw error // relanza el error para que el controller lo pueda manejar
+    }
   }
 }

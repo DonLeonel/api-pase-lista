@@ -34,6 +34,7 @@ model Clase {
   createdAt  DateTime     @default(now())
   updatedAt  DateTime?    @db.Timestamp()
   deletedAt  DateTime?    @db.Timestamp()
+  materia    Materia      @relation(fields: [idMateria], references: [id])
   Asistencia Asistencia[]
 }
 
@@ -71,6 +72,7 @@ model Materia {
   deletedAt     DateTime?   @db.Timestamp()
   userDocente   UserDocente @relation(fields: [idUserDocente], references: [id])
   curso         Curso       @relation(fields: [idCurso], references: [id])
+  Clase         Clase[]
 }
 
 model Curso {

@@ -93,6 +93,9 @@ CREATE UNIQUE INDEX "UserDocente_email_key" ON "UserDocente"("email");
 CREATE INDEX "_AlumnoToCurso_B_index" ON "_AlumnoToCurso"("B");
 
 -- AddForeignKey
+ALTER TABLE "Clase" ADD CONSTRAINT "Clase_idMateria_fkey" FOREIGN KEY ("idMateria") REFERENCES "Materia"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
 ALTER TABLE "Asistencia" ADD CONSTRAINT "Asistencia_idAlumno_fkey" FOREIGN KEY ("idAlumno") REFERENCES "Alumno"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey

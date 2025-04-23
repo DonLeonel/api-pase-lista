@@ -1,1 +1,4 @@
-export class CreateClaseDto {}
+export class CreateClaseDto {
+    fechaHora: Date
+    idMateria: number  
+}

@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateMateriaDto } from './dto/create-materia.dto';
 import { UpdateMateriaDto } from './dto/update-materia.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { construirDataActualizacion } from 'src/helper/construirDataActualizacion';
 
 @Injectable()
 export class MateriaService {
@@ -52,15 +53,15 @@ export class MateriaService {
       return await this.prisma.materia.findUnique({
         include: {
           userDocente: {
-            select:{
-              id:true,
+            select: {
+              id: true,
               nombre: true,
               apellido: true,
               email: true
             }
           },
-          curso: true          
-        },        
+          curso: true
+        },
         where: {
           id
         }
@@ -73,11 +74,30 @@ export class MateriaService {
 
   async update(id: number, updateMateriaDto: UpdateMateriaDto) {
     try {
-      return await this.prisma.materia.update({
-        data: {
-          ...updateMateriaDto,
-          updatedAt: new Date()
+      const actual = await this.prisma.materia.findUnique({
+        include: {
+          userDocente: {
+            select: {
+              id: true
+            }
+          },
+          curso: {
+            select: {
+              id: true,
+            }
+          }
         },
+        where: {
+          id
+        }
+      })
+      if (!actual) throw new Error('Materia no encontrada')
+
+      return await this.prisma.materia.update({
+        data: construirDataActualizacion(actual, updateMateriaDto, {
+          idUserDocente: 'userDocente',
+          idCurso: 'curso'
+        }),
         where: {
           id
         }

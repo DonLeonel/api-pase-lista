@@ -5,7 +5,7 @@ import { UpdateClaseDto } from './dto/update-clase.dto';
 
 @Controller('clase')
 export class ClaseController {
-  constructor(private readonly claseService: ClaseService) {}
+  constructor(private readonly claseService: ClaseService) { }
 
   @Post()
   create(@Body() createClaseDto: CreateClaseDto) {
@@ -28,7 +28,7 @@ export class ClaseController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.claseService.remove(+id);
+  removeOrAdd(@Param('id') id: string) {
+    return this.claseService.removeOrAdd(+id);
   }
 }

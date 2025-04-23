@@ -1440,6 +1440,37 @@ export namespace Prisma {
 
 
   /**
+   * Count Type MateriaCountOutputType
+   */
+
+  export type MateriaCountOutputType = {
+    Clase: number
+  }
+
+  export type MateriaCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Clase?: boolean | MateriaCountOutputTypeCountClaseArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * MateriaCountOutputType without action
+   */
+  export type MateriaCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MateriaCountOutputType
+     */
+    select?: MateriaCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * MateriaCountOutputType without action
+   */
+  export type MateriaCountOutputTypeCountClaseArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ClaseWhereInput
+  }
+
+
+  /**
    * Count Type CursoCountOutputType
    */
 
@@ -2864,6 +2895,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
+    materia?: boolean | MateriaDefaultArgs<ExtArgs>
     Asistencia?: boolean | Clase$AsistenciaArgs<ExtArgs>
     _count?: boolean | ClaseCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["clase"]>
@@ -2875,6 +2907,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
+    materia?: boolean | MateriaDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["clase"]>
 
   export type ClaseSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2884,6 +2917,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
+    materia?: boolean | MateriaDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["clase"]>
 
   export type ClaseSelectScalar = {
@@ -2897,15 +2931,21 @@ export namespace Prisma {
 
   export type ClaseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "fechaHora" | "idMateria" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["clase"]>
   export type ClaseInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    materia?: boolean | MateriaDefaultArgs<ExtArgs>
     Asistencia?: boolean | Clase$AsistenciaArgs<ExtArgs>
     _count?: boolean | ClaseCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type ClaseIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type ClaseIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type ClaseIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    materia?: boolean | MateriaDefaultArgs<ExtArgs>
+  }
+  export type ClaseIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    materia?: boolean | MateriaDefaultArgs<ExtArgs>
+  }
 
   export type $ClasePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Clase"
     objects: {
+      materia: Prisma.$MateriaPayload<ExtArgs>
       Asistencia: Prisma.$AsistenciaPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -3309,6 +3349,7 @@ export namespace Prisma {
    */
   export interface Prisma__ClaseClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    materia<T extends MateriaDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MateriaDefaultArgs<ExtArgs>>): Prisma__MateriaClient<$Result.GetResult<Prisma.$MateriaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     Asistencia<T extends Clase$AsistenciaArgs<ExtArgs> = {}>(args?: Subset<T, Clase$AsistenciaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AsistenciaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -3594,6 +3635,10 @@ export namespace Prisma {
      */
     data: ClaseCreateManyInput | ClaseCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClaseIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -3664,6 +3709,10 @@ export namespace Prisma {
      * Limit how many Clases to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClaseIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -6276,6 +6325,8 @@ export namespace Prisma {
     deletedAt?: boolean
     userDocente?: boolean | UserDocenteDefaultArgs<ExtArgs>
     curso?: boolean | CursoDefaultArgs<ExtArgs>
+    Clase?: boolean | Materia$ClaseArgs<ExtArgs>
+    _count?: boolean | MateriaCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["materia"]>
 
   export type MateriaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6316,6 +6367,8 @@ export namespace Prisma {
   export type MateriaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     userDocente?: boolean | UserDocenteDefaultArgs<ExtArgs>
     curso?: boolean | CursoDefaultArgs<ExtArgs>
+    Clase?: boolean | Materia$ClaseArgs<ExtArgs>
+    _count?: boolean | MateriaCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type MateriaIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     userDocente?: boolean | UserDocenteDefaultArgs<ExtArgs>
@@ -6331,6 +6384,7 @@ export namespace Prisma {
     objects: {
       userDocente: Prisma.$UserDocentePayload<ExtArgs>
       curso: Prisma.$CursoPayload<ExtArgs>
+      Clase: Prisma.$ClasePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -6736,6 +6790,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     userDocente<T extends UserDocenteDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDocenteDefaultArgs<ExtArgs>>): Prisma__UserDocenteClient<$Result.GetResult<Prisma.$UserDocentePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     curso<T extends CursoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CursoDefaultArgs<ExtArgs>>): Prisma__CursoClient<$Result.GetResult<Prisma.$CursoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    Clase<T extends Materia$ClaseArgs<ExtArgs> = {}>(args?: Subset<T, Materia$ClaseArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClasePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7165,6 +7220,30 @@ export namespace Prisma {
      * Limit how many Materias to delete.
      */
     limit?: number
+  }
+
+  /**
+   * Materia.Clase
+   */
+  export type Materia$ClaseArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Clase
+     */
+    select?: ClaseSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Clase
+     */
+    omit?: ClaseOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClaseInclude<ExtArgs> | null
+    where?: ClaseWhereInput
+    orderBy?: ClaseOrderByWithRelationInput | ClaseOrderByWithRelationInput[]
+    cursor?: ClaseWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ClaseScalarFieldEnum | ClaseScalarFieldEnum[]
   }
 
   /**
@@ -8596,6 +8675,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Clase"> | Date | string
     updatedAt?: DateTimeNullableFilter<"Clase"> | Date | string | null
     deletedAt?: DateTimeNullableFilter<"Clase"> | Date | string | null
+    materia?: XOR<MateriaScalarRelationFilter, MateriaWhereInput>
     Asistencia?: AsistenciaListRelationFilter
   }
 
@@ -8606,6 +8686,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     deletedAt?: SortOrderInput | SortOrder
+    materia?: MateriaOrderByWithRelationInput
     Asistencia?: AsistenciaOrderByRelationAggregateInput
   }
 
@@ -8619,6 +8700,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Clase"> | Date | string
     updatedAt?: DateTimeNullableFilter<"Clase"> | Date | string | null
     deletedAt?: DateTimeNullableFilter<"Clase"> | Date | string | null
+    materia?: XOR<MateriaScalarRelationFilter, MateriaWhereInput>
     Asistencia?: AsistenciaListRelationFilter
   }, "id">
 
@@ -8803,6 +8885,7 @@ export namespace Prisma {
     deletedAt?: DateTimeNullableFilter<"Materia"> | Date | string | null
     userDocente?: XOR<UserDocenteScalarRelationFilter, UserDocenteWhereInput>
     curso?: XOR<CursoScalarRelationFilter, CursoWhereInput>
+    Clase?: ClaseListRelationFilter
   }
 
   export type MateriaOrderByWithRelationInput = {
@@ -8815,6 +8898,7 @@ export namespace Prisma {
     deletedAt?: SortOrderInput | SortOrder
     userDocente?: UserDocenteOrderByWithRelationInput
     curso?: CursoOrderByWithRelationInput
+    Clase?: ClaseOrderByRelationAggregateInput
   }
 
   export type MateriaWhereUniqueInput = Prisma.AtLeast<{
@@ -8830,6 +8914,7 @@ export namespace Prisma {
     deletedAt?: DateTimeNullableFilter<"Materia"> | Date | string | null
     userDocente?: XOR<UserDocenteScalarRelationFilter, UserDocenteWhereInput>
     curso?: XOR<CursoScalarRelationFilter, CursoWhereInput>
+    Clase?: ClaseListRelationFilter
   }, "id">
 
   export type MateriaOrderByWithAggregationInput = {
@@ -9004,10 +9089,10 @@ export namespace Prisma {
 
   export type ClaseCreateInput = {
     fechaHora: Date | string
-    idMateria: number
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
+    materia: MateriaCreateNestedOneWithoutClaseInput
     Asistencia?: AsistenciaCreateNestedManyWithoutClaseInput
   }
 
@@ -9023,10 +9108,10 @@ export namespace Prisma {
 
   export type ClaseUpdateInput = {
     fechaHora?: DateTimeFieldUpdateOperationsInput | Date | string
-    idMateria?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    materia?: MateriaUpdateOneRequiredWithoutClaseNestedInput
     Asistencia?: AsistenciaUpdateManyWithoutClaseNestedInput
   }
 
@@ -9051,7 +9136,6 @@ export namespace Prisma {
 
   export type ClaseUpdateManyMutationInput = {
     fechaHora?: DateTimeFieldUpdateOperationsInput | Date | string
-    idMateria?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -9216,6 +9300,7 @@ export namespace Prisma {
     deletedAt?: Date | string | null
     userDocente: UserDocenteCreateNestedOneWithoutMateriaInput
     curso: CursoCreateNestedOneWithoutMateriaInput
+    Clase?: ClaseCreateNestedManyWithoutMateriaInput
   }
 
   export type MateriaUncheckedCreateInput = {
@@ -9226,6 +9311,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
+    Clase?: ClaseUncheckedCreateNestedManyWithoutMateriaInput
   }
 
   export type MateriaUpdateInput = {
@@ -9235,6 +9321,7 @@ export namespace Prisma {
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     userDocente?: UserDocenteUpdateOneRequiredWithoutMateriaNestedInput
     curso?: CursoUpdateOneRequiredWithoutMateriaNestedInput
+    Clase?: ClaseUpdateManyWithoutMateriaNestedInput
   }
 
   export type MateriaUncheckedUpdateInput = {
@@ -9245,6 +9332,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Clase?: ClaseUncheckedUpdateManyWithoutMateriaNestedInput
   }
 
   export type MateriaCreateManyInput = {
@@ -9511,6 +9599,11 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
+  export type MateriaScalarRelationFilter = {
+    is?: MateriaWhereInput
+    isNot?: MateriaWhereInput
+  }
+
   export type ClaseCountOrderByAggregateInput = {
     id?: SortOrder
     fechaHora?: SortOrder
@@ -9676,6 +9769,16 @@ export namespace Prisma {
   export type CursoScalarRelationFilter = {
     is?: CursoWhereInput
     isNot?: CursoWhereInput
+  }
+
+  export type ClaseListRelationFilter = {
+    every?: ClaseWhereInput
+    some?: ClaseWhereInput
+    none?: ClaseWhereInput
+  }
+
+  export type ClaseOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type MateriaCountOrderByAggregateInput = {
@@ -9862,6 +9965,12 @@ export namespace Prisma {
     deleteMany?: CursoScalarWhereInput | CursoScalarWhereInput[]
   }
 
+  export type MateriaCreateNestedOneWithoutClaseInput = {
+    create?: XOR<MateriaCreateWithoutClaseInput, MateriaUncheckedCreateWithoutClaseInput>
+    connectOrCreate?: MateriaCreateOrConnectWithoutClaseInput
+    connect?: MateriaWhereUniqueInput
+  }
+
   export type AsistenciaCreateNestedManyWithoutClaseInput = {
     create?: XOR<AsistenciaCreateWithoutClaseInput, AsistenciaUncheckedCreateWithoutClaseInput> | AsistenciaCreateWithoutClaseInput[] | AsistenciaUncheckedCreateWithoutClaseInput[]
     connectOrCreate?: AsistenciaCreateOrConnectWithoutClaseInput | AsistenciaCreateOrConnectWithoutClaseInput[]
@@ -9874,6 +9983,14 @@ export namespace Prisma {
     connectOrCreate?: AsistenciaCreateOrConnectWithoutClaseInput | AsistenciaCreateOrConnectWithoutClaseInput[]
     createMany?: AsistenciaCreateManyClaseInputEnvelope
     connect?: AsistenciaWhereUniqueInput | AsistenciaWhereUniqueInput[]
+  }
+
+  export type MateriaUpdateOneRequiredWithoutClaseNestedInput = {
+    create?: XOR<MateriaCreateWithoutClaseInput, MateriaUncheckedCreateWithoutClaseInput>
+    connectOrCreate?: MateriaCreateOrConnectWithoutClaseInput
+    upsert?: MateriaUpsertWithoutClaseInput
+    connect?: MateriaWhereUniqueInput
+    update?: XOR<XOR<MateriaUpdateToOneWithWhereWithoutClaseInput, MateriaUpdateWithoutClaseInput>, MateriaUncheckedUpdateWithoutClaseInput>
   }
 
   export type AsistenciaUpdateManyWithoutClaseNestedInput = {
@@ -9990,6 +10107,20 @@ export namespace Prisma {
     connect?: CursoWhereUniqueInput
   }
 
+  export type ClaseCreateNestedManyWithoutMateriaInput = {
+    create?: XOR<ClaseCreateWithoutMateriaInput, ClaseUncheckedCreateWithoutMateriaInput> | ClaseCreateWithoutMateriaInput[] | ClaseUncheckedCreateWithoutMateriaInput[]
+    connectOrCreate?: ClaseCreateOrConnectWithoutMateriaInput | ClaseCreateOrConnectWithoutMateriaInput[]
+    createMany?: ClaseCreateManyMateriaInputEnvelope
+    connect?: ClaseWhereUniqueInput | ClaseWhereUniqueInput[]
+  }
+
+  export type ClaseUncheckedCreateNestedManyWithoutMateriaInput = {
+    create?: XOR<ClaseCreateWithoutMateriaInput, ClaseUncheckedCreateWithoutMateriaInput> | ClaseCreateWithoutMateriaInput[] | ClaseUncheckedCreateWithoutMateriaInput[]
+    connectOrCreate?: ClaseCreateOrConnectWithoutMateriaInput | ClaseCreateOrConnectWithoutMateriaInput[]
+    createMany?: ClaseCreateManyMateriaInputEnvelope
+    connect?: ClaseWhereUniqueInput | ClaseWhereUniqueInput[]
+  }
+
   export type UserDocenteUpdateOneRequiredWithoutMateriaNestedInput = {
     create?: XOR<UserDocenteCreateWithoutMateriaInput, UserDocenteUncheckedCreateWithoutMateriaInput>
     connectOrCreate?: UserDocenteCreateOrConnectWithoutMateriaInput
@@ -10004,6 +10135,34 @@ export namespace Prisma {
     upsert?: CursoUpsertWithoutMateriaInput
     connect?: CursoWhereUniqueInput
     update?: XOR<XOR<CursoUpdateToOneWithWhereWithoutMateriaInput, CursoUpdateWithoutMateriaInput>, CursoUncheckedUpdateWithoutMateriaInput>
+  }
+
+  export type ClaseUpdateManyWithoutMateriaNestedInput = {
+    create?: XOR<ClaseCreateWithoutMateriaInput, ClaseUncheckedCreateWithoutMateriaInput> | ClaseCreateWithoutMateriaInput[] | ClaseUncheckedCreateWithoutMateriaInput[]
+    connectOrCreate?: ClaseCreateOrConnectWithoutMateriaInput | ClaseCreateOrConnectWithoutMateriaInput[]
+    upsert?: ClaseUpsertWithWhereUniqueWithoutMateriaInput | ClaseUpsertWithWhereUniqueWithoutMateriaInput[]
+    createMany?: ClaseCreateManyMateriaInputEnvelope
+    set?: ClaseWhereUniqueInput | ClaseWhereUniqueInput[]
+    disconnect?: ClaseWhereUniqueInput | ClaseWhereUniqueInput[]
+    delete?: ClaseWhereUniqueInput | ClaseWhereUniqueInput[]
+    connect?: ClaseWhereUniqueInput | ClaseWhereUniqueInput[]
+    update?: ClaseUpdateWithWhereUniqueWithoutMateriaInput | ClaseUpdateWithWhereUniqueWithoutMateriaInput[]
+    updateMany?: ClaseUpdateManyWithWhereWithoutMateriaInput | ClaseUpdateManyWithWhereWithoutMateriaInput[]
+    deleteMany?: ClaseScalarWhereInput | ClaseScalarWhereInput[]
+  }
+
+  export type ClaseUncheckedUpdateManyWithoutMateriaNestedInput = {
+    create?: XOR<ClaseCreateWithoutMateriaInput, ClaseUncheckedCreateWithoutMateriaInput> | ClaseCreateWithoutMateriaInput[] | ClaseUncheckedCreateWithoutMateriaInput[]
+    connectOrCreate?: ClaseCreateOrConnectWithoutMateriaInput | ClaseCreateOrConnectWithoutMateriaInput[]
+    upsert?: ClaseUpsertWithWhereUniqueWithoutMateriaInput | ClaseUpsertWithWhereUniqueWithoutMateriaInput[]
+    createMany?: ClaseCreateManyMateriaInputEnvelope
+    set?: ClaseWhereUniqueInput | ClaseWhereUniqueInput[]
+    disconnect?: ClaseWhereUniqueInput | ClaseWhereUniqueInput[]
+    delete?: ClaseWhereUniqueInput | ClaseWhereUniqueInput[]
+    connect?: ClaseWhereUniqueInput | ClaseWhereUniqueInput[]
+    update?: ClaseUpdateWithWhereUniqueWithoutMateriaInput | ClaseUpdateWithWhereUniqueWithoutMateriaInput[]
+    updateMany?: ClaseUpdateManyWithWhereWithoutMateriaInput | ClaseUpdateManyWithWhereWithoutMateriaInput[]
+    deleteMany?: ClaseScalarWhereInput | ClaseScalarWhereInput[]
   }
 
   export type MateriaCreateNestedManyWithoutCursoInput = {
@@ -10335,6 +10494,30 @@ export namespace Prisma {
     deletedAt?: DateTimeNullableFilter<"Curso"> | Date | string | null
   }
 
+  export type MateriaCreateWithoutClaseInput = {
+    nombre: string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    deletedAt?: Date | string | null
+    userDocente: UserDocenteCreateNestedOneWithoutMateriaInput
+    curso: CursoCreateNestedOneWithoutMateriaInput
+  }
+
+  export type MateriaUncheckedCreateWithoutClaseInput = {
+    id?: number
+    nombre: string
+    idUserDocente: number
+    idCurso: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    deletedAt?: Date | string | null
+  }
+
+  export type MateriaCreateOrConnectWithoutClaseInput = {
+    where: MateriaWhereUniqueInput
+    create: XOR<MateriaCreateWithoutClaseInput, MateriaUncheckedCreateWithoutClaseInput>
+  }
+
   export type AsistenciaCreateWithoutClaseInput = {
     estado: $Enums.Estado
     createdAt?: Date | string
@@ -10358,6 +10541,36 @@ export namespace Prisma {
   export type AsistenciaCreateManyClaseInputEnvelope = {
     data: AsistenciaCreateManyClaseInput | AsistenciaCreateManyClaseInput[]
     skipDuplicates?: boolean
+  }
+
+  export type MateriaUpsertWithoutClaseInput = {
+    update: XOR<MateriaUpdateWithoutClaseInput, MateriaUncheckedUpdateWithoutClaseInput>
+    create: XOR<MateriaCreateWithoutClaseInput, MateriaUncheckedCreateWithoutClaseInput>
+    where?: MateriaWhereInput
+  }
+
+  export type MateriaUpdateToOneWithWhereWithoutClaseInput = {
+    where?: MateriaWhereInput
+    data: XOR<MateriaUpdateWithoutClaseInput, MateriaUncheckedUpdateWithoutClaseInput>
+  }
+
+  export type MateriaUpdateWithoutClaseInput = {
+    nombre?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    userDocente?: UserDocenteUpdateOneRequiredWithoutMateriaNestedInput
+    curso?: CursoUpdateOneRequiredWithoutMateriaNestedInput
+  }
+
+  export type MateriaUncheckedUpdateWithoutClaseInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nombre?: StringFieldUpdateOperationsInput | string
+    idUserDocente?: IntFieldUpdateOperationsInput | number
+    idCurso?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type AsistenciaUpsertWithWhereUniqueWithoutClaseInput = {
@@ -10406,10 +10619,10 @@ export namespace Prisma {
 
   export type ClaseCreateWithoutAsistenciaInput = {
     fechaHora: Date | string
-    idMateria: number
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
+    materia: MateriaCreateNestedOneWithoutClaseInput
   }
 
   export type ClaseUncheckedCreateWithoutAsistenciaInput = {
@@ -10473,10 +10686,10 @@ export namespace Prisma {
 
   export type ClaseUpdateWithoutAsistenciaInput = {
     fechaHora?: DateTimeFieldUpdateOperationsInput | Date | string
-    idMateria?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    materia?: MateriaUpdateOneRequiredWithoutClaseNestedInput
   }
 
   export type ClaseUncheckedUpdateWithoutAsistenciaInput = {
@@ -10494,6 +10707,7 @@ export namespace Prisma {
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
     curso: CursoCreateNestedOneWithoutMateriaInput
+    Clase?: ClaseCreateNestedManyWithoutMateriaInput
   }
 
   export type MateriaUncheckedCreateWithoutUserDocenteInput = {
@@ -10503,6 +10717,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
+    Clase?: ClaseUncheckedCreateNestedManyWithoutMateriaInput
   }
 
   export type MateriaCreateOrConnectWithoutUserDocenteInput = {
@@ -10594,6 +10809,33 @@ export namespace Prisma {
     create: XOR<CursoCreateWithoutMateriaInput, CursoUncheckedCreateWithoutMateriaInput>
   }
 
+  export type ClaseCreateWithoutMateriaInput = {
+    fechaHora: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    deletedAt?: Date | string | null
+    Asistencia?: AsistenciaCreateNestedManyWithoutClaseInput
+  }
+
+  export type ClaseUncheckedCreateWithoutMateriaInput = {
+    id?: number
+    fechaHora: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    deletedAt?: Date | string | null
+    Asistencia?: AsistenciaUncheckedCreateNestedManyWithoutClaseInput
+  }
+
+  export type ClaseCreateOrConnectWithoutMateriaInput = {
+    where: ClaseWhereUniqueInput
+    create: XOR<ClaseCreateWithoutMateriaInput, ClaseUncheckedCreateWithoutMateriaInput>
+  }
+
+  export type ClaseCreateManyMateriaInputEnvelope = {
+    data: ClaseCreateManyMateriaInput | ClaseCreateManyMateriaInput[]
+    skipDuplicates?: boolean
+  }
+
   export type UserDocenteUpsertWithoutMateriaInput = {
     update: XOR<UserDocenteUpdateWithoutMateriaInput, UserDocenteUncheckedUpdateWithoutMateriaInput>
     create: XOR<UserDocenteCreateWithoutMateriaInput, UserDocenteUncheckedCreateWithoutMateriaInput>
@@ -10656,12 +10898,41 @@ export namespace Prisma {
     alumnos?: AlumnoUncheckedUpdateManyWithoutCursosNestedInput
   }
 
+  export type ClaseUpsertWithWhereUniqueWithoutMateriaInput = {
+    where: ClaseWhereUniqueInput
+    update: XOR<ClaseUpdateWithoutMateriaInput, ClaseUncheckedUpdateWithoutMateriaInput>
+    create: XOR<ClaseCreateWithoutMateriaInput, ClaseUncheckedCreateWithoutMateriaInput>
+  }
+
+  export type ClaseUpdateWithWhereUniqueWithoutMateriaInput = {
+    where: ClaseWhereUniqueInput
+    data: XOR<ClaseUpdateWithoutMateriaInput, ClaseUncheckedUpdateWithoutMateriaInput>
+  }
+
+  export type ClaseUpdateManyWithWhereWithoutMateriaInput = {
+    where: ClaseScalarWhereInput
+    data: XOR<ClaseUpdateManyMutationInput, ClaseUncheckedUpdateManyWithoutMateriaInput>
+  }
+
+  export type ClaseScalarWhereInput = {
+    AND?: ClaseScalarWhereInput | ClaseScalarWhereInput[]
+    OR?: ClaseScalarWhereInput[]
+    NOT?: ClaseScalarWhereInput | ClaseScalarWhereInput[]
+    id?: IntFilter<"Clase"> | number
+    fechaHora?: DateTimeFilter<"Clase"> | Date | string
+    idMateria?: IntFilter<"Clase"> | number
+    createdAt?: DateTimeFilter<"Clase"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Clase"> | Date | string | null
+    deletedAt?: DateTimeNullableFilter<"Clase"> | Date | string | null
+  }
+
   export type MateriaCreateWithoutCursoInput = {
     nombre: string
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
     userDocente: UserDocenteCreateNestedOneWithoutMateriaInput
+    Clase?: ClaseCreateNestedManyWithoutMateriaInput
   }
 
   export type MateriaUncheckedCreateWithoutCursoInput = {
@@ -10671,6 +10942,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
+    Clase?: ClaseUncheckedCreateNestedManyWithoutMateriaInput
   }
 
   export type MateriaCreateOrConnectWithoutCursoInput = {
@@ -10859,6 +11131,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     curso?: CursoUpdateOneRequiredWithoutMateriaNestedInput
+    Clase?: ClaseUpdateManyWithoutMateriaNestedInput
   }
 
   export type MateriaUncheckedUpdateWithoutUserDocenteInput = {
@@ -10868,12 +11141,46 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Clase?: ClaseUncheckedUpdateManyWithoutMateriaNestedInput
   }
 
   export type MateriaUncheckedUpdateManyWithoutUserDocenteInput = {
     id?: IntFieldUpdateOperationsInput | number
     nombre?: StringFieldUpdateOperationsInput | string
     idCurso?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type ClaseCreateManyMateriaInput = {
+    id?: number
+    fechaHora: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    deletedAt?: Date | string | null
+  }
+
+  export type ClaseUpdateWithoutMateriaInput = {
+    fechaHora?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Asistencia?: AsistenciaUpdateManyWithoutClaseNestedInput
+  }
+
+  export type ClaseUncheckedUpdateWithoutMateriaInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fechaHora?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Asistencia?: AsistenciaUncheckedUpdateManyWithoutClaseNestedInput
+  }
+
+  export type ClaseUncheckedUpdateManyWithoutMateriaInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fechaHora?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -10894,6 +11201,7 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     userDocente?: UserDocenteUpdateOneRequiredWithoutMateriaNestedInput
+    Clase?: ClaseUpdateManyWithoutMateriaNestedInput
   }
 
   export type MateriaUncheckedUpdateWithoutCursoInput = {
@@ -10903,6 +11211,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Clase?: ClaseUncheckedUpdateManyWithoutMateriaNestedInput
   }
 
   export type MateriaUncheckedUpdateManyWithoutCursoInput = {
