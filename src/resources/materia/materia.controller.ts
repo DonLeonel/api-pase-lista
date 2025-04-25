@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { MateriaService } from './materia.service';
 import { CreateMateriaDto } from './dto/create-materia.dto';
 import { UpdateMateriaDto } from './dto/update-materia.dto';
+import { CreateHorarioClaseDto } from './dto/create-diaHorarioClase.dto';
 
 @Controller('materia')
 export class MateriaController {
@@ -10,6 +11,11 @@ export class MateriaController {
   @Post()
   create(@Body() createMateriaDto: CreateMateriaDto) {
     return this.materiaService.create(createMateriaDto);
+  }
+
+  @Post('dias-horario-clase')
+  createDiasHorarioClase(@Body() createDiasHorarioClase: CreateHorarioClaseDto) {
+    return this.materiaService.createDiasHorarioClase(createDiasHorarioClase);
   }
 
   @Get()

@@ -5,6 +5,6 @@ import { PrismaService } from 'src/prisma/prisma.service';
 
 @Module({
   controllers: [CursoController],
-  providers: [CursoService, PrismaService],
+  providers: [CursoService, PrismaService]
 })
-export class CursoModule {}
+export class CursoModule { }

@@ -1,8 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateAsistenciaDto } from './dto/create-asistencia.dto';
 import { UpdateAsistenciaDto } from './dto/update-asistencia.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { construirDataActualizacion } from 'src/helper/construirDataActualizacion';
+import { construirDataActualizacion } from 'src/utils/construirDataActualizacion';
 
 @Injectable()
 export class AsistenciaService {
@@ -12,7 +12,7 @@ export class AsistenciaService {
   async create(createAsistenciaDto: CreateAsistenciaDto) {
     try {
       const { idClase, idAlumno, ...resto } = createAsistenciaDto
-      const nuevo = await this.prisma.asistencia.create({
+      const nuevo = await this.prisma.asistencias.create({
         data: {
           ...resto,
           alumno: {
@@ -37,7 +37,7 @@ export class AsistenciaService {
 
   async findAll() {
     try {
-      return await this.prisma.asistencia.findMany({
+      return await this.prisma.asistencias.findMany({
         where: {
           deletedAt: null
         }
@@ -50,15 +50,15 @@ export class AsistenciaService {
 
   async findOne(id: number) {
     try {
-      return await this.prisma.asistencia.findUnique({
+      const model = await this.prisma.asistencias.findUnique({
         include: {
           clase: {
-            select: {              
+            select: {
               fechaHora: true,
             }
           },
           alumno: {
-            select: {              
+            select: {
               nombre: true,
               apellido: true,
             },
@@ -68,6 +68,9 @@ export class AsistenciaService {
           id
         }
       })
+
+      if (!model) throw new NotFoundException('Asistencia no encontrada')
+      return model
     } catch (error) {
       console.error('Error al buscar la asistencia. ', error)
       throw error // relanza el error para que el controller lo pueda manejar
@@ -76,7 +79,7 @@ export class AsistenciaService {
 
   async update(id: number, updateAsistenciaDto: UpdateAsistenciaDto) {
     try {
-      const actual = await this.prisma.asistencia.findUnique({
+      const actual = await this.prisma.asistencias.findUnique({
         include: {
           clase: {
             select: {
@@ -93,9 +96,9 @@ export class AsistenciaService {
           id
         }
       })
-      if (!actual) throw new Error('Asistencia no encontrada')
+      if (!actual) throw new NotFoundException('Asistencia no encontrada')
 
-      return await this.prisma.asistencia.update({
+      return await this.prisma.asistencias.update({
         data: construirDataActualizacion(actual, updateAsistenciaDto, {
           idAlumno: 'alumno',
           idClase: 'clase'
@@ -113,7 +116,7 @@ export class AsistenciaService {
   async remove(id: number) {
     try {
       const asistencia = await this.findOne(id);
-      return await this.prisma.asistencia.update({
+      return await this.prisma.asistencias.update({
         data: {
           deletedAt: asistencia?.deletedAt ? null : new Date()
         },

@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateAlumnoDto } from './dto/create-alumno.dto';
 import { UpdateAlumnoDto } from './dto/update-alumno.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
@@ -11,7 +11,7 @@ export class AlumnoService {
 
   async create(createAlumnoDto: CreateAlumnoDto) {
     try {
-      const nuevoAlumno = await this.prisma.alumno.create({
+      const nuevoAlumno = await this.prisma.alumnos.create({
         data: {
           ...createAlumnoDto,
         },
@@ -25,8 +25,8 @@ export class AlumnoService {
 
   async findAll() {
     try {
-      return await this.prisma.alumno.findMany({
-        where: {          
+      return await this.prisma.alumnos.findMany({
+        where: {
           deletedAt: null
         }
       })
@@ -38,14 +38,18 @@ export class AlumnoService {
 
   async findOne(id: number) {
     try {
-      return await this.prisma.alumno.findUnique({
-        include:{
-          Asistencia: true,
+      const model = await this.prisma.alumnos.findUnique({
+        include: {
+          Asistencias: true,
         },
         where: {
           id
         }
       })
+
+      if (!model) throw new NotFoundException('Alumno no encontrado')
+      return model
+
     } catch (error) {
       console.error('Error al buscar el alumno. ', error)
       throw error // relanza el error para que el controller lo pueda manejar
@@ -54,7 +58,7 @@ export class AlumnoService {
 
   async update(id: number, updateAlumnoDto: UpdateAlumnoDto) {
     try {
-      return await this.prisma.alumno.update({
+      return await this.prisma.alumnos.update({
         data: {
           ...updateAlumnoDto,
           updatedAt: new Date()
@@ -71,10 +75,10 @@ export class AlumnoService {
 
   async removeOrAdd(id: number) {
     try {
-      const alumno = await this.findOne(id);           
-      return await this.prisma.alumno.update({
-        data: {          
-          deletedAt: alumno?.deletedAt ?  null : new Date()
+      const alumno = await this.findOne(id);
+      return await this.prisma.alumnos.update({
+        data: {
+          deletedAt: alumno?.deletedAt ? null : new Date()
         },
         where: {
           id

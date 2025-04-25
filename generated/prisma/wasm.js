@@ -117,7 +117,7 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.AlumnoScalarFieldEnum = {
+exports.Prisma.AlumnosScalarFieldEnum = {
   id: 'id',
   legajo: 'legajo',
   nombre: 'nombre',
@@ -128,16 +128,18 @@ exports.Prisma.AlumnoScalarFieldEnum = {
   deletedAt: 'deletedAt'
 };
 
-exports.Prisma.ClaseScalarFieldEnum = {
+exports.Prisma.ClasesScalarFieldEnum = {
   id: 'id',
   fechaHora: 'fechaHora',
   idMateria: 'idMateria',
+  suspendida: 'suspendida',
+  motivo: 'motivo',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   deletedAt: 'deletedAt'
 };
 
-exports.Prisma.AsistenciaScalarFieldEnum = {
+exports.Prisma.AsistenciasScalarFieldEnum = {
   id: 'id',
   idAlumno: 'idAlumno',
   idClase: 'idClase',
@@ -148,7 +150,7 @@ exports.Prisma.AsistenciaScalarFieldEnum = {
   deletedAt: 'deletedAt'
 };
 
-exports.Prisma.UserDocenteScalarFieldEnum = {
+exports.Prisma.UsersDocentesScalarFieldEnum = {
   id: 'id',
   email: 'email',
   password: 'password',
@@ -160,22 +162,43 @@ exports.Prisma.UserDocenteScalarFieldEnum = {
   deletedAt: 'deletedAt'
 };
 
-exports.Prisma.MateriaScalarFieldEnum = {
+exports.Prisma.MateriasScalarFieldEnum = {
   id: 'id',
   nombre: 'nombre',
   idUserDocente: 'idUserDocente',
   idCurso: 'idCurso',
+  fechaInicio: 'fechaInicio',
+  fechaFin: 'fechaFin',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   deletedAt: 'deletedAt'
 };
 
-exports.Prisma.CursoScalarFieldEnum = {
+exports.Prisma.DiasHorariosClasesScalarFieldEnum = {
   id: 'id',
-  nombre: 'nombre',
+  idMateria: 'idMateria',
+  dias: 'dias',
+  horaInicio: 'horaInicio',
+  duracionMinutos: 'duracionMinutos',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   deletedAt: 'deletedAt'
+};
+
+exports.Prisma.CursosScalarFieldEnum = {
+  id: 'id',
+  nombre: 'nombre',
+  turno: 'turno',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+};
+
+exports.Prisma.FechaNoLectivasScalarFieldEnum = {
+  id: 'id',
+  fechaInicio: 'fechaInicio',
+  fechaFin: 'fechaFin',
+  motivo: 'motivo'
 };
 
 exports.Prisma.SortOrder = {
@@ -192,19 +215,31 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-exports.Estado = exports.$Enums.Estado = {
+exports.Estados = exports.$Enums.Estados = {
   PRESENTE: 'PRESENTE',
   AUSENTE: 'AUSENTE',
   JUSTIFICADO: 'JUSTIFICADO'
 };
 
+exports.Dias = exports.$Enums.Dias = {
+  LUNES: 'LUNES',
+  MARTES: 'MARTES',
+  MIERCOLES: 'MIERCOLES',
+  JUEVES: 'JUEVES',
+  VIERNES: 'VIERNES',
+  SABADO: 'SABADO',
+  DOMINGO: 'DOMINGO'
+};
+
 exports.Prisma.ModelName = {
-  Alumno: 'Alumno',
-  Clase: 'Clase',
-  Asistencia: 'Asistencia',
-  UserDocente: 'UserDocente',
-  Materia: 'Materia',
-  Curso: 'Curso'
+  Alumnos: 'Alumnos',
+  Clases: 'Clases',
+  Asistencias: 'Asistencias',
+  UsersDocentes: 'UsersDocentes',
+  Materias: 'Materias',
+  DiasHorariosClases: 'DiasHorariosClases',
+  Cursos: 'Cursos',
+  FechaNoLectivas: 'FechaNoLectivas'
 };
 
 /**

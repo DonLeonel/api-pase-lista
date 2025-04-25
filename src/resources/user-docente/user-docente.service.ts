@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateUserDocenteDto } from './dto/create-user-docente.dto';
 import { UpdateUserDocenteDto } from './dto/update-user-docente.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
@@ -12,7 +12,7 @@ export class UserDocenteService {
 
   async create(createUserDocenteDto: CreateUserDocenteDto) {
     try {
-      const nuevo = await this.prisma.userDocente.create({
+      const nuevo = await this.prisma.usersDocentes.create({
         data: {
           ...createUserDocenteDto
         },
@@ -26,7 +26,7 @@ export class UserDocenteService {
 
   async findAll() {
     try {
-      return await this.prisma.userDocente.findMany({
+      return await this.prisma.usersDocentes.findMany({
         where: {
           deletedAt: null
         }
@@ -39,9 +39,9 @@ export class UserDocenteService {
 
   async findOne(id: number) {
     try {
-      return await this.prisma.userDocente.findUnique({
+      const model = await this.prisma.usersDocentes.findUnique({
         include: {
-          Materia: {
+          Materias: {
             select: {
               id: true,
               nombre: true,
@@ -52,6 +52,8 @@ export class UserDocenteService {
           id
         }
       })
+      if (!model) throw new NotFoundException(`Docente no encontrado`)
+      return model
     } catch (error) {
       console.error('Error al buscar el docente. ', error)
       throw error // relanza el error para que el controller lo pueda manejar
@@ -60,7 +62,7 @@ export class UserDocenteService {
 
   async update(id: number, updateUserDocenteDto: UpdateUserDocenteDto) {
     try {
-      return await this.prisma.userDocente.update({
+      return await this.prisma.usersDocentes.update({
         data: {
           ...updateUserDocenteDto,
           updatedAt: new Date()
@@ -78,7 +80,7 @@ export class UserDocenteService {
   async removeOrAdd(id: number) {
     try {
       const docente = await this.findOne(id);
-      return await this.prisma.userDocente.update({
+      return await this.prisma.usersDocentes.update({
         data: {
           deletedAt: docente?.deletedAt ? null : new Date()
         },

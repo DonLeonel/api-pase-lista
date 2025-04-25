@@ -1,8 +1,8 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateClaseDto } from './dto/create-clase.dto';
 import { UpdateClaseDto } from './dto/update-clase.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { construirDataActualizacion } from 'src/helper/construirDataActualizacion';
+import { construirDataActualizacion } from 'src/utils/construirDataActualizacion';
 
 @Injectable()
 export class ClaseService {
@@ -12,7 +12,7 @@ export class ClaseService {
   async create(createClaseDto: CreateClaseDto) {
     try {
       const { idMateria, ...resto } = createClaseDto
-      const nuevo = await this.prisma.clase.create({
+      const nuevo = await this.prisma.clases.create({
         data: {
           ...resto,
           materia: {
@@ -32,7 +32,7 @@ export class ClaseService {
 
   async findAll() {
     try {
-      return await this.prisma.clase.findMany({
+      return await this.prisma.clases.findMany({
         where: {
           deletedAt: null
         }
@@ -45,7 +45,7 @@ export class ClaseService {
 
   async findOne(id: number) {
     try {
-      return await this.prisma.clase.findUnique({
+      const model = await this.prisma.clases.findUnique({
         include: {
           materia: {
             select: {
@@ -58,6 +58,8 @@ export class ClaseService {
           id
         }
       })
+      if (!model) throw new NotFoundException('Clase no encontrada')
+      return model
     } catch (error) {
       console.error('Error al buscar la clase. ', error)
       throw error // relanza el error para que el controller lo pueda manejar
@@ -66,7 +68,7 @@ export class ClaseService {
 
   async update(id: number, updateClaseDto: UpdateClaseDto) {
     try {
-      const actual = await this.prisma.clase.findUnique({
+      const actual = await this.prisma.clases.findUnique({
         include: {
           materia: {
             select: {
@@ -80,7 +82,7 @@ export class ClaseService {
       })
       if (!actual) throw new Error('Clase no encontrada')
 
-      return await this.prisma.clase.update({
+      return await this.prisma.clases.update({
         data: construirDataActualizacion(actual, updateClaseDto, {
           idMateria: 'materia'
         }),
@@ -97,7 +99,7 @@ export class ClaseService {
   async removeOrAdd(id: number) {
     try {
       const clase = await this.findOne(id);
-      return await this.prisma.clase.update({
+      return await this.prisma.clases.update({
         data: {
           deletedAt: clase?.deletedAt ? null : new Date()
         },

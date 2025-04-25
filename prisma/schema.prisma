@@ -14,80 +14,115 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Alumno {
-  id         Int          @id @default(autoincrement())
-  legajo     String       @db.VarChar(30)
-  nombre     String       @db.VarChar(30)
-  apellido   String       @db.VarChar(30)
-  celular    String       @db.VarChar(30)
-  createdAt  DateTime     @default(now()) @db.Timestamp()
-  updatedAt  DateTime?    @db.Timestamp()
-  deletedAt  DateTime?    @db.Timestamp()
-  Asistencia Asistencia[]
-  cursos     Curso[]
+model Alumnos {
+  id          Int           @id @default(autoincrement())
+  legajo      String        @db.VarChar(30)
+  nombre      String        @db.VarChar(30)
+  apellido    String        @db.VarChar(30)
+  celular     String        @db.VarChar(30)
+  createdAt   DateTime      @default(now()) @db.Timestamp()
+  updatedAt   DateTime?     @db.Timestamp()
+  deletedAt   DateTime?     @db.Timestamp()
+  Asistencias Asistencias[]
+  Cursos      Cursos[]
 }
 
-model Clase {
-  id         Int          @id @default(autoincrement())
-  fechaHora  DateTime     @db.Timestamp()
-  idMateria  Int
-  createdAt  DateTime     @default(now())
-  updatedAt  DateTime?    @db.Timestamp()
-  deletedAt  DateTime?    @db.Timestamp()
-  materia    Materia      @relation(fields: [idMateria], references: [id])
-  Asistencia Asistencia[]
+model Clases {
+  id          Int           @id @default(autoincrement())
+  fechaHora   DateTime      @db.Timestamp()
+  idMateria   Int
+  suspendida  Boolean       @default(false)
+  motivo      String? // "Feriado nacional", "Docente ausente", etc.
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime?     @db.Timestamp()
+  deletedAt   DateTime?     @db.Timestamp()
+  materia     Materias      @relation(fields: [idMateria], references: [id])
+  Asistencias Asistencias[]
 }
 
-model Asistencia {
+model Asistencias {
   id        Int       @id @default(autoincrement())
   idAlumno  Int
   idClase   Int
-  estado    Estado    @default(PRESENTE)
+  estado    Estados   @default(PRESENTE)
   nota      String?   @db.Text
   createdAt DateTime  @default(now()) @db.Timestamp()
   updatedAt DateTime? @db.Timestamp()
   deletedAt DateTime? @db.Timestamp()
-  alumno    Alumno    @relation(fields: [idAlumno], references: [id])
-  clase     Clase     @relation(fields: [idClase], references: [id])
+  alumno    Alumnos   @relation(fields: [idAlumno], references: [id])
+  clase     Clases    @relation(fields: [idClase], references: [id])
 }
 
-model UserDocente {
-  id        Int       @id @default(autoincrement())
-  email     String    @unique
+model UsersDocentes {
+  id        Int        @id @default(autoincrement())
+  email     String     @unique
   password  String
-  nombre    String    @db.VarChar(30)
-  apellido  String    @db.VarChar(30)
-  rol       String    @default("DOCENTE") @db.VarChar(15)
-  createdAt DateTime  @default(now()) @db.Timestamp()
-  updatedAt DateTime? @db.Timestamp()
-  deletedAt DateTime? @db.Timestamp()
-  Materia   Materia[]
+  nombre    String     @db.VarChar(30)
+  apellido  String     @db.VarChar(30)
+  rol       String     @default("DOCENTE") @db.VarChar(15)
+  createdAt DateTime   @default(now()) @db.Timestamp()
+  updatedAt DateTime?  @db.Timestamp()
+  deletedAt DateTime?  @db.Timestamp()
+  Materias  Materias[]
 }
 
-model Materia {
-  id            Int         @id @default(autoincrement())
-  nombre        String      @db.VarChar(30)
-  idUserDocente Int
-  idCurso       Int
-  createdAt     DateTime    @default(now()) @db.Timestamp()
-  updatedAt     DateTime?   @db.Timestamp()
-  deletedAt     DateTime?   @db.Timestamp()
-  userDocente   UserDocente @relation(fields: [idUserDocente], references: [id])
-  curso         Curso       @relation(fields: [idCurso], references: [id])
-  Clase         Clase[]
+model Materias {
+  id                 Int                  @id @default(autoincrement())
+  nombre             String               @db.VarChar(30)
+  idUserDocente      Int
+  idCurso            Int
+  fechaInicio        DateTime
+  fechaFin           DateTime
+  createdAt          DateTime             @default(now()) @db.Timestamp()
+  updatedAt          DateTime?            @db.Timestamp()
+  deletedAt          DateTime?            @db.Timestamp()
+  userDocente        UsersDocentes        @relation(fields: [idUserDocente], references: [id])
+  curso              Cursos               @relation(fields: [idCurso], references: [id])
+  Clases             Clases[]
+  DiasHorariosClases DiasHorariosClases[]
 }
 
-model Curso {
-  id        Int       @id @default(autoincrement())
-  nombre    String    @db.VarChar(50)
-  createdAt DateTime  @default(now()) @db.Timestamp()
-  updatedAt DateTime? @db.Timestamp()
-  deletedAt DateTime? @db.Timestamp()
-  Materia   Materia[]
-  alumnos   Alumno[]
+model DiasHorariosClases {
+  id              Int       @id @default(autoincrement())
+  idMateria       Int
+  dias            Dias[]
+  horaInicio      String // "08:30"
+  duracionMinutos Int // 60
+  createdAt       DateTime  @default(now()) @db.Timestamp()
+  updatedAt       DateTime? @db.Timestamp()
+  deletedAt       DateTime? @db.Timestamp()
+  materia         Materias  @relation(fields: [idMateria], references: [id])
 }
 
-enum Estado {
+model Cursos {
+  id        Int        @id @default(autoincrement())
+  nombre    String     @db.VarChar(50)
+  turno     String?    @db.VarChar(10)
+  createdAt DateTime   @default(now()) @db.Timestamp()
+  updatedAt DateTime?  @db.Timestamp()
+  deletedAt DateTime?  @db.Timestamp()
+  Materias  Materias[]
+  Alumnos   Alumnos[]
+}
+
+model FechaNoLectivas {
+  id          Int      @id @default(autoincrement())
+  fechaInicio DateTime @unique
+  fechaFin    DateTime @unique
+  motivo      String   @db.VarChar(100)
+}
+
+enum Dias {
+  LUNES
+  MARTES
+  MIERCOLES
+  JUEVES
+  VIERNES
+  SABADO
+  DOMINGO
+}
+
+enum Estados {
   PRESENTE
   AUSENTE
   JUSTIFICADO

@@ -1,16 +1,19 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { CreateCursoDto } from './dto/create-curso.dto';
 import { UpdateCursoDto } from './dto/update-curso.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { CreateMateriaDto } from '../materia/dto/create-materia.dto';
 
 @Injectable()
 export class CursoService {
 
-  constructor(private readonly prisma: PrismaService) { }
+  constructor(
+    private readonly prisma: PrismaService
+  ) { }
 
   async create(createCursoDto: CreateCursoDto) {
     try {
-      const nuevo = await this.prisma.curso.create({
+      const nuevo = await this.prisma.cursos.create({
         data: {
           ...createCursoDto,
         }
@@ -24,7 +27,7 @@ export class CursoService {
 
   async findAll() {
     try {
-      return await this.prisma.curso.findMany({
+      return await this.prisma.cursos.findMany({
         where: {
           deletedAt: null
         }
@@ -37,14 +40,16 @@ export class CursoService {
 
   async findOne(id: number) {
     try {
-      return await this.prisma.curso.findUnique({
+      const model = await this.prisma.cursos.findUnique({
         include: {
-          Materia: true
+          Materias: true
         },
         where: {
           id
         }
       })
+      if (!model) throw new NotFoundException(`Curso no encontrado`)
+      return model
     } catch (error) {
       console.error('Error al buscar el curso. ', error)
       throw error // relanza el error para que el controller lo pueda manejar
@@ -53,7 +58,7 @@ export class CursoService {
 
   async update(id: number, updateCursoDto: UpdateCursoDto) {
     try {
-      return await this.prisma.curso.update({
+      return await this.prisma.cursos.update({
         data: {
           ...updateCursoDto,
           updatedAt: new Date()
@@ -71,7 +76,7 @@ export class CursoService {
   async removeOrAdd(id: number) {
     try {
       const curso = await this.findOne(id);
-      return await this.prisma.curso.update({
+      return await this.prisma.cursos.update({
         data: {
           deletedAt: curso?.deletedAt ? null : new Date()
         },

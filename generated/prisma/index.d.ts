@@ -14,53 +14,80 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
- * Model Alumno
+ * Model Alumnos
  * 
  */
-export type Alumno = $Result.DefaultSelection<Prisma.$AlumnoPayload>
+export type Alumnos = $Result.DefaultSelection<Prisma.$AlumnosPayload>
 /**
- * Model Clase
+ * Model Clases
  * 
  */
-export type Clase = $Result.DefaultSelection<Prisma.$ClasePayload>
+export type Clases = $Result.DefaultSelection<Prisma.$ClasesPayload>
 /**
- * Model Asistencia
+ * Model Asistencias
  * 
  */
-export type Asistencia = $Result.DefaultSelection<Prisma.$AsistenciaPayload>
+export type Asistencias = $Result.DefaultSelection<Prisma.$AsistenciasPayload>
 /**
- * Model UserDocente
+ * Model UsersDocentes
  * 
  */
-export type UserDocente = $Result.DefaultSelection<Prisma.$UserDocentePayload>
+export type UsersDocentes = $Result.DefaultSelection<Prisma.$UsersDocentesPayload>
 /**
- * Model Materia
+ * Model Materias
  * 
  */
-export type Materia = $Result.DefaultSelection<Prisma.$MateriaPayload>
+export type Materias = $Result.DefaultSelection<Prisma.$MateriasPayload>
 /**
- * Model Curso
+ * Model DiasHorariosClases
  * 
  */
-export type Curso = $Result.DefaultSelection<Prisma.$CursoPayload>
+export type DiasHorariosClases = $Result.DefaultSelection<Prisma.$DiasHorariosClasesPayload>
+/**
+ * Model Cursos
+ * 
+ */
+export type Cursos = $Result.DefaultSelection<Prisma.$CursosPayload>
+/**
+ * Model FechaNoLectivas
+ * 
+ */
+export type FechaNoLectivas = $Result.DefaultSelection<Prisma.$FechaNoLectivasPayload>
 
 /**
  * Enums
  */
 export namespace $Enums {
-  export const Estado: {
+  export const Dias: {
+  LUNES: 'LUNES',
+  MARTES: 'MARTES',
+  MIERCOLES: 'MIERCOLES',
+  JUEVES: 'JUEVES',
+  VIERNES: 'VIERNES',
+  SABADO: 'SABADO',
+  DOMINGO: 'DOMINGO'
+};
+
+export type Dias = (typeof Dias)[keyof typeof Dias]
+
+
+export const Estados: {
   PRESENTE: 'PRESENTE',
   AUSENTE: 'AUSENTE',
   JUSTIFICADO: 'JUSTIFICADO'
 };
 
-export type Estado = (typeof Estado)[keyof typeof Estado]
+export type Estados = (typeof Estados)[keyof typeof Estados]
 
 }
 
-export type Estado = $Enums.Estado
+export type Dias = $Enums.Dias
 
-export const Estado: typeof $Enums.Estado
+export const Dias: typeof $Enums.Dias
+
+export type Estados = $Enums.Estados
+
+export const Estados: typeof $Enums.Estados
 
 /**
  * ##  Prisma Client ʲˢ
@@ -70,7 +97,7 @@ export const Estado: typeof $Enums.Estado
  * ```
  * const prisma = new PrismaClient()
  * // Fetch zero or more Alumnos
- * const alumnos = await prisma.alumno.findMany()
+ * const alumnos = await prisma.alumnos.findMany()
  * ```
  *
  *
@@ -91,7 +118,7 @@ export class PrismaClient<
    * ```
    * const prisma = new PrismaClient()
    * // Fetch zero or more Alumnos
-   * const alumnos = await prisma.alumno.findMany()
+   * const alumnos = await prisma.alumnos.findMany()
    * ```
    *
    *
@@ -188,64 +215,84 @@ export class PrismaClient<
   }>>
 
       /**
-   * `prisma.alumno`: Exposes CRUD operations for the **Alumno** model.
+   * `prisma.alumnos`: Exposes CRUD operations for the **Alumnos** model.
     * Example usage:
     * ```ts
     * // Fetch zero or more Alumnos
-    * const alumnos = await prisma.alumno.findMany()
+    * const alumnos = await prisma.alumnos.findMany()
     * ```
     */
-  get alumno(): Prisma.AlumnoDelegate<ExtArgs, ClientOptions>;
+  get alumnos(): Prisma.AlumnosDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.clase`: Exposes CRUD operations for the **Clase** model.
+   * `prisma.clases`: Exposes CRUD operations for the **Clases** model.
     * Example usage:
     * ```ts
     * // Fetch zero or more Clases
-    * const clases = await prisma.clase.findMany()
+    * const clases = await prisma.clases.findMany()
     * ```
     */
-  get clase(): Prisma.ClaseDelegate<ExtArgs, ClientOptions>;
+  get clases(): Prisma.ClasesDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.asistencia`: Exposes CRUD operations for the **Asistencia** model.
+   * `prisma.asistencias`: Exposes CRUD operations for the **Asistencias** model.
     * Example usage:
     * ```ts
     * // Fetch zero or more Asistencias
-    * const asistencias = await prisma.asistencia.findMany()
+    * const asistencias = await prisma.asistencias.findMany()
     * ```
     */
-  get asistencia(): Prisma.AsistenciaDelegate<ExtArgs, ClientOptions>;
+  get asistencias(): Prisma.AsistenciasDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.userDocente`: Exposes CRUD operations for the **UserDocente** model.
+   * `prisma.usersDocentes`: Exposes CRUD operations for the **UsersDocentes** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more UserDocentes
-    * const userDocentes = await prisma.userDocente.findMany()
+    * // Fetch zero or more UsersDocentes
+    * const usersDocentes = await prisma.usersDocentes.findMany()
     * ```
     */
-  get userDocente(): Prisma.UserDocenteDelegate<ExtArgs, ClientOptions>;
+  get usersDocentes(): Prisma.UsersDocentesDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.materia`: Exposes CRUD operations for the **Materia** model.
+   * `prisma.materias`: Exposes CRUD operations for the **Materias** model.
     * Example usage:
     * ```ts
     * // Fetch zero or more Materias
-    * const materias = await prisma.materia.findMany()
+    * const materias = await prisma.materias.findMany()
     * ```
     */
-  get materia(): Prisma.MateriaDelegate<ExtArgs, ClientOptions>;
+  get materias(): Prisma.MateriasDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.curso`: Exposes CRUD operations for the **Curso** model.
+   * `prisma.diasHorariosClases`: Exposes CRUD operations for the **DiasHorariosClases** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more DiasHorariosClases
+    * const diasHorariosClases = await prisma.diasHorariosClases.findMany()
+    * ```
+    */
+  get diasHorariosClases(): Prisma.DiasHorariosClasesDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.cursos`: Exposes CRUD operations for the **Cursos** model.
     * Example usage:
     * ```ts
     * // Fetch zero or more Cursos
-    * const cursos = await prisma.curso.findMany()
+    * const cursos = await prisma.cursos.findMany()
     * ```
     */
-  get curso(): Prisma.CursoDelegate<ExtArgs, ClientOptions>;
+  get cursos(): Prisma.CursosDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.fechaNoLectivas`: Exposes CRUD operations for the **FechaNoLectivas** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more FechaNoLectivas
+    * const fechaNoLectivas = await prisma.fechaNoLectivas.findMany()
+    * ```
+    */
+  get fechaNoLectivas(): Prisma.FechaNoLectivasDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -686,12 +733,14 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    Alumno: 'Alumno',
-    Clase: 'Clase',
-    Asistencia: 'Asistencia',
-    UserDocente: 'UserDocente',
-    Materia: 'Materia',
-    Curso: 'Curso'
+    Alumnos: 'Alumnos',
+    Clases: 'Clases',
+    Asistencias: 'Asistencias',
+    UsersDocentes: 'UsersDocentes',
+    Materias: 'Materias',
+    DiasHorariosClases: 'DiasHorariosClases',
+    Cursos: 'Cursos',
+    FechaNoLectivas: 'FechaNoLectivas'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -710,451 +759,599 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "alumno" | "clase" | "asistencia" | "userDocente" | "materia" | "curso"
+      modelProps: "alumnos" | "clases" | "asistencias" | "usersDocentes" | "materias" | "diasHorariosClases" | "cursos" | "fechaNoLectivas"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
-      Alumno: {
-        payload: Prisma.$AlumnoPayload<ExtArgs>
-        fields: Prisma.AlumnoFieldRefs
+      Alumnos: {
+        payload: Prisma.$AlumnosPayload<ExtArgs>
+        fields: Prisma.AlumnosFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.AlumnoFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AlumnoPayload> | null
+            args: Prisma.AlumnosFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlumnosPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.AlumnoFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AlumnoPayload>
+            args: Prisma.AlumnosFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlumnosPayload>
           }
           findFirst: {
-            args: Prisma.AlumnoFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AlumnoPayload> | null
+            args: Prisma.AlumnosFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlumnosPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.AlumnoFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AlumnoPayload>
+            args: Prisma.AlumnosFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlumnosPayload>
           }
           findMany: {
-            args: Prisma.AlumnoFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AlumnoPayload>[]
+            args: Prisma.AlumnosFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlumnosPayload>[]
           }
           create: {
-            args: Prisma.AlumnoCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AlumnoPayload>
+            args: Prisma.AlumnosCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlumnosPayload>
           }
           createMany: {
-            args: Prisma.AlumnoCreateManyArgs<ExtArgs>
+            args: Prisma.AlumnosCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.AlumnoCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AlumnoPayload>[]
+            args: Prisma.AlumnosCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlumnosPayload>[]
           }
           delete: {
-            args: Prisma.AlumnoDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AlumnoPayload>
+            args: Prisma.AlumnosDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlumnosPayload>
           }
           update: {
-            args: Prisma.AlumnoUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AlumnoPayload>
+            args: Prisma.AlumnosUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlumnosPayload>
           }
           deleteMany: {
-            args: Prisma.AlumnoDeleteManyArgs<ExtArgs>
+            args: Prisma.AlumnosDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.AlumnoUpdateManyArgs<ExtArgs>
+            args: Prisma.AlumnosUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.AlumnoUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AlumnoPayload>[]
+            args: Prisma.AlumnosUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlumnosPayload>[]
           }
           upsert: {
-            args: Prisma.AlumnoUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AlumnoPayload>
+            args: Prisma.AlumnosUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlumnosPayload>
           }
           aggregate: {
-            args: Prisma.AlumnoAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateAlumno>
+            args: Prisma.AlumnosAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAlumnos>
           }
           groupBy: {
-            args: Prisma.AlumnoGroupByArgs<ExtArgs>
-            result: $Utils.Optional<AlumnoGroupByOutputType>[]
+            args: Prisma.AlumnosGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AlumnosGroupByOutputType>[]
           }
           count: {
-            args: Prisma.AlumnoCountArgs<ExtArgs>
-            result: $Utils.Optional<AlumnoCountAggregateOutputType> | number
+            args: Prisma.AlumnosCountArgs<ExtArgs>
+            result: $Utils.Optional<AlumnosCountAggregateOutputType> | number
           }
         }
       }
-      Clase: {
-        payload: Prisma.$ClasePayload<ExtArgs>
-        fields: Prisma.ClaseFieldRefs
+      Clases: {
+        payload: Prisma.$ClasesPayload<ExtArgs>
+        fields: Prisma.ClasesFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.ClaseFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ClasePayload> | null
+            args: Prisma.ClasesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClasesPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.ClaseFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ClasePayload>
+            args: Prisma.ClasesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClasesPayload>
           }
           findFirst: {
-            args: Prisma.ClaseFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ClasePayload> | null
+            args: Prisma.ClasesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClasesPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.ClaseFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ClasePayload>
+            args: Prisma.ClasesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClasesPayload>
           }
           findMany: {
-            args: Prisma.ClaseFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ClasePayload>[]
+            args: Prisma.ClasesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClasesPayload>[]
           }
           create: {
-            args: Prisma.ClaseCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ClasePayload>
+            args: Prisma.ClasesCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClasesPayload>
           }
           createMany: {
-            args: Prisma.ClaseCreateManyArgs<ExtArgs>
+            args: Prisma.ClasesCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.ClaseCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ClasePayload>[]
+            args: Prisma.ClasesCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClasesPayload>[]
           }
           delete: {
-            args: Prisma.ClaseDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ClasePayload>
+            args: Prisma.ClasesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClasesPayload>
           }
           update: {
-            args: Prisma.ClaseUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ClasePayload>
+            args: Prisma.ClasesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClasesPayload>
           }
           deleteMany: {
-            args: Prisma.ClaseDeleteManyArgs<ExtArgs>
+            args: Prisma.ClasesDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.ClaseUpdateManyArgs<ExtArgs>
+            args: Prisma.ClasesUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.ClaseUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ClasePayload>[]
+            args: Prisma.ClasesUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClasesPayload>[]
           }
           upsert: {
-            args: Prisma.ClaseUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ClasePayload>
+            args: Prisma.ClasesUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClasesPayload>
           }
           aggregate: {
-            args: Prisma.ClaseAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateClase>
+            args: Prisma.ClasesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateClases>
           }
           groupBy: {
-            args: Prisma.ClaseGroupByArgs<ExtArgs>
-            result: $Utils.Optional<ClaseGroupByOutputType>[]
+            args: Prisma.ClasesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ClasesGroupByOutputType>[]
           }
           count: {
-            args: Prisma.ClaseCountArgs<ExtArgs>
-            result: $Utils.Optional<ClaseCountAggregateOutputType> | number
+            args: Prisma.ClasesCountArgs<ExtArgs>
+            result: $Utils.Optional<ClasesCountAggregateOutputType> | number
           }
         }
       }
-      Asistencia: {
-        payload: Prisma.$AsistenciaPayload<ExtArgs>
-        fields: Prisma.AsistenciaFieldRefs
+      Asistencias: {
+        payload: Prisma.$AsistenciasPayload<ExtArgs>
+        fields: Prisma.AsistenciasFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.AsistenciaFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AsistenciaPayload> | null
+            args: Prisma.AsistenciasFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AsistenciasPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.AsistenciaFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AsistenciaPayload>
+            args: Prisma.AsistenciasFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AsistenciasPayload>
           }
           findFirst: {
-            args: Prisma.AsistenciaFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AsistenciaPayload> | null
+            args: Prisma.AsistenciasFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AsistenciasPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.AsistenciaFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AsistenciaPayload>
+            args: Prisma.AsistenciasFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AsistenciasPayload>
           }
           findMany: {
-            args: Prisma.AsistenciaFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AsistenciaPayload>[]
+            args: Prisma.AsistenciasFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AsistenciasPayload>[]
           }
           create: {
-            args: Prisma.AsistenciaCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AsistenciaPayload>
+            args: Prisma.AsistenciasCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AsistenciasPayload>
           }
           createMany: {
-            args: Prisma.AsistenciaCreateManyArgs<ExtArgs>
+            args: Prisma.AsistenciasCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.AsistenciaCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AsistenciaPayload>[]
+            args: Prisma.AsistenciasCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AsistenciasPayload>[]
           }
           delete: {
-            args: Prisma.AsistenciaDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AsistenciaPayload>
+            args: Prisma.AsistenciasDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AsistenciasPayload>
           }
           update: {
-            args: Prisma.AsistenciaUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AsistenciaPayload>
+            args: Prisma.AsistenciasUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AsistenciasPayload>
           }
           deleteMany: {
-            args: Prisma.AsistenciaDeleteManyArgs<ExtArgs>
+            args: Prisma.AsistenciasDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.AsistenciaUpdateManyArgs<ExtArgs>
+            args: Prisma.AsistenciasUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.AsistenciaUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AsistenciaPayload>[]
+            args: Prisma.AsistenciasUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AsistenciasPayload>[]
           }
           upsert: {
-            args: Prisma.AsistenciaUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AsistenciaPayload>
+            args: Prisma.AsistenciasUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AsistenciasPayload>
           }
           aggregate: {
-            args: Prisma.AsistenciaAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateAsistencia>
+            args: Prisma.AsistenciasAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAsistencias>
           }
           groupBy: {
-            args: Prisma.AsistenciaGroupByArgs<ExtArgs>
-            result: $Utils.Optional<AsistenciaGroupByOutputType>[]
+            args: Prisma.AsistenciasGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AsistenciasGroupByOutputType>[]
           }
           count: {
-            args: Prisma.AsistenciaCountArgs<ExtArgs>
-            result: $Utils.Optional<AsistenciaCountAggregateOutputType> | number
+            args: Prisma.AsistenciasCountArgs<ExtArgs>
+            result: $Utils.Optional<AsistenciasCountAggregateOutputType> | number
           }
         }
       }
-      UserDocente: {
-        payload: Prisma.$UserDocentePayload<ExtArgs>
-        fields: Prisma.UserDocenteFieldRefs
+      UsersDocentes: {
+        payload: Prisma.$UsersDocentesPayload<ExtArgs>
+        fields: Prisma.UsersDocentesFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.UserDocenteFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserDocentePayload> | null
+            args: Prisma.UsersDocentesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UsersDocentesPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.UserDocenteFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserDocentePayload>
+            args: Prisma.UsersDocentesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UsersDocentesPayload>
           }
           findFirst: {
-            args: Prisma.UserDocenteFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserDocentePayload> | null
+            args: Prisma.UsersDocentesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UsersDocentesPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.UserDocenteFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserDocentePayload>
+            args: Prisma.UsersDocentesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UsersDocentesPayload>
           }
           findMany: {
-            args: Prisma.UserDocenteFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserDocentePayload>[]
+            args: Prisma.UsersDocentesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UsersDocentesPayload>[]
           }
           create: {
-            args: Prisma.UserDocenteCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserDocentePayload>
+            args: Prisma.UsersDocentesCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UsersDocentesPayload>
           }
           createMany: {
-            args: Prisma.UserDocenteCreateManyArgs<ExtArgs>
+            args: Prisma.UsersDocentesCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.UserDocenteCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserDocentePayload>[]
+            args: Prisma.UsersDocentesCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UsersDocentesPayload>[]
           }
           delete: {
-            args: Prisma.UserDocenteDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserDocentePayload>
+            args: Prisma.UsersDocentesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UsersDocentesPayload>
           }
           update: {
-            args: Prisma.UserDocenteUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserDocentePayload>
+            args: Prisma.UsersDocentesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UsersDocentesPayload>
           }
           deleteMany: {
-            args: Prisma.UserDocenteDeleteManyArgs<ExtArgs>
+            args: Prisma.UsersDocentesDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.UserDocenteUpdateManyArgs<ExtArgs>
+            args: Prisma.UsersDocentesUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.UserDocenteUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserDocentePayload>[]
+            args: Prisma.UsersDocentesUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UsersDocentesPayload>[]
           }
           upsert: {
-            args: Prisma.UserDocenteUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserDocentePayload>
+            args: Prisma.UsersDocentesUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UsersDocentesPayload>
           }
           aggregate: {
-            args: Prisma.UserDocenteAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateUserDocente>
+            args: Prisma.UsersDocentesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUsersDocentes>
           }
           groupBy: {
-            args: Prisma.UserDocenteGroupByArgs<ExtArgs>
-            result: $Utils.Optional<UserDocenteGroupByOutputType>[]
+            args: Prisma.UsersDocentesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<UsersDocentesGroupByOutputType>[]
           }
           count: {
-            args: Prisma.UserDocenteCountArgs<ExtArgs>
-            result: $Utils.Optional<UserDocenteCountAggregateOutputType> | number
+            args: Prisma.UsersDocentesCountArgs<ExtArgs>
+            result: $Utils.Optional<UsersDocentesCountAggregateOutputType> | number
           }
         }
       }
-      Materia: {
-        payload: Prisma.$MateriaPayload<ExtArgs>
-        fields: Prisma.MateriaFieldRefs
+      Materias: {
+        payload: Prisma.$MateriasPayload<ExtArgs>
+        fields: Prisma.MateriasFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.MateriaFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MateriaPayload> | null
+            args: Prisma.MateriasFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MateriasPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.MateriaFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MateriaPayload>
+            args: Prisma.MateriasFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MateriasPayload>
           }
           findFirst: {
-            args: Prisma.MateriaFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MateriaPayload> | null
+            args: Prisma.MateriasFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MateriasPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.MateriaFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MateriaPayload>
+            args: Prisma.MateriasFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MateriasPayload>
           }
           findMany: {
-            args: Prisma.MateriaFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MateriaPayload>[]
+            args: Prisma.MateriasFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MateriasPayload>[]
           }
           create: {
-            args: Prisma.MateriaCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MateriaPayload>
+            args: Prisma.MateriasCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MateriasPayload>
           }
           createMany: {
-            args: Prisma.MateriaCreateManyArgs<ExtArgs>
+            args: Prisma.MateriasCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.MateriaCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MateriaPayload>[]
+            args: Prisma.MateriasCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MateriasPayload>[]
           }
           delete: {
-            args: Prisma.MateriaDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MateriaPayload>
+            args: Prisma.MateriasDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MateriasPayload>
           }
           update: {
-            args: Prisma.MateriaUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MateriaPayload>
+            args: Prisma.MateriasUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MateriasPayload>
           }
           deleteMany: {
-            args: Prisma.MateriaDeleteManyArgs<ExtArgs>
+            args: Prisma.MateriasDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.MateriaUpdateManyArgs<ExtArgs>
+            args: Prisma.MateriasUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.MateriaUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MateriaPayload>[]
+            args: Prisma.MateriasUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MateriasPayload>[]
           }
           upsert: {
-            args: Prisma.MateriaUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MateriaPayload>
+            args: Prisma.MateriasUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MateriasPayload>
           }
           aggregate: {
-            args: Prisma.MateriaAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateMateria>
+            args: Prisma.MateriasAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMaterias>
           }
           groupBy: {
-            args: Prisma.MateriaGroupByArgs<ExtArgs>
-            result: $Utils.Optional<MateriaGroupByOutputType>[]
+            args: Prisma.MateriasGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MateriasGroupByOutputType>[]
           }
           count: {
-            args: Prisma.MateriaCountArgs<ExtArgs>
-            result: $Utils.Optional<MateriaCountAggregateOutputType> | number
+            args: Prisma.MateriasCountArgs<ExtArgs>
+            result: $Utils.Optional<MateriasCountAggregateOutputType> | number
           }
         }
       }
-      Curso: {
-        payload: Prisma.$CursoPayload<ExtArgs>
-        fields: Prisma.CursoFieldRefs
+      DiasHorariosClases: {
+        payload: Prisma.$DiasHorariosClasesPayload<ExtArgs>
+        fields: Prisma.DiasHorariosClasesFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.CursoFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CursoPayload> | null
+            args: Prisma.DiasHorariosClasesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiasHorariosClasesPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.CursoFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CursoPayload>
+            args: Prisma.DiasHorariosClasesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiasHorariosClasesPayload>
           }
           findFirst: {
-            args: Prisma.CursoFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CursoPayload> | null
+            args: Prisma.DiasHorariosClasesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiasHorariosClasesPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.CursoFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CursoPayload>
+            args: Prisma.DiasHorariosClasesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiasHorariosClasesPayload>
           }
           findMany: {
-            args: Prisma.CursoFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CursoPayload>[]
+            args: Prisma.DiasHorariosClasesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiasHorariosClasesPayload>[]
           }
           create: {
-            args: Prisma.CursoCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CursoPayload>
+            args: Prisma.DiasHorariosClasesCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiasHorariosClasesPayload>
           }
           createMany: {
-            args: Prisma.CursoCreateManyArgs<ExtArgs>
+            args: Prisma.DiasHorariosClasesCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.CursoCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CursoPayload>[]
+            args: Prisma.DiasHorariosClasesCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiasHorariosClasesPayload>[]
           }
           delete: {
-            args: Prisma.CursoDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CursoPayload>
+            args: Prisma.DiasHorariosClasesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiasHorariosClasesPayload>
           }
           update: {
-            args: Prisma.CursoUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CursoPayload>
+            args: Prisma.DiasHorariosClasesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiasHorariosClasesPayload>
           }
           deleteMany: {
-            args: Prisma.CursoDeleteManyArgs<ExtArgs>
+            args: Prisma.DiasHorariosClasesDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.CursoUpdateManyArgs<ExtArgs>
+            args: Prisma.DiasHorariosClasesUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.CursoUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CursoPayload>[]
+            args: Prisma.DiasHorariosClasesUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiasHorariosClasesPayload>[]
           }
           upsert: {
-            args: Prisma.CursoUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CursoPayload>
+            args: Prisma.DiasHorariosClasesUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DiasHorariosClasesPayload>
           }
           aggregate: {
-            args: Prisma.CursoAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateCurso>
+            args: Prisma.DiasHorariosClasesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDiasHorariosClases>
           }
           groupBy: {
-            args: Prisma.CursoGroupByArgs<ExtArgs>
-            result: $Utils.Optional<CursoGroupByOutputType>[]
+            args: Prisma.DiasHorariosClasesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DiasHorariosClasesGroupByOutputType>[]
           }
           count: {
-            args: Prisma.CursoCountArgs<ExtArgs>
-            result: $Utils.Optional<CursoCountAggregateOutputType> | number
+            args: Prisma.DiasHorariosClasesCountArgs<ExtArgs>
+            result: $Utils.Optional<DiasHorariosClasesCountAggregateOutputType> | number
+          }
+        }
+      }
+      Cursos: {
+        payload: Prisma.$CursosPayload<ExtArgs>
+        fields: Prisma.CursosFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CursosFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CursosPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CursosFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CursosPayload>
+          }
+          findFirst: {
+            args: Prisma.CursosFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CursosPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CursosFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CursosPayload>
+          }
+          findMany: {
+            args: Prisma.CursosFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CursosPayload>[]
+          }
+          create: {
+            args: Prisma.CursosCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CursosPayload>
+          }
+          createMany: {
+            args: Prisma.CursosCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CursosCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CursosPayload>[]
+          }
+          delete: {
+            args: Prisma.CursosDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CursosPayload>
+          }
+          update: {
+            args: Prisma.CursosUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CursosPayload>
+          }
+          deleteMany: {
+            args: Prisma.CursosDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CursosUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CursosUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CursosPayload>[]
+          }
+          upsert: {
+            args: Prisma.CursosUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CursosPayload>
+          }
+          aggregate: {
+            args: Prisma.CursosAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCursos>
+          }
+          groupBy: {
+            args: Prisma.CursosGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CursosGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CursosCountArgs<ExtArgs>
+            result: $Utils.Optional<CursosCountAggregateOutputType> | number
+          }
+        }
+      }
+      FechaNoLectivas: {
+        payload: Prisma.$FechaNoLectivasPayload<ExtArgs>
+        fields: Prisma.FechaNoLectivasFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.FechaNoLectivasFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FechaNoLectivasPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.FechaNoLectivasFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FechaNoLectivasPayload>
+          }
+          findFirst: {
+            args: Prisma.FechaNoLectivasFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FechaNoLectivasPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.FechaNoLectivasFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FechaNoLectivasPayload>
+          }
+          findMany: {
+            args: Prisma.FechaNoLectivasFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FechaNoLectivasPayload>[]
+          }
+          create: {
+            args: Prisma.FechaNoLectivasCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FechaNoLectivasPayload>
+          }
+          createMany: {
+            args: Prisma.FechaNoLectivasCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.FechaNoLectivasCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FechaNoLectivasPayload>[]
+          }
+          delete: {
+            args: Prisma.FechaNoLectivasDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FechaNoLectivasPayload>
+          }
+          update: {
+            args: Prisma.FechaNoLectivasUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FechaNoLectivasPayload>
+          }
+          deleteMany: {
+            args: Prisma.FechaNoLectivasDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.FechaNoLectivasUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.FechaNoLectivasUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FechaNoLectivasPayload>[]
+          }
+          upsert: {
+            args: Prisma.FechaNoLectivasUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FechaNoLectivasPayload>
+          }
+          aggregate: {
+            args: Prisma.FechaNoLectivasAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateFechaNoLectivas>
+          }
+          groupBy: {
+            args: Prisma.FechaNoLectivasGroupByArgs<ExtArgs>
+            result: $Utils.Optional<FechaNoLectivasGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.FechaNoLectivasCountArgs<ExtArgs>
+            result: $Utils.Optional<FechaNoLectivasCountAggregateOutputType> | number
           }
         }
       }
@@ -1242,12 +1439,14 @@ export namespace Prisma {
     omit?: Prisma.GlobalOmitConfig
   }
   export type GlobalOmitConfig = {
-    alumno?: AlumnoOmit
-    clase?: ClaseOmit
-    asistencia?: AsistenciaOmit
-    userDocente?: UserDocenteOmit
-    materia?: MateriaOmit
-    curso?: CursoOmit
+    alumnos?: AlumnosOmit
+    clases?: ClasesOmit
+    asistencias?: AsistenciasOmit
+    usersDocentes?: UsersDocentesOmit
+    materias?: MateriasOmit
+    diasHorariosClases?: DiasHorariosClasesOmit
+    cursos?: CursosOmit
+    fechaNoLectivas?: FechaNoLectivasOmit
   }
 
   /* Types for Logging */
@@ -1338,175 +1537,184 @@ export namespace Prisma {
 
 
   /**
-   * Count Type AlumnoCountOutputType
+   * Count Type AlumnosCountOutputType
    */
 
-  export type AlumnoCountOutputType = {
-    Asistencia: number
-    cursos: number
+  export type AlumnosCountOutputType = {
+    Asistencias: number
+    Cursos: number
   }
 
-  export type AlumnoCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Asistencia?: boolean | AlumnoCountOutputTypeCountAsistenciaArgs
-    cursos?: boolean | AlumnoCountOutputTypeCountCursosArgs
+  export type AlumnosCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Asistencias?: boolean | AlumnosCountOutputTypeCountAsistenciasArgs
+    Cursos?: boolean | AlumnosCountOutputTypeCountCursosArgs
   }
 
   // Custom InputTypes
   /**
-   * AlumnoCountOutputType without action
+   * AlumnosCountOutputType without action
    */
-  export type AlumnoCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AlumnosCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AlumnoCountOutputType
+     * Select specific fields to fetch from the AlumnosCountOutputType
      */
-    select?: AlumnoCountOutputTypeSelect<ExtArgs> | null
+    select?: AlumnosCountOutputTypeSelect<ExtArgs> | null
   }
 
   /**
-   * AlumnoCountOutputType without action
+   * AlumnosCountOutputType without action
    */
-  export type AlumnoCountOutputTypeCountAsistenciaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AsistenciaWhereInput
+  export type AlumnosCountOutputTypeCountAsistenciasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AsistenciasWhereInput
   }
 
   /**
-   * AlumnoCountOutputType without action
+   * AlumnosCountOutputType without action
    */
-  export type AlumnoCountOutputTypeCountCursosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CursoWhereInput
+  export type AlumnosCountOutputTypeCountCursosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CursosWhereInput
   }
 
 
   /**
-   * Count Type ClaseCountOutputType
+   * Count Type ClasesCountOutputType
    */
 
-  export type ClaseCountOutputType = {
-    Asistencia: number
+  export type ClasesCountOutputType = {
+    Asistencias: number
   }
 
-  export type ClaseCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Asistencia?: boolean | ClaseCountOutputTypeCountAsistenciaArgs
+  export type ClasesCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Asistencias?: boolean | ClasesCountOutputTypeCountAsistenciasArgs
   }
 
   // Custom InputTypes
   /**
-   * ClaseCountOutputType without action
+   * ClasesCountOutputType without action
    */
-  export type ClaseCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ClasesCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the ClaseCountOutputType
+     * Select specific fields to fetch from the ClasesCountOutputType
      */
-    select?: ClaseCountOutputTypeSelect<ExtArgs> | null
+    select?: ClasesCountOutputTypeSelect<ExtArgs> | null
   }
 
   /**
-   * ClaseCountOutputType without action
+   * ClasesCountOutputType without action
    */
-  export type ClaseCountOutputTypeCountAsistenciaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AsistenciaWhereInput
+  export type ClasesCountOutputTypeCountAsistenciasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AsistenciasWhereInput
   }
 
 
   /**
-   * Count Type UserDocenteCountOutputType
+   * Count Type UsersDocentesCountOutputType
    */
 
-  export type UserDocenteCountOutputType = {
-    Materia: number
+  export type UsersDocentesCountOutputType = {
+    Materias: number
   }
 
-  export type UserDocenteCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Materia?: boolean | UserDocenteCountOutputTypeCountMateriaArgs
+  export type UsersDocentesCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Materias?: boolean | UsersDocentesCountOutputTypeCountMateriasArgs
   }
 
   // Custom InputTypes
   /**
-   * UserDocenteCountOutputType without action
+   * UsersDocentesCountOutputType without action
    */
-  export type UserDocenteCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UsersDocentesCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserDocenteCountOutputType
+     * Select specific fields to fetch from the UsersDocentesCountOutputType
      */
-    select?: UserDocenteCountOutputTypeSelect<ExtArgs> | null
+    select?: UsersDocentesCountOutputTypeSelect<ExtArgs> | null
   }
 
   /**
-   * UserDocenteCountOutputType without action
+   * UsersDocentesCountOutputType without action
    */
-  export type UserDocenteCountOutputTypeCountMateriaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: MateriaWhereInput
+  export type UsersDocentesCountOutputTypeCountMateriasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MateriasWhereInput
   }
 
 
   /**
-   * Count Type MateriaCountOutputType
+   * Count Type MateriasCountOutputType
    */
 
-  export type MateriaCountOutputType = {
-    Clase: number
+  export type MateriasCountOutputType = {
+    Clases: number
+    DiasHorariosClases: number
   }
 
-  export type MateriaCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Clase?: boolean | MateriaCountOutputTypeCountClaseArgs
+  export type MateriasCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Clases?: boolean | MateriasCountOutputTypeCountClasesArgs
+    DiasHorariosClases?: boolean | MateriasCountOutputTypeCountDiasHorariosClasesArgs
   }
 
   // Custom InputTypes
   /**
-   * MateriaCountOutputType without action
+   * MateriasCountOutputType without action
    */
-  export type MateriaCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MateriasCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MateriaCountOutputType
+     * Select specific fields to fetch from the MateriasCountOutputType
      */
-    select?: MateriaCountOutputTypeSelect<ExtArgs> | null
+    select?: MateriasCountOutputTypeSelect<ExtArgs> | null
   }
 
   /**
-   * MateriaCountOutputType without action
+   * MateriasCountOutputType without action
    */
-  export type MateriaCountOutputTypeCountClaseArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ClaseWhereInput
+  export type MateriasCountOutputTypeCountClasesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ClasesWhereInput
+  }
+
+  /**
+   * MateriasCountOutputType without action
+   */
+  export type MateriasCountOutputTypeCountDiasHorariosClasesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DiasHorariosClasesWhereInput
   }
 
 
   /**
-   * Count Type CursoCountOutputType
+   * Count Type CursosCountOutputType
    */
 
-  export type CursoCountOutputType = {
-    Materia: number
-    alumnos: number
+  export type CursosCountOutputType = {
+    Materias: number
+    Alumnos: number
   }
 
-  export type CursoCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Materia?: boolean | CursoCountOutputTypeCountMateriaArgs
-    alumnos?: boolean | CursoCountOutputTypeCountAlumnosArgs
+  export type CursosCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Materias?: boolean | CursosCountOutputTypeCountMateriasArgs
+    Alumnos?: boolean | CursosCountOutputTypeCountAlumnosArgs
   }
 
   // Custom InputTypes
   /**
-   * CursoCountOutputType without action
+   * CursosCountOutputType without action
    */
-  export type CursoCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CursosCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CursoCountOutputType
+     * Select specific fields to fetch from the CursosCountOutputType
      */
-    select?: CursoCountOutputTypeSelect<ExtArgs> | null
+    select?: CursosCountOutputTypeSelect<ExtArgs> | null
   }
 
   /**
-   * CursoCountOutputType without action
+   * CursosCountOutputType without action
    */
-  export type CursoCountOutputTypeCountMateriaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: MateriaWhereInput
+  export type CursosCountOutputTypeCountMateriasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MateriasWhereInput
   }
 
   /**
-   * CursoCountOutputType without action
+   * CursosCountOutputType without action
    */
-  export type CursoCountOutputTypeCountAlumnosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AlumnoWhereInput
+  export type CursosCountOutputTypeCountAlumnosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AlumnosWhereInput
   }
 
 
@@ -1515,37 +1723,26 @@ export namespace Prisma {
    */
 
   /**
-   * Model Alumno
+   * Model Alumnos
    */
 
-  export type AggregateAlumno = {
-    _count: AlumnoCountAggregateOutputType | null
-    _avg: AlumnoAvgAggregateOutputType | null
-    _sum: AlumnoSumAggregateOutputType | null
-    _min: AlumnoMinAggregateOutputType | null
-    _max: AlumnoMaxAggregateOutputType | null
+  export type AggregateAlumnos = {
+    _count: AlumnosCountAggregateOutputType | null
+    _avg: AlumnosAvgAggregateOutputType | null
+    _sum: AlumnosSumAggregateOutputType | null
+    _min: AlumnosMinAggregateOutputType | null
+    _max: AlumnosMaxAggregateOutputType | null
   }
 
-  export type AlumnoAvgAggregateOutputType = {
+  export type AlumnosAvgAggregateOutputType = {
     id: number | null
   }
 
-  export type AlumnoSumAggregateOutputType = {
+  export type AlumnosSumAggregateOutputType = {
     id: number | null
   }
 
-  export type AlumnoMinAggregateOutputType = {
-    id: number | null
-    legajo: string | null
-    nombre: string | null
-    apellido: string | null
-    celular: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
-    deletedAt: Date | null
-  }
-
-  export type AlumnoMaxAggregateOutputType = {
+  export type AlumnosMinAggregateOutputType = {
     id: number | null
     legajo: string | null
     nombre: string | null
@@ -1556,7 +1753,18 @@ export namespace Prisma {
     deletedAt: Date | null
   }
 
-  export type AlumnoCountAggregateOutputType = {
+  export type AlumnosMaxAggregateOutputType = {
+    id: number | null
+    legajo: string | null
+    nombre: string | null
+    apellido: string | null
+    celular: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    deletedAt: Date | null
+  }
+
+  export type AlumnosCountAggregateOutputType = {
     id: number
     legajo: number
     nombre: number
@@ -1569,26 +1777,15 @@ export namespace Prisma {
   }
 
 
-  export type AlumnoAvgAggregateInputType = {
+  export type AlumnosAvgAggregateInputType = {
     id?: true
   }
 
-  export type AlumnoSumAggregateInputType = {
+  export type AlumnosSumAggregateInputType = {
     id?: true
   }
 
-  export type AlumnoMinAggregateInputType = {
-    id?: true
-    legajo?: true
-    nombre?: true
-    apellido?: true
-    celular?: true
-    createdAt?: true
-    updatedAt?: true
-    deletedAt?: true
-  }
-
-  export type AlumnoMaxAggregateInputType = {
+  export type AlumnosMinAggregateInputType = {
     id?: true
     legajo?: true
     nombre?: true
@@ -1599,7 +1796,18 @@ export namespace Prisma {
     deletedAt?: true
   }
 
-  export type AlumnoCountAggregateInputType = {
+  export type AlumnosMaxAggregateInputType = {
+    id?: true
+    legajo?: true
+    nombre?: true
+    apellido?: true
+    celular?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+  }
+
+  export type AlumnosCountAggregateInputType = {
     id?: true
     legajo?: true
     nombre?: true
@@ -1611,23 +1819,23 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type AlumnoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AlumnosAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Alumno to aggregate.
+     * Filter which Alumnos to aggregate.
      */
-    where?: AlumnoWhereInput
+    where?: AlumnosWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
      * Determine the order of Alumnos to fetch.
      */
-    orderBy?: AlumnoOrderByWithRelationInput | AlumnoOrderByWithRelationInput[]
+    orderBy?: AlumnosOrderByWithRelationInput | AlumnosOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: AlumnoWhereUniqueInput
+    cursor?: AlumnosWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
@@ -1645,59 +1853,59 @@ export namespace Prisma {
      * 
      * Count returned Alumnos
     **/
-    _count?: true | AlumnoCountAggregateInputType
+    _count?: true | AlumnosCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: AlumnoAvgAggregateInputType
+    _avg?: AlumnosAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: AlumnoSumAggregateInputType
+    _sum?: AlumnosSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: AlumnoMinAggregateInputType
+    _min?: AlumnosMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: AlumnoMaxAggregateInputType
+    _max?: AlumnosMaxAggregateInputType
   }
 
-  export type GetAlumnoAggregateType<T extends AlumnoAggregateArgs> = {
-        [P in keyof T & keyof AggregateAlumno]: P extends '_count' | 'count'
+  export type GetAlumnosAggregateType<T extends AlumnosAggregateArgs> = {
+        [P in keyof T & keyof AggregateAlumnos]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateAlumno[P]>
-      : GetScalarType<T[P], AggregateAlumno[P]>
+        : GetScalarType<T[P], AggregateAlumnos[P]>
+      : GetScalarType<T[P], AggregateAlumnos[P]>
   }
 
 
 
 
-  export type AlumnoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AlumnoWhereInput
-    orderBy?: AlumnoOrderByWithAggregationInput | AlumnoOrderByWithAggregationInput[]
-    by: AlumnoScalarFieldEnum[] | AlumnoScalarFieldEnum
-    having?: AlumnoScalarWhereWithAggregatesInput
+  export type AlumnosGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AlumnosWhereInput
+    orderBy?: AlumnosOrderByWithAggregationInput | AlumnosOrderByWithAggregationInput[]
+    by: AlumnosScalarFieldEnum[] | AlumnosScalarFieldEnum
+    having?: AlumnosScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: AlumnoCountAggregateInputType | true
-    _avg?: AlumnoAvgAggregateInputType
-    _sum?: AlumnoSumAggregateInputType
-    _min?: AlumnoMinAggregateInputType
-    _max?: AlumnoMaxAggregateInputType
+    _count?: AlumnosCountAggregateInputType | true
+    _avg?: AlumnosAvgAggregateInputType
+    _sum?: AlumnosSumAggregateInputType
+    _min?: AlumnosMinAggregateInputType
+    _max?: AlumnosMaxAggregateInputType
   }
 
-  export type AlumnoGroupByOutputType = {
+  export type AlumnosGroupByOutputType = {
     id: number
     legajo: string
     nombre: string
@@ -1706,28 +1914,28 @@ export namespace Prisma {
     createdAt: Date
     updatedAt: Date | null
     deletedAt: Date | null
-    _count: AlumnoCountAggregateOutputType | null
-    _avg: AlumnoAvgAggregateOutputType | null
-    _sum: AlumnoSumAggregateOutputType | null
-    _min: AlumnoMinAggregateOutputType | null
-    _max: AlumnoMaxAggregateOutputType | null
+    _count: AlumnosCountAggregateOutputType | null
+    _avg: AlumnosAvgAggregateOutputType | null
+    _sum: AlumnosSumAggregateOutputType | null
+    _min: AlumnosMinAggregateOutputType | null
+    _max: AlumnosMaxAggregateOutputType | null
   }
 
-  type GetAlumnoGroupByPayload<T extends AlumnoGroupByArgs> = Prisma.PrismaPromise<
+  type GetAlumnosGroupByPayload<T extends AlumnosGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<AlumnoGroupByOutputType, T['by']> &
+      PickEnumerable<AlumnosGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof AlumnoGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof AlumnosGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], AlumnoGroupByOutputType[P]>
-            : GetScalarType<T[P], AlumnoGroupByOutputType[P]>
+              : GetScalarType<T[P], AlumnosGroupByOutputType[P]>
+            : GetScalarType<T[P], AlumnosGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type AlumnoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type AlumnosSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     legajo?: boolean
     nombre?: boolean
@@ -1736,12 +1944,12 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
-    Asistencia?: boolean | Alumno$AsistenciaArgs<ExtArgs>
-    cursos?: boolean | Alumno$cursosArgs<ExtArgs>
-    _count?: boolean | AlumnoCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["alumno"]>
+    Asistencias?: boolean | Alumnos$AsistenciasArgs<ExtArgs>
+    Cursos?: boolean | Alumnos$CursosArgs<ExtArgs>
+    _count?: boolean | AlumnosCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["alumnos"]>
 
-  export type AlumnoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type AlumnosSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     legajo?: boolean
     nombre?: boolean
@@ -1750,9 +1958,9 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
-  }, ExtArgs["result"]["alumno"]>
+  }, ExtArgs["result"]["alumnos"]>
 
-  export type AlumnoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type AlumnosSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     legajo?: boolean
     nombre?: boolean
@@ -1761,9 +1969,9 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
-  }, ExtArgs["result"]["alumno"]>
+  }, ExtArgs["result"]["alumnos"]>
 
-  export type AlumnoSelectScalar = {
+  export type AlumnosSelectScalar = {
     id?: boolean
     legajo?: boolean
     nombre?: boolean
@@ -1774,20 +1982,20 @@ export namespace Prisma {
     deletedAt?: boolean
   }
 
-  export type AlumnoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "legajo" | "nombre" | "apellido" | "celular" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["alumno"]>
-  export type AlumnoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Asistencia?: boolean | Alumno$AsistenciaArgs<ExtArgs>
-    cursos?: boolean | Alumno$cursosArgs<ExtArgs>
-    _count?: boolean | AlumnoCountOutputTypeDefaultArgs<ExtArgs>
+  export type AlumnosOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "legajo" | "nombre" | "apellido" | "celular" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["alumnos"]>
+  export type AlumnosInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Asistencias?: boolean | Alumnos$AsistenciasArgs<ExtArgs>
+    Cursos?: boolean | Alumnos$CursosArgs<ExtArgs>
+    _count?: boolean | AlumnosCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type AlumnoIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type AlumnoIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type AlumnosIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type AlumnosIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
-  export type $AlumnoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Alumno"
+  export type $AlumnosPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Alumnos"
     objects: {
-      Asistencia: Prisma.$AsistenciaPayload<ExtArgs>[]
-      cursos: Prisma.$CursoPayload<ExtArgs>[]
+      Asistencias: Prisma.$AsistenciasPayload<ExtArgs>[]
+      Cursos: Prisma.$CursosPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -1798,136 +2006,136 @@ export namespace Prisma {
       createdAt: Date
       updatedAt: Date | null
       deletedAt: Date | null
-    }, ExtArgs["result"]["alumno"]>
+    }, ExtArgs["result"]["alumnos"]>
     composites: {}
   }
 
-  type AlumnoGetPayload<S extends boolean | null | undefined | AlumnoDefaultArgs> = $Result.GetResult<Prisma.$AlumnoPayload, S>
+  type AlumnosGetPayload<S extends boolean | null | undefined | AlumnosDefaultArgs> = $Result.GetResult<Prisma.$AlumnosPayload, S>
 
-  type AlumnoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<AlumnoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: AlumnoCountAggregateInputType | true
+  type AlumnosCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AlumnosFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AlumnosCountAggregateInputType | true
     }
 
-  export interface AlumnoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Alumno'], meta: { name: 'Alumno' } }
+  export interface AlumnosDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Alumnos'], meta: { name: 'Alumnos' } }
     /**
-     * Find zero or one Alumno that matches the filter.
-     * @param {AlumnoFindUniqueArgs} args - Arguments to find a Alumno
+     * Find zero or one Alumnos that matches the filter.
+     * @param {AlumnosFindUniqueArgs} args - Arguments to find a Alumnos
      * @example
-     * // Get one Alumno
-     * const alumno = await prisma.alumno.findUnique({
+     * // Get one Alumnos
+     * const alumnos = await prisma.alumnos.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends AlumnoFindUniqueArgs>(args: SelectSubset<T, AlumnoFindUniqueArgs<ExtArgs>>): Prisma__AlumnoClient<$Result.GetResult<Prisma.$AlumnoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends AlumnosFindUniqueArgs>(args: SelectSubset<T, AlumnosFindUniqueArgs<ExtArgs>>): Prisma__AlumnosClient<$Result.GetResult<Prisma.$AlumnosPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Alumno that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Alumnos that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {AlumnoFindUniqueOrThrowArgs} args - Arguments to find a Alumno
+     * @param {AlumnosFindUniqueOrThrowArgs} args - Arguments to find a Alumnos
      * @example
-     * // Get one Alumno
-     * const alumno = await prisma.alumno.findUniqueOrThrow({
+     * // Get one Alumnos
+     * const alumnos = await prisma.alumnos.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends AlumnoFindUniqueOrThrowArgs>(args: SelectSubset<T, AlumnoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AlumnoClient<$Result.GetResult<Prisma.$AlumnoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends AlumnosFindUniqueOrThrowArgs>(args: SelectSubset<T, AlumnosFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AlumnosClient<$Result.GetResult<Prisma.$AlumnosPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Alumno that matches the filter.
+     * Find the first Alumnos that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AlumnoFindFirstArgs} args - Arguments to find a Alumno
+     * @param {AlumnosFindFirstArgs} args - Arguments to find a Alumnos
      * @example
-     * // Get one Alumno
-     * const alumno = await prisma.alumno.findFirst({
+     * // Get one Alumnos
+     * const alumnos = await prisma.alumnos.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends AlumnoFindFirstArgs>(args?: SelectSubset<T, AlumnoFindFirstArgs<ExtArgs>>): Prisma__AlumnoClient<$Result.GetResult<Prisma.$AlumnoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends AlumnosFindFirstArgs>(args?: SelectSubset<T, AlumnosFindFirstArgs<ExtArgs>>): Prisma__AlumnosClient<$Result.GetResult<Prisma.$AlumnosPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Alumno that matches the filter or
+     * Find the first Alumnos that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AlumnoFindFirstOrThrowArgs} args - Arguments to find a Alumno
+     * @param {AlumnosFindFirstOrThrowArgs} args - Arguments to find a Alumnos
      * @example
-     * // Get one Alumno
-     * const alumno = await prisma.alumno.findFirstOrThrow({
+     * // Get one Alumnos
+     * const alumnos = await prisma.alumnos.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends AlumnoFindFirstOrThrowArgs>(args?: SelectSubset<T, AlumnoFindFirstOrThrowArgs<ExtArgs>>): Prisma__AlumnoClient<$Result.GetResult<Prisma.$AlumnoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends AlumnosFindFirstOrThrowArgs>(args?: SelectSubset<T, AlumnosFindFirstOrThrowArgs<ExtArgs>>): Prisma__AlumnosClient<$Result.GetResult<Prisma.$AlumnosPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find zero or more Alumnos that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AlumnoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {AlumnosFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
      * // Get all Alumnos
-     * const alumnos = await prisma.alumno.findMany()
+     * const alumnos = await prisma.alumnos.findMany()
      * 
      * // Get first 10 Alumnos
-     * const alumnos = await prisma.alumno.findMany({ take: 10 })
+     * const alumnos = await prisma.alumnos.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const alumnoWithIdOnly = await prisma.alumno.findMany({ select: { id: true } })
+     * const alumnosWithIdOnly = await prisma.alumnos.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends AlumnoFindManyArgs>(args?: SelectSubset<T, AlumnoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AlumnoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends AlumnosFindManyArgs>(args?: SelectSubset<T, AlumnosFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AlumnosPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Alumno.
-     * @param {AlumnoCreateArgs} args - Arguments to create a Alumno.
+     * Create a Alumnos.
+     * @param {AlumnosCreateArgs} args - Arguments to create a Alumnos.
      * @example
-     * // Create one Alumno
-     * const Alumno = await prisma.alumno.create({
+     * // Create one Alumnos
+     * const Alumnos = await prisma.alumnos.create({
      *   data: {
-     *     // ... data to create a Alumno
+     *     // ... data to create a Alumnos
      *   }
      * })
      * 
      */
-    create<T extends AlumnoCreateArgs>(args: SelectSubset<T, AlumnoCreateArgs<ExtArgs>>): Prisma__AlumnoClient<$Result.GetResult<Prisma.$AlumnoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends AlumnosCreateArgs>(args: SelectSubset<T, AlumnosCreateArgs<ExtArgs>>): Prisma__AlumnosClient<$Result.GetResult<Prisma.$AlumnosPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Create many Alumnos.
-     * @param {AlumnoCreateManyArgs} args - Arguments to create many Alumnos.
+     * @param {AlumnosCreateManyArgs} args - Arguments to create many Alumnos.
      * @example
      * // Create many Alumnos
-     * const alumno = await prisma.alumno.createMany({
+     * const alumnos = await prisma.alumnos.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends AlumnoCreateManyArgs>(args?: SelectSubset<T, AlumnoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends AlumnosCreateManyArgs>(args?: SelectSubset<T, AlumnosCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Create many Alumnos and returns the data saved in the database.
-     * @param {AlumnoCreateManyAndReturnArgs} args - Arguments to create many Alumnos.
+     * @param {AlumnosCreateManyAndReturnArgs} args - Arguments to create many Alumnos.
      * @example
      * // Create many Alumnos
-     * const alumno = await prisma.alumno.createManyAndReturn({
+     * const alumnos = await prisma.alumnos.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
      * // Create many Alumnos and only return the `id`
-     * const alumnoWithIdOnly = await prisma.alumno.createManyAndReturn({
+     * const alumnosWithIdOnly = await prisma.alumnos.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -1937,28 +2145,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends AlumnoCreateManyAndReturnArgs>(args?: SelectSubset<T, AlumnoCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AlumnoPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends AlumnosCreateManyAndReturnArgs>(args?: SelectSubset<T, AlumnosCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AlumnosPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Alumno.
-     * @param {AlumnoDeleteArgs} args - Arguments to delete one Alumno.
+     * Delete a Alumnos.
+     * @param {AlumnosDeleteArgs} args - Arguments to delete one Alumnos.
      * @example
-     * // Delete one Alumno
-     * const Alumno = await prisma.alumno.delete({
+     * // Delete one Alumnos
+     * const Alumnos = await prisma.alumnos.delete({
      *   where: {
-     *     // ... filter to delete one Alumno
+     *     // ... filter to delete one Alumnos
      *   }
      * })
      * 
      */
-    delete<T extends AlumnoDeleteArgs>(args: SelectSubset<T, AlumnoDeleteArgs<ExtArgs>>): Prisma__AlumnoClient<$Result.GetResult<Prisma.$AlumnoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends AlumnosDeleteArgs>(args: SelectSubset<T, AlumnosDeleteArgs<ExtArgs>>): Prisma__AlumnosClient<$Result.GetResult<Prisma.$AlumnosPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Alumno.
-     * @param {AlumnoUpdateArgs} args - Arguments to update one Alumno.
+     * Update one Alumnos.
+     * @param {AlumnosUpdateArgs} args - Arguments to update one Alumnos.
      * @example
-     * // Update one Alumno
-     * const alumno = await prisma.alumno.update({
+     * // Update one Alumnos
+     * const alumnos = await prisma.alumnos.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1968,30 +2176,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends AlumnoUpdateArgs>(args: SelectSubset<T, AlumnoUpdateArgs<ExtArgs>>): Prisma__AlumnoClient<$Result.GetResult<Prisma.$AlumnoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends AlumnosUpdateArgs>(args: SelectSubset<T, AlumnosUpdateArgs<ExtArgs>>): Prisma__AlumnosClient<$Result.GetResult<Prisma.$AlumnosPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Delete zero or more Alumnos.
-     * @param {AlumnoDeleteManyArgs} args - Arguments to filter Alumnos to delete.
+     * @param {AlumnosDeleteManyArgs} args - Arguments to filter Alumnos to delete.
      * @example
      * // Delete a few Alumnos
-     * const { count } = await prisma.alumno.deleteMany({
+     * const { count } = await prisma.alumnos.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends AlumnoDeleteManyArgs>(args?: SelectSubset<T, AlumnoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends AlumnosDeleteManyArgs>(args?: SelectSubset<T, AlumnosDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more Alumnos.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AlumnoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {AlumnosUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
      * // Update many Alumnos
-     * const alumno = await prisma.alumno.updateMany({
+     * const alumnos = await prisma.alumnos.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -2001,14 +2209,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends AlumnoUpdateManyArgs>(args: SelectSubset<T, AlumnoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends AlumnosUpdateManyArgs>(args: SelectSubset<T, AlumnosUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more Alumnos and returns the data updated in the database.
-     * @param {AlumnoUpdateManyAndReturnArgs} args - Arguments to update many Alumnos.
+     * @param {AlumnosUpdateManyAndReturnArgs} args - Arguments to update many Alumnos.
      * @example
      * // Update many Alumnos
-     * const alumno = await prisma.alumno.updateManyAndReturn({
+     * const alumnos = await prisma.alumnos.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -2018,7 +2226,7 @@ export namespace Prisma {
      * })
      * 
      * // Update zero or more Alumnos and only return the `id`
-     * const alumnoWithIdOnly = await prisma.alumno.updateManyAndReturn({
+     * const alumnosWithIdOnly = await prisma.alumnos.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -2031,56 +2239,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends AlumnoUpdateManyAndReturnArgs>(args: SelectSubset<T, AlumnoUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AlumnoPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends AlumnosUpdateManyAndReturnArgs>(args: SelectSubset<T, AlumnosUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AlumnosPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Alumno.
-     * @param {AlumnoUpsertArgs} args - Arguments to update or create a Alumno.
+     * Create or update one Alumnos.
+     * @param {AlumnosUpsertArgs} args - Arguments to update or create a Alumnos.
      * @example
-     * // Update or create a Alumno
-     * const alumno = await prisma.alumno.upsert({
+     * // Update or create a Alumnos
+     * const alumnos = await prisma.alumnos.upsert({
      *   create: {
-     *     // ... data to create a Alumno
+     *     // ... data to create a Alumnos
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Alumno we want to update
+     *     // ... the filter for the Alumnos we want to update
      *   }
      * })
      */
-    upsert<T extends AlumnoUpsertArgs>(args: SelectSubset<T, AlumnoUpsertArgs<ExtArgs>>): Prisma__AlumnoClient<$Result.GetResult<Prisma.$AlumnoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends AlumnosUpsertArgs>(args: SelectSubset<T, AlumnosUpsertArgs<ExtArgs>>): Prisma__AlumnosClient<$Result.GetResult<Prisma.$AlumnosPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
      * Count the number of Alumnos.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AlumnoCountArgs} args - Arguments to filter Alumnos to count.
+     * @param {AlumnosCountArgs} args - Arguments to filter Alumnos to count.
      * @example
      * // Count the number of Alumnos
-     * const count = await prisma.alumno.count({
+     * const count = await prisma.alumnos.count({
      *   where: {
      *     // ... the filter for the Alumnos we want to count
      *   }
      * })
     **/
-    count<T extends AlumnoCountArgs>(
-      args?: Subset<T, AlumnoCountArgs>,
+    count<T extends AlumnosCountArgs>(
+      args?: Subset<T, AlumnosCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], AlumnoCountAggregateOutputType>
+          : GetScalarType<T['select'], AlumnosCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Alumno.
+     * Allows you to perform aggregations operations on a Alumnos.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AlumnoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {AlumnosAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -2100,13 +2308,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends AlumnoAggregateArgs>(args: Subset<T, AlumnoAggregateArgs>): Prisma.PrismaPromise<GetAlumnoAggregateType<T>>
+    aggregate<T extends AlumnosAggregateArgs>(args: Subset<T, AlumnosAggregateArgs>): Prisma.PrismaPromise<GetAlumnosAggregateType<T>>
 
     /**
-     * Group by Alumno.
+     * Group by Alumnos.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AlumnoGroupByArgs} args - Group by arguments.
+     * @param {AlumnosGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -2121,14 +2329,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends AlumnoGroupByArgs,
+      T extends AlumnosGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: AlumnoGroupByArgs['orderBy'] }
-        : { orderBy?: AlumnoGroupByArgs['orderBy'] },
+        ? { orderBy: AlumnosGroupByArgs['orderBy'] }
+        : { orderBy?: AlumnosGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -2177,23 +2385,23 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, AlumnoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAlumnoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, AlumnosGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAlumnosGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Alumno model
+   * Fields of the Alumnos model
    */
-  readonly fields: AlumnoFieldRefs;
+  readonly fields: AlumnosFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Alumno.
+   * The delegate class that acts as a "Promise-like" for Alumnos.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__AlumnoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__AlumnosClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    Asistencia<T extends Alumno$AsistenciaArgs<ExtArgs> = {}>(args?: Subset<T, Alumno$AsistenciaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AsistenciaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    cursos<T extends Alumno$cursosArgs<ExtArgs> = {}>(args?: Subset<T, Alumno$cursosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CursoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    Asistencias<T extends Alumnos$AsistenciasArgs<ExtArgs> = {}>(args?: Subset<T, Alumnos$AsistenciasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AsistenciasPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    Cursos<T extends Alumnos$CursosArgs<ExtArgs> = {}>(args?: Subset<T, Alumnos$CursosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CursosPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2220,201 +2428,201 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Alumno model
+   * Fields of the Alumnos model
    */
-  interface AlumnoFieldRefs {
-    readonly id: FieldRef<"Alumno", 'Int'>
-    readonly legajo: FieldRef<"Alumno", 'String'>
-    readonly nombre: FieldRef<"Alumno", 'String'>
-    readonly apellido: FieldRef<"Alumno", 'String'>
-    readonly celular: FieldRef<"Alumno", 'String'>
-    readonly createdAt: FieldRef<"Alumno", 'DateTime'>
-    readonly updatedAt: FieldRef<"Alumno", 'DateTime'>
-    readonly deletedAt: FieldRef<"Alumno", 'DateTime'>
+  interface AlumnosFieldRefs {
+    readonly id: FieldRef<"Alumnos", 'Int'>
+    readonly legajo: FieldRef<"Alumnos", 'String'>
+    readonly nombre: FieldRef<"Alumnos", 'String'>
+    readonly apellido: FieldRef<"Alumnos", 'String'>
+    readonly celular: FieldRef<"Alumnos", 'String'>
+    readonly createdAt: FieldRef<"Alumnos", 'DateTime'>
+    readonly updatedAt: FieldRef<"Alumnos", 'DateTime'>
+    readonly deletedAt: FieldRef<"Alumnos", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * Alumno findUnique
+   * Alumnos findUnique
    */
-  export type AlumnoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AlumnosFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Alumno
+     * Select specific fields to fetch from the Alumnos
      */
-    select?: AlumnoSelect<ExtArgs> | null
+    select?: AlumnosSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Alumno
+     * Omit specific fields from the Alumnos
      */
-    omit?: AlumnoOmit<ExtArgs> | null
+    omit?: AlumnosOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AlumnoInclude<ExtArgs> | null
-    /**
-     * Filter, which Alumno to fetch.
-     */
-    where: AlumnoWhereUniqueInput
-  }
-
-  /**
-   * Alumno findUniqueOrThrow
-   */
-  export type AlumnoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Alumno
-     */
-    select?: AlumnoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Alumno
-     */
-    omit?: AlumnoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AlumnoInclude<ExtArgs> | null
-    /**
-     * Filter, which Alumno to fetch.
-     */
-    where: AlumnoWhereUniqueInput
-  }
-
-  /**
-   * Alumno findFirst
-   */
-  export type AlumnoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Alumno
-     */
-    select?: AlumnoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Alumno
-     */
-    omit?: AlumnoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AlumnoInclude<ExtArgs> | null
-    /**
-     * Filter, which Alumno to fetch.
-     */
-    where?: AlumnoWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Alumnos to fetch.
-     */
-    orderBy?: AlumnoOrderByWithRelationInput | AlumnoOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Alumnos.
-     */
-    cursor?: AlumnoWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Alumnos from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Alumnos.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Alumnos.
-     */
-    distinct?: AlumnoScalarFieldEnum | AlumnoScalarFieldEnum[]
-  }
-
-  /**
-   * Alumno findFirstOrThrow
-   */
-  export type AlumnoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Alumno
-     */
-    select?: AlumnoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Alumno
-     */
-    omit?: AlumnoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AlumnoInclude<ExtArgs> | null
-    /**
-     * Filter, which Alumno to fetch.
-     */
-    where?: AlumnoWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Alumnos to fetch.
-     */
-    orderBy?: AlumnoOrderByWithRelationInput | AlumnoOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Alumnos.
-     */
-    cursor?: AlumnoWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Alumnos from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Alumnos.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Alumnos.
-     */
-    distinct?: AlumnoScalarFieldEnum | AlumnoScalarFieldEnum[]
-  }
-
-  /**
-   * Alumno findMany
-   */
-  export type AlumnoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Alumno
-     */
-    select?: AlumnoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Alumno
-     */
-    omit?: AlumnoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AlumnoInclude<ExtArgs> | null
+    include?: AlumnosInclude<ExtArgs> | null
     /**
      * Filter, which Alumnos to fetch.
      */
-    where?: AlumnoWhereInput
+    where: AlumnosWhereUniqueInput
+  }
+
+  /**
+   * Alumnos findUniqueOrThrow
+   */
+  export type AlumnosFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Alumnos
+     */
+    select?: AlumnosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Alumnos
+     */
+    omit?: AlumnosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AlumnosInclude<ExtArgs> | null
+    /**
+     * Filter, which Alumnos to fetch.
+     */
+    where: AlumnosWhereUniqueInput
+  }
+
+  /**
+   * Alumnos findFirst
+   */
+  export type AlumnosFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Alumnos
+     */
+    select?: AlumnosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Alumnos
+     */
+    omit?: AlumnosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AlumnosInclude<ExtArgs> | null
+    /**
+     * Filter, which Alumnos to fetch.
+     */
+    where?: AlumnosWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
      * Determine the order of Alumnos to fetch.
      */
-    orderBy?: AlumnoOrderByWithRelationInput | AlumnoOrderByWithRelationInput[]
+    orderBy?: AlumnosOrderByWithRelationInput | AlumnosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Alumnos.
+     */
+    cursor?: AlumnosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Alumnos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Alumnos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Alumnos.
+     */
+    distinct?: AlumnosScalarFieldEnum | AlumnosScalarFieldEnum[]
+  }
+
+  /**
+   * Alumnos findFirstOrThrow
+   */
+  export type AlumnosFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Alumnos
+     */
+    select?: AlumnosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Alumnos
+     */
+    omit?: AlumnosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AlumnosInclude<ExtArgs> | null
+    /**
+     * Filter, which Alumnos to fetch.
+     */
+    where?: AlumnosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Alumnos to fetch.
+     */
+    orderBy?: AlumnosOrderByWithRelationInput | AlumnosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Alumnos.
+     */
+    cursor?: AlumnosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Alumnos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Alumnos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Alumnos.
+     */
+    distinct?: AlumnosScalarFieldEnum | AlumnosScalarFieldEnum[]
+  }
+
+  /**
+   * Alumnos findMany
+   */
+  export type AlumnosFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Alumnos
+     */
+    select?: AlumnosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Alumnos
+     */
+    omit?: AlumnosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AlumnosInclude<ExtArgs> | null
+    /**
+     * Filter, which Alumnos to fetch.
+     */
+    where?: AlumnosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Alumnos to fetch.
+     */
+    orderBy?: AlumnosOrderByWithRelationInput | AlumnosOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the position for listing Alumnos.
      */
-    cursor?: AlumnoWhereUniqueInput
+    cursor?: AlumnosWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
@@ -2427,99 +2635,99 @@ export namespace Prisma {
      * Skip the first `n` Alumnos.
      */
     skip?: number
-    distinct?: AlumnoScalarFieldEnum | AlumnoScalarFieldEnum[]
+    distinct?: AlumnosScalarFieldEnum | AlumnosScalarFieldEnum[]
   }
 
   /**
-   * Alumno create
+   * Alumnos create
    */
-  export type AlumnoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AlumnosCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Alumno
+     * Select specific fields to fetch from the Alumnos
      */
-    select?: AlumnoSelect<ExtArgs> | null
+    select?: AlumnosSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Alumno
+     * Omit specific fields from the Alumnos
      */
-    omit?: AlumnoOmit<ExtArgs> | null
+    omit?: AlumnosOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AlumnoInclude<ExtArgs> | null
+    include?: AlumnosInclude<ExtArgs> | null
     /**
-     * The data needed to create a Alumno.
+     * The data needed to create a Alumnos.
      */
-    data: XOR<AlumnoCreateInput, AlumnoUncheckedCreateInput>
+    data: XOR<AlumnosCreateInput, AlumnosUncheckedCreateInput>
   }
 
   /**
-   * Alumno createMany
+   * Alumnos createMany
    */
-  export type AlumnoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AlumnosCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * The data used to create many Alumnos.
      */
-    data: AlumnoCreateManyInput | AlumnoCreateManyInput[]
+    data: AlumnosCreateManyInput | AlumnosCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Alumno createManyAndReturn
+   * Alumnos createManyAndReturn
    */
-  export type AlumnoCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AlumnosCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Alumno
+     * Select specific fields to fetch from the Alumnos
      */
-    select?: AlumnoSelectCreateManyAndReturn<ExtArgs> | null
+    select?: AlumnosSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Alumno
+     * Omit specific fields from the Alumnos
      */
-    omit?: AlumnoOmit<ExtArgs> | null
+    omit?: AlumnosOmit<ExtArgs> | null
     /**
      * The data used to create many Alumnos.
      */
-    data: AlumnoCreateManyInput | AlumnoCreateManyInput[]
+    data: AlumnosCreateManyInput | AlumnosCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Alumno update
+   * Alumnos update
    */
-  export type AlumnoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AlumnosUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Alumno
+     * Select specific fields to fetch from the Alumnos
      */
-    select?: AlumnoSelect<ExtArgs> | null
+    select?: AlumnosSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Alumno
+     * Omit specific fields from the Alumnos
      */
-    omit?: AlumnoOmit<ExtArgs> | null
+    omit?: AlumnosOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AlumnoInclude<ExtArgs> | null
+    include?: AlumnosInclude<ExtArgs> | null
     /**
-     * The data needed to update a Alumno.
+     * The data needed to update a Alumnos.
      */
-    data: XOR<AlumnoUpdateInput, AlumnoUncheckedUpdateInput>
+    data: XOR<AlumnosUpdateInput, AlumnosUncheckedUpdateInput>
     /**
-     * Choose, which Alumno to update.
+     * Choose, which Alumnos to update.
      */
-    where: AlumnoWhereUniqueInput
+    where: AlumnosWhereUniqueInput
   }
 
   /**
-   * Alumno updateMany
+   * Alumnos updateMany
    */
-  export type AlumnoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AlumnosUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * The data used to update Alumnos.
      */
-    data: XOR<AlumnoUpdateManyMutationInput, AlumnoUncheckedUpdateManyInput>
+    data: XOR<AlumnosUpdateManyMutationInput, AlumnosUncheckedUpdateManyInput>
     /**
      * Filter which Alumnos to update
      */
-    where?: AlumnoWhereInput
+    where?: AlumnosWhereInput
     /**
      * Limit how many Alumnos to update.
      */
@@ -2527,25 +2735,25 @@ export namespace Prisma {
   }
 
   /**
-   * Alumno updateManyAndReturn
+   * Alumnos updateManyAndReturn
    */
-  export type AlumnoUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AlumnosUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Alumno
+     * Select specific fields to fetch from the Alumnos
      */
-    select?: AlumnoSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: AlumnosSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Alumno
+     * Omit specific fields from the Alumnos
      */
-    omit?: AlumnoOmit<ExtArgs> | null
+    omit?: AlumnosOmit<ExtArgs> | null
     /**
      * The data used to update Alumnos.
      */
-    data: XOR<AlumnoUpdateManyMutationInput, AlumnoUncheckedUpdateManyInput>
+    data: XOR<AlumnosUpdateManyMutationInput, AlumnosUncheckedUpdateManyInput>
     /**
      * Filter which Alumnos to update
      */
-    where?: AlumnoWhereInput
+    where?: AlumnosWhereInput
     /**
      * Limit how many Alumnos to update.
      */
@@ -2553,65 +2761,65 @@ export namespace Prisma {
   }
 
   /**
-   * Alumno upsert
+   * Alumnos upsert
    */
-  export type AlumnoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AlumnosUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Alumno
+     * Select specific fields to fetch from the Alumnos
      */
-    select?: AlumnoSelect<ExtArgs> | null
+    select?: AlumnosSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Alumno
+     * Omit specific fields from the Alumnos
      */
-    omit?: AlumnoOmit<ExtArgs> | null
+    omit?: AlumnosOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AlumnoInclude<ExtArgs> | null
+    include?: AlumnosInclude<ExtArgs> | null
     /**
-     * The filter to search for the Alumno to update in case it exists.
+     * The filter to search for the Alumnos to update in case it exists.
      */
-    where: AlumnoWhereUniqueInput
+    where: AlumnosWhereUniqueInput
     /**
-     * In case the Alumno found by the `where` argument doesn't exist, create a new Alumno with this data.
+     * In case the Alumnos found by the `where` argument doesn't exist, create a new Alumnos with this data.
      */
-    create: XOR<AlumnoCreateInput, AlumnoUncheckedCreateInput>
+    create: XOR<AlumnosCreateInput, AlumnosUncheckedCreateInput>
     /**
-     * In case the Alumno was found with the provided `where` argument, update it with this data.
+     * In case the Alumnos was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<AlumnoUpdateInput, AlumnoUncheckedUpdateInput>
+    update: XOR<AlumnosUpdateInput, AlumnosUncheckedUpdateInput>
   }
 
   /**
-   * Alumno delete
+   * Alumnos delete
    */
-  export type AlumnoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AlumnosDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Alumno
+     * Select specific fields to fetch from the Alumnos
      */
-    select?: AlumnoSelect<ExtArgs> | null
+    select?: AlumnosSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Alumno
+     * Omit specific fields from the Alumnos
      */
-    omit?: AlumnoOmit<ExtArgs> | null
+    omit?: AlumnosOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AlumnoInclude<ExtArgs> | null
+    include?: AlumnosInclude<ExtArgs> | null
     /**
-     * Filter which Alumno to delete.
+     * Filter which Alumnos to delete.
      */
-    where: AlumnoWhereUniqueInput
+    where: AlumnosWhereUniqueInput
   }
 
   /**
-   * Alumno deleteMany
+   * Alumnos deleteMany
    */
-  export type AlumnoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AlumnosDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Filter which Alumnos to delete
      */
-    where?: AlumnoWhereInput
+    where?: AlumnosWhereInput
     /**
      * Limit how many Alumnos to delete.
      */
@@ -2619,116 +2827,122 @@ export namespace Prisma {
   }
 
   /**
-   * Alumno.Asistencia
+   * Alumnos.Asistencias
    */
-  export type Alumno$AsistenciaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Alumnos$AsistenciasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Asistencia
+     * Select specific fields to fetch from the Asistencias
      */
-    select?: AsistenciaSelect<ExtArgs> | null
+    select?: AsistenciasSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Asistencia
+     * Omit specific fields from the Asistencias
      */
-    omit?: AsistenciaOmit<ExtArgs> | null
+    omit?: AsistenciasOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AsistenciaInclude<ExtArgs> | null
-    where?: AsistenciaWhereInput
-    orderBy?: AsistenciaOrderByWithRelationInput | AsistenciaOrderByWithRelationInput[]
-    cursor?: AsistenciaWhereUniqueInput
+    include?: AsistenciasInclude<ExtArgs> | null
+    where?: AsistenciasWhereInput
+    orderBy?: AsistenciasOrderByWithRelationInput | AsistenciasOrderByWithRelationInput[]
+    cursor?: AsistenciasWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: AsistenciaScalarFieldEnum | AsistenciaScalarFieldEnum[]
+    distinct?: AsistenciasScalarFieldEnum | AsistenciasScalarFieldEnum[]
   }
 
   /**
-   * Alumno.cursos
+   * Alumnos.Cursos
    */
-  export type Alumno$cursosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Alumnos$CursosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Curso
+     * Select specific fields to fetch from the Cursos
      */
-    select?: CursoSelect<ExtArgs> | null
+    select?: CursosSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Curso
+     * Omit specific fields from the Cursos
      */
-    omit?: CursoOmit<ExtArgs> | null
+    omit?: CursosOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CursoInclude<ExtArgs> | null
-    where?: CursoWhereInput
-    orderBy?: CursoOrderByWithRelationInput | CursoOrderByWithRelationInput[]
-    cursor?: CursoWhereUniqueInput
+    include?: CursosInclude<ExtArgs> | null
+    where?: CursosWhereInput
+    orderBy?: CursosOrderByWithRelationInput | CursosOrderByWithRelationInput[]
+    cursor?: CursosWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: CursoScalarFieldEnum | CursoScalarFieldEnum[]
+    distinct?: CursosScalarFieldEnum | CursosScalarFieldEnum[]
   }
 
   /**
-   * Alumno without action
+   * Alumnos without action
    */
-  export type AlumnoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AlumnosDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Alumno
+     * Select specific fields to fetch from the Alumnos
      */
-    select?: AlumnoSelect<ExtArgs> | null
+    select?: AlumnosSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Alumno
+     * Omit specific fields from the Alumnos
      */
-    omit?: AlumnoOmit<ExtArgs> | null
+    omit?: AlumnosOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AlumnoInclude<ExtArgs> | null
+    include?: AlumnosInclude<ExtArgs> | null
   }
 
 
   /**
-   * Model Clase
+   * Model Clases
    */
 
-  export type AggregateClase = {
-    _count: ClaseCountAggregateOutputType | null
-    _avg: ClaseAvgAggregateOutputType | null
-    _sum: ClaseSumAggregateOutputType | null
-    _min: ClaseMinAggregateOutputType | null
-    _max: ClaseMaxAggregateOutputType | null
+  export type AggregateClases = {
+    _count: ClasesCountAggregateOutputType | null
+    _avg: ClasesAvgAggregateOutputType | null
+    _sum: ClasesSumAggregateOutputType | null
+    _min: ClasesMinAggregateOutputType | null
+    _max: ClasesMaxAggregateOutputType | null
   }
 
-  export type ClaseAvgAggregateOutputType = {
+  export type ClasesAvgAggregateOutputType = {
     id: number | null
     idMateria: number | null
   }
 
-  export type ClaseSumAggregateOutputType = {
+  export type ClasesSumAggregateOutputType = {
     id: number | null
     idMateria: number | null
   }
 
-  export type ClaseMinAggregateOutputType = {
+  export type ClasesMinAggregateOutputType = {
     id: number | null
     fechaHora: Date | null
     idMateria: number | null
+    suspendida: boolean | null
+    motivo: string | null
     createdAt: Date | null
     updatedAt: Date | null
     deletedAt: Date | null
   }
 
-  export type ClaseMaxAggregateOutputType = {
+  export type ClasesMaxAggregateOutputType = {
     id: number | null
     fechaHora: Date | null
     idMateria: number | null
+    suspendida: boolean | null
+    motivo: string | null
     createdAt: Date | null
     updatedAt: Date | null
     deletedAt: Date | null
   }
 
-  export type ClaseCountAggregateOutputType = {
+  export type ClasesCountAggregateOutputType = {
     id: number
     fechaHora: number
     idMateria: number
+    suspendida: number
+    motivo: number
     createdAt: number
     updatedAt: number
     deletedAt: number
@@ -2736,61 +2950,67 @@ export namespace Prisma {
   }
 
 
-  export type ClaseAvgAggregateInputType = {
+  export type ClasesAvgAggregateInputType = {
     id?: true
     idMateria?: true
   }
 
-  export type ClaseSumAggregateInputType = {
+  export type ClasesSumAggregateInputType = {
     id?: true
     idMateria?: true
   }
 
-  export type ClaseMinAggregateInputType = {
+  export type ClasesMinAggregateInputType = {
     id?: true
     fechaHora?: true
     idMateria?: true
+    suspendida?: true
+    motivo?: true
     createdAt?: true
     updatedAt?: true
     deletedAt?: true
   }
 
-  export type ClaseMaxAggregateInputType = {
+  export type ClasesMaxAggregateInputType = {
     id?: true
     fechaHora?: true
     idMateria?: true
+    suspendida?: true
+    motivo?: true
     createdAt?: true
     updatedAt?: true
     deletedAt?: true
   }
 
-  export type ClaseCountAggregateInputType = {
+  export type ClasesCountAggregateInputType = {
     id?: true
     fechaHora?: true
     idMateria?: true
+    suspendida?: true
+    motivo?: true
     createdAt?: true
     updatedAt?: true
     deletedAt?: true
     _all?: true
   }
 
-  export type ClaseAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ClasesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Clase to aggregate.
+     * Filter which Clases to aggregate.
      */
-    where?: ClaseWhereInput
+    where?: ClasesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
      * Determine the order of Clases to fetch.
      */
-    orderBy?: ClaseOrderByWithRelationInput | ClaseOrderByWithRelationInput[]
+    orderBy?: ClasesOrderByWithRelationInput | ClasesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: ClaseWhereUniqueInput
+    cursor?: ClasesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
@@ -2808,283 +3028,295 @@ export namespace Prisma {
      * 
      * Count returned Clases
     **/
-    _count?: true | ClaseCountAggregateInputType
+    _count?: true | ClasesCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: ClaseAvgAggregateInputType
+    _avg?: ClasesAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: ClaseSumAggregateInputType
+    _sum?: ClasesSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: ClaseMinAggregateInputType
+    _min?: ClasesMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: ClaseMaxAggregateInputType
+    _max?: ClasesMaxAggregateInputType
   }
 
-  export type GetClaseAggregateType<T extends ClaseAggregateArgs> = {
-        [P in keyof T & keyof AggregateClase]: P extends '_count' | 'count'
+  export type GetClasesAggregateType<T extends ClasesAggregateArgs> = {
+        [P in keyof T & keyof AggregateClases]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateClase[P]>
-      : GetScalarType<T[P], AggregateClase[P]>
+        : GetScalarType<T[P], AggregateClases[P]>
+      : GetScalarType<T[P], AggregateClases[P]>
   }
 
 
 
 
-  export type ClaseGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ClaseWhereInput
-    orderBy?: ClaseOrderByWithAggregationInput | ClaseOrderByWithAggregationInput[]
-    by: ClaseScalarFieldEnum[] | ClaseScalarFieldEnum
-    having?: ClaseScalarWhereWithAggregatesInput
+  export type ClasesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ClasesWhereInput
+    orderBy?: ClasesOrderByWithAggregationInput | ClasesOrderByWithAggregationInput[]
+    by: ClasesScalarFieldEnum[] | ClasesScalarFieldEnum
+    having?: ClasesScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: ClaseCountAggregateInputType | true
-    _avg?: ClaseAvgAggregateInputType
-    _sum?: ClaseSumAggregateInputType
-    _min?: ClaseMinAggregateInputType
-    _max?: ClaseMaxAggregateInputType
+    _count?: ClasesCountAggregateInputType | true
+    _avg?: ClasesAvgAggregateInputType
+    _sum?: ClasesSumAggregateInputType
+    _min?: ClasesMinAggregateInputType
+    _max?: ClasesMaxAggregateInputType
   }
 
-  export type ClaseGroupByOutputType = {
+  export type ClasesGroupByOutputType = {
     id: number
     fechaHora: Date
     idMateria: number
+    suspendida: boolean
+    motivo: string | null
     createdAt: Date
     updatedAt: Date | null
     deletedAt: Date | null
-    _count: ClaseCountAggregateOutputType | null
-    _avg: ClaseAvgAggregateOutputType | null
-    _sum: ClaseSumAggregateOutputType | null
-    _min: ClaseMinAggregateOutputType | null
-    _max: ClaseMaxAggregateOutputType | null
+    _count: ClasesCountAggregateOutputType | null
+    _avg: ClasesAvgAggregateOutputType | null
+    _sum: ClasesSumAggregateOutputType | null
+    _min: ClasesMinAggregateOutputType | null
+    _max: ClasesMaxAggregateOutputType | null
   }
 
-  type GetClaseGroupByPayload<T extends ClaseGroupByArgs> = Prisma.PrismaPromise<
+  type GetClasesGroupByPayload<T extends ClasesGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<ClaseGroupByOutputType, T['by']> &
+      PickEnumerable<ClasesGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof ClaseGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof ClasesGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], ClaseGroupByOutputType[P]>
-            : GetScalarType<T[P], ClaseGroupByOutputType[P]>
+              : GetScalarType<T[P], ClasesGroupByOutputType[P]>
+            : GetScalarType<T[P], ClasesGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type ClaseSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ClasesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     fechaHora?: boolean
     idMateria?: boolean
+    suspendida?: boolean
+    motivo?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
-    materia?: boolean | MateriaDefaultArgs<ExtArgs>
-    Asistencia?: boolean | Clase$AsistenciaArgs<ExtArgs>
-    _count?: boolean | ClaseCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["clase"]>
+    materia?: boolean | MateriasDefaultArgs<ExtArgs>
+    Asistencias?: boolean | Clases$AsistenciasArgs<ExtArgs>
+    _count?: boolean | ClasesCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["clases"]>
 
-  export type ClaseSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ClasesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     fechaHora?: boolean
     idMateria?: boolean
+    suspendida?: boolean
+    motivo?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
-    materia?: boolean | MateriaDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["clase"]>
+    materia?: boolean | MateriasDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["clases"]>
 
-  export type ClaseSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type ClasesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     fechaHora?: boolean
     idMateria?: boolean
+    suspendida?: boolean
+    motivo?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
-    materia?: boolean | MateriaDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["clase"]>
+    materia?: boolean | MateriasDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["clases"]>
 
-  export type ClaseSelectScalar = {
+  export type ClasesSelectScalar = {
     id?: boolean
     fechaHora?: boolean
     idMateria?: boolean
+    suspendida?: boolean
+    motivo?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
   }
 
-  export type ClaseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "fechaHora" | "idMateria" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["clase"]>
-  export type ClaseInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    materia?: boolean | MateriaDefaultArgs<ExtArgs>
-    Asistencia?: boolean | Clase$AsistenciaArgs<ExtArgs>
-    _count?: boolean | ClaseCountOutputTypeDefaultArgs<ExtArgs>
+  export type ClasesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "fechaHora" | "idMateria" | "suspendida" | "motivo" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["clases"]>
+  export type ClasesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    materia?: boolean | MateriasDefaultArgs<ExtArgs>
+    Asistencias?: boolean | Clases$AsistenciasArgs<ExtArgs>
+    _count?: boolean | ClasesCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type ClaseIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    materia?: boolean | MateriaDefaultArgs<ExtArgs>
+  export type ClasesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    materia?: boolean | MateriasDefaultArgs<ExtArgs>
   }
-  export type ClaseIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    materia?: boolean | MateriaDefaultArgs<ExtArgs>
+  export type ClasesIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    materia?: boolean | MateriasDefaultArgs<ExtArgs>
   }
 
-  export type $ClasePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Clase"
+  export type $ClasesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Clases"
     objects: {
-      materia: Prisma.$MateriaPayload<ExtArgs>
-      Asistencia: Prisma.$AsistenciaPayload<ExtArgs>[]
+      materia: Prisma.$MateriasPayload<ExtArgs>
+      Asistencias: Prisma.$AsistenciasPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       fechaHora: Date
       idMateria: number
+      suspendida: boolean
+      motivo: string | null
       createdAt: Date
       updatedAt: Date | null
       deletedAt: Date | null
-    }, ExtArgs["result"]["clase"]>
+    }, ExtArgs["result"]["clases"]>
     composites: {}
   }
 
-  type ClaseGetPayload<S extends boolean | null | undefined | ClaseDefaultArgs> = $Result.GetResult<Prisma.$ClasePayload, S>
+  type ClasesGetPayload<S extends boolean | null | undefined | ClasesDefaultArgs> = $Result.GetResult<Prisma.$ClasesPayload, S>
 
-  type ClaseCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<ClaseFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: ClaseCountAggregateInputType | true
+  type ClasesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ClasesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ClasesCountAggregateInputType | true
     }
 
-  export interface ClaseDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Clase'], meta: { name: 'Clase' } }
+  export interface ClasesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Clases'], meta: { name: 'Clases' } }
     /**
-     * Find zero or one Clase that matches the filter.
-     * @param {ClaseFindUniqueArgs} args - Arguments to find a Clase
+     * Find zero or one Clases that matches the filter.
+     * @param {ClasesFindUniqueArgs} args - Arguments to find a Clases
      * @example
-     * // Get one Clase
-     * const clase = await prisma.clase.findUnique({
+     * // Get one Clases
+     * const clases = await prisma.clases.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends ClaseFindUniqueArgs>(args: SelectSubset<T, ClaseFindUniqueArgs<ExtArgs>>): Prisma__ClaseClient<$Result.GetResult<Prisma.$ClasePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends ClasesFindUniqueArgs>(args: SelectSubset<T, ClasesFindUniqueArgs<ExtArgs>>): Prisma__ClasesClient<$Result.GetResult<Prisma.$ClasesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Clase that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Clases that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {ClaseFindUniqueOrThrowArgs} args - Arguments to find a Clase
+     * @param {ClasesFindUniqueOrThrowArgs} args - Arguments to find a Clases
      * @example
-     * // Get one Clase
-     * const clase = await prisma.clase.findUniqueOrThrow({
+     * // Get one Clases
+     * const clases = await prisma.clases.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends ClaseFindUniqueOrThrowArgs>(args: SelectSubset<T, ClaseFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ClaseClient<$Result.GetResult<Prisma.$ClasePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends ClasesFindUniqueOrThrowArgs>(args: SelectSubset<T, ClasesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ClasesClient<$Result.GetResult<Prisma.$ClasesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Clase that matches the filter.
+     * Find the first Clases that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ClaseFindFirstArgs} args - Arguments to find a Clase
+     * @param {ClasesFindFirstArgs} args - Arguments to find a Clases
      * @example
-     * // Get one Clase
-     * const clase = await prisma.clase.findFirst({
+     * // Get one Clases
+     * const clases = await prisma.clases.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends ClaseFindFirstArgs>(args?: SelectSubset<T, ClaseFindFirstArgs<ExtArgs>>): Prisma__ClaseClient<$Result.GetResult<Prisma.$ClasePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends ClasesFindFirstArgs>(args?: SelectSubset<T, ClasesFindFirstArgs<ExtArgs>>): Prisma__ClasesClient<$Result.GetResult<Prisma.$ClasesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Clase that matches the filter or
+     * Find the first Clases that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ClaseFindFirstOrThrowArgs} args - Arguments to find a Clase
+     * @param {ClasesFindFirstOrThrowArgs} args - Arguments to find a Clases
      * @example
-     * // Get one Clase
-     * const clase = await prisma.clase.findFirstOrThrow({
+     * // Get one Clases
+     * const clases = await prisma.clases.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends ClaseFindFirstOrThrowArgs>(args?: SelectSubset<T, ClaseFindFirstOrThrowArgs<ExtArgs>>): Prisma__ClaseClient<$Result.GetResult<Prisma.$ClasePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends ClasesFindFirstOrThrowArgs>(args?: SelectSubset<T, ClasesFindFirstOrThrowArgs<ExtArgs>>): Prisma__ClasesClient<$Result.GetResult<Prisma.$ClasesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find zero or more Clases that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ClaseFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {ClasesFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
      * // Get all Clases
-     * const clases = await prisma.clase.findMany()
+     * const clases = await prisma.clases.findMany()
      * 
      * // Get first 10 Clases
-     * const clases = await prisma.clase.findMany({ take: 10 })
+     * const clases = await prisma.clases.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const claseWithIdOnly = await prisma.clase.findMany({ select: { id: true } })
+     * const clasesWithIdOnly = await prisma.clases.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends ClaseFindManyArgs>(args?: SelectSubset<T, ClaseFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClasePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends ClasesFindManyArgs>(args?: SelectSubset<T, ClasesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClasesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Clase.
-     * @param {ClaseCreateArgs} args - Arguments to create a Clase.
+     * Create a Clases.
+     * @param {ClasesCreateArgs} args - Arguments to create a Clases.
      * @example
-     * // Create one Clase
-     * const Clase = await prisma.clase.create({
+     * // Create one Clases
+     * const Clases = await prisma.clases.create({
      *   data: {
-     *     // ... data to create a Clase
+     *     // ... data to create a Clases
      *   }
      * })
      * 
      */
-    create<T extends ClaseCreateArgs>(args: SelectSubset<T, ClaseCreateArgs<ExtArgs>>): Prisma__ClaseClient<$Result.GetResult<Prisma.$ClasePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends ClasesCreateArgs>(args: SelectSubset<T, ClasesCreateArgs<ExtArgs>>): Prisma__ClasesClient<$Result.GetResult<Prisma.$ClasesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Create many Clases.
-     * @param {ClaseCreateManyArgs} args - Arguments to create many Clases.
+     * @param {ClasesCreateManyArgs} args - Arguments to create many Clases.
      * @example
      * // Create many Clases
-     * const clase = await prisma.clase.createMany({
+     * const clases = await prisma.clases.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends ClaseCreateManyArgs>(args?: SelectSubset<T, ClaseCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends ClasesCreateManyArgs>(args?: SelectSubset<T, ClasesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Create many Clases and returns the data saved in the database.
-     * @param {ClaseCreateManyAndReturnArgs} args - Arguments to create many Clases.
+     * @param {ClasesCreateManyAndReturnArgs} args - Arguments to create many Clases.
      * @example
      * // Create many Clases
-     * const clase = await prisma.clase.createManyAndReturn({
+     * const clases = await prisma.clases.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
      * // Create many Clases and only return the `id`
-     * const claseWithIdOnly = await prisma.clase.createManyAndReturn({
+     * const clasesWithIdOnly = await prisma.clases.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -3094,28 +3326,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends ClaseCreateManyAndReturnArgs>(args?: SelectSubset<T, ClaseCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClasePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends ClasesCreateManyAndReturnArgs>(args?: SelectSubset<T, ClasesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClasesPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Clase.
-     * @param {ClaseDeleteArgs} args - Arguments to delete one Clase.
+     * Delete a Clases.
+     * @param {ClasesDeleteArgs} args - Arguments to delete one Clases.
      * @example
-     * // Delete one Clase
-     * const Clase = await prisma.clase.delete({
+     * // Delete one Clases
+     * const Clases = await prisma.clases.delete({
      *   where: {
-     *     // ... filter to delete one Clase
+     *     // ... filter to delete one Clases
      *   }
      * })
      * 
      */
-    delete<T extends ClaseDeleteArgs>(args: SelectSubset<T, ClaseDeleteArgs<ExtArgs>>): Prisma__ClaseClient<$Result.GetResult<Prisma.$ClasePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends ClasesDeleteArgs>(args: SelectSubset<T, ClasesDeleteArgs<ExtArgs>>): Prisma__ClasesClient<$Result.GetResult<Prisma.$ClasesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Clase.
-     * @param {ClaseUpdateArgs} args - Arguments to update one Clase.
+     * Update one Clases.
+     * @param {ClasesUpdateArgs} args - Arguments to update one Clases.
      * @example
-     * // Update one Clase
-     * const clase = await prisma.clase.update({
+     * // Update one Clases
+     * const clases = await prisma.clases.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -3125,30 +3357,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends ClaseUpdateArgs>(args: SelectSubset<T, ClaseUpdateArgs<ExtArgs>>): Prisma__ClaseClient<$Result.GetResult<Prisma.$ClasePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends ClasesUpdateArgs>(args: SelectSubset<T, ClasesUpdateArgs<ExtArgs>>): Prisma__ClasesClient<$Result.GetResult<Prisma.$ClasesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Delete zero or more Clases.
-     * @param {ClaseDeleteManyArgs} args - Arguments to filter Clases to delete.
+     * @param {ClasesDeleteManyArgs} args - Arguments to filter Clases to delete.
      * @example
      * // Delete a few Clases
-     * const { count } = await prisma.clase.deleteMany({
+     * const { count } = await prisma.clases.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends ClaseDeleteManyArgs>(args?: SelectSubset<T, ClaseDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends ClasesDeleteManyArgs>(args?: SelectSubset<T, ClasesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more Clases.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ClaseUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {ClasesUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
      * // Update many Clases
-     * const clase = await prisma.clase.updateMany({
+     * const clases = await prisma.clases.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -3158,14 +3390,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends ClaseUpdateManyArgs>(args: SelectSubset<T, ClaseUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends ClasesUpdateManyArgs>(args: SelectSubset<T, ClasesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more Clases and returns the data updated in the database.
-     * @param {ClaseUpdateManyAndReturnArgs} args - Arguments to update many Clases.
+     * @param {ClasesUpdateManyAndReturnArgs} args - Arguments to update many Clases.
      * @example
      * // Update many Clases
-     * const clase = await prisma.clase.updateManyAndReturn({
+     * const clases = await prisma.clases.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -3175,7 +3407,7 @@ export namespace Prisma {
      * })
      * 
      * // Update zero or more Clases and only return the `id`
-     * const claseWithIdOnly = await prisma.clase.updateManyAndReturn({
+     * const clasesWithIdOnly = await prisma.clases.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -3188,56 +3420,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends ClaseUpdateManyAndReturnArgs>(args: SelectSubset<T, ClaseUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClasePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends ClasesUpdateManyAndReturnArgs>(args: SelectSubset<T, ClasesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClasesPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Clase.
-     * @param {ClaseUpsertArgs} args - Arguments to update or create a Clase.
+     * Create or update one Clases.
+     * @param {ClasesUpsertArgs} args - Arguments to update or create a Clases.
      * @example
-     * // Update or create a Clase
-     * const clase = await prisma.clase.upsert({
+     * // Update or create a Clases
+     * const clases = await prisma.clases.upsert({
      *   create: {
-     *     // ... data to create a Clase
+     *     // ... data to create a Clases
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Clase we want to update
+     *     // ... the filter for the Clases we want to update
      *   }
      * })
      */
-    upsert<T extends ClaseUpsertArgs>(args: SelectSubset<T, ClaseUpsertArgs<ExtArgs>>): Prisma__ClaseClient<$Result.GetResult<Prisma.$ClasePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends ClasesUpsertArgs>(args: SelectSubset<T, ClasesUpsertArgs<ExtArgs>>): Prisma__ClasesClient<$Result.GetResult<Prisma.$ClasesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
      * Count the number of Clases.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ClaseCountArgs} args - Arguments to filter Clases to count.
+     * @param {ClasesCountArgs} args - Arguments to filter Clases to count.
      * @example
      * // Count the number of Clases
-     * const count = await prisma.clase.count({
+     * const count = await prisma.clases.count({
      *   where: {
      *     // ... the filter for the Clases we want to count
      *   }
      * })
     **/
-    count<T extends ClaseCountArgs>(
-      args?: Subset<T, ClaseCountArgs>,
+    count<T extends ClasesCountArgs>(
+      args?: Subset<T, ClasesCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], ClaseCountAggregateOutputType>
+          : GetScalarType<T['select'], ClasesCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Clase.
+     * Allows you to perform aggregations operations on a Clases.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ClaseAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {ClasesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -3257,13 +3489,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends ClaseAggregateArgs>(args: Subset<T, ClaseAggregateArgs>): Prisma.PrismaPromise<GetClaseAggregateType<T>>
+    aggregate<T extends ClasesAggregateArgs>(args: Subset<T, ClasesAggregateArgs>): Prisma.PrismaPromise<GetClasesAggregateType<T>>
 
     /**
-     * Group by Clase.
+     * Group by Clases.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {ClaseGroupByArgs} args - Group by arguments.
+     * @param {ClasesGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -3278,14 +3510,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends ClaseGroupByArgs,
+      T extends ClasesGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: ClaseGroupByArgs['orderBy'] }
-        : { orderBy?: ClaseGroupByArgs['orderBy'] },
+        ? { orderBy: ClasesGroupByArgs['orderBy'] }
+        : { orderBy?: ClasesGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -3334,23 +3566,23 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, ClaseGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetClaseGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, ClasesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetClasesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Clase model
+   * Fields of the Clases model
    */
-  readonly fields: ClaseFieldRefs;
+  readonly fields: ClasesFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Clase.
+   * The delegate class that acts as a "Promise-like" for Clases.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__ClaseClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__ClasesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    materia<T extends MateriaDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MateriaDefaultArgs<ExtArgs>>): Prisma__MateriaClient<$Result.GetResult<Prisma.$MateriaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    Asistencia<T extends Clase$AsistenciaArgs<ExtArgs> = {}>(args?: Subset<T, Clase$AsistenciaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AsistenciaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    materia<T extends MateriasDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MateriasDefaultArgs<ExtArgs>>): Prisma__MateriasClient<$Result.GetResult<Prisma.$MateriasPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    Asistencias<T extends Clases$AsistenciasArgs<ExtArgs> = {}>(args?: Subset<T, Clases$AsistenciasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AsistenciasPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3377,199 +3609,201 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Clase model
+   * Fields of the Clases model
    */
-  interface ClaseFieldRefs {
-    readonly id: FieldRef<"Clase", 'Int'>
-    readonly fechaHora: FieldRef<"Clase", 'DateTime'>
-    readonly idMateria: FieldRef<"Clase", 'Int'>
-    readonly createdAt: FieldRef<"Clase", 'DateTime'>
-    readonly updatedAt: FieldRef<"Clase", 'DateTime'>
-    readonly deletedAt: FieldRef<"Clase", 'DateTime'>
+  interface ClasesFieldRefs {
+    readonly id: FieldRef<"Clases", 'Int'>
+    readonly fechaHora: FieldRef<"Clases", 'DateTime'>
+    readonly idMateria: FieldRef<"Clases", 'Int'>
+    readonly suspendida: FieldRef<"Clases", 'Boolean'>
+    readonly motivo: FieldRef<"Clases", 'String'>
+    readonly createdAt: FieldRef<"Clases", 'DateTime'>
+    readonly updatedAt: FieldRef<"Clases", 'DateTime'>
+    readonly deletedAt: FieldRef<"Clases", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * Clase findUnique
+   * Clases findUnique
    */
-  export type ClaseFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ClasesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Clase
+     * Select specific fields to fetch from the Clases
      */
-    select?: ClaseSelect<ExtArgs> | null
+    select?: ClasesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Clase
+     * Omit specific fields from the Clases
      */
-    omit?: ClaseOmit<ExtArgs> | null
+    omit?: ClasesOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ClaseInclude<ExtArgs> | null
-    /**
-     * Filter, which Clase to fetch.
-     */
-    where: ClaseWhereUniqueInput
-  }
-
-  /**
-   * Clase findUniqueOrThrow
-   */
-  export type ClaseFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Clase
-     */
-    select?: ClaseSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Clase
-     */
-    omit?: ClaseOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ClaseInclude<ExtArgs> | null
-    /**
-     * Filter, which Clase to fetch.
-     */
-    where: ClaseWhereUniqueInput
-  }
-
-  /**
-   * Clase findFirst
-   */
-  export type ClaseFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Clase
-     */
-    select?: ClaseSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Clase
-     */
-    omit?: ClaseOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ClaseInclude<ExtArgs> | null
-    /**
-     * Filter, which Clase to fetch.
-     */
-    where?: ClaseWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Clases to fetch.
-     */
-    orderBy?: ClaseOrderByWithRelationInput | ClaseOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Clases.
-     */
-    cursor?: ClaseWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Clases from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Clases.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Clases.
-     */
-    distinct?: ClaseScalarFieldEnum | ClaseScalarFieldEnum[]
-  }
-
-  /**
-   * Clase findFirstOrThrow
-   */
-  export type ClaseFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Clase
-     */
-    select?: ClaseSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Clase
-     */
-    omit?: ClaseOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ClaseInclude<ExtArgs> | null
-    /**
-     * Filter, which Clase to fetch.
-     */
-    where?: ClaseWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Clases to fetch.
-     */
-    orderBy?: ClaseOrderByWithRelationInput | ClaseOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Clases.
-     */
-    cursor?: ClaseWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Clases from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Clases.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Clases.
-     */
-    distinct?: ClaseScalarFieldEnum | ClaseScalarFieldEnum[]
-  }
-
-  /**
-   * Clase findMany
-   */
-  export type ClaseFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Clase
-     */
-    select?: ClaseSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Clase
-     */
-    omit?: ClaseOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ClaseInclude<ExtArgs> | null
+    include?: ClasesInclude<ExtArgs> | null
     /**
      * Filter, which Clases to fetch.
      */
-    where?: ClaseWhereInput
+    where: ClasesWhereUniqueInput
+  }
+
+  /**
+   * Clases findUniqueOrThrow
+   */
+  export type ClasesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Clases
+     */
+    select?: ClasesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Clases
+     */
+    omit?: ClasesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClasesInclude<ExtArgs> | null
+    /**
+     * Filter, which Clases to fetch.
+     */
+    where: ClasesWhereUniqueInput
+  }
+
+  /**
+   * Clases findFirst
+   */
+  export type ClasesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Clases
+     */
+    select?: ClasesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Clases
+     */
+    omit?: ClasesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClasesInclude<ExtArgs> | null
+    /**
+     * Filter, which Clases to fetch.
+     */
+    where?: ClasesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
      * Determine the order of Clases to fetch.
      */
-    orderBy?: ClaseOrderByWithRelationInput | ClaseOrderByWithRelationInput[]
+    orderBy?: ClasesOrderByWithRelationInput | ClasesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Clases.
+     */
+    cursor?: ClasesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Clases from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Clases.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Clases.
+     */
+    distinct?: ClasesScalarFieldEnum | ClasesScalarFieldEnum[]
+  }
+
+  /**
+   * Clases findFirstOrThrow
+   */
+  export type ClasesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Clases
+     */
+    select?: ClasesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Clases
+     */
+    omit?: ClasesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClasesInclude<ExtArgs> | null
+    /**
+     * Filter, which Clases to fetch.
+     */
+    where?: ClasesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Clases to fetch.
+     */
+    orderBy?: ClasesOrderByWithRelationInput | ClasesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Clases.
+     */
+    cursor?: ClasesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Clases from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Clases.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Clases.
+     */
+    distinct?: ClasesScalarFieldEnum | ClasesScalarFieldEnum[]
+  }
+
+  /**
+   * Clases findMany
+   */
+  export type ClasesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Clases
+     */
+    select?: ClasesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Clases
+     */
+    omit?: ClasesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClasesInclude<ExtArgs> | null
+    /**
+     * Filter, which Clases to fetch.
+     */
+    where?: ClasesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Clases to fetch.
+     */
+    orderBy?: ClasesOrderByWithRelationInput | ClasesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the position for listing Clases.
      */
-    cursor?: ClaseWhereUniqueInput
+    cursor?: ClasesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
@@ -3582,103 +3816,103 @@ export namespace Prisma {
      * Skip the first `n` Clases.
      */
     skip?: number
-    distinct?: ClaseScalarFieldEnum | ClaseScalarFieldEnum[]
+    distinct?: ClasesScalarFieldEnum | ClasesScalarFieldEnum[]
   }
 
   /**
-   * Clase create
+   * Clases create
    */
-  export type ClaseCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ClasesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Clase
+     * Select specific fields to fetch from the Clases
      */
-    select?: ClaseSelect<ExtArgs> | null
+    select?: ClasesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Clase
+     * Omit specific fields from the Clases
      */
-    omit?: ClaseOmit<ExtArgs> | null
+    omit?: ClasesOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ClaseInclude<ExtArgs> | null
+    include?: ClasesInclude<ExtArgs> | null
     /**
-     * The data needed to create a Clase.
+     * The data needed to create a Clases.
      */
-    data: XOR<ClaseCreateInput, ClaseUncheckedCreateInput>
+    data: XOR<ClasesCreateInput, ClasesUncheckedCreateInput>
   }
 
   /**
-   * Clase createMany
+   * Clases createMany
    */
-  export type ClaseCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ClasesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * The data used to create many Clases.
      */
-    data: ClaseCreateManyInput | ClaseCreateManyInput[]
+    data: ClasesCreateManyInput | ClasesCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Clase createManyAndReturn
+   * Clases createManyAndReturn
    */
-  export type ClaseCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ClasesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Clase
+     * Select specific fields to fetch from the Clases
      */
-    select?: ClaseSelectCreateManyAndReturn<ExtArgs> | null
+    select?: ClasesSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Clase
+     * Omit specific fields from the Clases
      */
-    omit?: ClaseOmit<ExtArgs> | null
+    omit?: ClasesOmit<ExtArgs> | null
     /**
      * The data used to create many Clases.
      */
-    data: ClaseCreateManyInput | ClaseCreateManyInput[]
+    data: ClasesCreateManyInput | ClasesCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ClaseIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: ClasesIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Clase update
+   * Clases update
    */
-  export type ClaseUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ClasesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Clase
+     * Select specific fields to fetch from the Clases
      */
-    select?: ClaseSelect<ExtArgs> | null
+    select?: ClasesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Clase
+     * Omit specific fields from the Clases
      */
-    omit?: ClaseOmit<ExtArgs> | null
+    omit?: ClasesOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ClaseInclude<ExtArgs> | null
+    include?: ClasesInclude<ExtArgs> | null
     /**
-     * The data needed to update a Clase.
+     * The data needed to update a Clases.
      */
-    data: XOR<ClaseUpdateInput, ClaseUncheckedUpdateInput>
+    data: XOR<ClasesUpdateInput, ClasesUncheckedUpdateInput>
     /**
-     * Choose, which Clase to update.
+     * Choose, which Clases to update.
      */
-    where: ClaseWhereUniqueInput
+    where: ClasesWhereUniqueInput
   }
 
   /**
-   * Clase updateMany
+   * Clases updateMany
    */
-  export type ClaseUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ClasesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * The data used to update Clases.
      */
-    data: XOR<ClaseUpdateManyMutationInput, ClaseUncheckedUpdateManyInput>
+    data: XOR<ClasesUpdateManyMutationInput, ClasesUncheckedUpdateManyInput>
     /**
      * Filter which Clases to update
      */
-    where?: ClaseWhereInput
+    where?: ClasesWhereInput
     /**
      * Limit how many Clases to update.
      */
@@ -3686,25 +3920,25 @@ export namespace Prisma {
   }
 
   /**
-   * Clase updateManyAndReturn
+   * Clases updateManyAndReturn
    */
-  export type ClaseUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ClasesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Clase
+     * Select specific fields to fetch from the Clases
      */
-    select?: ClaseSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: ClasesSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Clase
+     * Omit specific fields from the Clases
      */
-    omit?: ClaseOmit<ExtArgs> | null
+    omit?: ClasesOmit<ExtArgs> | null
     /**
      * The data used to update Clases.
      */
-    data: XOR<ClaseUpdateManyMutationInput, ClaseUncheckedUpdateManyInput>
+    data: XOR<ClasesUpdateManyMutationInput, ClasesUncheckedUpdateManyInput>
     /**
      * Filter which Clases to update
      */
-    where?: ClaseWhereInput
+    where?: ClasesWhereInput
     /**
      * Limit how many Clases to update.
      */
@@ -3712,69 +3946,69 @@ export namespace Prisma {
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ClaseIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: ClasesIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Clase upsert
+   * Clases upsert
    */
-  export type ClaseUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ClasesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Clase
+     * Select specific fields to fetch from the Clases
      */
-    select?: ClaseSelect<ExtArgs> | null
+    select?: ClasesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Clase
+     * Omit specific fields from the Clases
      */
-    omit?: ClaseOmit<ExtArgs> | null
+    omit?: ClasesOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ClaseInclude<ExtArgs> | null
+    include?: ClasesInclude<ExtArgs> | null
     /**
-     * The filter to search for the Clase to update in case it exists.
+     * The filter to search for the Clases to update in case it exists.
      */
-    where: ClaseWhereUniqueInput
+    where: ClasesWhereUniqueInput
     /**
-     * In case the Clase found by the `where` argument doesn't exist, create a new Clase with this data.
+     * In case the Clases found by the `where` argument doesn't exist, create a new Clases with this data.
      */
-    create: XOR<ClaseCreateInput, ClaseUncheckedCreateInput>
+    create: XOR<ClasesCreateInput, ClasesUncheckedCreateInput>
     /**
-     * In case the Clase was found with the provided `where` argument, update it with this data.
+     * In case the Clases was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<ClaseUpdateInput, ClaseUncheckedUpdateInput>
+    update: XOR<ClasesUpdateInput, ClasesUncheckedUpdateInput>
   }
 
   /**
-   * Clase delete
+   * Clases delete
    */
-  export type ClaseDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ClasesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Clase
+     * Select specific fields to fetch from the Clases
      */
-    select?: ClaseSelect<ExtArgs> | null
+    select?: ClasesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Clase
+     * Omit specific fields from the Clases
      */
-    omit?: ClaseOmit<ExtArgs> | null
+    omit?: ClasesOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ClaseInclude<ExtArgs> | null
+    include?: ClasesInclude<ExtArgs> | null
     /**
-     * Filter which Clase to delete.
+     * Filter which Clases to delete.
      */
-    where: ClaseWhereUniqueInput
+    where: ClasesWhereUniqueInput
   }
 
   /**
-   * Clase deleteMany
+   * Clases deleteMany
    */
-  export type ClaseDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ClasesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Filter which Clases to delete
      */
-    where?: ClaseWhereInput
+    where?: ClasesWhereInput
     /**
      * Limit how many Clases to delete.
      */
@@ -3782,95 +4016,95 @@ export namespace Prisma {
   }
 
   /**
-   * Clase.Asistencia
+   * Clases.Asistencias
    */
-  export type Clase$AsistenciaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Clases$AsistenciasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Asistencia
+     * Select specific fields to fetch from the Asistencias
      */
-    select?: AsistenciaSelect<ExtArgs> | null
+    select?: AsistenciasSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Asistencia
+     * Omit specific fields from the Asistencias
      */
-    omit?: AsistenciaOmit<ExtArgs> | null
+    omit?: AsistenciasOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AsistenciaInclude<ExtArgs> | null
-    where?: AsistenciaWhereInput
-    orderBy?: AsistenciaOrderByWithRelationInput | AsistenciaOrderByWithRelationInput[]
-    cursor?: AsistenciaWhereUniqueInput
+    include?: AsistenciasInclude<ExtArgs> | null
+    where?: AsistenciasWhereInput
+    orderBy?: AsistenciasOrderByWithRelationInput | AsistenciasOrderByWithRelationInput[]
+    cursor?: AsistenciasWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: AsistenciaScalarFieldEnum | AsistenciaScalarFieldEnum[]
+    distinct?: AsistenciasScalarFieldEnum | AsistenciasScalarFieldEnum[]
   }
 
   /**
-   * Clase without action
+   * Clases without action
    */
-  export type ClaseDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ClasesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Clase
+     * Select specific fields to fetch from the Clases
      */
-    select?: ClaseSelect<ExtArgs> | null
+    select?: ClasesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Clase
+     * Omit specific fields from the Clases
      */
-    omit?: ClaseOmit<ExtArgs> | null
+    omit?: ClasesOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ClaseInclude<ExtArgs> | null
+    include?: ClasesInclude<ExtArgs> | null
   }
 
 
   /**
-   * Model Asistencia
+   * Model Asistencias
    */
 
-  export type AggregateAsistencia = {
-    _count: AsistenciaCountAggregateOutputType | null
-    _avg: AsistenciaAvgAggregateOutputType | null
-    _sum: AsistenciaSumAggregateOutputType | null
-    _min: AsistenciaMinAggregateOutputType | null
-    _max: AsistenciaMaxAggregateOutputType | null
+  export type AggregateAsistencias = {
+    _count: AsistenciasCountAggregateOutputType | null
+    _avg: AsistenciasAvgAggregateOutputType | null
+    _sum: AsistenciasSumAggregateOutputType | null
+    _min: AsistenciasMinAggregateOutputType | null
+    _max: AsistenciasMaxAggregateOutputType | null
   }
 
-  export type AsistenciaAvgAggregateOutputType = {
+  export type AsistenciasAvgAggregateOutputType = {
     id: number | null
     idAlumno: number | null
     idClase: number | null
   }
 
-  export type AsistenciaSumAggregateOutputType = {
+  export type AsistenciasSumAggregateOutputType = {
     id: number | null
     idAlumno: number | null
     idClase: number | null
   }
 
-  export type AsistenciaMinAggregateOutputType = {
+  export type AsistenciasMinAggregateOutputType = {
     id: number | null
     idAlumno: number | null
     idClase: number | null
-    estado: $Enums.Estado | null
+    estado: $Enums.Estados | null
     nota: string | null
     createdAt: Date | null
     updatedAt: Date | null
     deletedAt: Date | null
   }
 
-  export type AsistenciaMaxAggregateOutputType = {
+  export type AsistenciasMaxAggregateOutputType = {
     id: number | null
     idAlumno: number | null
     idClase: number | null
-    estado: $Enums.Estado | null
+    estado: $Enums.Estados | null
     nota: string | null
     createdAt: Date | null
     updatedAt: Date | null
     deletedAt: Date | null
   }
 
-  export type AsistenciaCountAggregateOutputType = {
+  export type AsistenciasCountAggregateOutputType = {
     id: number
     idAlumno: number
     idClase: number
@@ -3883,30 +4117,19 @@ export namespace Prisma {
   }
 
 
-  export type AsistenciaAvgAggregateInputType = {
+  export type AsistenciasAvgAggregateInputType = {
     id?: true
     idAlumno?: true
     idClase?: true
   }
 
-  export type AsistenciaSumAggregateInputType = {
+  export type AsistenciasSumAggregateInputType = {
     id?: true
     idAlumno?: true
     idClase?: true
   }
 
-  export type AsistenciaMinAggregateInputType = {
-    id?: true
-    idAlumno?: true
-    idClase?: true
-    estado?: true
-    nota?: true
-    createdAt?: true
-    updatedAt?: true
-    deletedAt?: true
-  }
-
-  export type AsistenciaMaxAggregateInputType = {
+  export type AsistenciasMinAggregateInputType = {
     id?: true
     idAlumno?: true
     idClase?: true
@@ -3917,7 +4140,18 @@ export namespace Prisma {
     deletedAt?: true
   }
 
-  export type AsistenciaCountAggregateInputType = {
+  export type AsistenciasMaxAggregateInputType = {
+    id?: true
+    idAlumno?: true
+    idClase?: true
+    estado?: true
+    nota?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+  }
+
+  export type AsistenciasCountAggregateInputType = {
     id?: true
     idAlumno?: true
     idClase?: true
@@ -3929,23 +4163,23 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type AsistenciaAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AsistenciasAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Asistencia to aggregate.
+     * Filter which Asistencias to aggregate.
      */
-    where?: AsistenciaWhereInput
+    where?: AsistenciasWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
      * Determine the order of Asistencias to fetch.
      */
-    orderBy?: AsistenciaOrderByWithRelationInput | AsistenciaOrderByWithRelationInput[]
+    orderBy?: AsistenciasOrderByWithRelationInput | AsistenciasOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: AsistenciaWhereUniqueInput
+    cursor?: AsistenciasWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
@@ -3963,89 +4197,89 @@ export namespace Prisma {
      * 
      * Count returned Asistencias
     **/
-    _count?: true | AsistenciaCountAggregateInputType
+    _count?: true | AsistenciasCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: AsistenciaAvgAggregateInputType
+    _avg?: AsistenciasAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: AsistenciaSumAggregateInputType
+    _sum?: AsistenciasSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: AsistenciaMinAggregateInputType
+    _min?: AsistenciasMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: AsistenciaMaxAggregateInputType
+    _max?: AsistenciasMaxAggregateInputType
   }
 
-  export type GetAsistenciaAggregateType<T extends AsistenciaAggregateArgs> = {
-        [P in keyof T & keyof AggregateAsistencia]: P extends '_count' | 'count'
+  export type GetAsistenciasAggregateType<T extends AsistenciasAggregateArgs> = {
+        [P in keyof T & keyof AggregateAsistencias]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateAsistencia[P]>
-      : GetScalarType<T[P], AggregateAsistencia[P]>
+        : GetScalarType<T[P], AggregateAsistencias[P]>
+      : GetScalarType<T[P], AggregateAsistencias[P]>
   }
 
 
 
 
-  export type AsistenciaGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AsistenciaWhereInput
-    orderBy?: AsistenciaOrderByWithAggregationInput | AsistenciaOrderByWithAggregationInput[]
-    by: AsistenciaScalarFieldEnum[] | AsistenciaScalarFieldEnum
-    having?: AsistenciaScalarWhereWithAggregatesInput
+  export type AsistenciasGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AsistenciasWhereInput
+    orderBy?: AsistenciasOrderByWithAggregationInput | AsistenciasOrderByWithAggregationInput[]
+    by: AsistenciasScalarFieldEnum[] | AsistenciasScalarFieldEnum
+    having?: AsistenciasScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: AsistenciaCountAggregateInputType | true
-    _avg?: AsistenciaAvgAggregateInputType
-    _sum?: AsistenciaSumAggregateInputType
-    _min?: AsistenciaMinAggregateInputType
-    _max?: AsistenciaMaxAggregateInputType
+    _count?: AsistenciasCountAggregateInputType | true
+    _avg?: AsistenciasAvgAggregateInputType
+    _sum?: AsistenciasSumAggregateInputType
+    _min?: AsistenciasMinAggregateInputType
+    _max?: AsistenciasMaxAggregateInputType
   }
 
-  export type AsistenciaGroupByOutputType = {
+  export type AsistenciasGroupByOutputType = {
     id: number
     idAlumno: number
     idClase: number
-    estado: $Enums.Estado
+    estado: $Enums.Estados
     nota: string | null
     createdAt: Date
     updatedAt: Date | null
     deletedAt: Date | null
-    _count: AsistenciaCountAggregateOutputType | null
-    _avg: AsistenciaAvgAggregateOutputType | null
-    _sum: AsistenciaSumAggregateOutputType | null
-    _min: AsistenciaMinAggregateOutputType | null
-    _max: AsistenciaMaxAggregateOutputType | null
+    _count: AsistenciasCountAggregateOutputType | null
+    _avg: AsistenciasAvgAggregateOutputType | null
+    _sum: AsistenciasSumAggregateOutputType | null
+    _min: AsistenciasMinAggregateOutputType | null
+    _max: AsistenciasMaxAggregateOutputType | null
   }
 
-  type GetAsistenciaGroupByPayload<T extends AsistenciaGroupByArgs> = Prisma.PrismaPromise<
+  type GetAsistenciasGroupByPayload<T extends AsistenciasGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<AsistenciaGroupByOutputType, T['by']> &
+      PickEnumerable<AsistenciasGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof AsistenciaGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof AsistenciasGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], AsistenciaGroupByOutputType[P]>
-            : GetScalarType<T[P], AsistenciaGroupByOutputType[P]>
+              : GetScalarType<T[P], AsistenciasGroupByOutputType[P]>
+            : GetScalarType<T[P], AsistenciasGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type AsistenciaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type AsistenciasSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     idAlumno?: boolean
     idClase?: boolean
@@ -4054,11 +4288,11 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
-    alumno?: boolean | AlumnoDefaultArgs<ExtArgs>
-    clase?: boolean | ClaseDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["asistencia"]>
+    alumno?: boolean | AlumnosDefaultArgs<ExtArgs>
+    clase?: boolean | ClasesDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["asistencias"]>
 
-  export type AsistenciaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type AsistenciasSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     idAlumno?: boolean
     idClase?: boolean
@@ -4067,11 +4301,11 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
-    alumno?: boolean | AlumnoDefaultArgs<ExtArgs>
-    clase?: boolean | ClaseDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["asistencia"]>
+    alumno?: boolean | AlumnosDefaultArgs<ExtArgs>
+    clase?: boolean | ClasesDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["asistencias"]>
 
-  export type AsistenciaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type AsistenciasSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     idAlumno?: boolean
     idClase?: boolean
@@ -4080,11 +4314,11 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
-    alumno?: boolean | AlumnoDefaultArgs<ExtArgs>
-    clase?: boolean | ClaseDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["asistencia"]>
+    alumno?: boolean | AlumnosDefaultArgs<ExtArgs>
+    clase?: boolean | ClasesDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["asistencias"]>
 
-  export type AsistenciaSelectScalar = {
+  export type AsistenciasSelectScalar = {
     id?: boolean
     idAlumno?: boolean
     idClase?: boolean
@@ -4095,165 +4329,165 @@ export namespace Prisma {
     deletedAt?: boolean
   }
 
-  export type AsistenciaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "idAlumno" | "idClase" | "estado" | "nota" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["asistencia"]>
-  export type AsistenciaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    alumno?: boolean | AlumnoDefaultArgs<ExtArgs>
-    clase?: boolean | ClaseDefaultArgs<ExtArgs>
+  export type AsistenciasOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "idAlumno" | "idClase" | "estado" | "nota" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["asistencias"]>
+  export type AsistenciasInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    alumno?: boolean | AlumnosDefaultArgs<ExtArgs>
+    clase?: boolean | ClasesDefaultArgs<ExtArgs>
   }
-  export type AsistenciaIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    alumno?: boolean | AlumnoDefaultArgs<ExtArgs>
-    clase?: boolean | ClaseDefaultArgs<ExtArgs>
+  export type AsistenciasIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    alumno?: boolean | AlumnosDefaultArgs<ExtArgs>
+    clase?: boolean | ClasesDefaultArgs<ExtArgs>
   }
-  export type AsistenciaIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    alumno?: boolean | AlumnoDefaultArgs<ExtArgs>
-    clase?: boolean | ClaseDefaultArgs<ExtArgs>
+  export type AsistenciasIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    alumno?: boolean | AlumnosDefaultArgs<ExtArgs>
+    clase?: boolean | ClasesDefaultArgs<ExtArgs>
   }
 
-  export type $AsistenciaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Asistencia"
+  export type $AsistenciasPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Asistencias"
     objects: {
-      alumno: Prisma.$AlumnoPayload<ExtArgs>
-      clase: Prisma.$ClasePayload<ExtArgs>
+      alumno: Prisma.$AlumnosPayload<ExtArgs>
+      clase: Prisma.$ClasesPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       idAlumno: number
       idClase: number
-      estado: $Enums.Estado
+      estado: $Enums.Estados
       nota: string | null
       createdAt: Date
       updatedAt: Date | null
       deletedAt: Date | null
-    }, ExtArgs["result"]["asistencia"]>
+    }, ExtArgs["result"]["asistencias"]>
     composites: {}
   }
 
-  type AsistenciaGetPayload<S extends boolean | null | undefined | AsistenciaDefaultArgs> = $Result.GetResult<Prisma.$AsistenciaPayload, S>
+  type AsistenciasGetPayload<S extends boolean | null | undefined | AsistenciasDefaultArgs> = $Result.GetResult<Prisma.$AsistenciasPayload, S>
 
-  type AsistenciaCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<AsistenciaFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: AsistenciaCountAggregateInputType | true
+  type AsistenciasCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AsistenciasFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AsistenciasCountAggregateInputType | true
     }
 
-  export interface AsistenciaDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Asistencia'], meta: { name: 'Asistencia' } }
+  export interface AsistenciasDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Asistencias'], meta: { name: 'Asistencias' } }
     /**
-     * Find zero or one Asistencia that matches the filter.
-     * @param {AsistenciaFindUniqueArgs} args - Arguments to find a Asistencia
+     * Find zero or one Asistencias that matches the filter.
+     * @param {AsistenciasFindUniqueArgs} args - Arguments to find a Asistencias
      * @example
-     * // Get one Asistencia
-     * const asistencia = await prisma.asistencia.findUnique({
+     * // Get one Asistencias
+     * const asistencias = await prisma.asistencias.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends AsistenciaFindUniqueArgs>(args: SelectSubset<T, AsistenciaFindUniqueArgs<ExtArgs>>): Prisma__AsistenciaClient<$Result.GetResult<Prisma.$AsistenciaPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends AsistenciasFindUniqueArgs>(args: SelectSubset<T, AsistenciasFindUniqueArgs<ExtArgs>>): Prisma__AsistenciasClient<$Result.GetResult<Prisma.$AsistenciasPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Asistencia that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Asistencias that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {AsistenciaFindUniqueOrThrowArgs} args - Arguments to find a Asistencia
+     * @param {AsistenciasFindUniqueOrThrowArgs} args - Arguments to find a Asistencias
      * @example
-     * // Get one Asistencia
-     * const asistencia = await prisma.asistencia.findUniqueOrThrow({
+     * // Get one Asistencias
+     * const asistencias = await prisma.asistencias.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends AsistenciaFindUniqueOrThrowArgs>(args: SelectSubset<T, AsistenciaFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AsistenciaClient<$Result.GetResult<Prisma.$AsistenciaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends AsistenciasFindUniqueOrThrowArgs>(args: SelectSubset<T, AsistenciasFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AsistenciasClient<$Result.GetResult<Prisma.$AsistenciasPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Asistencia that matches the filter.
+     * Find the first Asistencias that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AsistenciaFindFirstArgs} args - Arguments to find a Asistencia
+     * @param {AsistenciasFindFirstArgs} args - Arguments to find a Asistencias
      * @example
-     * // Get one Asistencia
-     * const asistencia = await prisma.asistencia.findFirst({
+     * // Get one Asistencias
+     * const asistencias = await prisma.asistencias.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends AsistenciaFindFirstArgs>(args?: SelectSubset<T, AsistenciaFindFirstArgs<ExtArgs>>): Prisma__AsistenciaClient<$Result.GetResult<Prisma.$AsistenciaPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends AsistenciasFindFirstArgs>(args?: SelectSubset<T, AsistenciasFindFirstArgs<ExtArgs>>): Prisma__AsistenciasClient<$Result.GetResult<Prisma.$AsistenciasPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Asistencia that matches the filter or
+     * Find the first Asistencias that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AsistenciaFindFirstOrThrowArgs} args - Arguments to find a Asistencia
+     * @param {AsistenciasFindFirstOrThrowArgs} args - Arguments to find a Asistencias
      * @example
-     * // Get one Asistencia
-     * const asistencia = await prisma.asistencia.findFirstOrThrow({
+     * // Get one Asistencias
+     * const asistencias = await prisma.asistencias.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends AsistenciaFindFirstOrThrowArgs>(args?: SelectSubset<T, AsistenciaFindFirstOrThrowArgs<ExtArgs>>): Prisma__AsistenciaClient<$Result.GetResult<Prisma.$AsistenciaPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends AsistenciasFindFirstOrThrowArgs>(args?: SelectSubset<T, AsistenciasFindFirstOrThrowArgs<ExtArgs>>): Prisma__AsistenciasClient<$Result.GetResult<Prisma.$AsistenciasPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find zero or more Asistencias that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AsistenciaFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {AsistenciasFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
      * // Get all Asistencias
-     * const asistencias = await prisma.asistencia.findMany()
+     * const asistencias = await prisma.asistencias.findMany()
      * 
      * // Get first 10 Asistencias
-     * const asistencias = await prisma.asistencia.findMany({ take: 10 })
+     * const asistencias = await prisma.asistencias.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const asistenciaWithIdOnly = await prisma.asistencia.findMany({ select: { id: true } })
+     * const asistenciasWithIdOnly = await prisma.asistencias.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends AsistenciaFindManyArgs>(args?: SelectSubset<T, AsistenciaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AsistenciaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends AsistenciasFindManyArgs>(args?: SelectSubset<T, AsistenciasFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AsistenciasPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Asistencia.
-     * @param {AsistenciaCreateArgs} args - Arguments to create a Asistencia.
+     * Create a Asistencias.
+     * @param {AsistenciasCreateArgs} args - Arguments to create a Asistencias.
      * @example
-     * // Create one Asistencia
-     * const Asistencia = await prisma.asistencia.create({
+     * // Create one Asistencias
+     * const Asistencias = await prisma.asistencias.create({
      *   data: {
-     *     // ... data to create a Asistencia
+     *     // ... data to create a Asistencias
      *   }
      * })
      * 
      */
-    create<T extends AsistenciaCreateArgs>(args: SelectSubset<T, AsistenciaCreateArgs<ExtArgs>>): Prisma__AsistenciaClient<$Result.GetResult<Prisma.$AsistenciaPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends AsistenciasCreateArgs>(args: SelectSubset<T, AsistenciasCreateArgs<ExtArgs>>): Prisma__AsistenciasClient<$Result.GetResult<Prisma.$AsistenciasPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Create many Asistencias.
-     * @param {AsistenciaCreateManyArgs} args - Arguments to create many Asistencias.
+     * @param {AsistenciasCreateManyArgs} args - Arguments to create many Asistencias.
      * @example
      * // Create many Asistencias
-     * const asistencia = await prisma.asistencia.createMany({
+     * const asistencias = await prisma.asistencias.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends AsistenciaCreateManyArgs>(args?: SelectSubset<T, AsistenciaCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends AsistenciasCreateManyArgs>(args?: SelectSubset<T, AsistenciasCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Create many Asistencias and returns the data saved in the database.
-     * @param {AsistenciaCreateManyAndReturnArgs} args - Arguments to create many Asistencias.
+     * @param {AsistenciasCreateManyAndReturnArgs} args - Arguments to create many Asistencias.
      * @example
      * // Create many Asistencias
-     * const asistencia = await prisma.asistencia.createManyAndReturn({
+     * const asistencias = await prisma.asistencias.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
      * // Create many Asistencias and only return the `id`
-     * const asistenciaWithIdOnly = await prisma.asistencia.createManyAndReturn({
+     * const asistenciasWithIdOnly = await prisma.asistencias.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -4263,28 +4497,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends AsistenciaCreateManyAndReturnArgs>(args?: SelectSubset<T, AsistenciaCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AsistenciaPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends AsistenciasCreateManyAndReturnArgs>(args?: SelectSubset<T, AsistenciasCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AsistenciasPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Asistencia.
-     * @param {AsistenciaDeleteArgs} args - Arguments to delete one Asistencia.
+     * Delete a Asistencias.
+     * @param {AsistenciasDeleteArgs} args - Arguments to delete one Asistencias.
      * @example
-     * // Delete one Asistencia
-     * const Asistencia = await prisma.asistencia.delete({
+     * // Delete one Asistencias
+     * const Asistencias = await prisma.asistencias.delete({
      *   where: {
-     *     // ... filter to delete one Asistencia
+     *     // ... filter to delete one Asistencias
      *   }
      * })
      * 
      */
-    delete<T extends AsistenciaDeleteArgs>(args: SelectSubset<T, AsistenciaDeleteArgs<ExtArgs>>): Prisma__AsistenciaClient<$Result.GetResult<Prisma.$AsistenciaPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends AsistenciasDeleteArgs>(args: SelectSubset<T, AsistenciasDeleteArgs<ExtArgs>>): Prisma__AsistenciasClient<$Result.GetResult<Prisma.$AsistenciasPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Asistencia.
-     * @param {AsistenciaUpdateArgs} args - Arguments to update one Asistencia.
+     * Update one Asistencias.
+     * @param {AsistenciasUpdateArgs} args - Arguments to update one Asistencias.
      * @example
-     * // Update one Asistencia
-     * const asistencia = await prisma.asistencia.update({
+     * // Update one Asistencias
+     * const asistencias = await prisma.asistencias.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -4294,30 +4528,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends AsistenciaUpdateArgs>(args: SelectSubset<T, AsistenciaUpdateArgs<ExtArgs>>): Prisma__AsistenciaClient<$Result.GetResult<Prisma.$AsistenciaPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends AsistenciasUpdateArgs>(args: SelectSubset<T, AsistenciasUpdateArgs<ExtArgs>>): Prisma__AsistenciasClient<$Result.GetResult<Prisma.$AsistenciasPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Delete zero or more Asistencias.
-     * @param {AsistenciaDeleteManyArgs} args - Arguments to filter Asistencias to delete.
+     * @param {AsistenciasDeleteManyArgs} args - Arguments to filter Asistencias to delete.
      * @example
      * // Delete a few Asistencias
-     * const { count } = await prisma.asistencia.deleteMany({
+     * const { count } = await prisma.asistencias.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends AsistenciaDeleteManyArgs>(args?: SelectSubset<T, AsistenciaDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends AsistenciasDeleteManyArgs>(args?: SelectSubset<T, AsistenciasDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more Asistencias.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AsistenciaUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {AsistenciasUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
      * // Update many Asistencias
-     * const asistencia = await prisma.asistencia.updateMany({
+     * const asistencias = await prisma.asistencias.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -4327,14 +4561,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends AsistenciaUpdateManyArgs>(args: SelectSubset<T, AsistenciaUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends AsistenciasUpdateManyArgs>(args: SelectSubset<T, AsistenciasUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more Asistencias and returns the data updated in the database.
-     * @param {AsistenciaUpdateManyAndReturnArgs} args - Arguments to update many Asistencias.
+     * @param {AsistenciasUpdateManyAndReturnArgs} args - Arguments to update many Asistencias.
      * @example
      * // Update many Asistencias
-     * const asistencia = await prisma.asistencia.updateManyAndReturn({
+     * const asistencias = await prisma.asistencias.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -4344,7 +4578,7 @@ export namespace Prisma {
      * })
      * 
      * // Update zero or more Asistencias and only return the `id`
-     * const asistenciaWithIdOnly = await prisma.asistencia.updateManyAndReturn({
+     * const asistenciasWithIdOnly = await prisma.asistencias.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -4357,56 +4591,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends AsistenciaUpdateManyAndReturnArgs>(args: SelectSubset<T, AsistenciaUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AsistenciaPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends AsistenciasUpdateManyAndReturnArgs>(args: SelectSubset<T, AsistenciasUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AsistenciasPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Asistencia.
-     * @param {AsistenciaUpsertArgs} args - Arguments to update or create a Asistencia.
+     * Create or update one Asistencias.
+     * @param {AsistenciasUpsertArgs} args - Arguments to update or create a Asistencias.
      * @example
-     * // Update or create a Asistencia
-     * const asistencia = await prisma.asistencia.upsert({
+     * // Update or create a Asistencias
+     * const asistencias = await prisma.asistencias.upsert({
      *   create: {
-     *     // ... data to create a Asistencia
+     *     // ... data to create a Asistencias
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Asistencia we want to update
+     *     // ... the filter for the Asistencias we want to update
      *   }
      * })
      */
-    upsert<T extends AsistenciaUpsertArgs>(args: SelectSubset<T, AsistenciaUpsertArgs<ExtArgs>>): Prisma__AsistenciaClient<$Result.GetResult<Prisma.$AsistenciaPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends AsistenciasUpsertArgs>(args: SelectSubset<T, AsistenciasUpsertArgs<ExtArgs>>): Prisma__AsistenciasClient<$Result.GetResult<Prisma.$AsistenciasPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
      * Count the number of Asistencias.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AsistenciaCountArgs} args - Arguments to filter Asistencias to count.
+     * @param {AsistenciasCountArgs} args - Arguments to filter Asistencias to count.
      * @example
      * // Count the number of Asistencias
-     * const count = await prisma.asistencia.count({
+     * const count = await prisma.asistencias.count({
      *   where: {
      *     // ... the filter for the Asistencias we want to count
      *   }
      * })
     **/
-    count<T extends AsistenciaCountArgs>(
-      args?: Subset<T, AsistenciaCountArgs>,
+    count<T extends AsistenciasCountArgs>(
+      args?: Subset<T, AsistenciasCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], AsistenciaCountAggregateOutputType>
+          : GetScalarType<T['select'], AsistenciasCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Asistencia.
+     * Allows you to perform aggregations operations on a Asistencias.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AsistenciaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {AsistenciasAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -4426,13 +4660,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends AsistenciaAggregateArgs>(args: Subset<T, AsistenciaAggregateArgs>): Prisma.PrismaPromise<GetAsistenciaAggregateType<T>>
+    aggregate<T extends AsistenciasAggregateArgs>(args: Subset<T, AsistenciasAggregateArgs>): Prisma.PrismaPromise<GetAsistenciasAggregateType<T>>
 
     /**
-     * Group by Asistencia.
+     * Group by Asistencias.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AsistenciaGroupByArgs} args - Group by arguments.
+     * @param {AsistenciasGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -4447,14 +4681,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends AsistenciaGroupByArgs,
+      T extends AsistenciasGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: AsistenciaGroupByArgs['orderBy'] }
-        : { orderBy?: AsistenciaGroupByArgs['orderBy'] },
+        ? { orderBy: AsistenciasGroupByArgs['orderBy'] }
+        : { orderBy?: AsistenciasGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -4503,23 +4737,23 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, AsistenciaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAsistenciaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, AsistenciasGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAsistenciasGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Asistencia model
+   * Fields of the Asistencias model
    */
-  readonly fields: AsistenciaFieldRefs;
+  readonly fields: AsistenciasFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Asistencia.
+   * The delegate class that acts as a "Promise-like" for Asistencias.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__AsistenciaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__AsistenciasClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    alumno<T extends AlumnoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AlumnoDefaultArgs<ExtArgs>>): Prisma__AlumnoClient<$Result.GetResult<Prisma.$AlumnoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    clase<T extends ClaseDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ClaseDefaultArgs<ExtArgs>>): Prisma__ClaseClient<$Result.GetResult<Prisma.$ClasePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    alumno<T extends AlumnosDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AlumnosDefaultArgs<ExtArgs>>): Prisma__AlumnosClient<$Result.GetResult<Prisma.$AlumnosPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    clase<T extends ClasesDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ClasesDefaultArgs<ExtArgs>>): Prisma__ClasesClient<$Result.GetResult<Prisma.$ClasesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4546,201 +4780,201 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Asistencia model
+   * Fields of the Asistencias model
    */
-  interface AsistenciaFieldRefs {
-    readonly id: FieldRef<"Asistencia", 'Int'>
-    readonly idAlumno: FieldRef<"Asistencia", 'Int'>
-    readonly idClase: FieldRef<"Asistencia", 'Int'>
-    readonly estado: FieldRef<"Asistencia", 'Estado'>
-    readonly nota: FieldRef<"Asistencia", 'String'>
-    readonly createdAt: FieldRef<"Asistencia", 'DateTime'>
-    readonly updatedAt: FieldRef<"Asistencia", 'DateTime'>
-    readonly deletedAt: FieldRef<"Asistencia", 'DateTime'>
+  interface AsistenciasFieldRefs {
+    readonly id: FieldRef<"Asistencias", 'Int'>
+    readonly idAlumno: FieldRef<"Asistencias", 'Int'>
+    readonly idClase: FieldRef<"Asistencias", 'Int'>
+    readonly estado: FieldRef<"Asistencias", 'Estados'>
+    readonly nota: FieldRef<"Asistencias", 'String'>
+    readonly createdAt: FieldRef<"Asistencias", 'DateTime'>
+    readonly updatedAt: FieldRef<"Asistencias", 'DateTime'>
+    readonly deletedAt: FieldRef<"Asistencias", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * Asistencia findUnique
+   * Asistencias findUnique
    */
-  export type AsistenciaFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AsistenciasFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Asistencia
+     * Select specific fields to fetch from the Asistencias
      */
-    select?: AsistenciaSelect<ExtArgs> | null
+    select?: AsistenciasSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Asistencia
+     * Omit specific fields from the Asistencias
      */
-    omit?: AsistenciaOmit<ExtArgs> | null
+    omit?: AsistenciasOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AsistenciaInclude<ExtArgs> | null
-    /**
-     * Filter, which Asistencia to fetch.
-     */
-    where: AsistenciaWhereUniqueInput
-  }
-
-  /**
-   * Asistencia findUniqueOrThrow
-   */
-  export type AsistenciaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Asistencia
-     */
-    select?: AsistenciaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Asistencia
-     */
-    omit?: AsistenciaOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AsistenciaInclude<ExtArgs> | null
-    /**
-     * Filter, which Asistencia to fetch.
-     */
-    where: AsistenciaWhereUniqueInput
-  }
-
-  /**
-   * Asistencia findFirst
-   */
-  export type AsistenciaFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Asistencia
-     */
-    select?: AsistenciaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Asistencia
-     */
-    omit?: AsistenciaOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AsistenciaInclude<ExtArgs> | null
-    /**
-     * Filter, which Asistencia to fetch.
-     */
-    where?: AsistenciaWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Asistencias to fetch.
-     */
-    orderBy?: AsistenciaOrderByWithRelationInput | AsistenciaOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Asistencias.
-     */
-    cursor?: AsistenciaWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Asistencias from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Asistencias.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Asistencias.
-     */
-    distinct?: AsistenciaScalarFieldEnum | AsistenciaScalarFieldEnum[]
-  }
-
-  /**
-   * Asistencia findFirstOrThrow
-   */
-  export type AsistenciaFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Asistencia
-     */
-    select?: AsistenciaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Asistencia
-     */
-    omit?: AsistenciaOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AsistenciaInclude<ExtArgs> | null
-    /**
-     * Filter, which Asistencia to fetch.
-     */
-    where?: AsistenciaWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Asistencias to fetch.
-     */
-    orderBy?: AsistenciaOrderByWithRelationInput | AsistenciaOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Asistencias.
-     */
-    cursor?: AsistenciaWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Asistencias from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Asistencias.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Asistencias.
-     */
-    distinct?: AsistenciaScalarFieldEnum | AsistenciaScalarFieldEnum[]
-  }
-
-  /**
-   * Asistencia findMany
-   */
-  export type AsistenciaFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Asistencia
-     */
-    select?: AsistenciaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Asistencia
-     */
-    omit?: AsistenciaOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AsistenciaInclude<ExtArgs> | null
+    include?: AsistenciasInclude<ExtArgs> | null
     /**
      * Filter, which Asistencias to fetch.
      */
-    where?: AsistenciaWhereInput
+    where: AsistenciasWhereUniqueInput
+  }
+
+  /**
+   * Asistencias findUniqueOrThrow
+   */
+  export type AsistenciasFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Asistencias
+     */
+    select?: AsistenciasSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Asistencias
+     */
+    omit?: AsistenciasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AsistenciasInclude<ExtArgs> | null
+    /**
+     * Filter, which Asistencias to fetch.
+     */
+    where: AsistenciasWhereUniqueInput
+  }
+
+  /**
+   * Asistencias findFirst
+   */
+  export type AsistenciasFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Asistencias
+     */
+    select?: AsistenciasSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Asistencias
+     */
+    omit?: AsistenciasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AsistenciasInclude<ExtArgs> | null
+    /**
+     * Filter, which Asistencias to fetch.
+     */
+    where?: AsistenciasWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
      * Determine the order of Asistencias to fetch.
      */
-    orderBy?: AsistenciaOrderByWithRelationInput | AsistenciaOrderByWithRelationInput[]
+    orderBy?: AsistenciasOrderByWithRelationInput | AsistenciasOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Asistencias.
+     */
+    cursor?: AsistenciasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Asistencias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Asistencias.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Asistencias.
+     */
+    distinct?: AsistenciasScalarFieldEnum | AsistenciasScalarFieldEnum[]
+  }
+
+  /**
+   * Asistencias findFirstOrThrow
+   */
+  export type AsistenciasFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Asistencias
+     */
+    select?: AsistenciasSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Asistencias
+     */
+    omit?: AsistenciasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AsistenciasInclude<ExtArgs> | null
+    /**
+     * Filter, which Asistencias to fetch.
+     */
+    where?: AsistenciasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Asistencias to fetch.
+     */
+    orderBy?: AsistenciasOrderByWithRelationInput | AsistenciasOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Asistencias.
+     */
+    cursor?: AsistenciasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Asistencias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Asistencias.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Asistencias.
+     */
+    distinct?: AsistenciasScalarFieldEnum | AsistenciasScalarFieldEnum[]
+  }
+
+  /**
+   * Asistencias findMany
+   */
+  export type AsistenciasFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Asistencias
+     */
+    select?: AsistenciasSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Asistencias
+     */
+    omit?: AsistenciasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AsistenciasInclude<ExtArgs> | null
+    /**
+     * Filter, which Asistencias to fetch.
+     */
+    where?: AsistenciasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Asistencias to fetch.
+     */
+    orderBy?: AsistenciasOrderByWithRelationInput | AsistenciasOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the position for listing Asistencias.
      */
-    cursor?: AsistenciaWhereUniqueInput
+    cursor?: AsistenciasWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
@@ -4753,103 +4987,103 @@ export namespace Prisma {
      * Skip the first `n` Asistencias.
      */
     skip?: number
-    distinct?: AsistenciaScalarFieldEnum | AsistenciaScalarFieldEnum[]
+    distinct?: AsistenciasScalarFieldEnum | AsistenciasScalarFieldEnum[]
   }
 
   /**
-   * Asistencia create
+   * Asistencias create
    */
-  export type AsistenciaCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AsistenciasCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Asistencia
+     * Select specific fields to fetch from the Asistencias
      */
-    select?: AsistenciaSelect<ExtArgs> | null
+    select?: AsistenciasSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Asistencia
+     * Omit specific fields from the Asistencias
      */
-    omit?: AsistenciaOmit<ExtArgs> | null
+    omit?: AsistenciasOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AsistenciaInclude<ExtArgs> | null
+    include?: AsistenciasInclude<ExtArgs> | null
     /**
-     * The data needed to create a Asistencia.
+     * The data needed to create a Asistencias.
      */
-    data: XOR<AsistenciaCreateInput, AsistenciaUncheckedCreateInput>
+    data: XOR<AsistenciasCreateInput, AsistenciasUncheckedCreateInput>
   }
 
   /**
-   * Asistencia createMany
+   * Asistencias createMany
    */
-  export type AsistenciaCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AsistenciasCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * The data used to create many Asistencias.
      */
-    data: AsistenciaCreateManyInput | AsistenciaCreateManyInput[]
+    data: AsistenciasCreateManyInput | AsistenciasCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Asistencia createManyAndReturn
+   * Asistencias createManyAndReturn
    */
-  export type AsistenciaCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AsistenciasCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Asistencia
+     * Select specific fields to fetch from the Asistencias
      */
-    select?: AsistenciaSelectCreateManyAndReturn<ExtArgs> | null
+    select?: AsistenciasSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Asistencia
+     * Omit specific fields from the Asistencias
      */
-    omit?: AsistenciaOmit<ExtArgs> | null
+    omit?: AsistenciasOmit<ExtArgs> | null
     /**
      * The data used to create many Asistencias.
      */
-    data: AsistenciaCreateManyInput | AsistenciaCreateManyInput[]
+    data: AsistenciasCreateManyInput | AsistenciasCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AsistenciaIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: AsistenciasIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Asistencia update
+   * Asistencias update
    */
-  export type AsistenciaUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AsistenciasUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Asistencia
+     * Select specific fields to fetch from the Asistencias
      */
-    select?: AsistenciaSelect<ExtArgs> | null
+    select?: AsistenciasSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Asistencia
+     * Omit specific fields from the Asistencias
      */
-    omit?: AsistenciaOmit<ExtArgs> | null
+    omit?: AsistenciasOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AsistenciaInclude<ExtArgs> | null
+    include?: AsistenciasInclude<ExtArgs> | null
     /**
-     * The data needed to update a Asistencia.
+     * The data needed to update a Asistencias.
      */
-    data: XOR<AsistenciaUpdateInput, AsistenciaUncheckedUpdateInput>
+    data: XOR<AsistenciasUpdateInput, AsistenciasUncheckedUpdateInput>
     /**
-     * Choose, which Asistencia to update.
+     * Choose, which Asistencias to update.
      */
-    where: AsistenciaWhereUniqueInput
+    where: AsistenciasWhereUniqueInput
   }
 
   /**
-   * Asistencia updateMany
+   * Asistencias updateMany
    */
-  export type AsistenciaUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AsistenciasUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * The data used to update Asistencias.
      */
-    data: XOR<AsistenciaUpdateManyMutationInput, AsistenciaUncheckedUpdateManyInput>
+    data: XOR<AsistenciasUpdateManyMutationInput, AsistenciasUncheckedUpdateManyInput>
     /**
      * Filter which Asistencias to update
      */
-    where?: AsistenciaWhereInput
+    where?: AsistenciasWhereInput
     /**
      * Limit how many Asistencias to update.
      */
@@ -4857,25 +5091,25 @@ export namespace Prisma {
   }
 
   /**
-   * Asistencia updateManyAndReturn
+   * Asistencias updateManyAndReturn
    */
-  export type AsistenciaUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AsistenciasUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Asistencia
+     * Select specific fields to fetch from the Asistencias
      */
-    select?: AsistenciaSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: AsistenciasSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Asistencia
+     * Omit specific fields from the Asistencias
      */
-    omit?: AsistenciaOmit<ExtArgs> | null
+    omit?: AsistenciasOmit<ExtArgs> | null
     /**
      * The data used to update Asistencias.
      */
-    data: XOR<AsistenciaUpdateManyMutationInput, AsistenciaUncheckedUpdateManyInput>
+    data: XOR<AsistenciasUpdateManyMutationInput, AsistenciasUncheckedUpdateManyInput>
     /**
      * Filter which Asistencias to update
      */
-    where?: AsistenciaWhereInput
+    where?: AsistenciasWhereInput
     /**
      * Limit how many Asistencias to update.
      */
@@ -4883,69 +5117,69 @@ export namespace Prisma {
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AsistenciaIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: AsistenciasIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Asistencia upsert
+   * Asistencias upsert
    */
-  export type AsistenciaUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AsistenciasUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Asistencia
+     * Select specific fields to fetch from the Asistencias
      */
-    select?: AsistenciaSelect<ExtArgs> | null
+    select?: AsistenciasSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Asistencia
+     * Omit specific fields from the Asistencias
      */
-    omit?: AsistenciaOmit<ExtArgs> | null
+    omit?: AsistenciasOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AsistenciaInclude<ExtArgs> | null
+    include?: AsistenciasInclude<ExtArgs> | null
     /**
-     * The filter to search for the Asistencia to update in case it exists.
+     * The filter to search for the Asistencias to update in case it exists.
      */
-    where: AsistenciaWhereUniqueInput
+    where: AsistenciasWhereUniqueInput
     /**
-     * In case the Asistencia found by the `where` argument doesn't exist, create a new Asistencia with this data.
+     * In case the Asistencias found by the `where` argument doesn't exist, create a new Asistencias with this data.
      */
-    create: XOR<AsistenciaCreateInput, AsistenciaUncheckedCreateInput>
+    create: XOR<AsistenciasCreateInput, AsistenciasUncheckedCreateInput>
     /**
-     * In case the Asistencia was found with the provided `where` argument, update it with this data.
+     * In case the Asistencias was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<AsistenciaUpdateInput, AsistenciaUncheckedUpdateInput>
+    update: XOR<AsistenciasUpdateInput, AsistenciasUncheckedUpdateInput>
   }
 
   /**
-   * Asistencia delete
+   * Asistencias delete
    */
-  export type AsistenciaDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AsistenciasDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Asistencia
+     * Select specific fields to fetch from the Asistencias
      */
-    select?: AsistenciaSelect<ExtArgs> | null
+    select?: AsistenciasSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Asistencia
+     * Omit specific fields from the Asistencias
      */
-    omit?: AsistenciaOmit<ExtArgs> | null
+    omit?: AsistenciasOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AsistenciaInclude<ExtArgs> | null
+    include?: AsistenciasInclude<ExtArgs> | null
     /**
-     * Filter which Asistencia to delete.
+     * Filter which Asistencias to delete.
      */
-    where: AsistenciaWhereUniqueInput
+    where: AsistenciasWhereUniqueInput
   }
 
   /**
-   * Asistencia deleteMany
+   * Asistencias deleteMany
    */
-  export type AsistenciaDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AsistenciasDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Filter which Asistencias to delete
      */
-    where?: AsistenciaWhereInput
+    where?: AsistenciasWhereInput
     /**
      * Limit how many Asistencias to delete.
      */
@@ -4953,57 +5187,45 @@ export namespace Prisma {
   }
 
   /**
-   * Asistencia without action
+   * Asistencias without action
    */
-  export type AsistenciaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AsistenciasDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Asistencia
+     * Select specific fields to fetch from the Asistencias
      */
-    select?: AsistenciaSelect<ExtArgs> | null
+    select?: AsistenciasSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Asistencia
+     * Omit specific fields from the Asistencias
      */
-    omit?: AsistenciaOmit<ExtArgs> | null
+    omit?: AsistenciasOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AsistenciaInclude<ExtArgs> | null
+    include?: AsistenciasInclude<ExtArgs> | null
   }
 
 
   /**
-   * Model UserDocente
+   * Model UsersDocentes
    */
 
-  export type AggregateUserDocente = {
-    _count: UserDocenteCountAggregateOutputType | null
-    _avg: UserDocenteAvgAggregateOutputType | null
-    _sum: UserDocenteSumAggregateOutputType | null
-    _min: UserDocenteMinAggregateOutputType | null
-    _max: UserDocenteMaxAggregateOutputType | null
+  export type AggregateUsersDocentes = {
+    _count: UsersDocentesCountAggregateOutputType | null
+    _avg: UsersDocentesAvgAggregateOutputType | null
+    _sum: UsersDocentesSumAggregateOutputType | null
+    _min: UsersDocentesMinAggregateOutputType | null
+    _max: UsersDocentesMaxAggregateOutputType | null
   }
 
-  export type UserDocenteAvgAggregateOutputType = {
+  export type UsersDocentesAvgAggregateOutputType = {
     id: number | null
   }
 
-  export type UserDocenteSumAggregateOutputType = {
+  export type UsersDocentesSumAggregateOutputType = {
     id: number | null
   }
 
-  export type UserDocenteMinAggregateOutputType = {
-    id: number | null
-    email: string | null
-    password: string | null
-    nombre: string | null
-    apellido: string | null
-    rol: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
-    deletedAt: Date | null
-  }
-
-  export type UserDocenteMaxAggregateOutputType = {
+  export type UsersDocentesMinAggregateOutputType = {
     id: number | null
     email: string | null
     password: string | null
@@ -5015,7 +5237,19 @@ export namespace Prisma {
     deletedAt: Date | null
   }
 
-  export type UserDocenteCountAggregateOutputType = {
+  export type UsersDocentesMaxAggregateOutputType = {
+    id: number | null
+    email: string | null
+    password: string | null
+    nombre: string | null
+    apellido: string | null
+    rol: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    deletedAt: Date | null
+  }
+
+  export type UsersDocentesCountAggregateOutputType = {
     id: number
     email: number
     password: number
@@ -5029,27 +5263,15 @@ export namespace Prisma {
   }
 
 
-  export type UserDocenteAvgAggregateInputType = {
+  export type UsersDocentesAvgAggregateInputType = {
     id?: true
   }
 
-  export type UserDocenteSumAggregateInputType = {
+  export type UsersDocentesSumAggregateInputType = {
     id?: true
   }
 
-  export type UserDocenteMinAggregateInputType = {
-    id?: true
-    email?: true
-    password?: true
-    nombre?: true
-    apellido?: true
-    rol?: true
-    createdAt?: true
-    updatedAt?: true
-    deletedAt?: true
-  }
-
-  export type UserDocenteMaxAggregateInputType = {
+  export type UsersDocentesMinAggregateInputType = {
     id?: true
     email?: true
     password?: true
@@ -5061,7 +5283,19 @@ export namespace Prisma {
     deletedAt?: true
   }
 
-  export type UserDocenteCountAggregateInputType = {
+  export type UsersDocentesMaxAggregateInputType = {
+    id?: true
+    email?: true
+    password?: true
+    nombre?: true
+    apellido?: true
+    rol?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+  }
+
+  export type UsersDocentesCountAggregateInputType = {
     id?: true
     email?: true
     password?: true
@@ -5074,93 +5308,93 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type UserDocenteAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UsersDocentesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which UserDocente to aggregate.
+     * Filter which UsersDocentes to aggregate.
      */
-    where?: UserDocenteWhereInput
+    where?: UsersDocentesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserDocentes to fetch.
+     * Determine the order of UsersDocentes to fetch.
      */
-    orderBy?: UserDocenteOrderByWithRelationInput | UserDocenteOrderByWithRelationInput[]
+    orderBy?: UsersDocentesOrderByWithRelationInput | UsersDocentesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: UserDocenteWhereUniqueInput
+    cursor?: UsersDocentesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserDocentes from the position of the cursor.
+     * Take `±n` UsersDocentes from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserDocentes.
+     * Skip the first `n` UsersDocentes.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned UserDocentes
+     * Count returned UsersDocentes
     **/
-    _count?: true | UserDocenteCountAggregateInputType
+    _count?: true | UsersDocentesCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: UserDocenteAvgAggregateInputType
+    _avg?: UsersDocentesAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: UserDocenteSumAggregateInputType
+    _sum?: UsersDocentesSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: UserDocenteMinAggregateInputType
+    _min?: UsersDocentesMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: UserDocenteMaxAggregateInputType
+    _max?: UsersDocentesMaxAggregateInputType
   }
 
-  export type GetUserDocenteAggregateType<T extends UserDocenteAggregateArgs> = {
-        [P in keyof T & keyof AggregateUserDocente]: P extends '_count' | 'count'
+  export type GetUsersDocentesAggregateType<T extends UsersDocentesAggregateArgs> = {
+        [P in keyof T & keyof AggregateUsersDocentes]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateUserDocente[P]>
-      : GetScalarType<T[P], AggregateUserDocente[P]>
+        : GetScalarType<T[P], AggregateUsersDocentes[P]>
+      : GetScalarType<T[P], AggregateUsersDocentes[P]>
   }
 
 
 
 
-  export type UserDocenteGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserDocenteWhereInput
-    orderBy?: UserDocenteOrderByWithAggregationInput | UserDocenteOrderByWithAggregationInput[]
-    by: UserDocenteScalarFieldEnum[] | UserDocenteScalarFieldEnum
-    having?: UserDocenteScalarWhereWithAggregatesInput
+  export type UsersDocentesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UsersDocentesWhereInput
+    orderBy?: UsersDocentesOrderByWithAggregationInput | UsersDocentesOrderByWithAggregationInput[]
+    by: UsersDocentesScalarFieldEnum[] | UsersDocentesScalarFieldEnum
+    having?: UsersDocentesScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: UserDocenteCountAggregateInputType | true
-    _avg?: UserDocenteAvgAggregateInputType
-    _sum?: UserDocenteSumAggregateInputType
-    _min?: UserDocenteMinAggregateInputType
-    _max?: UserDocenteMaxAggregateInputType
+    _count?: UsersDocentesCountAggregateInputType | true
+    _avg?: UsersDocentesAvgAggregateInputType
+    _sum?: UsersDocentesSumAggregateInputType
+    _min?: UsersDocentesMinAggregateInputType
+    _max?: UsersDocentesMaxAggregateInputType
   }
 
-  export type UserDocenteGroupByOutputType = {
+  export type UsersDocentesGroupByOutputType = {
     id: number
     email: string
     password: string
@@ -5170,28 +5404,28 @@ export namespace Prisma {
     createdAt: Date
     updatedAt: Date | null
     deletedAt: Date | null
-    _count: UserDocenteCountAggregateOutputType | null
-    _avg: UserDocenteAvgAggregateOutputType | null
-    _sum: UserDocenteSumAggregateOutputType | null
-    _min: UserDocenteMinAggregateOutputType | null
-    _max: UserDocenteMaxAggregateOutputType | null
+    _count: UsersDocentesCountAggregateOutputType | null
+    _avg: UsersDocentesAvgAggregateOutputType | null
+    _sum: UsersDocentesSumAggregateOutputType | null
+    _min: UsersDocentesMinAggregateOutputType | null
+    _max: UsersDocentesMaxAggregateOutputType | null
   }
 
-  type GetUserDocenteGroupByPayload<T extends UserDocenteGroupByArgs> = Prisma.PrismaPromise<
+  type GetUsersDocentesGroupByPayload<T extends UsersDocentesGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<UserDocenteGroupByOutputType, T['by']> &
+      PickEnumerable<UsersDocentesGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof UserDocenteGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof UsersDocentesGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], UserDocenteGroupByOutputType[P]>
-            : GetScalarType<T[P], UserDocenteGroupByOutputType[P]>
+              : GetScalarType<T[P], UsersDocentesGroupByOutputType[P]>
+            : GetScalarType<T[P], UsersDocentesGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type UserDocenteSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type UsersDocentesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     email?: boolean
     password?: boolean
@@ -5201,11 +5435,11 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
-    Materia?: boolean | UserDocente$MateriaArgs<ExtArgs>
-    _count?: boolean | UserDocenteCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["userDocente"]>
+    Materias?: boolean | UsersDocentes$MateriasArgs<ExtArgs>
+    _count?: boolean | UsersDocentesCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["usersDocentes"]>
 
-  export type UserDocenteSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type UsersDocentesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     email?: boolean
     password?: boolean
@@ -5215,9 +5449,9 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
-  }, ExtArgs["result"]["userDocente"]>
+  }, ExtArgs["result"]["usersDocentes"]>
 
-  export type UserDocenteSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type UsersDocentesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     email?: boolean
     password?: boolean
@@ -5227,9 +5461,9 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
-  }, ExtArgs["result"]["userDocente"]>
+  }, ExtArgs["result"]["usersDocentes"]>
 
-  export type UserDocenteSelectScalar = {
+  export type UsersDocentesSelectScalar = {
     id?: boolean
     email?: boolean
     password?: boolean
@@ -5241,18 +5475,18 @@ export namespace Prisma {
     deletedAt?: boolean
   }
 
-  export type UserDocenteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "nombre" | "apellido" | "rol" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["userDocente"]>
-  export type UserDocenteInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Materia?: boolean | UserDocente$MateriaArgs<ExtArgs>
-    _count?: boolean | UserDocenteCountOutputTypeDefaultArgs<ExtArgs>
+  export type UsersDocentesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "password" | "nombre" | "apellido" | "rol" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["usersDocentes"]>
+  export type UsersDocentesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Materias?: boolean | UsersDocentes$MateriasArgs<ExtArgs>
+    _count?: boolean | UsersDocentesCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type UserDocenteIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type UserDocenteIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type UsersDocentesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type UsersDocentesIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
-  export type $UserDocentePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "UserDocente"
+  export type $UsersDocentesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "UsersDocentes"
     objects: {
-      Materia: Prisma.$MateriaPayload<ExtArgs>[]
+      Materias: Prisma.$MateriasPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -5264,136 +5498,136 @@ export namespace Prisma {
       createdAt: Date
       updatedAt: Date | null
       deletedAt: Date | null
-    }, ExtArgs["result"]["userDocente"]>
+    }, ExtArgs["result"]["usersDocentes"]>
     composites: {}
   }
 
-  type UserDocenteGetPayload<S extends boolean | null | undefined | UserDocenteDefaultArgs> = $Result.GetResult<Prisma.$UserDocentePayload, S>
+  type UsersDocentesGetPayload<S extends boolean | null | undefined | UsersDocentesDefaultArgs> = $Result.GetResult<Prisma.$UsersDocentesPayload, S>
 
-  type UserDocenteCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<UserDocenteFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: UserDocenteCountAggregateInputType | true
+  type UsersDocentesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<UsersDocentesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: UsersDocentesCountAggregateInputType | true
     }
 
-  export interface UserDocenteDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UserDocente'], meta: { name: 'UserDocente' } }
+  export interface UsersDocentesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UsersDocentes'], meta: { name: 'UsersDocentes' } }
     /**
-     * Find zero or one UserDocente that matches the filter.
-     * @param {UserDocenteFindUniqueArgs} args - Arguments to find a UserDocente
+     * Find zero or one UsersDocentes that matches the filter.
+     * @param {UsersDocentesFindUniqueArgs} args - Arguments to find a UsersDocentes
      * @example
-     * // Get one UserDocente
-     * const userDocente = await prisma.userDocente.findUnique({
+     * // Get one UsersDocentes
+     * const usersDocentes = await prisma.usersDocentes.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends UserDocenteFindUniqueArgs>(args: SelectSubset<T, UserDocenteFindUniqueArgs<ExtArgs>>): Prisma__UserDocenteClient<$Result.GetResult<Prisma.$UserDocentePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends UsersDocentesFindUniqueArgs>(args: SelectSubset<T, UsersDocentesFindUniqueArgs<ExtArgs>>): Prisma__UsersDocentesClient<$Result.GetResult<Prisma.$UsersDocentesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one UserDocente that matches the filter or throw an error with `error.code='P2025'`
+     * Find one UsersDocentes that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {UserDocenteFindUniqueOrThrowArgs} args - Arguments to find a UserDocente
+     * @param {UsersDocentesFindUniqueOrThrowArgs} args - Arguments to find a UsersDocentes
      * @example
-     * // Get one UserDocente
-     * const userDocente = await prisma.userDocente.findUniqueOrThrow({
+     * // Get one UsersDocentes
+     * const usersDocentes = await prisma.usersDocentes.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends UserDocenteFindUniqueOrThrowArgs>(args: SelectSubset<T, UserDocenteFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserDocenteClient<$Result.GetResult<Prisma.$UserDocentePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends UsersDocentesFindUniqueOrThrowArgs>(args: SelectSubset<T, UsersDocentesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UsersDocentesClient<$Result.GetResult<Prisma.$UsersDocentesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first UserDocente that matches the filter.
+     * Find the first UsersDocentes that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserDocenteFindFirstArgs} args - Arguments to find a UserDocente
+     * @param {UsersDocentesFindFirstArgs} args - Arguments to find a UsersDocentes
      * @example
-     * // Get one UserDocente
-     * const userDocente = await prisma.userDocente.findFirst({
+     * // Get one UsersDocentes
+     * const usersDocentes = await prisma.usersDocentes.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends UserDocenteFindFirstArgs>(args?: SelectSubset<T, UserDocenteFindFirstArgs<ExtArgs>>): Prisma__UserDocenteClient<$Result.GetResult<Prisma.$UserDocentePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends UsersDocentesFindFirstArgs>(args?: SelectSubset<T, UsersDocentesFindFirstArgs<ExtArgs>>): Prisma__UsersDocentesClient<$Result.GetResult<Prisma.$UsersDocentesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first UserDocente that matches the filter or
+     * Find the first UsersDocentes that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserDocenteFindFirstOrThrowArgs} args - Arguments to find a UserDocente
+     * @param {UsersDocentesFindFirstOrThrowArgs} args - Arguments to find a UsersDocentes
      * @example
-     * // Get one UserDocente
-     * const userDocente = await prisma.userDocente.findFirstOrThrow({
+     * // Get one UsersDocentes
+     * const usersDocentes = await prisma.usersDocentes.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends UserDocenteFindFirstOrThrowArgs>(args?: SelectSubset<T, UserDocenteFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserDocenteClient<$Result.GetResult<Prisma.$UserDocentePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends UsersDocentesFindFirstOrThrowArgs>(args?: SelectSubset<T, UsersDocentesFindFirstOrThrowArgs<ExtArgs>>): Prisma__UsersDocentesClient<$Result.GetResult<Prisma.$UsersDocentesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more UserDocentes that matches the filter.
+     * Find zero or more UsersDocentes that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserDocenteFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {UsersDocentesFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all UserDocentes
-     * const userDocentes = await prisma.userDocente.findMany()
+     * // Get all UsersDocentes
+     * const usersDocentes = await prisma.usersDocentes.findMany()
      * 
-     * // Get first 10 UserDocentes
-     * const userDocentes = await prisma.userDocente.findMany({ take: 10 })
+     * // Get first 10 UsersDocentes
+     * const usersDocentes = await prisma.usersDocentes.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const userDocenteWithIdOnly = await prisma.userDocente.findMany({ select: { id: true } })
+     * const usersDocentesWithIdOnly = await prisma.usersDocentes.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends UserDocenteFindManyArgs>(args?: SelectSubset<T, UserDocenteFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserDocentePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends UsersDocentesFindManyArgs>(args?: SelectSubset<T, UsersDocentesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UsersDocentesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a UserDocente.
-     * @param {UserDocenteCreateArgs} args - Arguments to create a UserDocente.
+     * Create a UsersDocentes.
+     * @param {UsersDocentesCreateArgs} args - Arguments to create a UsersDocentes.
      * @example
-     * // Create one UserDocente
-     * const UserDocente = await prisma.userDocente.create({
+     * // Create one UsersDocentes
+     * const UsersDocentes = await prisma.usersDocentes.create({
      *   data: {
-     *     // ... data to create a UserDocente
+     *     // ... data to create a UsersDocentes
      *   }
      * })
      * 
      */
-    create<T extends UserDocenteCreateArgs>(args: SelectSubset<T, UserDocenteCreateArgs<ExtArgs>>): Prisma__UserDocenteClient<$Result.GetResult<Prisma.$UserDocentePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends UsersDocentesCreateArgs>(args: SelectSubset<T, UsersDocentesCreateArgs<ExtArgs>>): Prisma__UsersDocentesClient<$Result.GetResult<Prisma.$UsersDocentesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many UserDocentes.
-     * @param {UserDocenteCreateManyArgs} args - Arguments to create many UserDocentes.
+     * Create many UsersDocentes.
+     * @param {UsersDocentesCreateManyArgs} args - Arguments to create many UsersDocentes.
      * @example
-     * // Create many UserDocentes
-     * const userDocente = await prisma.userDocente.createMany({
+     * // Create many UsersDocentes
+     * const usersDocentes = await prisma.usersDocentes.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends UserDocenteCreateManyArgs>(args?: SelectSubset<T, UserDocenteCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends UsersDocentesCreateManyArgs>(args?: SelectSubset<T, UsersDocentesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many UserDocentes and returns the data saved in the database.
-     * @param {UserDocenteCreateManyAndReturnArgs} args - Arguments to create many UserDocentes.
+     * Create many UsersDocentes and returns the data saved in the database.
+     * @param {UsersDocentesCreateManyAndReturnArgs} args - Arguments to create many UsersDocentes.
      * @example
-     * // Create many UserDocentes
-     * const userDocente = await prisma.userDocente.createManyAndReturn({
+     * // Create many UsersDocentes
+     * const usersDocentes = await prisma.usersDocentes.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many UserDocentes and only return the `id`
-     * const userDocenteWithIdOnly = await prisma.userDocente.createManyAndReturn({
+     * // Create many UsersDocentes and only return the `id`
+     * const usersDocentesWithIdOnly = await prisma.usersDocentes.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -5403,28 +5637,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends UserDocenteCreateManyAndReturnArgs>(args?: SelectSubset<T, UserDocenteCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserDocentePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends UsersDocentesCreateManyAndReturnArgs>(args?: SelectSubset<T, UsersDocentesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UsersDocentesPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a UserDocente.
-     * @param {UserDocenteDeleteArgs} args - Arguments to delete one UserDocente.
+     * Delete a UsersDocentes.
+     * @param {UsersDocentesDeleteArgs} args - Arguments to delete one UsersDocentes.
      * @example
-     * // Delete one UserDocente
-     * const UserDocente = await prisma.userDocente.delete({
+     * // Delete one UsersDocentes
+     * const UsersDocentes = await prisma.usersDocentes.delete({
      *   where: {
-     *     // ... filter to delete one UserDocente
+     *     // ... filter to delete one UsersDocentes
      *   }
      * })
      * 
      */
-    delete<T extends UserDocenteDeleteArgs>(args: SelectSubset<T, UserDocenteDeleteArgs<ExtArgs>>): Prisma__UserDocenteClient<$Result.GetResult<Prisma.$UserDocentePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends UsersDocentesDeleteArgs>(args: SelectSubset<T, UsersDocentesDeleteArgs<ExtArgs>>): Prisma__UsersDocentesClient<$Result.GetResult<Prisma.$UsersDocentesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one UserDocente.
-     * @param {UserDocenteUpdateArgs} args - Arguments to update one UserDocente.
+     * Update one UsersDocentes.
+     * @param {UsersDocentesUpdateArgs} args - Arguments to update one UsersDocentes.
      * @example
-     * // Update one UserDocente
-     * const userDocente = await prisma.userDocente.update({
+     * // Update one UsersDocentes
+     * const usersDocentes = await prisma.usersDocentes.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -5434,30 +5668,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends UserDocenteUpdateArgs>(args: SelectSubset<T, UserDocenteUpdateArgs<ExtArgs>>): Prisma__UserDocenteClient<$Result.GetResult<Prisma.$UserDocentePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends UsersDocentesUpdateArgs>(args: SelectSubset<T, UsersDocentesUpdateArgs<ExtArgs>>): Prisma__UsersDocentesClient<$Result.GetResult<Prisma.$UsersDocentesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more UserDocentes.
-     * @param {UserDocenteDeleteManyArgs} args - Arguments to filter UserDocentes to delete.
+     * Delete zero or more UsersDocentes.
+     * @param {UsersDocentesDeleteManyArgs} args - Arguments to filter UsersDocentes to delete.
      * @example
-     * // Delete a few UserDocentes
-     * const { count } = await prisma.userDocente.deleteMany({
+     * // Delete a few UsersDocentes
+     * const { count } = await prisma.usersDocentes.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends UserDocenteDeleteManyArgs>(args?: SelectSubset<T, UserDocenteDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends UsersDocentesDeleteManyArgs>(args?: SelectSubset<T, UsersDocentesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more UserDocentes.
+     * Update zero or more UsersDocentes.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserDocenteUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {UsersDocentesUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many UserDocentes
-     * const userDocente = await prisma.userDocente.updateMany({
+     * // Update many UsersDocentes
+     * const usersDocentes = await prisma.usersDocentes.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -5467,14 +5701,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends UserDocenteUpdateManyArgs>(args: SelectSubset<T, UserDocenteUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends UsersDocentesUpdateManyArgs>(args: SelectSubset<T, UsersDocentesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more UserDocentes and returns the data updated in the database.
-     * @param {UserDocenteUpdateManyAndReturnArgs} args - Arguments to update many UserDocentes.
+     * Update zero or more UsersDocentes and returns the data updated in the database.
+     * @param {UsersDocentesUpdateManyAndReturnArgs} args - Arguments to update many UsersDocentes.
      * @example
-     * // Update many UserDocentes
-     * const userDocente = await prisma.userDocente.updateManyAndReturn({
+     * // Update many UsersDocentes
+     * const usersDocentes = await prisma.usersDocentes.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -5483,8 +5717,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more UserDocentes and only return the `id`
-     * const userDocenteWithIdOnly = await prisma.userDocente.updateManyAndReturn({
+     * // Update zero or more UsersDocentes and only return the `id`
+     * const usersDocentesWithIdOnly = await prisma.usersDocentes.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -5497,56 +5731,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends UserDocenteUpdateManyAndReturnArgs>(args: SelectSubset<T, UserDocenteUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserDocentePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends UsersDocentesUpdateManyAndReturnArgs>(args: SelectSubset<T, UsersDocentesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UsersDocentesPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one UserDocente.
-     * @param {UserDocenteUpsertArgs} args - Arguments to update or create a UserDocente.
+     * Create or update one UsersDocentes.
+     * @param {UsersDocentesUpsertArgs} args - Arguments to update or create a UsersDocentes.
      * @example
-     * // Update or create a UserDocente
-     * const userDocente = await prisma.userDocente.upsert({
+     * // Update or create a UsersDocentes
+     * const usersDocentes = await prisma.usersDocentes.upsert({
      *   create: {
-     *     // ... data to create a UserDocente
+     *     // ... data to create a UsersDocentes
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the UserDocente we want to update
+     *     // ... the filter for the UsersDocentes we want to update
      *   }
      * })
      */
-    upsert<T extends UserDocenteUpsertArgs>(args: SelectSubset<T, UserDocenteUpsertArgs<ExtArgs>>): Prisma__UserDocenteClient<$Result.GetResult<Prisma.$UserDocentePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends UsersDocentesUpsertArgs>(args: SelectSubset<T, UsersDocentesUpsertArgs<ExtArgs>>): Prisma__UsersDocentesClient<$Result.GetResult<Prisma.$UsersDocentesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of UserDocentes.
+     * Count the number of UsersDocentes.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserDocenteCountArgs} args - Arguments to filter UserDocentes to count.
+     * @param {UsersDocentesCountArgs} args - Arguments to filter UsersDocentes to count.
      * @example
-     * // Count the number of UserDocentes
-     * const count = await prisma.userDocente.count({
+     * // Count the number of UsersDocentes
+     * const count = await prisma.usersDocentes.count({
      *   where: {
-     *     // ... the filter for the UserDocentes we want to count
+     *     // ... the filter for the UsersDocentes we want to count
      *   }
      * })
     **/
-    count<T extends UserDocenteCountArgs>(
-      args?: Subset<T, UserDocenteCountArgs>,
+    count<T extends UsersDocentesCountArgs>(
+      args?: Subset<T, UsersDocentesCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], UserDocenteCountAggregateOutputType>
+          : GetScalarType<T['select'], UsersDocentesCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a UserDocente.
+     * Allows you to perform aggregations operations on a UsersDocentes.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserDocenteAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {UsersDocentesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -5566,13 +5800,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends UserDocenteAggregateArgs>(args: Subset<T, UserDocenteAggregateArgs>): Prisma.PrismaPromise<GetUserDocenteAggregateType<T>>
+    aggregate<T extends UsersDocentesAggregateArgs>(args: Subset<T, UsersDocentesAggregateArgs>): Prisma.PrismaPromise<GetUsersDocentesAggregateType<T>>
 
     /**
-     * Group by UserDocente.
+     * Group by UsersDocentes.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserDocenteGroupByArgs} args - Group by arguments.
+     * @param {UsersDocentesGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -5587,14 +5821,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends UserDocenteGroupByArgs,
+      T extends UsersDocentesGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: UserDocenteGroupByArgs['orderBy'] }
-        : { orderBy?: UserDocenteGroupByArgs['orderBy'] },
+        ? { orderBy: UsersDocentesGroupByArgs['orderBy'] }
+        : { orderBy?: UsersDocentesGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -5643,22 +5877,22 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, UserDocenteGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserDocenteGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, UsersDocentesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUsersDocentesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the UserDocente model
+   * Fields of the UsersDocentes model
    */
-  readonly fields: UserDocenteFieldRefs;
+  readonly fields: UsersDocentesFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for UserDocente.
+   * The delegate class that acts as a "Promise-like" for UsersDocentes.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__UserDocenteClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__UsersDocentesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    Materia<T extends UserDocente$MateriaArgs<ExtArgs> = {}>(args?: Subset<T, UserDocente$MateriaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MateriaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    Materias<T extends UsersDocentes$MateriasArgs<ExtArgs> = {}>(args?: Subset<T, UsersDocentes$MateriasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MateriasPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5685,497 +5919,503 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the UserDocente model
+   * Fields of the UsersDocentes model
    */
-  interface UserDocenteFieldRefs {
-    readonly id: FieldRef<"UserDocente", 'Int'>
-    readonly email: FieldRef<"UserDocente", 'String'>
-    readonly password: FieldRef<"UserDocente", 'String'>
-    readonly nombre: FieldRef<"UserDocente", 'String'>
-    readonly apellido: FieldRef<"UserDocente", 'String'>
-    readonly rol: FieldRef<"UserDocente", 'String'>
-    readonly createdAt: FieldRef<"UserDocente", 'DateTime'>
-    readonly updatedAt: FieldRef<"UserDocente", 'DateTime'>
-    readonly deletedAt: FieldRef<"UserDocente", 'DateTime'>
+  interface UsersDocentesFieldRefs {
+    readonly id: FieldRef<"UsersDocentes", 'Int'>
+    readonly email: FieldRef<"UsersDocentes", 'String'>
+    readonly password: FieldRef<"UsersDocentes", 'String'>
+    readonly nombre: FieldRef<"UsersDocentes", 'String'>
+    readonly apellido: FieldRef<"UsersDocentes", 'String'>
+    readonly rol: FieldRef<"UsersDocentes", 'String'>
+    readonly createdAt: FieldRef<"UsersDocentes", 'DateTime'>
+    readonly updatedAt: FieldRef<"UsersDocentes", 'DateTime'>
+    readonly deletedAt: FieldRef<"UsersDocentes", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * UserDocente findUnique
+   * UsersDocentes findUnique
    */
-  export type UserDocenteFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UsersDocentesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserDocente
+     * Select specific fields to fetch from the UsersDocentes
      */
-    select?: UserDocenteSelect<ExtArgs> | null
+    select?: UsersDocentesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserDocente
+     * Omit specific fields from the UsersDocentes
      */
-    omit?: UserDocenteOmit<ExtArgs> | null
+    omit?: UsersDocentesOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserDocenteInclude<ExtArgs> | null
+    include?: UsersDocentesInclude<ExtArgs> | null
     /**
-     * Filter, which UserDocente to fetch.
+     * Filter, which UsersDocentes to fetch.
      */
-    where: UserDocenteWhereUniqueInput
+    where: UsersDocentesWhereUniqueInput
   }
 
   /**
-   * UserDocente findUniqueOrThrow
+   * UsersDocentes findUniqueOrThrow
    */
-  export type UserDocenteFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UsersDocentesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserDocente
+     * Select specific fields to fetch from the UsersDocentes
      */
-    select?: UserDocenteSelect<ExtArgs> | null
+    select?: UsersDocentesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserDocente
+     * Omit specific fields from the UsersDocentes
      */
-    omit?: UserDocenteOmit<ExtArgs> | null
+    omit?: UsersDocentesOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserDocenteInclude<ExtArgs> | null
+    include?: UsersDocentesInclude<ExtArgs> | null
     /**
-     * Filter, which UserDocente to fetch.
+     * Filter, which UsersDocentes to fetch.
      */
-    where: UserDocenteWhereUniqueInput
+    where: UsersDocentesWhereUniqueInput
   }
 
   /**
-   * UserDocente findFirst
+   * UsersDocentes findFirst
    */
-  export type UserDocenteFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UsersDocentesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserDocente
+     * Select specific fields to fetch from the UsersDocentes
      */
-    select?: UserDocenteSelect<ExtArgs> | null
+    select?: UsersDocentesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserDocente
+     * Omit specific fields from the UsersDocentes
      */
-    omit?: UserDocenteOmit<ExtArgs> | null
+    omit?: UsersDocentesOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserDocenteInclude<ExtArgs> | null
+    include?: UsersDocentesInclude<ExtArgs> | null
     /**
-     * Filter, which UserDocente to fetch.
+     * Filter, which UsersDocentes to fetch.
      */
-    where?: UserDocenteWhereInput
+    where?: UsersDocentesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserDocentes to fetch.
+     * Determine the order of UsersDocentes to fetch.
      */
-    orderBy?: UserDocenteOrderByWithRelationInput | UserDocenteOrderByWithRelationInput[]
+    orderBy?: UsersDocentesOrderByWithRelationInput | UsersDocentesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for UserDocentes.
+     * Sets the position for searching for UsersDocentes.
      */
-    cursor?: UserDocenteWhereUniqueInput
+    cursor?: UsersDocentesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserDocentes from the position of the cursor.
+     * Take `±n` UsersDocentes from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserDocentes.
+     * Skip the first `n` UsersDocentes.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of UserDocentes.
+     * Filter by unique combinations of UsersDocentes.
      */
-    distinct?: UserDocenteScalarFieldEnum | UserDocenteScalarFieldEnum[]
+    distinct?: UsersDocentesScalarFieldEnum | UsersDocentesScalarFieldEnum[]
   }
 
   /**
-   * UserDocente findFirstOrThrow
+   * UsersDocentes findFirstOrThrow
    */
-  export type UserDocenteFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UsersDocentesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserDocente
+     * Select specific fields to fetch from the UsersDocentes
      */
-    select?: UserDocenteSelect<ExtArgs> | null
+    select?: UsersDocentesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserDocente
+     * Omit specific fields from the UsersDocentes
      */
-    omit?: UserDocenteOmit<ExtArgs> | null
+    omit?: UsersDocentesOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserDocenteInclude<ExtArgs> | null
+    include?: UsersDocentesInclude<ExtArgs> | null
     /**
-     * Filter, which UserDocente to fetch.
+     * Filter, which UsersDocentes to fetch.
      */
-    where?: UserDocenteWhereInput
+    where?: UsersDocentesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserDocentes to fetch.
+     * Determine the order of UsersDocentes to fetch.
      */
-    orderBy?: UserDocenteOrderByWithRelationInput | UserDocenteOrderByWithRelationInput[]
+    orderBy?: UsersDocentesOrderByWithRelationInput | UsersDocentesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for UserDocentes.
+     * Sets the position for searching for UsersDocentes.
      */
-    cursor?: UserDocenteWhereUniqueInput
+    cursor?: UsersDocentesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserDocentes from the position of the cursor.
+     * Take `±n` UsersDocentes from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserDocentes.
+     * Skip the first `n` UsersDocentes.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of UserDocentes.
+     * Filter by unique combinations of UsersDocentes.
      */
-    distinct?: UserDocenteScalarFieldEnum | UserDocenteScalarFieldEnum[]
+    distinct?: UsersDocentesScalarFieldEnum | UsersDocentesScalarFieldEnum[]
   }
 
   /**
-   * UserDocente findMany
+   * UsersDocentes findMany
    */
-  export type UserDocenteFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UsersDocentesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserDocente
+     * Select specific fields to fetch from the UsersDocentes
      */
-    select?: UserDocenteSelect<ExtArgs> | null
+    select?: UsersDocentesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserDocente
+     * Omit specific fields from the UsersDocentes
      */
-    omit?: UserDocenteOmit<ExtArgs> | null
+    omit?: UsersDocentesOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserDocenteInclude<ExtArgs> | null
+    include?: UsersDocentesInclude<ExtArgs> | null
     /**
-     * Filter, which UserDocentes to fetch.
+     * Filter, which UsersDocentes to fetch.
      */
-    where?: UserDocenteWhereInput
+    where?: UsersDocentesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserDocentes to fetch.
+     * Determine the order of UsersDocentes to fetch.
      */
-    orderBy?: UserDocenteOrderByWithRelationInput | UserDocenteOrderByWithRelationInput[]
+    orderBy?: UsersDocentesOrderByWithRelationInput | UsersDocentesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing UserDocentes.
+     * Sets the position for listing UsersDocentes.
      */
-    cursor?: UserDocenteWhereUniqueInput
+    cursor?: UsersDocentesWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserDocentes from the position of the cursor.
+     * Take `±n` UsersDocentes from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserDocentes.
+     * Skip the first `n` UsersDocentes.
      */
     skip?: number
-    distinct?: UserDocenteScalarFieldEnum | UserDocenteScalarFieldEnum[]
+    distinct?: UsersDocentesScalarFieldEnum | UsersDocentesScalarFieldEnum[]
   }
 
   /**
-   * UserDocente create
+   * UsersDocentes create
    */
-  export type UserDocenteCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UsersDocentesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserDocente
+     * Select specific fields to fetch from the UsersDocentes
      */
-    select?: UserDocenteSelect<ExtArgs> | null
+    select?: UsersDocentesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserDocente
+     * Omit specific fields from the UsersDocentes
      */
-    omit?: UserDocenteOmit<ExtArgs> | null
+    omit?: UsersDocentesOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserDocenteInclude<ExtArgs> | null
+    include?: UsersDocentesInclude<ExtArgs> | null
     /**
-     * The data needed to create a UserDocente.
+     * The data needed to create a UsersDocentes.
      */
-    data: XOR<UserDocenteCreateInput, UserDocenteUncheckedCreateInput>
+    data: XOR<UsersDocentesCreateInput, UsersDocentesUncheckedCreateInput>
   }
 
   /**
-   * UserDocente createMany
+   * UsersDocentes createMany
    */
-  export type UserDocenteCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UsersDocentesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many UserDocentes.
+     * The data used to create many UsersDocentes.
      */
-    data: UserDocenteCreateManyInput | UserDocenteCreateManyInput[]
+    data: UsersDocentesCreateManyInput | UsersDocentesCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * UserDocente createManyAndReturn
+   * UsersDocentes createManyAndReturn
    */
-  export type UserDocenteCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UsersDocentesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserDocente
+     * Select specific fields to fetch from the UsersDocentes
      */
-    select?: UserDocenteSelectCreateManyAndReturn<ExtArgs> | null
+    select?: UsersDocentesSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the UserDocente
+     * Omit specific fields from the UsersDocentes
      */
-    omit?: UserDocenteOmit<ExtArgs> | null
+    omit?: UsersDocentesOmit<ExtArgs> | null
     /**
-     * The data used to create many UserDocentes.
+     * The data used to create many UsersDocentes.
      */
-    data: UserDocenteCreateManyInput | UserDocenteCreateManyInput[]
+    data: UsersDocentesCreateManyInput | UsersDocentesCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * UserDocente update
+   * UsersDocentes update
    */
-  export type UserDocenteUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UsersDocentesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserDocente
+     * Select specific fields to fetch from the UsersDocentes
      */
-    select?: UserDocenteSelect<ExtArgs> | null
+    select?: UsersDocentesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserDocente
+     * Omit specific fields from the UsersDocentes
      */
-    omit?: UserDocenteOmit<ExtArgs> | null
+    omit?: UsersDocentesOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserDocenteInclude<ExtArgs> | null
+    include?: UsersDocentesInclude<ExtArgs> | null
     /**
-     * The data needed to update a UserDocente.
+     * The data needed to update a UsersDocentes.
      */
-    data: XOR<UserDocenteUpdateInput, UserDocenteUncheckedUpdateInput>
+    data: XOR<UsersDocentesUpdateInput, UsersDocentesUncheckedUpdateInput>
     /**
-     * Choose, which UserDocente to update.
+     * Choose, which UsersDocentes to update.
      */
-    where: UserDocenteWhereUniqueInput
+    where: UsersDocentesWhereUniqueInput
   }
 
   /**
-   * UserDocente updateMany
+   * UsersDocentes updateMany
    */
-  export type UserDocenteUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UsersDocentesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update UserDocentes.
+     * The data used to update UsersDocentes.
      */
-    data: XOR<UserDocenteUpdateManyMutationInput, UserDocenteUncheckedUpdateManyInput>
+    data: XOR<UsersDocentesUpdateManyMutationInput, UsersDocentesUncheckedUpdateManyInput>
     /**
-     * Filter which UserDocentes to update
+     * Filter which UsersDocentes to update
      */
-    where?: UserDocenteWhereInput
+    where?: UsersDocentesWhereInput
     /**
-     * Limit how many UserDocentes to update.
+     * Limit how many UsersDocentes to update.
      */
     limit?: number
   }
 
   /**
-   * UserDocente updateManyAndReturn
+   * UsersDocentes updateManyAndReturn
    */
-  export type UserDocenteUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UsersDocentesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserDocente
+     * Select specific fields to fetch from the UsersDocentes
      */
-    select?: UserDocenteSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: UsersDocentesSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the UserDocente
+     * Omit specific fields from the UsersDocentes
      */
-    omit?: UserDocenteOmit<ExtArgs> | null
+    omit?: UsersDocentesOmit<ExtArgs> | null
     /**
-     * The data used to update UserDocentes.
+     * The data used to update UsersDocentes.
      */
-    data: XOR<UserDocenteUpdateManyMutationInput, UserDocenteUncheckedUpdateManyInput>
+    data: XOR<UsersDocentesUpdateManyMutationInput, UsersDocentesUncheckedUpdateManyInput>
     /**
-     * Filter which UserDocentes to update
+     * Filter which UsersDocentes to update
      */
-    where?: UserDocenteWhereInput
+    where?: UsersDocentesWhereInput
     /**
-     * Limit how many UserDocentes to update.
+     * Limit how many UsersDocentes to update.
      */
     limit?: number
   }
 
   /**
-   * UserDocente upsert
+   * UsersDocentes upsert
    */
-  export type UserDocenteUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UsersDocentesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserDocente
+     * Select specific fields to fetch from the UsersDocentes
      */
-    select?: UserDocenteSelect<ExtArgs> | null
+    select?: UsersDocentesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserDocente
+     * Omit specific fields from the UsersDocentes
      */
-    omit?: UserDocenteOmit<ExtArgs> | null
+    omit?: UsersDocentesOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserDocenteInclude<ExtArgs> | null
+    include?: UsersDocentesInclude<ExtArgs> | null
     /**
-     * The filter to search for the UserDocente to update in case it exists.
+     * The filter to search for the UsersDocentes to update in case it exists.
      */
-    where: UserDocenteWhereUniqueInput
+    where: UsersDocentesWhereUniqueInput
     /**
-     * In case the UserDocente found by the `where` argument doesn't exist, create a new UserDocente with this data.
+     * In case the UsersDocentes found by the `where` argument doesn't exist, create a new UsersDocentes with this data.
      */
-    create: XOR<UserDocenteCreateInput, UserDocenteUncheckedCreateInput>
+    create: XOR<UsersDocentesCreateInput, UsersDocentesUncheckedCreateInput>
     /**
-     * In case the UserDocente was found with the provided `where` argument, update it with this data.
+     * In case the UsersDocentes was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<UserDocenteUpdateInput, UserDocenteUncheckedUpdateInput>
+    update: XOR<UsersDocentesUpdateInput, UsersDocentesUncheckedUpdateInput>
   }
 
   /**
-   * UserDocente delete
+   * UsersDocentes delete
    */
-  export type UserDocenteDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UsersDocentesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserDocente
+     * Select specific fields to fetch from the UsersDocentes
      */
-    select?: UserDocenteSelect<ExtArgs> | null
+    select?: UsersDocentesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserDocente
+     * Omit specific fields from the UsersDocentes
      */
-    omit?: UserDocenteOmit<ExtArgs> | null
+    omit?: UsersDocentesOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserDocenteInclude<ExtArgs> | null
+    include?: UsersDocentesInclude<ExtArgs> | null
     /**
-     * Filter which UserDocente to delete.
+     * Filter which UsersDocentes to delete.
      */
-    where: UserDocenteWhereUniqueInput
+    where: UsersDocentesWhereUniqueInput
   }
 
   /**
-   * UserDocente deleteMany
+   * UsersDocentes deleteMany
    */
-  export type UserDocenteDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UsersDocentesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which UserDocentes to delete
+     * Filter which UsersDocentes to delete
      */
-    where?: UserDocenteWhereInput
+    where?: UsersDocentesWhereInput
     /**
-     * Limit how many UserDocentes to delete.
+     * Limit how many UsersDocentes to delete.
      */
     limit?: number
   }
 
   /**
-   * UserDocente.Materia
+   * UsersDocentes.Materias
    */
-  export type UserDocente$MateriaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UsersDocentes$MateriasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Materia
+     * Select specific fields to fetch from the Materias
      */
-    select?: MateriaSelect<ExtArgs> | null
+    select?: MateriasSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Materia
+     * Omit specific fields from the Materias
      */
-    omit?: MateriaOmit<ExtArgs> | null
+    omit?: MateriasOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MateriaInclude<ExtArgs> | null
-    where?: MateriaWhereInput
-    orderBy?: MateriaOrderByWithRelationInput | MateriaOrderByWithRelationInput[]
-    cursor?: MateriaWhereUniqueInput
+    include?: MateriasInclude<ExtArgs> | null
+    where?: MateriasWhereInput
+    orderBy?: MateriasOrderByWithRelationInput | MateriasOrderByWithRelationInput[]
+    cursor?: MateriasWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: MateriaScalarFieldEnum | MateriaScalarFieldEnum[]
+    distinct?: MateriasScalarFieldEnum | MateriasScalarFieldEnum[]
   }
 
   /**
-   * UserDocente without action
+   * UsersDocentes without action
    */
-  export type UserDocenteDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UsersDocentesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserDocente
+     * Select specific fields to fetch from the UsersDocentes
      */
-    select?: UserDocenteSelect<ExtArgs> | null
+    select?: UsersDocentesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserDocente
+     * Omit specific fields from the UsersDocentes
      */
-    omit?: UserDocenteOmit<ExtArgs> | null
+    omit?: UsersDocentesOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserDocenteInclude<ExtArgs> | null
+    include?: UsersDocentesInclude<ExtArgs> | null
   }
 
 
   /**
-   * Model Materia
+   * Model Materias
    */
 
-  export type AggregateMateria = {
-    _count: MateriaCountAggregateOutputType | null
-    _avg: MateriaAvgAggregateOutputType | null
-    _sum: MateriaSumAggregateOutputType | null
-    _min: MateriaMinAggregateOutputType | null
-    _max: MateriaMaxAggregateOutputType | null
+  export type AggregateMaterias = {
+    _count: MateriasCountAggregateOutputType | null
+    _avg: MateriasAvgAggregateOutputType | null
+    _sum: MateriasSumAggregateOutputType | null
+    _min: MateriasMinAggregateOutputType | null
+    _max: MateriasMaxAggregateOutputType | null
   }
 
-  export type MateriaAvgAggregateOutputType = {
+  export type MateriasAvgAggregateOutputType = {
     id: number | null
     idUserDocente: number | null
     idCurso: number | null
   }
 
-  export type MateriaSumAggregateOutputType = {
+  export type MateriasSumAggregateOutputType = {
     id: number | null
     idUserDocente: number | null
     idCurso: number | null
   }
 
-  export type MateriaMinAggregateOutputType = {
+  export type MateriasMinAggregateOutputType = {
     id: number | null
     nombre: string | null
     idUserDocente: number | null
     idCurso: number | null
+    fechaInicio: Date | null
+    fechaFin: Date | null
     createdAt: Date | null
     updatedAt: Date | null
     deletedAt: Date | null
   }
 
-  export type MateriaMaxAggregateOutputType = {
+  export type MateriasMaxAggregateOutputType = {
     id: number | null
     nombre: string | null
     idUserDocente: number | null
     idCurso: number | null
+    fechaInicio: Date | null
+    fechaFin: Date | null
     createdAt: Date | null
     updatedAt: Date | null
     deletedAt: Date | null
   }
 
-  export type MateriaCountAggregateOutputType = {
+  export type MateriasCountAggregateOutputType = {
     id: number
     nombre: number
     idUserDocente: number
     idCurso: number
+    fechaInicio: number
+    fechaFin: number
     createdAt: number
     updatedAt: number
     deletedAt: number
@@ -6183,66 +6423,72 @@ export namespace Prisma {
   }
 
 
-  export type MateriaAvgAggregateInputType = {
+  export type MateriasAvgAggregateInputType = {
     id?: true
     idUserDocente?: true
     idCurso?: true
   }
 
-  export type MateriaSumAggregateInputType = {
+  export type MateriasSumAggregateInputType = {
     id?: true
     idUserDocente?: true
     idCurso?: true
   }
 
-  export type MateriaMinAggregateInputType = {
+  export type MateriasMinAggregateInputType = {
     id?: true
     nombre?: true
     idUserDocente?: true
     idCurso?: true
+    fechaInicio?: true
+    fechaFin?: true
     createdAt?: true
     updatedAt?: true
     deletedAt?: true
   }
 
-  export type MateriaMaxAggregateInputType = {
+  export type MateriasMaxAggregateInputType = {
     id?: true
     nombre?: true
     idUserDocente?: true
     idCurso?: true
+    fechaInicio?: true
+    fechaFin?: true
     createdAt?: true
     updatedAt?: true
     deletedAt?: true
   }
 
-  export type MateriaCountAggregateInputType = {
+  export type MateriasCountAggregateInputType = {
     id?: true
     nombre?: true
     idUserDocente?: true
     idCurso?: true
+    fechaInicio?: true
+    fechaFin?: true
     createdAt?: true
     updatedAt?: true
     deletedAt?: true
     _all?: true
   }
 
-  export type MateriaAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MateriasAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Materia to aggregate.
+     * Filter which Materias to aggregate.
      */
-    where?: MateriaWhereInput
+    where?: MateriasWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
      * Determine the order of Materias to fetch.
      */
-    orderBy?: MateriaOrderByWithRelationInput | MateriaOrderByWithRelationInput[]
+    orderBy?: MateriasOrderByWithRelationInput | MateriasOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: MateriaWhereUniqueInput
+    cursor?: MateriasWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
@@ -6260,296 +6506,311 @@ export namespace Prisma {
      * 
      * Count returned Materias
     **/
-    _count?: true | MateriaCountAggregateInputType
+    _count?: true | MateriasCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: MateriaAvgAggregateInputType
+    _avg?: MateriasAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: MateriaSumAggregateInputType
+    _sum?: MateriasSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: MateriaMinAggregateInputType
+    _min?: MateriasMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: MateriaMaxAggregateInputType
+    _max?: MateriasMaxAggregateInputType
   }
 
-  export type GetMateriaAggregateType<T extends MateriaAggregateArgs> = {
-        [P in keyof T & keyof AggregateMateria]: P extends '_count' | 'count'
+  export type GetMateriasAggregateType<T extends MateriasAggregateArgs> = {
+        [P in keyof T & keyof AggregateMaterias]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateMateria[P]>
-      : GetScalarType<T[P], AggregateMateria[P]>
+        : GetScalarType<T[P], AggregateMaterias[P]>
+      : GetScalarType<T[P], AggregateMaterias[P]>
   }
 
 
 
 
-  export type MateriaGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: MateriaWhereInput
-    orderBy?: MateriaOrderByWithAggregationInput | MateriaOrderByWithAggregationInput[]
-    by: MateriaScalarFieldEnum[] | MateriaScalarFieldEnum
-    having?: MateriaScalarWhereWithAggregatesInput
+  export type MateriasGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MateriasWhereInput
+    orderBy?: MateriasOrderByWithAggregationInput | MateriasOrderByWithAggregationInput[]
+    by: MateriasScalarFieldEnum[] | MateriasScalarFieldEnum
+    having?: MateriasScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: MateriaCountAggregateInputType | true
-    _avg?: MateriaAvgAggregateInputType
-    _sum?: MateriaSumAggregateInputType
-    _min?: MateriaMinAggregateInputType
-    _max?: MateriaMaxAggregateInputType
+    _count?: MateriasCountAggregateInputType | true
+    _avg?: MateriasAvgAggregateInputType
+    _sum?: MateriasSumAggregateInputType
+    _min?: MateriasMinAggregateInputType
+    _max?: MateriasMaxAggregateInputType
   }
 
-  export type MateriaGroupByOutputType = {
+  export type MateriasGroupByOutputType = {
     id: number
     nombre: string
     idUserDocente: number
     idCurso: number
+    fechaInicio: Date
+    fechaFin: Date
     createdAt: Date
     updatedAt: Date | null
     deletedAt: Date | null
-    _count: MateriaCountAggregateOutputType | null
-    _avg: MateriaAvgAggregateOutputType | null
-    _sum: MateriaSumAggregateOutputType | null
-    _min: MateriaMinAggregateOutputType | null
-    _max: MateriaMaxAggregateOutputType | null
+    _count: MateriasCountAggregateOutputType | null
+    _avg: MateriasAvgAggregateOutputType | null
+    _sum: MateriasSumAggregateOutputType | null
+    _min: MateriasMinAggregateOutputType | null
+    _max: MateriasMaxAggregateOutputType | null
   }
 
-  type GetMateriaGroupByPayload<T extends MateriaGroupByArgs> = Prisma.PrismaPromise<
+  type GetMateriasGroupByPayload<T extends MateriasGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<MateriaGroupByOutputType, T['by']> &
+      PickEnumerable<MateriasGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof MateriaGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof MateriasGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], MateriaGroupByOutputType[P]>
-            : GetScalarType<T[P], MateriaGroupByOutputType[P]>
+              : GetScalarType<T[P], MateriasGroupByOutputType[P]>
+            : GetScalarType<T[P], MateriasGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type MateriaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type MateriasSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     nombre?: boolean
     idUserDocente?: boolean
     idCurso?: boolean
+    fechaInicio?: boolean
+    fechaFin?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
-    userDocente?: boolean | UserDocenteDefaultArgs<ExtArgs>
-    curso?: boolean | CursoDefaultArgs<ExtArgs>
-    Clase?: boolean | Materia$ClaseArgs<ExtArgs>
-    _count?: boolean | MateriaCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["materia"]>
+    userDocente?: boolean | UsersDocentesDefaultArgs<ExtArgs>
+    curso?: boolean | CursosDefaultArgs<ExtArgs>
+    Clases?: boolean | Materias$ClasesArgs<ExtArgs>
+    DiasHorariosClases?: boolean | Materias$DiasHorariosClasesArgs<ExtArgs>
+    _count?: boolean | MateriasCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["materias"]>
 
-  export type MateriaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type MateriasSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     nombre?: boolean
     idUserDocente?: boolean
     idCurso?: boolean
+    fechaInicio?: boolean
+    fechaFin?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
-    userDocente?: boolean | UserDocenteDefaultArgs<ExtArgs>
-    curso?: boolean | CursoDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["materia"]>
+    userDocente?: boolean | UsersDocentesDefaultArgs<ExtArgs>
+    curso?: boolean | CursosDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["materias"]>
 
-  export type MateriaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type MateriasSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     nombre?: boolean
     idUserDocente?: boolean
     idCurso?: boolean
+    fechaInicio?: boolean
+    fechaFin?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
-    userDocente?: boolean | UserDocenteDefaultArgs<ExtArgs>
-    curso?: boolean | CursoDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["materia"]>
+    userDocente?: boolean | UsersDocentesDefaultArgs<ExtArgs>
+    curso?: boolean | CursosDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["materias"]>
 
-  export type MateriaSelectScalar = {
+  export type MateriasSelectScalar = {
     id?: boolean
     nombre?: boolean
     idUserDocente?: boolean
     idCurso?: boolean
+    fechaInicio?: boolean
+    fechaFin?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
   }
 
-  export type MateriaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nombre" | "idUserDocente" | "idCurso" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["materia"]>
-  export type MateriaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    userDocente?: boolean | UserDocenteDefaultArgs<ExtArgs>
-    curso?: boolean | CursoDefaultArgs<ExtArgs>
-    Clase?: boolean | Materia$ClaseArgs<ExtArgs>
-    _count?: boolean | MateriaCountOutputTypeDefaultArgs<ExtArgs>
+  export type MateriasOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nombre" | "idUserDocente" | "idCurso" | "fechaInicio" | "fechaFin" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["materias"]>
+  export type MateriasInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    userDocente?: boolean | UsersDocentesDefaultArgs<ExtArgs>
+    curso?: boolean | CursosDefaultArgs<ExtArgs>
+    Clases?: boolean | Materias$ClasesArgs<ExtArgs>
+    DiasHorariosClases?: boolean | Materias$DiasHorariosClasesArgs<ExtArgs>
+    _count?: boolean | MateriasCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type MateriaIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    userDocente?: boolean | UserDocenteDefaultArgs<ExtArgs>
-    curso?: boolean | CursoDefaultArgs<ExtArgs>
+  export type MateriasIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    userDocente?: boolean | UsersDocentesDefaultArgs<ExtArgs>
+    curso?: boolean | CursosDefaultArgs<ExtArgs>
   }
-  export type MateriaIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    userDocente?: boolean | UserDocenteDefaultArgs<ExtArgs>
-    curso?: boolean | CursoDefaultArgs<ExtArgs>
+  export type MateriasIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    userDocente?: boolean | UsersDocentesDefaultArgs<ExtArgs>
+    curso?: boolean | CursosDefaultArgs<ExtArgs>
   }
 
-  export type $MateriaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Materia"
+  export type $MateriasPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Materias"
     objects: {
-      userDocente: Prisma.$UserDocentePayload<ExtArgs>
-      curso: Prisma.$CursoPayload<ExtArgs>
-      Clase: Prisma.$ClasePayload<ExtArgs>[]
+      userDocente: Prisma.$UsersDocentesPayload<ExtArgs>
+      curso: Prisma.$CursosPayload<ExtArgs>
+      Clases: Prisma.$ClasesPayload<ExtArgs>[]
+      DiasHorariosClases: Prisma.$DiasHorariosClasesPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       nombre: string
       idUserDocente: number
       idCurso: number
+      fechaInicio: Date
+      fechaFin: Date
       createdAt: Date
       updatedAt: Date | null
       deletedAt: Date | null
-    }, ExtArgs["result"]["materia"]>
+    }, ExtArgs["result"]["materias"]>
     composites: {}
   }
 
-  type MateriaGetPayload<S extends boolean | null | undefined | MateriaDefaultArgs> = $Result.GetResult<Prisma.$MateriaPayload, S>
+  type MateriasGetPayload<S extends boolean | null | undefined | MateriasDefaultArgs> = $Result.GetResult<Prisma.$MateriasPayload, S>
 
-  type MateriaCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<MateriaFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: MateriaCountAggregateInputType | true
+  type MateriasCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MateriasFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MateriasCountAggregateInputType | true
     }
 
-  export interface MateriaDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Materia'], meta: { name: 'Materia' } }
+  export interface MateriasDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Materias'], meta: { name: 'Materias' } }
     /**
-     * Find zero or one Materia that matches the filter.
-     * @param {MateriaFindUniqueArgs} args - Arguments to find a Materia
+     * Find zero or one Materias that matches the filter.
+     * @param {MateriasFindUniqueArgs} args - Arguments to find a Materias
      * @example
-     * // Get one Materia
-     * const materia = await prisma.materia.findUnique({
+     * // Get one Materias
+     * const materias = await prisma.materias.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends MateriaFindUniqueArgs>(args: SelectSubset<T, MateriaFindUniqueArgs<ExtArgs>>): Prisma__MateriaClient<$Result.GetResult<Prisma.$MateriaPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends MateriasFindUniqueArgs>(args: SelectSubset<T, MateriasFindUniqueArgs<ExtArgs>>): Prisma__MateriasClient<$Result.GetResult<Prisma.$MateriasPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Materia that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Materias that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {MateriaFindUniqueOrThrowArgs} args - Arguments to find a Materia
+     * @param {MateriasFindUniqueOrThrowArgs} args - Arguments to find a Materias
      * @example
-     * // Get one Materia
-     * const materia = await prisma.materia.findUniqueOrThrow({
+     * // Get one Materias
+     * const materias = await prisma.materias.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends MateriaFindUniqueOrThrowArgs>(args: SelectSubset<T, MateriaFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MateriaClient<$Result.GetResult<Prisma.$MateriaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends MateriasFindUniqueOrThrowArgs>(args: SelectSubset<T, MateriasFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MateriasClient<$Result.GetResult<Prisma.$MateriasPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Materia that matches the filter.
+     * Find the first Materias that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {MateriaFindFirstArgs} args - Arguments to find a Materia
+     * @param {MateriasFindFirstArgs} args - Arguments to find a Materias
      * @example
-     * // Get one Materia
-     * const materia = await prisma.materia.findFirst({
+     * // Get one Materias
+     * const materias = await prisma.materias.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends MateriaFindFirstArgs>(args?: SelectSubset<T, MateriaFindFirstArgs<ExtArgs>>): Prisma__MateriaClient<$Result.GetResult<Prisma.$MateriaPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends MateriasFindFirstArgs>(args?: SelectSubset<T, MateriasFindFirstArgs<ExtArgs>>): Prisma__MateriasClient<$Result.GetResult<Prisma.$MateriasPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Materia that matches the filter or
+     * Find the first Materias that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {MateriaFindFirstOrThrowArgs} args - Arguments to find a Materia
+     * @param {MateriasFindFirstOrThrowArgs} args - Arguments to find a Materias
      * @example
-     * // Get one Materia
-     * const materia = await prisma.materia.findFirstOrThrow({
+     * // Get one Materias
+     * const materias = await prisma.materias.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends MateriaFindFirstOrThrowArgs>(args?: SelectSubset<T, MateriaFindFirstOrThrowArgs<ExtArgs>>): Prisma__MateriaClient<$Result.GetResult<Prisma.$MateriaPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends MateriasFindFirstOrThrowArgs>(args?: SelectSubset<T, MateriasFindFirstOrThrowArgs<ExtArgs>>): Prisma__MateriasClient<$Result.GetResult<Prisma.$MateriasPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find zero or more Materias that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {MateriaFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {MateriasFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
      * // Get all Materias
-     * const materias = await prisma.materia.findMany()
+     * const materias = await prisma.materias.findMany()
      * 
      * // Get first 10 Materias
-     * const materias = await prisma.materia.findMany({ take: 10 })
+     * const materias = await prisma.materias.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const materiaWithIdOnly = await prisma.materia.findMany({ select: { id: true } })
+     * const materiasWithIdOnly = await prisma.materias.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends MateriaFindManyArgs>(args?: SelectSubset<T, MateriaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MateriaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends MateriasFindManyArgs>(args?: SelectSubset<T, MateriasFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MateriasPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Materia.
-     * @param {MateriaCreateArgs} args - Arguments to create a Materia.
+     * Create a Materias.
+     * @param {MateriasCreateArgs} args - Arguments to create a Materias.
      * @example
-     * // Create one Materia
-     * const Materia = await prisma.materia.create({
+     * // Create one Materias
+     * const Materias = await prisma.materias.create({
      *   data: {
-     *     // ... data to create a Materia
+     *     // ... data to create a Materias
      *   }
      * })
      * 
      */
-    create<T extends MateriaCreateArgs>(args: SelectSubset<T, MateriaCreateArgs<ExtArgs>>): Prisma__MateriaClient<$Result.GetResult<Prisma.$MateriaPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends MateriasCreateArgs>(args: SelectSubset<T, MateriasCreateArgs<ExtArgs>>): Prisma__MateriasClient<$Result.GetResult<Prisma.$MateriasPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Create many Materias.
-     * @param {MateriaCreateManyArgs} args - Arguments to create many Materias.
+     * @param {MateriasCreateManyArgs} args - Arguments to create many Materias.
      * @example
      * // Create many Materias
-     * const materia = await prisma.materia.createMany({
+     * const materias = await prisma.materias.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends MateriaCreateManyArgs>(args?: SelectSubset<T, MateriaCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends MateriasCreateManyArgs>(args?: SelectSubset<T, MateriasCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Create many Materias and returns the data saved in the database.
-     * @param {MateriaCreateManyAndReturnArgs} args - Arguments to create many Materias.
+     * @param {MateriasCreateManyAndReturnArgs} args - Arguments to create many Materias.
      * @example
      * // Create many Materias
-     * const materia = await prisma.materia.createManyAndReturn({
+     * const materias = await prisma.materias.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
      * // Create many Materias and only return the `id`
-     * const materiaWithIdOnly = await prisma.materia.createManyAndReturn({
+     * const materiasWithIdOnly = await prisma.materias.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -6559,28 +6820,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends MateriaCreateManyAndReturnArgs>(args?: SelectSubset<T, MateriaCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MateriaPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends MateriasCreateManyAndReturnArgs>(args?: SelectSubset<T, MateriasCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MateriasPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Materia.
-     * @param {MateriaDeleteArgs} args - Arguments to delete one Materia.
+     * Delete a Materias.
+     * @param {MateriasDeleteArgs} args - Arguments to delete one Materias.
      * @example
-     * // Delete one Materia
-     * const Materia = await prisma.materia.delete({
+     * // Delete one Materias
+     * const Materias = await prisma.materias.delete({
      *   where: {
-     *     // ... filter to delete one Materia
+     *     // ... filter to delete one Materias
      *   }
      * })
      * 
      */
-    delete<T extends MateriaDeleteArgs>(args: SelectSubset<T, MateriaDeleteArgs<ExtArgs>>): Prisma__MateriaClient<$Result.GetResult<Prisma.$MateriaPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends MateriasDeleteArgs>(args: SelectSubset<T, MateriasDeleteArgs<ExtArgs>>): Prisma__MateriasClient<$Result.GetResult<Prisma.$MateriasPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Materia.
-     * @param {MateriaUpdateArgs} args - Arguments to update one Materia.
+     * Update one Materias.
+     * @param {MateriasUpdateArgs} args - Arguments to update one Materias.
      * @example
-     * // Update one Materia
-     * const materia = await prisma.materia.update({
+     * // Update one Materias
+     * const materias = await prisma.materias.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -6590,30 +6851,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends MateriaUpdateArgs>(args: SelectSubset<T, MateriaUpdateArgs<ExtArgs>>): Prisma__MateriaClient<$Result.GetResult<Prisma.$MateriaPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends MateriasUpdateArgs>(args: SelectSubset<T, MateriasUpdateArgs<ExtArgs>>): Prisma__MateriasClient<$Result.GetResult<Prisma.$MateriasPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Delete zero or more Materias.
-     * @param {MateriaDeleteManyArgs} args - Arguments to filter Materias to delete.
+     * @param {MateriasDeleteManyArgs} args - Arguments to filter Materias to delete.
      * @example
      * // Delete a few Materias
-     * const { count } = await prisma.materia.deleteMany({
+     * const { count } = await prisma.materias.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends MateriaDeleteManyArgs>(args?: SelectSubset<T, MateriaDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends MateriasDeleteManyArgs>(args?: SelectSubset<T, MateriasDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more Materias.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {MateriaUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {MateriasUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
      * // Update many Materias
-     * const materia = await prisma.materia.updateMany({
+     * const materias = await prisma.materias.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -6623,14 +6884,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends MateriaUpdateManyArgs>(args: SelectSubset<T, MateriaUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends MateriasUpdateManyArgs>(args: SelectSubset<T, MateriasUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more Materias and returns the data updated in the database.
-     * @param {MateriaUpdateManyAndReturnArgs} args - Arguments to update many Materias.
+     * @param {MateriasUpdateManyAndReturnArgs} args - Arguments to update many Materias.
      * @example
      * // Update many Materias
-     * const materia = await prisma.materia.updateManyAndReturn({
+     * const materias = await prisma.materias.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -6640,7 +6901,7 @@ export namespace Prisma {
      * })
      * 
      * // Update zero or more Materias and only return the `id`
-     * const materiaWithIdOnly = await prisma.materia.updateManyAndReturn({
+     * const materiasWithIdOnly = await prisma.materias.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -6653,56 +6914,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends MateriaUpdateManyAndReturnArgs>(args: SelectSubset<T, MateriaUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MateriaPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends MateriasUpdateManyAndReturnArgs>(args: SelectSubset<T, MateriasUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MateriasPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Materia.
-     * @param {MateriaUpsertArgs} args - Arguments to update or create a Materia.
+     * Create or update one Materias.
+     * @param {MateriasUpsertArgs} args - Arguments to update or create a Materias.
      * @example
-     * // Update or create a Materia
-     * const materia = await prisma.materia.upsert({
+     * // Update or create a Materias
+     * const materias = await prisma.materias.upsert({
      *   create: {
-     *     // ... data to create a Materia
+     *     // ... data to create a Materias
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Materia we want to update
+     *     // ... the filter for the Materias we want to update
      *   }
      * })
      */
-    upsert<T extends MateriaUpsertArgs>(args: SelectSubset<T, MateriaUpsertArgs<ExtArgs>>): Prisma__MateriaClient<$Result.GetResult<Prisma.$MateriaPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends MateriasUpsertArgs>(args: SelectSubset<T, MateriasUpsertArgs<ExtArgs>>): Prisma__MateriasClient<$Result.GetResult<Prisma.$MateriasPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
      * Count the number of Materias.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {MateriaCountArgs} args - Arguments to filter Materias to count.
+     * @param {MateriasCountArgs} args - Arguments to filter Materias to count.
      * @example
      * // Count the number of Materias
-     * const count = await prisma.materia.count({
+     * const count = await prisma.materias.count({
      *   where: {
      *     // ... the filter for the Materias we want to count
      *   }
      * })
     **/
-    count<T extends MateriaCountArgs>(
-      args?: Subset<T, MateriaCountArgs>,
+    count<T extends MateriasCountArgs>(
+      args?: Subset<T, MateriasCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], MateriaCountAggregateOutputType>
+          : GetScalarType<T['select'], MateriasCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Materia.
+     * Allows you to perform aggregations operations on a Materias.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {MateriaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {MateriasAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -6722,13 +6983,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends MateriaAggregateArgs>(args: Subset<T, MateriaAggregateArgs>): Prisma.PrismaPromise<GetMateriaAggregateType<T>>
+    aggregate<T extends MateriasAggregateArgs>(args: Subset<T, MateriasAggregateArgs>): Prisma.PrismaPromise<GetMateriasAggregateType<T>>
 
     /**
-     * Group by Materia.
+     * Group by Materias.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {MateriaGroupByArgs} args - Group by arguments.
+     * @param {MateriasGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -6743,14 +7004,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends MateriaGroupByArgs,
+      T extends MateriasGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: MateriaGroupByArgs['orderBy'] }
-        : { orderBy?: MateriaGroupByArgs['orderBy'] },
+        ? { orderBy: MateriasGroupByArgs['orderBy'] }
+        : { orderBy?: MateriasGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -6799,24 +7060,25 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, MateriaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMateriaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, MateriasGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMateriasGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Materia model
+   * Fields of the Materias model
    */
-  readonly fields: MateriaFieldRefs;
+  readonly fields: MateriasFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Materia.
+   * The delegate class that acts as a "Promise-like" for Materias.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__MateriaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__MateriasClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    userDocente<T extends UserDocenteDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDocenteDefaultArgs<ExtArgs>>): Prisma__UserDocenteClient<$Result.GetResult<Prisma.$UserDocentePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    curso<T extends CursoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CursoDefaultArgs<ExtArgs>>): Prisma__CursoClient<$Result.GetResult<Prisma.$CursoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    Clase<T extends Materia$ClaseArgs<ExtArgs> = {}>(args?: Subset<T, Materia$ClaseArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClasePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    userDocente<T extends UsersDocentesDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsersDocentesDefaultArgs<ExtArgs>>): Prisma__UsersDocentesClient<$Result.GetResult<Prisma.$UsersDocentesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    curso<T extends CursosDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CursosDefaultArgs<ExtArgs>>): Prisma__CursosClient<$Result.GetResult<Prisma.$CursosPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    Clases<T extends Materias$ClasesArgs<ExtArgs> = {}>(args?: Subset<T, Materias$ClasesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClasesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    DiasHorariosClases<T extends Materias$DiasHorariosClasesArgs<ExtArgs> = {}>(args?: Subset<T, Materias$DiasHorariosClasesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiasHorariosClasesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6843,200 +7105,202 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Materia model
+   * Fields of the Materias model
    */
-  interface MateriaFieldRefs {
-    readonly id: FieldRef<"Materia", 'Int'>
-    readonly nombre: FieldRef<"Materia", 'String'>
-    readonly idUserDocente: FieldRef<"Materia", 'Int'>
-    readonly idCurso: FieldRef<"Materia", 'Int'>
-    readonly createdAt: FieldRef<"Materia", 'DateTime'>
-    readonly updatedAt: FieldRef<"Materia", 'DateTime'>
-    readonly deletedAt: FieldRef<"Materia", 'DateTime'>
+  interface MateriasFieldRefs {
+    readonly id: FieldRef<"Materias", 'Int'>
+    readonly nombre: FieldRef<"Materias", 'String'>
+    readonly idUserDocente: FieldRef<"Materias", 'Int'>
+    readonly idCurso: FieldRef<"Materias", 'Int'>
+    readonly fechaInicio: FieldRef<"Materias", 'DateTime'>
+    readonly fechaFin: FieldRef<"Materias", 'DateTime'>
+    readonly createdAt: FieldRef<"Materias", 'DateTime'>
+    readonly updatedAt: FieldRef<"Materias", 'DateTime'>
+    readonly deletedAt: FieldRef<"Materias", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * Materia findUnique
+   * Materias findUnique
    */
-  export type MateriaFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MateriasFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Materia
+     * Select specific fields to fetch from the Materias
      */
-    select?: MateriaSelect<ExtArgs> | null
+    select?: MateriasSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Materia
+     * Omit specific fields from the Materias
      */
-    omit?: MateriaOmit<ExtArgs> | null
+    omit?: MateriasOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MateriaInclude<ExtArgs> | null
-    /**
-     * Filter, which Materia to fetch.
-     */
-    where: MateriaWhereUniqueInput
-  }
-
-  /**
-   * Materia findUniqueOrThrow
-   */
-  export type MateriaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Materia
-     */
-    select?: MateriaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Materia
-     */
-    omit?: MateriaOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: MateriaInclude<ExtArgs> | null
-    /**
-     * Filter, which Materia to fetch.
-     */
-    where: MateriaWhereUniqueInput
-  }
-
-  /**
-   * Materia findFirst
-   */
-  export type MateriaFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Materia
-     */
-    select?: MateriaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Materia
-     */
-    omit?: MateriaOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: MateriaInclude<ExtArgs> | null
-    /**
-     * Filter, which Materia to fetch.
-     */
-    where?: MateriaWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Materias to fetch.
-     */
-    orderBy?: MateriaOrderByWithRelationInput | MateriaOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Materias.
-     */
-    cursor?: MateriaWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Materias from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Materias.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Materias.
-     */
-    distinct?: MateriaScalarFieldEnum | MateriaScalarFieldEnum[]
-  }
-
-  /**
-   * Materia findFirstOrThrow
-   */
-  export type MateriaFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Materia
-     */
-    select?: MateriaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Materia
-     */
-    omit?: MateriaOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: MateriaInclude<ExtArgs> | null
-    /**
-     * Filter, which Materia to fetch.
-     */
-    where?: MateriaWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Materias to fetch.
-     */
-    orderBy?: MateriaOrderByWithRelationInput | MateriaOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Materias.
-     */
-    cursor?: MateriaWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Materias from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Materias.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Materias.
-     */
-    distinct?: MateriaScalarFieldEnum | MateriaScalarFieldEnum[]
-  }
-
-  /**
-   * Materia findMany
-   */
-  export type MateriaFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Materia
-     */
-    select?: MateriaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Materia
-     */
-    omit?: MateriaOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: MateriaInclude<ExtArgs> | null
+    include?: MateriasInclude<ExtArgs> | null
     /**
      * Filter, which Materias to fetch.
      */
-    where?: MateriaWhereInput
+    where: MateriasWhereUniqueInput
+  }
+
+  /**
+   * Materias findUniqueOrThrow
+   */
+  export type MateriasFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Materias
+     */
+    select?: MateriasSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Materias
+     */
+    omit?: MateriasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MateriasInclude<ExtArgs> | null
+    /**
+     * Filter, which Materias to fetch.
+     */
+    where: MateriasWhereUniqueInput
+  }
+
+  /**
+   * Materias findFirst
+   */
+  export type MateriasFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Materias
+     */
+    select?: MateriasSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Materias
+     */
+    omit?: MateriasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MateriasInclude<ExtArgs> | null
+    /**
+     * Filter, which Materias to fetch.
+     */
+    where?: MateriasWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
      * Determine the order of Materias to fetch.
      */
-    orderBy?: MateriaOrderByWithRelationInput | MateriaOrderByWithRelationInput[]
+    orderBy?: MateriasOrderByWithRelationInput | MateriasOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Materias.
+     */
+    cursor?: MateriasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Materias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Materias.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Materias.
+     */
+    distinct?: MateriasScalarFieldEnum | MateriasScalarFieldEnum[]
+  }
+
+  /**
+   * Materias findFirstOrThrow
+   */
+  export type MateriasFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Materias
+     */
+    select?: MateriasSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Materias
+     */
+    omit?: MateriasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MateriasInclude<ExtArgs> | null
+    /**
+     * Filter, which Materias to fetch.
+     */
+    where?: MateriasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Materias to fetch.
+     */
+    orderBy?: MateriasOrderByWithRelationInput | MateriasOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Materias.
+     */
+    cursor?: MateriasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Materias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Materias.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Materias.
+     */
+    distinct?: MateriasScalarFieldEnum | MateriasScalarFieldEnum[]
+  }
+
+  /**
+   * Materias findMany
+   */
+  export type MateriasFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Materias
+     */
+    select?: MateriasSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Materias
+     */
+    omit?: MateriasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MateriasInclude<ExtArgs> | null
+    /**
+     * Filter, which Materias to fetch.
+     */
+    where?: MateriasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Materias to fetch.
+     */
+    orderBy?: MateriasOrderByWithRelationInput | MateriasOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the position for listing Materias.
      */
-    cursor?: MateriaWhereUniqueInput
+    cursor?: MateriasWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
@@ -7049,103 +7313,103 @@ export namespace Prisma {
      * Skip the first `n` Materias.
      */
     skip?: number
-    distinct?: MateriaScalarFieldEnum | MateriaScalarFieldEnum[]
+    distinct?: MateriasScalarFieldEnum | MateriasScalarFieldEnum[]
   }
 
   /**
-   * Materia create
+   * Materias create
    */
-  export type MateriaCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MateriasCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Materia
+     * Select specific fields to fetch from the Materias
      */
-    select?: MateriaSelect<ExtArgs> | null
+    select?: MateriasSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Materia
+     * Omit specific fields from the Materias
      */
-    omit?: MateriaOmit<ExtArgs> | null
+    omit?: MateriasOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MateriaInclude<ExtArgs> | null
+    include?: MateriasInclude<ExtArgs> | null
     /**
-     * The data needed to create a Materia.
+     * The data needed to create a Materias.
      */
-    data: XOR<MateriaCreateInput, MateriaUncheckedCreateInput>
+    data: XOR<MateriasCreateInput, MateriasUncheckedCreateInput>
   }
 
   /**
-   * Materia createMany
+   * Materias createMany
    */
-  export type MateriaCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MateriasCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * The data used to create many Materias.
      */
-    data: MateriaCreateManyInput | MateriaCreateManyInput[]
+    data: MateriasCreateManyInput | MateriasCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Materia createManyAndReturn
+   * Materias createManyAndReturn
    */
-  export type MateriaCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MateriasCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Materia
+     * Select specific fields to fetch from the Materias
      */
-    select?: MateriaSelectCreateManyAndReturn<ExtArgs> | null
+    select?: MateriasSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Materia
+     * Omit specific fields from the Materias
      */
-    omit?: MateriaOmit<ExtArgs> | null
+    omit?: MateriasOmit<ExtArgs> | null
     /**
      * The data used to create many Materias.
      */
-    data: MateriaCreateManyInput | MateriaCreateManyInput[]
+    data: MateriasCreateManyInput | MateriasCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MateriaIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: MateriasIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Materia update
+   * Materias update
    */
-  export type MateriaUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MateriasUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Materia
+     * Select specific fields to fetch from the Materias
      */
-    select?: MateriaSelect<ExtArgs> | null
+    select?: MateriasSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Materia
+     * Omit specific fields from the Materias
      */
-    omit?: MateriaOmit<ExtArgs> | null
+    omit?: MateriasOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MateriaInclude<ExtArgs> | null
+    include?: MateriasInclude<ExtArgs> | null
     /**
-     * The data needed to update a Materia.
+     * The data needed to update a Materias.
      */
-    data: XOR<MateriaUpdateInput, MateriaUncheckedUpdateInput>
+    data: XOR<MateriasUpdateInput, MateriasUncheckedUpdateInput>
     /**
-     * Choose, which Materia to update.
+     * Choose, which Materias to update.
      */
-    where: MateriaWhereUniqueInput
+    where: MateriasWhereUniqueInput
   }
 
   /**
-   * Materia updateMany
+   * Materias updateMany
    */
-  export type MateriaUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MateriasUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * The data used to update Materias.
      */
-    data: XOR<MateriaUpdateManyMutationInput, MateriaUncheckedUpdateManyInput>
+    data: XOR<MateriasUpdateManyMutationInput, MateriasUncheckedUpdateManyInput>
     /**
      * Filter which Materias to update
      */
-    where?: MateriaWhereInput
+    where?: MateriasWhereInput
     /**
      * Limit how many Materias to update.
      */
@@ -7153,25 +7417,25 @@ export namespace Prisma {
   }
 
   /**
-   * Materia updateManyAndReturn
+   * Materias updateManyAndReturn
    */
-  export type MateriaUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MateriasUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Materia
+     * Select specific fields to fetch from the Materias
      */
-    select?: MateriaSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: MateriasSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Materia
+     * Omit specific fields from the Materias
      */
-    omit?: MateriaOmit<ExtArgs> | null
+    omit?: MateriasOmit<ExtArgs> | null
     /**
      * The data used to update Materias.
      */
-    data: XOR<MateriaUpdateManyMutationInput, MateriaUncheckedUpdateManyInput>
+    data: XOR<MateriasUpdateManyMutationInput, MateriasUncheckedUpdateManyInput>
     /**
      * Filter which Materias to update
      */
-    where?: MateriaWhereInput
+    where?: MateriasWhereInput
     /**
      * Limit how many Materias to update.
      */
@@ -7179,69 +7443,69 @@ export namespace Prisma {
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MateriaIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: MateriasIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Materia upsert
+   * Materias upsert
    */
-  export type MateriaUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MateriasUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Materia
+     * Select specific fields to fetch from the Materias
      */
-    select?: MateriaSelect<ExtArgs> | null
+    select?: MateriasSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Materia
+     * Omit specific fields from the Materias
      */
-    omit?: MateriaOmit<ExtArgs> | null
+    omit?: MateriasOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MateriaInclude<ExtArgs> | null
+    include?: MateriasInclude<ExtArgs> | null
     /**
-     * The filter to search for the Materia to update in case it exists.
+     * The filter to search for the Materias to update in case it exists.
      */
-    where: MateriaWhereUniqueInput
+    where: MateriasWhereUniqueInput
     /**
-     * In case the Materia found by the `where` argument doesn't exist, create a new Materia with this data.
+     * In case the Materias found by the `where` argument doesn't exist, create a new Materias with this data.
      */
-    create: XOR<MateriaCreateInput, MateriaUncheckedCreateInput>
+    create: XOR<MateriasCreateInput, MateriasUncheckedCreateInput>
     /**
-     * In case the Materia was found with the provided `where` argument, update it with this data.
+     * In case the Materias was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<MateriaUpdateInput, MateriaUncheckedUpdateInput>
+    update: XOR<MateriasUpdateInput, MateriasUncheckedUpdateInput>
   }
 
   /**
-   * Materia delete
+   * Materias delete
    */
-  export type MateriaDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MateriasDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Materia
+     * Select specific fields to fetch from the Materias
      */
-    select?: MateriaSelect<ExtArgs> | null
+    select?: MateriasSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Materia
+     * Omit specific fields from the Materias
      */
-    omit?: MateriaOmit<ExtArgs> | null
+    omit?: MateriasOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MateriaInclude<ExtArgs> | null
+    include?: MateriasInclude<ExtArgs> | null
     /**
-     * Filter which Materia to delete.
+     * Filter which Materias to delete.
      */
-    where: MateriaWhereUniqueInput
+    where: MateriasWhereUniqueInput
   }
 
   /**
-   * Materia deleteMany
+   * Materias deleteMany
    */
-  export type MateriaDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MateriasDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Filter which Materias to delete
      */
-    where?: MateriaWhereInput
+    where?: MateriasWhereInput
     /**
      * Limit how many Materias to delete.
      */
@@ -7249,87 +7513,122 @@ export namespace Prisma {
   }
 
   /**
-   * Materia.Clase
+   * Materias.Clases
    */
-  export type Materia$ClaseArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Materias$ClasesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Clase
+     * Select specific fields to fetch from the Clases
      */
-    select?: ClaseSelect<ExtArgs> | null
+    select?: ClasesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Clase
+     * Omit specific fields from the Clases
      */
-    omit?: ClaseOmit<ExtArgs> | null
+    omit?: ClasesOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ClaseInclude<ExtArgs> | null
-    where?: ClaseWhereInput
-    orderBy?: ClaseOrderByWithRelationInput | ClaseOrderByWithRelationInput[]
-    cursor?: ClaseWhereUniqueInput
+    include?: ClasesInclude<ExtArgs> | null
+    where?: ClasesWhereInput
+    orderBy?: ClasesOrderByWithRelationInput | ClasesOrderByWithRelationInput[]
+    cursor?: ClasesWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: ClaseScalarFieldEnum | ClaseScalarFieldEnum[]
+    distinct?: ClasesScalarFieldEnum | ClasesScalarFieldEnum[]
   }
 
   /**
-   * Materia without action
+   * Materias.DiasHorariosClases
    */
-  export type MateriaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Materias$DiasHorariosClasesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Materia
+     * Select specific fields to fetch from the DiasHorariosClases
      */
-    select?: MateriaSelect<ExtArgs> | null
+    select?: DiasHorariosClasesSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Materia
+     * Omit specific fields from the DiasHorariosClases
      */
-    omit?: MateriaOmit<ExtArgs> | null
+    omit?: DiasHorariosClasesOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MateriaInclude<ExtArgs> | null
+    include?: DiasHorariosClasesInclude<ExtArgs> | null
+    where?: DiasHorariosClasesWhereInput
+    orderBy?: DiasHorariosClasesOrderByWithRelationInput | DiasHorariosClasesOrderByWithRelationInput[]
+    cursor?: DiasHorariosClasesWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: DiasHorariosClasesScalarFieldEnum | DiasHorariosClasesScalarFieldEnum[]
+  }
+
+  /**
+   * Materias without action
+   */
+  export type MateriasDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Materias
+     */
+    select?: MateriasSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Materias
+     */
+    omit?: MateriasOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MateriasInclude<ExtArgs> | null
   }
 
 
   /**
-   * Model Curso
+   * Model DiasHorariosClases
    */
 
-  export type AggregateCurso = {
-    _count: CursoCountAggregateOutputType | null
-    _avg: CursoAvgAggregateOutputType | null
-    _sum: CursoSumAggregateOutputType | null
-    _min: CursoMinAggregateOutputType | null
-    _max: CursoMaxAggregateOutputType | null
+  export type AggregateDiasHorariosClases = {
+    _count: DiasHorariosClasesCountAggregateOutputType | null
+    _avg: DiasHorariosClasesAvgAggregateOutputType | null
+    _sum: DiasHorariosClasesSumAggregateOutputType | null
+    _min: DiasHorariosClasesMinAggregateOutputType | null
+    _max: DiasHorariosClasesMaxAggregateOutputType | null
   }
 
-  export type CursoAvgAggregateOutputType = {
+  export type DiasHorariosClasesAvgAggregateOutputType = {
     id: number | null
+    idMateria: number | null
+    duracionMinutos: number | null
   }
 
-  export type CursoSumAggregateOutputType = {
+  export type DiasHorariosClasesSumAggregateOutputType = {
     id: number | null
+    idMateria: number | null
+    duracionMinutos: number | null
   }
 
-  export type CursoMinAggregateOutputType = {
+  export type DiasHorariosClasesMinAggregateOutputType = {
     id: number | null
-    nombre: string | null
+    idMateria: number | null
+    horaInicio: string | null
+    duracionMinutos: number | null
     createdAt: Date | null
     updatedAt: Date | null
     deletedAt: Date | null
   }
 
-  export type CursoMaxAggregateOutputType = {
+  export type DiasHorariosClasesMaxAggregateOutputType = {
     id: number | null
-    nombre: string | null
+    idMateria: number | null
+    horaInicio: string | null
+    duracionMinutos: number | null
     createdAt: Date | null
     updatedAt: Date | null
     deletedAt: Date | null
   }
 
-  export type CursoCountAggregateOutputType = {
+  export type DiasHorariosClasesCountAggregateOutputType = {
     id: number
-    nombre: number
+    idMateria: number
+    dias: number
+    horaInicio: number
+    duracionMinutos: number
     createdAt: number
     updatedAt: number
     deletedAt: number
@@ -7337,56 +7636,1186 @@ export namespace Prisma {
   }
 
 
-  export type CursoAvgAggregateInputType = {
+  export type DiasHorariosClasesAvgAggregateInputType = {
     id?: true
+    idMateria?: true
+    duracionMinutos?: true
   }
 
-  export type CursoSumAggregateInputType = {
+  export type DiasHorariosClasesSumAggregateInputType = {
     id?: true
+    idMateria?: true
+    duracionMinutos?: true
   }
 
-  export type CursoMinAggregateInputType = {
+  export type DiasHorariosClasesMinAggregateInputType = {
     id?: true
-    nombre?: true
+    idMateria?: true
+    horaInicio?: true
+    duracionMinutos?: true
     createdAt?: true
     updatedAt?: true
     deletedAt?: true
   }
 
-  export type CursoMaxAggregateInputType = {
+  export type DiasHorariosClasesMaxAggregateInputType = {
     id?: true
-    nombre?: true
+    idMateria?: true
+    horaInicio?: true
+    duracionMinutos?: true
     createdAt?: true
     updatedAt?: true
     deletedAt?: true
   }
 
-  export type CursoCountAggregateInputType = {
+  export type DiasHorariosClasesCountAggregateInputType = {
     id?: true
-    nombre?: true
+    idMateria?: true
+    dias?: true
+    horaInicio?: true
+    duracionMinutos?: true
     createdAt?: true
     updatedAt?: true
     deletedAt?: true
     _all?: true
   }
 
-  export type CursoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type DiasHorariosClasesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Curso to aggregate.
+     * Filter which DiasHorariosClases to aggregate.
      */
-    where?: CursoWhereInput
+    where?: DiasHorariosClasesWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Cursos to fetch.
+     * Determine the order of DiasHorariosClases to fetch.
      */
-    orderBy?: CursoOrderByWithRelationInput | CursoOrderByWithRelationInput[]
+    orderBy?: DiasHorariosClasesOrderByWithRelationInput | DiasHorariosClasesOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: CursoWhereUniqueInput
+    cursor?: DiasHorariosClasesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DiasHorariosClases from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DiasHorariosClases.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned DiasHorariosClases
+    **/
+    _count?: true | DiasHorariosClasesCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: DiasHorariosClasesAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: DiasHorariosClasesSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DiasHorariosClasesMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DiasHorariosClasesMaxAggregateInputType
+  }
+
+  export type GetDiasHorariosClasesAggregateType<T extends DiasHorariosClasesAggregateArgs> = {
+        [P in keyof T & keyof AggregateDiasHorariosClases]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDiasHorariosClases[P]>
+      : GetScalarType<T[P], AggregateDiasHorariosClases[P]>
+  }
+
+
+
+
+  export type DiasHorariosClasesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DiasHorariosClasesWhereInput
+    orderBy?: DiasHorariosClasesOrderByWithAggregationInput | DiasHorariosClasesOrderByWithAggregationInput[]
+    by: DiasHorariosClasesScalarFieldEnum[] | DiasHorariosClasesScalarFieldEnum
+    having?: DiasHorariosClasesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DiasHorariosClasesCountAggregateInputType | true
+    _avg?: DiasHorariosClasesAvgAggregateInputType
+    _sum?: DiasHorariosClasesSumAggregateInputType
+    _min?: DiasHorariosClasesMinAggregateInputType
+    _max?: DiasHorariosClasesMaxAggregateInputType
+  }
+
+  export type DiasHorariosClasesGroupByOutputType = {
+    id: number
+    idMateria: number
+    dias: $Enums.Dias[]
+    horaInicio: string
+    duracionMinutos: number
+    createdAt: Date
+    updatedAt: Date | null
+    deletedAt: Date | null
+    _count: DiasHorariosClasesCountAggregateOutputType | null
+    _avg: DiasHorariosClasesAvgAggregateOutputType | null
+    _sum: DiasHorariosClasesSumAggregateOutputType | null
+    _min: DiasHorariosClasesMinAggregateOutputType | null
+    _max: DiasHorariosClasesMaxAggregateOutputType | null
+  }
+
+  type GetDiasHorariosClasesGroupByPayload<T extends DiasHorariosClasesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DiasHorariosClasesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DiasHorariosClasesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DiasHorariosClasesGroupByOutputType[P]>
+            : GetScalarType<T[P], DiasHorariosClasesGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DiasHorariosClasesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    idMateria?: boolean
+    dias?: boolean
+    horaInicio?: boolean
+    duracionMinutos?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+    materia?: boolean | MateriasDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["diasHorariosClases"]>
+
+  export type DiasHorariosClasesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    idMateria?: boolean
+    dias?: boolean
+    horaInicio?: boolean
+    duracionMinutos?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+    materia?: boolean | MateriasDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["diasHorariosClases"]>
+
+  export type DiasHorariosClasesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    idMateria?: boolean
+    dias?: boolean
+    horaInicio?: boolean
+    duracionMinutos?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+    materia?: boolean | MateriasDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["diasHorariosClases"]>
+
+  export type DiasHorariosClasesSelectScalar = {
+    id?: boolean
+    idMateria?: boolean
+    dias?: boolean
+    horaInicio?: boolean
+    duracionMinutos?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    deletedAt?: boolean
+  }
+
+  export type DiasHorariosClasesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "idMateria" | "dias" | "horaInicio" | "duracionMinutos" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["diasHorariosClases"]>
+  export type DiasHorariosClasesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    materia?: boolean | MateriasDefaultArgs<ExtArgs>
+  }
+  export type DiasHorariosClasesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    materia?: boolean | MateriasDefaultArgs<ExtArgs>
+  }
+  export type DiasHorariosClasesIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    materia?: boolean | MateriasDefaultArgs<ExtArgs>
+  }
+
+  export type $DiasHorariosClasesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "DiasHorariosClases"
+    objects: {
+      materia: Prisma.$MateriasPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      idMateria: number
+      dias: $Enums.Dias[]
+      horaInicio: string
+      duracionMinutos: number
+      createdAt: Date
+      updatedAt: Date | null
+      deletedAt: Date | null
+    }, ExtArgs["result"]["diasHorariosClases"]>
+    composites: {}
+  }
+
+  type DiasHorariosClasesGetPayload<S extends boolean | null | undefined | DiasHorariosClasesDefaultArgs> = $Result.GetResult<Prisma.$DiasHorariosClasesPayload, S>
+
+  type DiasHorariosClasesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DiasHorariosClasesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DiasHorariosClasesCountAggregateInputType | true
+    }
+
+  export interface DiasHorariosClasesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['DiasHorariosClases'], meta: { name: 'DiasHorariosClases' } }
+    /**
+     * Find zero or one DiasHorariosClases that matches the filter.
+     * @param {DiasHorariosClasesFindUniqueArgs} args - Arguments to find a DiasHorariosClases
+     * @example
+     * // Get one DiasHorariosClases
+     * const diasHorariosClases = await prisma.diasHorariosClases.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DiasHorariosClasesFindUniqueArgs>(args: SelectSubset<T, DiasHorariosClasesFindUniqueArgs<ExtArgs>>): Prisma__DiasHorariosClasesClient<$Result.GetResult<Prisma.$DiasHorariosClasesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one DiasHorariosClases that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DiasHorariosClasesFindUniqueOrThrowArgs} args - Arguments to find a DiasHorariosClases
+     * @example
+     * // Get one DiasHorariosClases
+     * const diasHorariosClases = await prisma.diasHorariosClases.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DiasHorariosClasesFindUniqueOrThrowArgs>(args: SelectSubset<T, DiasHorariosClasesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DiasHorariosClasesClient<$Result.GetResult<Prisma.$DiasHorariosClasesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DiasHorariosClases that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiasHorariosClasesFindFirstArgs} args - Arguments to find a DiasHorariosClases
+     * @example
+     * // Get one DiasHorariosClases
+     * const diasHorariosClases = await prisma.diasHorariosClases.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DiasHorariosClasesFindFirstArgs>(args?: SelectSubset<T, DiasHorariosClasesFindFirstArgs<ExtArgs>>): Prisma__DiasHorariosClasesClient<$Result.GetResult<Prisma.$DiasHorariosClasesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DiasHorariosClases that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiasHorariosClasesFindFirstOrThrowArgs} args - Arguments to find a DiasHorariosClases
+     * @example
+     * // Get one DiasHorariosClases
+     * const diasHorariosClases = await prisma.diasHorariosClases.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DiasHorariosClasesFindFirstOrThrowArgs>(args?: SelectSubset<T, DiasHorariosClasesFindFirstOrThrowArgs<ExtArgs>>): Prisma__DiasHorariosClasesClient<$Result.GetResult<Prisma.$DiasHorariosClasesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more DiasHorariosClases that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiasHorariosClasesFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all DiasHorariosClases
+     * const diasHorariosClases = await prisma.diasHorariosClases.findMany()
+     * 
+     * // Get first 10 DiasHorariosClases
+     * const diasHorariosClases = await prisma.diasHorariosClases.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const diasHorariosClasesWithIdOnly = await prisma.diasHorariosClases.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DiasHorariosClasesFindManyArgs>(args?: SelectSubset<T, DiasHorariosClasesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiasHorariosClasesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a DiasHorariosClases.
+     * @param {DiasHorariosClasesCreateArgs} args - Arguments to create a DiasHorariosClases.
+     * @example
+     * // Create one DiasHorariosClases
+     * const DiasHorariosClases = await prisma.diasHorariosClases.create({
+     *   data: {
+     *     // ... data to create a DiasHorariosClases
+     *   }
+     * })
+     * 
+     */
+    create<T extends DiasHorariosClasesCreateArgs>(args: SelectSubset<T, DiasHorariosClasesCreateArgs<ExtArgs>>): Prisma__DiasHorariosClasesClient<$Result.GetResult<Prisma.$DiasHorariosClasesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many DiasHorariosClases.
+     * @param {DiasHorariosClasesCreateManyArgs} args - Arguments to create many DiasHorariosClases.
+     * @example
+     * // Create many DiasHorariosClases
+     * const diasHorariosClases = await prisma.diasHorariosClases.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DiasHorariosClasesCreateManyArgs>(args?: SelectSubset<T, DiasHorariosClasesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many DiasHorariosClases and returns the data saved in the database.
+     * @param {DiasHorariosClasesCreateManyAndReturnArgs} args - Arguments to create many DiasHorariosClases.
+     * @example
+     * // Create many DiasHorariosClases
+     * const diasHorariosClases = await prisma.diasHorariosClases.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many DiasHorariosClases and only return the `id`
+     * const diasHorariosClasesWithIdOnly = await prisma.diasHorariosClases.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DiasHorariosClasesCreateManyAndReturnArgs>(args?: SelectSubset<T, DiasHorariosClasesCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiasHorariosClasesPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a DiasHorariosClases.
+     * @param {DiasHorariosClasesDeleteArgs} args - Arguments to delete one DiasHorariosClases.
+     * @example
+     * // Delete one DiasHorariosClases
+     * const DiasHorariosClases = await prisma.diasHorariosClases.delete({
+     *   where: {
+     *     // ... filter to delete one DiasHorariosClases
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DiasHorariosClasesDeleteArgs>(args: SelectSubset<T, DiasHorariosClasesDeleteArgs<ExtArgs>>): Prisma__DiasHorariosClasesClient<$Result.GetResult<Prisma.$DiasHorariosClasesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one DiasHorariosClases.
+     * @param {DiasHorariosClasesUpdateArgs} args - Arguments to update one DiasHorariosClases.
+     * @example
+     * // Update one DiasHorariosClases
+     * const diasHorariosClases = await prisma.diasHorariosClases.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DiasHorariosClasesUpdateArgs>(args: SelectSubset<T, DiasHorariosClasesUpdateArgs<ExtArgs>>): Prisma__DiasHorariosClasesClient<$Result.GetResult<Prisma.$DiasHorariosClasesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more DiasHorariosClases.
+     * @param {DiasHorariosClasesDeleteManyArgs} args - Arguments to filter DiasHorariosClases to delete.
+     * @example
+     * // Delete a few DiasHorariosClases
+     * const { count } = await prisma.diasHorariosClases.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DiasHorariosClasesDeleteManyArgs>(args?: SelectSubset<T, DiasHorariosClasesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DiasHorariosClases.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiasHorariosClasesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many DiasHorariosClases
+     * const diasHorariosClases = await prisma.diasHorariosClases.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DiasHorariosClasesUpdateManyArgs>(args: SelectSubset<T, DiasHorariosClasesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DiasHorariosClases and returns the data updated in the database.
+     * @param {DiasHorariosClasesUpdateManyAndReturnArgs} args - Arguments to update many DiasHorariosClases.
+     * @example
+     * // Update many DiasHorariosClases
+     * const diasHorariosClases = await prisma.diasHorariosClases.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more DiasHorariosClases and only return the `id`
+     * const diasHorariosClasesWithIdOnly = await prisma.diasHorariosClases.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends DiasHorariosClasesUpdateManyAndReturnArgs>(args: SelectSubset<T, DiasHorariosClasesUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiasHorariosClasesPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one DiasHorariosClases.
+     * @param {DiasHorariosClasesUpsertArgs} args - Arguments to update or create a DiasHorariosClases.
+     * @example
+     * // Update or create a DiasHorariosClases
+     * const diasHorariosClases = await prisma.diasHorariosClases.upsert({
+     *   create: {
+     *     // ... data to create a DiasHorariosClases
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the DiasHorariosClases we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DiasHorariosClasesUpsertArgs>(args: SelectSubset<T, DiasHorariosClasesUpsertArgs<ExtArgs>>): Prisma__DiasHorariosClasesClient<$Result.GetResult<Prisma.$DiasHorariosClasesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of DiasHorariosClases.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiasHorariosClasesCountArgs} args - Arguments to filter DiasHorariosClases to count.
+     * @example
+     * // Count the number of DiasHorariosClases
+     * const count = await prisma.diasHorariosClases.count({
+     *   where: {
+     *     // ... the filter for the DiasHorariosClases we want to count
+     *   }
+     * })
+    **/
+    count<T extends DiasHorariosClasesCountArgs>(
+      args?: Subset<T, DiasHorariosClasesCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DiasHorariosClasesCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a DiasHorariosClases.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiasHorariosClasesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DiasHorariosClasesAggregateArgs>(args: Subset<T, DiasHorariosClasesAggregateArgs>): Prisma.PrismaPromise<GetDiasHorariosClasesAggregateType<T>>
+
+    /**
+     * Group by DiasHorariosClases.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DiasHorariosClasesGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DiasHorariosClasesGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DiasHorariosClasesGroupByArgs['orderBy'] }
+        : { orderBy?: DiasHorariosClasesGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DiasHorariosClasesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDiasHorariosClasesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the DiasHorariosClases model
+   */
+  readonly fields: DiasHorariosClasesFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for DiasHorariosClases.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DiasHorariosClasesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    materia<T extends MateriasDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MateriasDefaultArgs<ExtArgs>>): Prisma__MateriasClient<$Result.GetResult<Prisma.$MateriasPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the DiasHorariosClases model
+   */
+  interface DiasHorariosClasesFieldRefs {
+    readonly id: FieldRef<"DiasHorariosClases", 'Int'>
+    readonly idMateria: FieldRef<"DiasHorariosClases", 'Int'>
+    readonly dias: FieldRef<"DiasHorariosClases", 'Dias[]'>
+    readonly horaInicio: FieldRef<"DiasHorariosClases", 'String'>
+    readonly duracionMinutos: FieldRef<"DiasHorariosClases", 'Int'>
+    readonly createdAt: FieldRef<"DiasHorariosClases", 'DateTime'>
+    readonly updatedAt: FieldRef<"DiasHorariosClases", 'DateTime'>
+    readonly deletedAt: FieldRef<"DiasHorariosClases", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * DiasHorariosClases findUnique
+   */
+  export type DiasHorariosClasesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiasHorariosClases
+     */
+    select?: DiasHorariosClasesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiasHorariosClases
+     */
+    omit?: DiasHorariosClasesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiasHorariosClasesInclude<ExtArgs> | null
+    /**
+     * Filter, which DiasHorariosClases to fetch.
+     */
+    where: DiasHorariosClasesWhereUniqueInput
+  }
+
+  /**
+   * DiasHorariosClases findUniqueOrThrow
+   */
+  export type DiasHorariosClasesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiasHorariosClases
+     */
+    select?: DiasHorariosClasesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiasHorariosClases
+     */
+    omit?: DiasHorariosClasesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiasHorariosClasesInclude<ExtArgs> | null
+    /**
+     * Filter, which DiasHorariosClases to fetch.
+     */
+    where: DiasHorariosClasesWhereUniqueInput
+  }
+
+  /**
+   * DiasHorariosClases findFirst
+   */
+  export type DiasHorariosClasesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiasHorariosClases
+     */
+    select?: DiasHorariosClasesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiasHorariosClases
+     */
+    omit?: DiasHorariosClasesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiasHorariosClasesInclude<ExtArgs> | null
+    /**
+     * Filter, which DiasHorariosClases to fetch.
+     */
+    where?: DiasHorariosClasesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DiasHorariosClases to fetch.
+     */
+    orderBy?: DiasHorariosClasesOrderByWithRelationInput | DiasHorariosClasesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DiasHorariosClases.
+     */
+    cursor?: DiasHorariosClasesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DiasHorariosClases from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DiasHorariosClases.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DiasHorariosClases.
+     */
+    distinct?: DiasHorariosClasesScalarFieldEnum | DiasHorariosClasesScalarFieldEnum[]
+  }
+
+  /**
+   * DiasHorariosClases findFirstOrThrow
+   */
+  export type DiasHorariosClasesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiasHorariosClases
+     */
+    select?: DiasHorariosClasesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiasHorariosClases
+     */
+    omit?: DiasHorariosClasesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiasHorariosClasesInclude<ExtArgs> | null
+    /**
+     * Filter, which DiasHorariosClases to fetch.
+     */
+    where?: DiasHorariosClasesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DiasHorariosClases to fetch.
+     */
+    orderBy?: DiasHorariosClasesOrderByWithRelationInput | DiasHorariosClasesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DiasHorariosClases.
+     */
+    cursor?: DiasHorariosClasesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DiasHorariosClases from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DiasHorariosClases.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DiasHorariosClases.
+     */
+    distinct?: DiasHorariosClasesScalarFieldEnum | DiasHorariosClasesScalarFieldEnum[]
+  }
+
+  /**
+   * DiasHorariosClases findMany
+   */
+  export type DiasHorariosClasesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiasHorariosClases
+     */
+    select?: DiasHorariosClasesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiasHorariosClases
+     */
+    omit?: DiasHorariosClasesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiasHorariosClasesInclude<ExtArgs> | null
+    /**
+     * Filter, which DiasHorariosClases to fetch.
+     */
+    where?: DiasHorariosClasesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DiasHorariosClases to fetch.
+     */
+    orderBy?: DiasHorariosClasesOrderByWithRelationInput | DiasHorariosClasesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing DiasHorariosClases.
+     */
+    cursor?: DiasHorariosClasesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DiasHorariosClases from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DiasHorariosClases.
+     */
+    skip?: number
+    distinct?: DiasHorariosClasesScalarFieldEnum | DiasHorariosClasesScalarFieldEnum[]
+  }
+
+  /**
+   * DiasHorariosClases create
+   */
+  export type DiasHorariosClasesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiasHorariosClases
+     */
+    select?: DiasHorariosClasesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiasHorariosClases
+     */
+    omit?: DiasHorariosClasesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiasHorariosClasesInclude<ExtArgs> | null
+    /**
+     * The data needed to create a DiasHorariosClases.
+     */
+    data: XOR<DiasHorariosClasesCreateInput, DiasHorariosClasesUncheckedCreateInput>
+  }
+
+  /**
+   * DiasHorariosClases createMany
+   */
+  export type DiasHorariosClasesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many DiasHorariosClases.
+     */
+    data: DiasHorariosClasesCreateManyInput | DiasHorariosClasesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * DiasHorariosClases createManyAndReturn
+   */
+  export type DiasHorariosClasesCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiasHorariosClases
+     */
+    select?: DiasHorariosClasesSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiasHorariosClases
+     */
+    omit?: DiasHorariosClasesOmit<ExtArgs> | null
+    /**
+     * The data used to create many DiasHorariosClases.
+     */
+    data: DiasHorariosClasesCreateManyInput | DiasHorariosClasesCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiasHorariosClasesIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * DiasHorariosClases update
+   */
+  export type DiasHorariosClasesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiasHorariosClases
+     */
+    select?: DiasHorariosClasesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiasHorariosClases
+     */
+    omit?: DiasHorariosClasesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiasHorariosClasesInclude<ExtArgs> | null
+    /**
+     * The data needed to update a DiasHorariosClases.
+     */
+    data: XOR<DiasHorariosClasesUpdateInput, DiasHorariosClasesUncheckedUpdateInput>
+    /**
+     * Choose, which DiasHorariosClases to update.
+     */
+    where: DiasHorariosClasesWhereUniqueInput
+  }
+
+  /**
+   * DiasHorariosClases updateMany
+   */
+  export type DiasHorariosClasesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update DiasHorariosClases.
+     */
+    data: XOR<DiasHorariosClasesUpdateManyMutationInput, DiasHorariosClasesUncheckedUpdateManyInput>
+    /**
+     * Filter which DiasHorariosClases to update
+     */
+    where?: DiasHorariosClasesWhereInput
+    /**
+     * Limit how many DiasHorariosClases to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * DiasHorariosClases updateManyAndReturn
+   */
+  export type DiasHorariosClasesUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiasHorariosClases
+     */
+    select?: DiasHorariosClasesSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiasHorariosClases
+     */
+    omit?: DiasHorariosClasesOmit<ExtArgs> | null
+    /**
+     * The data used to update DiasHorariosClases.
+     */
+    data: XOR<DiasHorariosClasesUpdateManyMutationInput, DiasHorariosClasesUncheckedUpdateManyInput>
+    /**
+     * Filter which DiasHorariosClases to update
+     */
+    where?: DiasHorariosClasesWhereInput
+    /**
+     * Limit how many DiasHorariosClases to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiasHorariosClasesIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * DiasHorariosClases upsert
+   */
+  export type DiasHorariosClasesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiasHorariosClases
+     */
+    select?: DiasHorariosClasesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiasHorariosClases
+     */
+    omit?: DiasHorariosClasesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiasHorariosClasesInclude<ExtArgs> | null
+    /**
+     * The filter to search for the DiasHorariosClases to update in case it exists.
+     */
+    where: DiasHorariosClasesWhereUniqueInput
+    /**
+     * In case the DiasHorariosClases found by the `where` argument doesn't exist, create a new DiasHorariosClases with this data.
+     */
+    create: XOR<DiasHorariosClasesCreateInput, DiasHorariosClasesUncheckedCreateInput>
+    /**
+     * In case the DiasHorariosClases was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DiasHorariosClasesUpdateInput, DiasHorariosClasesUncheckedUpdateInput>
+  }
+
+  /**
+   * DiasHorariosClases delete
+   */
+  export type DiasHorariosClasesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiasHorariosClases
+     */
+    select?: DiasHorariosClasesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiasHorariosClases
+     */
+    omit?: DiasHorariosClasesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiasHorariosClasesInclude<ExtArgs> | null
+    /**
+     * Filter which DiasHorariosClases to delete.
+     */
+    where: DiasHorariosClasesWhereUniqueInput
+  }
+
+  /**
+   * DiasHorariosClases deleteMany
+   */
+  export type DiasHorariosClasesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DiasHorariosClases to delete
+     */
+    where?: DiasHorariosClasesWhereInput
+    /**
+     * Limit how many DiasHorariosClases to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * DiasHorariosClases without action
+   */
+  export type DiasHorariosClasesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DiasHorariosClases
+     */
+    select?: DiasHorariosClasesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DiasHorariosClases
+     */
+    omit?: DiasHorariosClasesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DiasHorariosClasesInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Cursos
+   */
+
+  export type AggregateCursos = {
+    _count: CursosCountAggregateOutputType | null
+    _avg: CursosAvgAggregateOutputType | null
+    _sum: CursosSumAggregateOutputType | null
+    _min: CursosMinAggregateOutputType | null
+    _max: CursosMaxAggregateOutputType | null
+  }
+
+  export type CursosAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type CursosSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type CursosMinAggregateOutputType = {
+    id: number | null
+    nombre: string | null
+    turno: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    deletedAt: Date | null
+  }
+
+  export type CursosMaxAggregateOutputType = {
+    id: number | null
+    nombre: string | null
+    turno: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    deletedAt: Date | null
+  }
+
+  export type CursosCountAggregateOutputType = {
+    id: number
+    nombre: number
+    turno: number
+    createdAt: number
+    updatedAt: number
+    deletedAt: number
+    _all: number
+  }
+
+
+  export type CursosAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type CursosSumAggregateInputType = {
+    id?: true
+  }
+
+  export type CursosMinAggregateInputType = {
+    id?: true
+    nombre?: true
+    turno?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+  }
+
+  export type CursosMaxAggregateInputType = {
+    id?: true
+    nombre?: true
+    turno?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+  }
+
+  export type CursosCountAggregateInputType = {
+    id?: true
+    nombre?: true
+    turno?: true
+    createdAt?: true
+    updatedAt?: true
+    deletedAt?: true
+    _all?: true
+  }
+
+  export type CursosAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Cursos to aggregate.
+     */
+    where?: CursosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Cursos to fetch.
+     */
+    orderBy?: CursosOrderByWithRelationInput | CursosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CursosWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
@@ -7404,271 +8833,277 @@ export namespace Prisma {
      * 
      * Count returned Cursos
     **/
-    _count?: true | CursoCountAggregateInputType
+    _count?: true | CursosCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: CursoAvgAggregateInputType
+    _avg?: CursosAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: CursoSumAggregateInputType
+    _sum?: CursosSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: CursoMinAggregateInputType
+    _min?: CursosMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: CursoMaxAggregateInputType
+    _max?: CursosMaxAggregateInputType
   }
 
-  export type GetCursoAggregateType<T extends CursoAggregateArgs> = {
-        [P in keyof T & keyof AggregateCurso]: P extends '_count' | 'count'
+  export type GetCursosAggregateType<T extends CursosAggregateArgs> = {
+        [P in keyof T & keyof AggregateCursos]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateCurso[P]>
-      : GetScalarType<T[P], AggregateCurso[P]>
+        : GetScalarType<T[P], AggregateCursos[P]>
+      : GetScalarType<T[P], AggregateCursos[P]>
   }
 
 
 
 
-  export type CursoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CursoWhereInput
-    orderBy?: CursoOrderByWithAggregationInput | CursoOrderByWithAggregationInput[]
-    by: CursoScalarFieldEnum[] | CursoScalarFieldEnum
-    having?: CursoScalarWhereWithAggregatesInput
+  export type CursosGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CursosWhereInput
+    orderBy?: CursosOrderByWithAggregationInput | CursosOrderByWithAggregationInput[]
+    by: CursosScalarFieldEnum[] | CursosScalarFieldEnum
+    having?: CursosScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: CursoCountAggregateInputType | true
-    _avg?: CursoAvgAggregateInputType
-    _sum?: CursoSumAggregateInputType
-    _min?: CursoMinAggregateInputType
-    _max?: CursoMaxAggregateInputType
+    _count?: CursosCountAggregateInputType | true
+    _avg?: CursosAvgAggregateInputType
+    _sum?: CursosSumAggregateInputType
+    _min?: CursosMinAggregateInputType
+    _max?: CursosMaxAggregateInputType
   }
 
-  export type CursoGroupByOutputType = {
+  export type CursosGroupByOutputType = {
     id: number
     nombre: string
+    turno: string | null
     createdAt: Date
     updatedAt: Date | null
     deletedAt: Date | null
-    _count: CursoCountAggregateOutputType | null
-    _avg: CursoAvgAggregateOutputType | null
-    _sum: CursoSumAggregateOutputType | null
-    _min: CursoMinAggregateOutputType | null
-    _max: CursoMaxAggregateOutputType | null
+    _count: CursosCountAggregateOutputType | null
+    _avg: CursosAvgAggregateOutputType | null
+    _sum: CursosSumAggregateOutputType | null
+    _min: CursosMinAggregateOutputType | null
+    _max: CursosMaxAggregateOutputType | null
   }
 
-  type GetCursoGroupByPayload<T extends CursoGroupByArgs> = Prisma.PrismaPromise<
+  type GetCursosGroupByPayload<T extends CursosGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<CursoGroupByOutputType, T['by']> &
+      PickEnumerable<CursosGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof CursoGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof CursosGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], CursoGroupByOutputType[P]>
-            : GetScalarType<T[P], CursoGroupByOutputType[P]>
+              : GetScalarType<T[P], CursosGroupByOutputType[P]>
+            : GetScalarType<T[P], CursosGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type CursoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type CursosSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     nombre?: boolean
+    turno?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
-    Materia?: boolean | Curso$MateriaArgs<ExtArgs>
-    alumnos?: boolean | Curso$alumnosArgs<ExtArgs>
-    _count?: boolean | CursoCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["curso"]>
+    Materias?: boolean | Cursos$MateriasArgs<ExtArgs>
+    Alumnos?: boolean | Cursos$AlumnosArgs<ExtArgs>
+    _count?: boolean | CursosCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["cursos"]>
 
-  export type CursoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type CursosSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     nombre?: boolean
+    turno?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
-  }, ExtArgs["result"]["curso"]>
+  }, ExtArgs["result"]["cursos"]>
 
-  export type CursoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type CursosSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     nombre?: boolean
+    turno?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
-  }, ExtArgs["result"]["curso"]>
+  }, ExtArgs["result"]["cursos"]>
 
-  export type CursoSelectScalar = {
+  export type CursosSelectScalar = {
     id?: boolean
     nombre?: boolean
+    turno?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     deletedAt?: boolean
   }
 
-  export type CursoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nombre" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["curso"]>
-  export type CursoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Materia?: boolean | Curso$MateriaArgs<ExtArgs>
-    alumnos?: boolean | Curso$alumnosArgs<ExtArgs>
-    _count?: boolean | CursoCountOutputTypeDefaultArgs<ExtArgs>
+  export type CursosOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nombre" | "turno" | "createdAt" | "updatedAt" | "deletedAt", ExtArgs["result"]["cursos"]>
+  export type CursosInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Materias?: boolean | Cursos$MateriasArgs<ExtArgs>
+    Alumnos?: boolean | Cursos$AlumnosArgs<ExtArgs>
+    _count?: boolean | CursosCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type CursoIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type CursoIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type CursosIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type CursosIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
-  export type $CursoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Curso"
+  export type $CursosPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Cursos"
     objects: {
-      Materia: Prisma.$MateriaPayload<ExtArgs>[]
-      alumnos: Prisma.$AlumnoPayload<ExtArgs>[]
+      Materias: Prisma.$MateriasPayload<ExtArgs>[]
+      Alumnos: Prisma.$AlumnosPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       nombre: string
+      turno: string | null
       createdAt: Date
       updatedAt: Date | null
       deletedAt: Date | null
-    }, ExtArgs["result"]["curso"]>
+    }, ExtArgs["result"]["cursos"]>
     composites: {}
   }
 
-  type CursoGetPayload<S extends boolean | null | undefined | CursoDefaultArgs> = $Result.GetResult<Prisma.$CursoPayload, S>
+  type CursosGetPayload<S extends boolean | null | undefined | CursosDefaultArgs> = $Result.GetResult<Prisma.$CursosPayload, S>
 
-  type CursoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<CursoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: CursoCountAggregateInputType | true
+  type CursosCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CursosFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CursosCountAggregateInputType | true
     }
 
-  export interface CursoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Curso'], meta: { name: 'Curso' } }
+  export interface CursosDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Cursos'], meta: { name: 'Cursos' } }
     /**
-     * Find zero or one Curso that matches the filter.
-     * @param {CursoFindUniqueArgs} args - Arguments to find a Curso
+     * Find zero or one Cursos that matches the filter.
+     * @param {CursosFindUniqueArgs} args - Arguments to find a Cursos
      * @example
-     * // Get one Curso
-     * const curso = await prisma.curso.findUnique({
+     * // Get one Cursos
+     * const cursos = await prisma.cursos.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends CursoFindUniqueArgs>(args: SelectSubset<T, CursoFindUniqueArgs<ExtArgs>>): Prisma__CursoClient<$Result.GetResult<Prisma.$CursoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends CursosFindUniqueArgs>(args: SelectSubset<T, CursosFindUniqueArgs<ExtArgs>>): Prisma__CursosClient<$Result.GetResult<Prisma.$CursosPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Curso that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Cursos that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {CursoFindUniqueOrThrowArgs} args - Arguments to find a Curso
+     * @param {CursosFindUniqueOrThrowArgs} args - Arguments to find a Cursos
      * @example
-     * // Get one Curso
-     * const curso = await prisma.curso.findUniqueOrThrow({
+     * // Get one Cursos
+     * const cursos = await prisma.cursos.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends CursoFindUniqueOrThrowArgs>(args: SelectSubset<T, CursoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CursoClient<$Result.GetResult<Prisma.$CursoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends CursosFindUniqueOrThrowArgs>(args: SelectSubset<T, CursosFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CursosClient<$Result.GetResult<Prisma.$CursosPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Curso that matches the filter.
+     * Find the first Cursos that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CursoFindFirstArgs} args - Arguments to find a Curso
+     * @param {CursosFindFirstArgs} args - Arguments to find a Cursos
      * @example
-     * // Get one Curso
-     * const curso = await prisma.curso.findFirst({
+     * // Get one Cursos
+     * const cursos = await prisma.cursos.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends CursoFindFirstArgs>(args?: SelectSubset<T, CursoFindFirstArgs<ExtArgs>>): Prisma__CursoClient<$Result.GetResult<Prisma.$CursoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends CursosFindFirstArgs>(args?: SelectSubset<T, CursosFindFirstArgs<ExtArgs>>): Prisma__CursosClient<$Result.GetResult<Prisma.$CursosPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Curso that matches the filter or
+     * Find the first Cursos that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CursoFindFirstOrThrowArgs} args - Arguments to find a Curso
+     * @param {CursosFindFirstOrThrowArgs} args - Arguments to find a Cursos
      * @example
-     * // Get one Curso
-     * const curso = await prisma.curso.findFirstOrThrow({
+     * // Get one Cursos
+     * const cursos = await prisma.cursos.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends CursoFindFirstOrThrowArgs>(args?: SelectSubset<T, CursoFindFirstOrThrowArgs<ExtArgs>>): Prisma__CursoClient<$Result.GetResult<Prisma.$CursoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends CursosFindFirstOrThrowArgs>(args?: SelectSubset<T, CursosFindFirstOrThrowArgs<ExtArgs>>): Prisma__CursosClient<$Result.GetResult<Prisma.$CursosPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find zero or more Cursos that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CursoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {CursosFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
      * // Get all Cursos
-     * const cursos = await prisma.curso.findMany()
+     * const cursos = await prisma.cursos.findMany()
      * 
      * // Get first 10 Cursos
-     * const cursos = await prisma.curso.findMany({ take: 10 })
+     * const cursos = await prisma.cursos.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const cursoWithIdOnly = await prisma.curso.findMany({ select: { id: true } })
+     * const cursosWithIdOnly = await prisma.cursos.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends CursoFindManyArgs>(args?: SelectSubset<T, CursoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CursoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends CursosFindManyArgs>(args?: SelectSubset<T, CursosFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CursosPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Curso.
-     * @param {CursoCreateArgs} args - Arguments to create a Curso.
+     * Create a Cursos.
+     * @param {CursosCreateArgs} args - Arguments to create a Cursos.
      * @example
-     * // Create one Curso
-     * const Curso = await prisma.curso.create({
+     * // Create one Cursos
+     * const Cursos = await prisma.cursos.create({
      *   data: {
-     *     // ... data to create a Curso
+     *     // ... data to create a Cursos
      *   }
      * })
      * 
      */
-    create<T extends CursoCreateArgs>(args: SelectSubset<T, CursoCreateArgs<ExtArgs>>): Prisma__CursoClient<$Result.GetResult<Prisma.$CursoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends CursosCreateArgs>(args: SelectSubset<T, CursosCreateArgs<ExtArgs>>): Prisma__CursosClient<$Result.GetResult<Prisma.$CursosPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Create many Cursos.
-     * @param {CursoCreateManyArgs} args - Arguments to create many Cursos.
+     * @param {CursosCreateManyArgs} args - Arguments to create many Cursos.
      * @example
      * // Create many Cursos
-     * const curso = await prisma.curso.createMany({
+     * const cursos = await prisma.cursos.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends CursoCreateManyArgs>(args?: SelectSubset<T, CursoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends CursosCreateManyArgs>(args?: SelectSubset<T, CursosCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Create many Cursos and returns the data saved in the database.
-     * @param {CursoCreateManyAndReturnArgs} args - Arguments to create many Cursos.
+     * @param {CursosCreateManyAndReturnArgs} args - Arguments to create many Cursos.
      * @example
      * // Create many Cursos
-     * const curso = await prisma.curso.createManyAndReturn({
+     * const cursos = await prisma.cursos.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
      * // Create many Cursos and only return the `id`
-     * const cursoWithIdOnly = await prisma.curso.createManyAndReturn({
+     * const cursosWithIdOnly = await prisma.cursos.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -7678,28 +9113,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends CursoCreateManyAndReturnArgs>(args?: SelectSubset<T, CursoCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CursoPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends CursosCreateManyAndReturnArgs>(args?: SelectSubset<T, CursosCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CursosPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Curso.
-     * @param {CursoDeleteArgs} args - Arguments to delete one Curso.
+     * Delete a Cursos.
+     * @param {CursosDeleteArgs} args - Arguments to delete one Cursos.
      * @example
-     * // Delete one Curso
-     * const Curso = await prisma.curso.delete({
+     * // Delete one Cursos
+     * const Cursos = await prisma.cursos.delete({
      *   where: {
-     *     // ... filter to delete one Curso
+     *     // ... filter to delete one Cursos
      *   }
      * })
      * 
      */
-    delete<T extends CursoDeleteArgs>(args: SelectSubset<T, CursoDeleteArgs<ExtArgs>>): Prisma__CursoClient<$Result.GetResult<Prisma.$CursoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends CursosDeleteArgs>(args: SelectSubset<T, CursosDeleteArgs<ExtArgs>>): Prisma__CursosClient<$Result.GetResult<Prisma.$CursosPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Curso.
-     * @param {CursoUpdateArgs} args - Arguments to update one Curso.
+     * Update one Cursos.
+     * @param {CursosUpdateArgs} args - Arguments to update one Cursos.
      * @example
-     * // Update one Curso
-     * const curso = await prisma.curso.update({
+     * // Update one Cursos
+     * const cursos = await prisma.cursos.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -7709,30 +9144,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends CursoUpdateArgs>(args: SelectSubset<T, CursoUpdateArgs<ExtArgs>>): Prisma__CursoClient<$Result.GetResult<Prisma.$CursoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends CursosUpdateArgs>(args: SelectSubset<T, CursosUpdateArgs<ExtArgs>>): Prisma__CursosClient<$Result.GetResult<Prisma.$CursosPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Delete zero or more Cursos.
-     * @param {CursoDeleteManyArgs} args - Arguments to filter Cursos to delete.
+     * @param {CursosDeleteManyArgs} args - Arguments to filter Cursos to delete.
      * @example
      * // Delete a few Cursos
-     * const { count } = await prisma.curso.deleteMany({
+     * const { count } = await prisma.cursos.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends CursoDeleteManyArgs>(args?: SelectSubset<T, CursoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends CursosDeleteManyArgs>(args?: SelectSubset<T, CursosDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more Cursos.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CursoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {CursosUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
      * // Update many Cursos
-     * const curso = await prisma.curso.updateMany({
+     * const cursos = await prisma.cursos.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -7742,14 +9177,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends CursoUpdateManyArgs>(args: SelectSubset<T, CursoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends CursosUpdateManyArgs>(args: SelectSubset<T, CursosUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more Cursos and returns the data updated in the database.
-     * @param {CursoUpdateManyAndReturnArgs} args - Arguments to update many Cursos.
+     * @param {CursosUpdateManyAndReturnArgs} args - Arguments to update many Cursos.
      * @example
      * // Update many Cursos
-     * const curso = await prisma.curso.updateManyAndReturn({
+     * const cursos = await prisma.cursos.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -7759,7 +9194,7 @@ export namespace Prisma {
      * })
      * 
      * // Update zero or more Cursos and only return the `id`
-     * const cursoWithIdOnly = await prisma.curso.updateManyAndReturn({
+     * const cursosWithIdOnly = await prisma.cursos.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -7772,56 +9207,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends CursoUpdateManyAndReturnArgs>(args: SelectSubset<T, CursoUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CursoPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends CursosUpdateManyAndReturnArgs>(args: SelectSubset<T, CursosUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CursosPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Curso.
-     * @param {CursoUpsertArgs} args - Arguments to update or create a Curso.
+     * Create or update one Cursos.
+     * @param {CursosUpsertArgs} args - Arguments to update or create a Cursos.
      * @example
-     * // Update or create a Curso
-     * const curso = await prisma.curso.upsert({
+     * // Update or create a Cursos
+     * const cursos = await prisma.cursos.upsert({
      *   create: {
-     *     // ... data to create a Curso
+     *     // ... data to create a Cursos
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Curso we want to update
+     *     // ... the filter for the Cursos we want to update
      *   }
      * })
      */
-    upsert<T extends CursoUpsertArgs>(args: SelectSubset<T, CursoUpsertArgs<ExtArgs>>): Prisma__CursoClient<$Result.GetResult<Prisma.$CursoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends CursosUpsertArgs>(args: SelectSubset<T, CursosUpsertArgs<ExtArgs>>): Prisma__CursosClient<$Result.GetResult<Prisma.$CursosPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
      * Count the number of Cursos.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CursoCountArgs} args - Arguments to filter Cursos to count.
+     * @param {CursosCountArgs} args - Arguments to filter Cursos to count.
      * @example
      * // Count the number of Cursos
-     * const count = await prisma.curso.count({
+     * const count = await prisma.cursos.count({
      *   where: {
      *     // ... the filter for the Cursos we want to count
      *   }
      * })
     **/
-    count<T extends CursoCountArgs>(
-      args?: Subset<T, CursoCountArgs>,
+    count<T extends CursosCountArgs>(
+      args?: Subset<T, CursosCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], CursoCountAggregateOutputType>
+          : GetScalarType<T['select'], CursosCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Curso.
+     * Allows you to perform aggregations operations on a Cursos.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CursoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {CursosAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -7841,13 +9276,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends CursoAggregateArgs>(args: Subset<T, CursoAggregateArgs>): Prisma.PrismaPromise<GetCursoAggregateType<T>>
+    aggregate<T extends CursosAggregateArgs>(args: Subset<T, CursosAggregateArgs>): Prisma.PrismaPromise<GetCursosAggregateType<T>>
 
     /**
-     * Group by Curso.
+     * Group by Cursos.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CursoGroupByArgs} args - Group by arguments.
+     * @param {CursosGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -7862,14 +9297,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends CursoGroupByArgs,
+      T extends CursosGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: CursoGroupByArgs['orderBy'] }
-        : { orderBy?: CursoGroupByArgs['orderBy'] },
+        ? { orderBy: CursosGroupByArgs['orderBy'] }
+        : { orderBy?: CursosGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -7918,23 +9353,23 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, CursoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCursoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, CursosGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCursosGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Curso model
+   * Fields of the Cursos model
    */
-  readonly fields: CursoFieldRefs;
+  readonly fields: CursosFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Curso.
+   * The delegate class that acts as a "Promise-like" for Cursos.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__CursoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__CursosClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    Materia<T extends Curso$MateriaArgs<ExtArgs> = {}>(args?: Subset<T, Curso$MateriaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MateriaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    alumnos<T extends Curso$alumnosArgs<ExtArgs> = {}>(args?: Subset<T, Curso$alumnosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AlumnoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    Materias<T extends Cursos$MateriasArgs<ExtArgs> = {}>(args?: Subset<T, Cursos$MateriasArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MateriasPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    Alumnos<T extends Cursos$AlumnosArgs<ExtArgs> = {}>(args?: Subset<T, Cursos$AlumnosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AlumnosPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7961,198 +9396,199 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Curso model
+   * Fields of the Cursos model
    */
-  interface CursoFieldRefs {
-    readonly id: FieldRef<"Curso", 'Int'>
-    readonly nombre: FieldRef<"Curso", 'String'>
-    readonly createdAt: FieldRef<"Curso", 'DateTime'>
-    readonly updatedAt: FieldRef<"Curso", 'DateTime'>
-    readonly deletedAt: FieldRef<"Curso", 'DateTime'>
+  interface CursosFieldRefs {
+    readonly id: FieldRef<"Cursos", 'Int'>
+    readonly nombre: FieldRef<"Cursos", 'String'>
+    readonly turno: FieldRef<"Cursos", 'String'>
+    readonly createdAt: FieldRef<"Cursos", 'DateTime'>
+    readonly updatedAt: FieldRef<"Cursos", 'DateTime'>
+    readonly deletedAt: FieldRef<"Cursos", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * Curso findUnique
+   * Cursos findUnique
    */
-  export type CursoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CursosFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Curso
+     * Select specific fields to fetch from the Cursos
      */
-    select?: CursoSelect<ExtArgs> | null
+    select?: CursosSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Curso
+     * Omit specific fields from the Cursos
      */
-    omit?: CursoOmit<ExtArgs> | null
+    omit?: CursosOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CursoInclude<ExtArgs> | null
-    /**
-     * Filter, which Curso to fetch.
-     */
-    where: CursoWhereUniqueInput
-  }
-
-  /**
-   * Curso findUniqueOrThrow
-   */
-  export type CursoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Curso
-     */
-    select?: CursoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Curso
-     */
-    omit?: CursoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CursoInclude<ExtArgs> | null
-    /**
-     * Filter, which Curso to fetch.
-     */
-    where: CursoWhereUniqueInput
-  }
-
-  /**
-   * Curso findFirst
-   */
-  export type CursoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Curso
-     */
-    select?: CursoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Curso
-     */
-    omit?: CursoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CursoInclude<ExtArgs> | null
-    /**
-     * Filter, which Curso to fetch.
-     */
-    where?: CursoWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Cursos to fetch.
-     */
-    orderBy?: CursoOrderByWithRelationInput | CursoOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Cursos.
-     */
-    cursor?: CursoWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Cursos from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Cursos.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Cursos.
-     */
-    distinct?: CursoScalarFieldEnum | CursoScalarFieldEnum[]
-  }
-
-  /**
-   * Curso findFirstOrThrow
-   */
-  export type CursoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Curso
-     */
-    select?: CursoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Curso
-     */
-    omit?: CursoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CursoInclude<ExtArgs> | null
-    /**
-     * Filter, which Curso to fetch.
-     */
-    where?: CursoWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Cursos to fetch.
-     */
-    orderBy?: CursoOrderByWithRelationInput | CursoOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Cursos.
-     */
-    cursor?: CursoWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Cursos from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Cursos.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Cursos.
-     */
-    distinct?: CursoScalarFieldEnum | CursoScalarFieldEnum[]
-  }
-
-  /**
-   * Curso findMany
-   */
-  export type CursoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Curso
-     */
-    select?: CursoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Curso
-     */
-    omit?: CursoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CursoInclude<ExtArgs> | null
+    include?: CursosInclude<ExtArgs> | null
     /**
      * Filter, which Cursos to fetch.
      */
-    where?: CursoWhereInput
+    where: CursosWhereUniqueInput
+  }
+
+  /**
+   * Cursos findUniqueOrThrow
+   */
+  export type CursosFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Cursos
+     */
+    select?: CursosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Cursos
+     */
+    omit?: CursosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CursosInclude<ExtArgs> | null
+    /**
+     * Filter, which Cursos to fetch.
+     */
+    where: CursosWhereUniqueInput
+  }
+
+  /**
+   * Cursos findFirst
+   */
+  export type CursosFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Cursos
+     */
+    select?: CursosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Cursos
+     */
+    omit?: CursosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CursosInclude<ExtArgs> | null
+    /**
+     * Filter, which Cursos to fetch.
+     */
+    where?: CursosWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
      * Determine the order of Cursos to fetch.
      */
-    orderBy?: CursoOrderByWithRelationInput | CursoOrderByWithRelationInput[]
+    orderBy?: CursosOrderByWithRelationInput | CursosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Cursos.
+     */
+    cursor?: CursosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Cursos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Cursos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Cursos.
+     */
+    distinct?: CursosScalarFieldEnum | CursosScalarFieldEnum[]
+  }
+
+  /**
+   * Cursos findFirstOrThrow
+   */
+  export type CursosFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Cursos
+     */
+    select?: CursosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Cursos
+     */
+    omit?: CursosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CursosInclude<ExtArgs> | null
+    /**
+     * Filter, which Cursos to fetch.
+     */
+    where?: CursosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Cursos to fetch.
+     */
+    orderBy?: CursosOrderByWithRelationInput | CursosOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Cursos.
+     */
+    cursor?: CursosWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Cursos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Cursos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Cursos.
+     */
+    distinct?: CursosScalarFieldEnum | CursosScalarFieldEnum[]
+  }
+
+  /**
+   * Cursos findMany
+   */
+  export type CursosFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Cursos
+     */
+    select?: CursosSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Cursos
+     */
+    omit?: CursosOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CursosInclude<ExtArgs> | null
+    /**
+     * Filter, which Cursos to fetch.
+     */
+    where?: CursosWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Cursos to fetch.
+     */
+    orderBy?: CursosOrderByWithRelationInput | CursosOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the position for listing Cursos.
      */
-    cursor?: CursoWhereUniqueInput
+    cursor?: CursosWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
@@ -8165,99 +9601,99 @@ export namespace Prisma {
      * Skip the first `n` Cursos.
      */
     skip?: number
-    distinct?: CursoScalarFieldEnum | CursoScalarFieldEnum[]
+    distinct?: CursosScalarFieldEnum | CursosScalarFieldEnum[]
   }
 
   /**
-   * Curso create
+   * Cursos create
    */
-  export type CursoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CursosCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Curso
+     * Select specific fields to fetch from the Cursos
      */
-    select?: CursoSelect<ExtArgs> | null
+    select?: CursosSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Curso
+     * Omit specific fields from the Cursos
      */
-    omit?: CursoOmit<ExtArgs> | null
+    omit?: CursosOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CursoInclude<ExtArgs> | null
+    include?: CursosInclude<ExtArgs> | null
     /**
-     * The data needed to create a Curso.
+     * The data needed to create a Cursos.
      */
-    data: XOR<CursoCreateInput, CursoUncheckedCreateInput>
+    data: XOR<CursosCreateInput, CursosUncheckedCreateInput>
   }
 
   /**
-   * Curso createMany
+   * Cursos createMany
    */
-  export type CursoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CursosCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * The data used to create many Cursos.
      */
-    data: CursoCreateManyInput | CursoCreateManyInput[]
+    data: CursosCreateManyInput | CursosCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Curso createManyAndReturn
+   * Cursos createManyAndReturn
    */
-  export type CursoCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CursosCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Curso
+     * Select specific fields to fetch from the Cursos
      */
-    select?: CursoSelectCreateManyAndReturn<ExtArgs> | null
+    select?: CursosSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Curso
+     * Omit specific fields from the Cursos
      */
-    omit?: CursoOmit<ExtArgs> | null
+    omit?: CursosOmit<ExtArgs> | null
     /**
      * The data used to create many Cursos.
      */
-    data: CursoCreateManyInput | CursoCreateManyInput[]
+    data: CursosCreateManyInput | CursosCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Curso update
+   * Cursos update
    */
-  export type CursoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CursosUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Curso
+     * Select specific fields to fetch from the Cursos
      */
-    select?: CursoSelect<ExtArgs> | null
+    select?: CursosSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Curso
+     * Omit specific fields from the Cursos
      */
-    omit?: CursoOmit<ExtArgs> | null
+    omit?: CursosOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CursoInclude<ExtArgs> | null
+    include?: CursosInclude<ExtArgs> | null
     /**
-     * The data needed to update a Curso.
+     * The data needed to update a Cursos.
      */
-    data: XOR<CursoUpdateInput, CursoUncheckedUpdateInput>
+    data: XOR<CursosUpdateInput, CursosUncheckedUpdateInput>
     /**
-     * Choose, which Curso to update.
+     * Choose, which Cursos to update.
      */
-    where: CursoWhereUniqueInput
+    where: CursosWhereUniqueInput
   }
 
   /**
-   * Curso updateMany
+   * Cursos updateMany
    */
-  export type CursoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CursosUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * The data used to update Cursos.
      */
-    data: XOR<CursoUpdateManyMutationInput, CursoUncheckedUpdateManyInput>
+    data: XOR<CursosUpdateManyMutationInput, CursosUncheckedUpdateManyInput>
     /**
      * Filter which Cursos to update
      */
-    where?: CursoWhereInput
+    where?: CursosWhereInput
     /**
      * Limit how many Cursos to update.
      */
@@ -8265,25 +9701,25 @@ export namespace Prisma {
   }
 
   /**
-   * Curso updateManyAndReturn
+   * Cursos updateManyAndReturn
    */
-  export type CursoUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CursosUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Curso
+     * Select specific fields to fetch from the Cursos
      */
-    select?: CursoSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: CursosSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Curso
+     * Omit specific fields from the Cursos
      */
-    omit?: CursoOmit<ExtArgs> | null
+    omit?: CursosOmit<ExtArgs> | null
     /**
      * The data used to update Cursos.
      */
-    data: XOR<CursoUpdateManyMutationInput, CursoUncheckedUpdateManyInput>
+    data: XOR<CursosUpdateManyMutationInput, CursosUncheckedUpdateManyInput>
     /**
      * Filter which Cursos to update
      */
-    where?: CursoWhereInput
+    where?: CursosWhereInput
     /**
      * Limit how many Cursos to update.
      */
@@ -8291,65 +9727,65 @@ export namespace Prisma {
   }
 
   /**
-   * Curso upsert
+   * Cursos upsert
    */
-  export type CursoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CursosUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Curso
+     * Select specific fields to fetch from the Cursos
      */
-    select?: CursoSelect<ExtArgs> | null
+    select?: CursosSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Curso
+     * Omit specific fields from the Cursos
      */
-    omit?: CursoOmit<ExtArgs> | null
+    omit?: CursosOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CursoInclude<ExtArgs> | null
+    include?: CursosInclude<ExtArgs> | null
     /**
-     * The filter to search for the Curso to update in case it exists.
+     * The filter to search for the Cursos to update in case it exists.
      */
-    where: CursoWhereUniqueInput
+    where: CursosWhereUniqueInput
     /**
-     * In case the Curso found by the `where` argument doesn't exist, create a new Curso with this data.
+     * In case the Cursos found by the `where` argument doesn't exist, create a new Cursos with this data.
      */
-    create: XOR<CursoCreateInput, CursoUncheckedCreateInput>
+    create: XOR<CursosCreateInput, CursosUncheckedCreateInput>
     /**
-     * In case the Curso was found with the provided `where` argument, update it with this data.
+     * In case the Cursos was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<CursoUpdateInput, CursoUncheckedUpdateInput>
+    update: XOR<CursosUpdateInput, CursosUncheckedUpdateInput>
   }
 
   /**
-   * Curso delete
+   * Cursos delete
    */
-  export type CursoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CursosDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Curso
+     * Select specific fields to fetch from the Cursos
      */
-    select?: CursoSelect<ExtArgs> | null
+    select?: CursosSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Curso
+     * Omit specific fields from the Cursos
      */
-    omit?: CursoOmit<ExtArgs> | null
+    omit?: CursosOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CursoInclude<ExtArgs> | null
+    include?: CursosInclude<ExtArgs> | null
     /**
-     * Filter which Curso to delete.
+     * Filter which Cursos to delete.
      */
-    where: CursoWhereUniqueInput
+    where: CursosWhereUniqueInput
   }
 
   /**
-   * Curso deleteMany
+   * Cursos deleteMany
    */
-  export type CursoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CursosDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Filter which Cursos to delete
      */
-    where?: CursoWhereInput
+    where?: CursosWhereInput
     /**
      * Limit how many Cursos to delete.
      */
@@ -8357,69 +9793,1085 @@ export namespace Prisma {
   }
 
   /**
-   * Curso.Materia
+   * Cursos.Materias
    */
-  export type Curso$MateriaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Cursos$MateriasArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Materia
+     * Select specific fields to fetch from the Materias
      */
-    select?: MateriaSelect<ExtArgs> | null
+    select?: MateriasSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Materia
+     * Omit specific fields from the Materias
      */
-    omit?: MateriaOmit<ExtArgs> | null
+    omit?: MateriasOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MateriaInclude<ExtArgs> | null
-    where?: MateriaWhereInput
-    orderBy?: MateriaOrderByWithRelationInput | MateriaOrderByWithRelationInput[]
-    cursor?: MateriaWhereUniqueInput
+    include?: MateriasInclude<ExtArgs> | null
+    where?: MateriasWhereInput
+    orderBy?: MateriasOrderByWithRelationInput | MateriasOrderByWithRelationInput[]
+    cursor?: MateriasWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: MateriaScalarFieldEnum | MateriaScalarFieldEnum[]
+    distinct?: MateriasScalarFieldEnum | MateriasScalarFieldEnum[]
   }
 
   /**
-   * Curso.alumnos
+   * Cursos.Alumnos
    */
-  export type Curso$alumnosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Cursos$AlumnosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Alumno
+     * Select specific fields to fetch from the Alumnos
      */
-    select?: AlumnoSelect<ExtArgs> | null
+    select?: AlumnosSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Alumno
+     * Omit specific fields from the Alumnos
      */
-    omit?: AlumnoOmit<ExtArgs> | null
+    omit?: AlumnosOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AlumnoInclude<ExtArgs> | null
-    where?: AlumnoWhereInput
-    orderBy?: AlumnoOrderByWithRelationInput | AlumnoOrderByWithRelationInput[]
-    cursor?: AlumnoWhereUniqueInput
+    include?: AlumnosInclude<ExtArgs> | null
+    where?: AlumnosWhereInput
+    orderBy?: AlumnosOrderByWithRelationInput | AlumnosOrderByWithRelationInput[]
+    cursor?: AlumnosWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: AlumnoScalarFieldEnum | AlumnoScalarFieldEnum[]
+    distinct?: AlumnosScalarFieldEnum | AlumnosScalarFieldEnum[]
   }
 
   /**
-   * Curso without action
+   * Cursos without action
    */
-  export type CursoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type CursosDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Curso
+     * Select specific fields to fetch from the Cursos
      */
-    select?: CursoSelect<ExtArgs> | null
+    select?: CursosSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Curso
+     * Omit specific fields from the Cursos
      */
-    omit?: CursoOmit<ExtArgs> | null
+    omit?: CursosOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CursoInclude<ExtArgs> | null
+    include?: CursosInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model FechaNoLectivas
+   */
+
+  export type AggregateFechaNoLectivas = {
+    _count: FechaNoLectivasCountAggregateOutputType | null
+    _avg: FechaNoLectivasAvgAggregateOutputType | null
+    _sum: FechaNoLectivasSumAggregateOutputType | null
+    _min: FechaNoLectivasMinAggregateOutputType | null
+    _max: FechaNoLectivasMaxAggregateOutputType | null
+  }
+
+  export type FechaNoLectivasAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type FechaNoLectivasSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type FechaNoLectivasMinAggregateOutputType = {
+    id: number | null
+    fechaInicio: Date | null
+    fechaFin: Date | null
+    motivo: string | null
+  }
+
+  export type FechaNoLectivasMaxAggregateOutputType = {
+    id: number | null
+    fechaInicio: Date | null
+    fechaFin: Date | null
+    motivo: string | null
+  }
+
+  export type FechaNoLectivasCountAggregateOutputType = {
+    id: number
+    fechaInicio: number
+    fechaFin: number
+    motivo: number
+    _all: number
+  }
+
+
+  export type FechaNoLectivasAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type FechaNoLectivasSumAggregateInputType = {
+    id?: true
+  }
+
+  export type FechaNoLectivasMinAggregateInputType = {
+    id?: true
+    fechaInicio?: true
+    fechaFin?: true
+    motivo?: true
+  }
+
+  export type FechaNoLectivasMaxAggregateInputType = {
+    id?: true
+    fechaInicio?: true
+    fechaFin?: true
+    motivo?: true
+  }
+
+  export type FechaNoLectivasCountAggregateInputType = {
+    id?: true
+    fechaInicio?: true
+    fechaFin?: true
+    motivo?: true
+    _all?: true
+  }
+
+  export type FechaNoLectivasAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FechaNoLectivas to aggregate.
+     */
+    where?: FechaNoLectivasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FechaNoLectivas to fetch.
+     */
+    orderBy?: FechaNoLectivasOrderByWithRelationInput | FechaNoLectivasOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: FechaNoLectivasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FechaNoLectivas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FechaNoLectivas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned FechaNoLectivas
+    **/
+    _count?: true | FechaNoLectivasCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: FechaNoLectivasAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: FechaNoLectivasSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: FechaNoLectivasMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: FechaNoLectivasMaxAggregateInputType
+  }
+
+  export type GetFechaNoLectivasAggregateType<T extends FechaNoLectivasAggregateArgs> = {
+        [P in keyof T & keyof AggregateFechaNoLectivas]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateFechaNoLectivas[P]>
+      : GetScalarType<T[P], AggregateFechaNoLectivas[P]>
+  }
+
+
+
+
+  export type FechaNoLectivasGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FechaNoLectivasWhereInput
+    orderBy?: FechaNoLectivasOrderByWithAggregationInput | FechaNoLectivasOrderByWithAggregationInput[]
+    by: FechaNoLectivasScalarFieldEnum[] | FechaNoLectivasScalarFieldEnum
+    having?: FechaNoLectivasScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: FechaNoLectivasCountAggregateInputType | true
+    _avg?: FechaNoLectivasAvgAggregateInputType
+    _sum?: FechaNoLectivasSumAggregateInputType
+    _min?: FechaNoLectivasMinAggregateInputType
+    _max?: FechaNoLectivasMaxAggregateInputType
+  }
+
+  export type FechaNoLectivasGroupByOutputType = {
+    id: number
+    fechaInicio: Date
+    fechaFin: Date
+    motivo: string
+    _count: FechaNoLectivasCountAggregateOutputType | null
+    _avg: FechaNoLectivasAvgAggregateOutputType | null
+    _sum: FechaNoLectivasSumAggregateOutputType | null
+    _min: FechaNoLectivasMinAggregateOutputType | null
+    _max: FechaNoLectivasMaxAggregateOutputType | null
+  }
+
+  type GetFechaNoLectivasGroupByPayload<T extends FechaNoLectivasGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<FechaNoLectivasGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof FechaNoLectivasGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], FechaNoLectivasGroupByOutputType[P]>
+            : GetScalarType<T[P], FechaNoLectivasGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type FechaNoLectivasSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    fechaInicio?: boolean
+    fechaFin?: boolean
+    motivo?: boolean
+  }, ExtArgs["result"]["fechaNoLectivas"]>
+
+  export type FechaNoLectivasSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    fechaInicio?: boolean
+    fechaFin?: boolean
+    motivo?: boolean
+  }, ExtArgs["result"]["fechaNoLectivas"]>
+
+  export type FechaNoLectivasSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    fechaInicio?: boolean
+    fechaFin?: boolean
+    motivo?: boolean
+  }, ExtArgs["result"]["fechaNoLectivas"]>
+
+  export type FechaNoLectivasSelectScalar = {
+    id?: boolean
+    fechaInicio?: boolean
+    fechaFin?: boolean
+    motivo?: boolean
+  }
+
+  export type FechaNoLectivasOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "fechaInicio" | "fechaFin" | "motivo", ExtArgs["result"]["fechaNoLectivas"]>
+
+  export type $FechaNoLectivasPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "FechaNoLectivas"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      fechaInicio: Date
+      fechaFin: Date
+      motivo: string
+    }, ExtArgs["result"]["fechaNoLectivas"]>
+    composites: {}
+  }
+
+  type FechaNoLectivasGetPayload<S extends boolean | null | undefined | FechaNoLectivasDefaultArgs> = $Result.GetResult<Prisma.$FechaNoLectivasPayload, S>
+
+  type FechaNoLectivasCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<FechaNoLectivasFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: FechaNoLectivasCountAggregateInputType | true
+    }
+
+  export interface FechaNoLectivasDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['FechaNoLectivas'], meta: { name: 'FechaNoLectivas' } }
+    /**
+     * Find zero or one FechaNoLectivas that matches the filter.
+     * @param {FechaNoLectivasFindUniqueArgs} args - Arguments to find a FechaNoLectivas
+     * @example
+     * // Get one FechaNoLectivas
+     * const fechaNoLectivas = await prisma.fechaNoLectivas.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends FechaNoLectivasFindUniqueArgs>(args: SelectSubset<T, FechaNoLectivasFindUniqueArgs<ExtArgs>>): Prisma__FechaNoLectivasClient<$Result.GetResult<Prisma.$FechaNoLectivasPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one FechaNoLectivas that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {FechaNoLectivasFindUniqueOrThrowArgs} args - Arguments to find a FechaNoLectivas
+     * @example
+     * // Get one FechaNoLectivas
+     * const fechaNoLectivas = await prisma.fechaNoLectivas.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends FechaNoLectivasFindUniqueOrThrowArgs>(args: SelectSubset<T, FechaNoLectivasFindUniqueOrThrowArgs<ExtArgs>>): Prisma__FechaNoLectivasClient<$Result.GetResult<Prisma.$FechaNoLectivasPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first FechaNoLectivas that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FechaNoLectivasFindFirstArgs} args - Arguments to find a FechaNoLectivas
+     * @example
+     * // Get one FechaNoLectivas
+     * const fechaNoLectivas = await prisma.fechaNoLectivas.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends FechaNoLectivasFindFirstArgs>(args?: SelectSubset<T, FechaNoLectivasFindFirstArgs<ExtArgs>>): Prisma__FechaNoLectivasClient<$Result.GetResult<Prisma.$FechaNoLectivasPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first FechaNoLectivas that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FechaNoLectivasFindFirstOrThrowArgs} args - Arguments to find a FechaNoLectivas
+     * @example
+     * // Get one FechaNoLectivas
+     * const fechaNoLectivas = await prisma.fechaNoLectivas.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends FechaNoLectivasFindFirstOrThrowArgs>(args?: SelectSubset<T, FechaNoLectivasFindFirstOrThrowArgs<ExtArgs>>): Prisma__FechaNoLectivasClient<$Result.GetResult<Prisma.$FechaNoLectivasPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more FechaNoLectivas that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FechaNoLectivasFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all FechaNoLectivas
+     * const fechaNoLectivas = await prisma.fechaNoLectivas.findMany()
+     * 
+     * // Get first 10 FechaNoLectivas
+     * const fechaNoLectivas = await prisma.fechaNoLectivas.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const fechaNoLectivasWithIdOnly = await prisma.fechaNoLectivas.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends FechaNoLectivasFindManyArgs>(args?: SelectSubset<T, FechaNoLectivasFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FechaNoLectivasPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a FechaNoLectivas.
+     * @param {FechaNoLectivasCreateArgs} args - Arguments to create a FechaNoLectivas.
+     * @example
+     * // Create one FechaNoLectivas
+     * const FechaNoLectivas = await prisma.fechaNoLectivas.create({
+     *   data: {
+     *     // ... data to create a FechaNoLectivas
+     *   }
+     * })
+     * 
+     */
+    create<T extends FechaNoLectivasCreateArgs>(args: SelectSubset<T, FechaNoLectivasCreateArgs<ExtArgs>>): Prisma__FechaNoLectivasClient<$Result.GetResult<Prisma.$FechaNoLectivasPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many FechaNoLectivas.
+     * @param {FechaNoLectivasCreateManyArgs} args - Arguments to create many FechaNoLectivas.
+     * @example
+     * // Create many FechaNoLectivas
+     * const fechaNoLectivas = await prisma.fechaNoLectivas.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends FechaNoLectivasCreateManyArgs>(args?: SelectSubset<T, FechaNoLectivasCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many FechaNoLectivas and returns the data saved in the database.
+     * @param {FechaNoLectivasCreateManyAndReturnArgs} args - Arguments to create many FechaNoLectivas.
+     * @example
+     * // Create many FechaNoLectivas
+     * const fechaNoLectivas = await prisma.fechaNoLectivas.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many FechaNoLectivas and only return the `id`
+     * const fechaNoLectivasWithIdOnly = await prisma.fechaNoLectivas.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends FechaNoLectivasCreateManyAndReturnArgs>(args?: SelectSubset<T, FechaNoLectivasCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FechaNoLectivasPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a FechaNoLectivas.
+     * @param {FechaNoLectivasDeleteArgs} args - Arguments to delete one FechaNoLectivas.
+     * @example
+     * // Delete one FechaNoLectivas
+     * const FechaNoLectivas = await prisma.fechaNoLectivas.delete({
+     *   where: {
+     *     // ... filter to delete one FechaNoLectivas
+     *   }
+     * })
+     * 
+     */
+    delete<T extends FechaNoLectivasDeleteArgs>(args: SelectSubset<T, FechaNoLectivasDeleteArgs<ExtArgs>>): Prisma__FechaNoLectivasClient<$Result.GetResult<Prisma.$FechaNoLectivasPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one FechaNoLectivas.
+     * @param {FechaNoLectivasUpdateArgs} args - Arguments to update one FechaNoLectivas.
+     * @example
+     * // Update one FechaNoLectivas
+     * const fechaNoLectivas = await prisma.fechaNoLectivas.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends FechaNoLectivasUpdateArgs>(args: SelectSubset<T, FechaNoLectivasUpdateArgs<ExtArgs>>): Prisma__FechaNoLectivasClient<$Result.GetResult<Prisma.$FechaNoLectivasPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more FechaNoLectivas.
+     * @param {FechaNoLectivasDeleteManyArgs} args - Arguments to filter FechaNoLectivas to delete.
+     * @example
+     * // Delete a few FechaNoLectivas
+     * const { count } = await prisma.fechaNoLectivas.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends FechaNoLectivasDeleteManyArgs>(args?: SelectSubset<T, FechaNoLectivasDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more FechaNoLectivas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FechaNoLectivasUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many FechaNoLectivas
+     * const fechaNoLectivas = await prisma.fechaNoLectivas.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends FechaNoLectivasUpdateManyArgs>(args: SelectSubset<T, FechaNoLectivasUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more FechaNoLectivas and returns the data updated in the database.
+     * @param {FechaNoLectivasUpdateManyAndReturnArgs} args - Arguments to update many FechaNoLectivas.
+     * @example
+     * // Update many FechaNoLectivas
+     * const fechaNoLectivas = await prisma.fechaNoLectivas.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more FechaNoLectivas and only return the `id`
+     * const fechaNoLectivasWithIdOnly = await prisma.fechaNoLectivas.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends FechaNoLectivasUpdateManyAndReturnArgs>(args: SelectSubset<T, FechaNoLectivasUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FechaNoLectivasPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one FechaNoLectivas.
+     * @param {FechaNoLectivasUpsertArgs} args - Arguments to update or create a FechaNoLectivas.
+     * @example
+     * // Update or create a FechaNoLectivas
+     * const fechaNoLectivas = await prisma.fechaNoLectivas.upsert({
+     *   create: {
+     *     // ... data to create a FechaNoLectivas
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the FechaNoLectivas we want to update
+     *   }
+     * })
+     */
+    upsert<T extends FechaNoLectivasUpsertArgs>(args: SelectSubset<T, FechaNoLectivasUpsertArgs<ExtArgs>>): Prisma__FechaNoLectivasClient<$Result.GetResult<Prisma.$FechaNoLectivasPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of FechaNoLectivas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FechaNoLectivasCountArgs} args - Arguments to filter FechaNoLectivas to count.
+     * @example
+     * // Count the number of FechaNoLectivas
+     * const count = await prisma.fechaNoLectivas.count({
+     *   where: {
+     *     // ... the filter for the FechaNoLectivas we want to count
+     *   }
+     * })
+    **/
+    count<T extends FechaNoLectivasCountArgs>(
+      args?: Subset<T, FechaNoLectivasCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], FechaNoLectivasCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a FechaNoLectivas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FechaNoLectivasAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends FechaNoLectivasAggregateArgs>(args: Subset<T, FechaNoLectivasAggregateArgs>): Prisma.PrismaPromise<GetFechaNoLectivasAggregateType<T>>
+
+    /**
+     * Group by FechaNoLectivas.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FechaNoLectivasGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends FechaNoLectivasGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: FechaNoLectivasGroupByArgs['orderBy'] }
+        : { orderBy?: FechaNoLectivasGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, FechaNoLectivasGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFechaNoLectivasGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the FechaNoLectivas model
+   */
+  readonly fields: FechaNoLectivasFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for FechaNoLectivas.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__FechaNoLectivasClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the FechaNoLectivas model
+   */
+  interface FechaNoLectivasFieldRefs {
+    readonly id: FieldRef<"FechaNoLectivas", 'Int'>
+    readonly fechaInicio: FieldRef<"FechaNoLectivas", 'DateTime'>
+    readonly fechaFin: FieldRef<"FechaNoLectivas", 'DateTime'>
+    readonly motivo: FieldRef<"FechaNoLectivas", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * FechaNoLectivas findUnique
+   */
+  export type FechaNoLectivasFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FechaNoLectivas
+     */
+    select?: FechaNoLectivasSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FechaNoLectivas
+     */
+    omit?: FechaNoLectivasOmit<ExtArgs> | null
+    /**
+     * Filter, which FechaNoLectivas to fetch.
+     */
+    where: FechaNoLectivasWhereUniqueInput
+  }
+
+  /**
+   * FechaNoLectivas findUniqueOrThrow
+   */
+  export type FechaNoLectivasFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FechaNoLectivas
+     */
+    select?: FechaNoLectivasSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FechaNoLectivas
+     */
+    omit?: FechaNoLectivasOmit<ExtArgs> | null
+    /**
+     * Filter, which FechaNoLectivas to fetch.
+     */
+    where: FechaNoLectivasWhereUniqueInput
+  }
+
+  /**
+   * FechaNoLectivas findFirst
+   */
+  export type FechaNoLectivasFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FechaNoLectivas
+     */
+    select?: FechaNoLectivasSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FechaNoLectivas
+     */
+    omit?: FechaNoLectivasOmit<ExtArgs> | null
+    /**
+     * Filter, which FechaNoLectivas to fetch.
+     */
+    where?: FechaNoLectivasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FechaNoLectivas to fetch.
+     */
+    orderBy?: FechaNoLectivasOrderByWithRelationInput | FechaNoLectivasOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for FechaNoLectivas.
+     */
+    cursor?: FechaNoLectivasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FechaNoLectivas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FechaNoLectivas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of FechaNoLectivas.
+     */
+    distinct?: FechaNoLectivasScalarFieldEnum | FechaNoLectivasScalarFieldEnum[]
+  }
+
+  /**
+   * FechaNoLectivas findFirstOrThrow
+   */
+  export type FechaNoLectivasFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FechaNoLectivas
+     */
+    select?: FechaNoLectivasSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FechaNoLectivas
+     */
+    omit?: FechaNoLectivasOmit<ExtArgs> | null
+    /**
+     * Filter, which FechaNoLectivas to fetch.
+     */
+    where?: FechaNoLectivasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FechaNoLectivas to fetch.
+     */
+    orderBy?: FechaNoLectivasOrderByWithRelationInput | FechaNoLectivasOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for FechaNoLectivas.
+     */
+    cursor?: FechaNoLectivasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FechaNoLectivas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FechaNoLectivas.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of FechaNoLectivas.
+     */
+    distinct?: FechaNoLectivasScalarFieldEnum | FechaNoLectivasScalarFieldEnum[]
+  }
+
+  /**
+   * FechaNoLectivas findMany
+   */
+  export type FechaNoLectivasFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FechaNoLectivas
+     */
+    select?: FechaNoLectivasSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FechaNoLectivas
+     */
+    omit?: FechaNoLectivasOmit<ExtArgs> | null
+    /**
+     * Filter, which FechaNoLectivas to fetch.
+     */
+    where?: FechaNoLectivasWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FechaNoLectivas to fetch.
+     */
+    orderBy?: FechaNoLectivasOrderByWithRelationInput | FechaNoLectivasOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing FechaNoLectivas.
+     */
+    cursor?: FechaNoLectivasWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FechaNoLectivas from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FechaNoLectivas.
+     */
+    skip?: number
+    distinct?: FechaNoLectivasScalarFieldEnum | FechaNoLectivasScalarFieldEnum[]
+  }
+
+  /**
+   * FechaNoLectivas create
+   */
+  export type FechaNoLectivasCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FechaNoLectivas
+     */
+    select?: FechaNoLectivasSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FechaNoLectivas
+     */
+    omit?: FechaNoLectivasOmit<ExtArgs> | null
+    /**
+     * The data needed to create a FechaNoLectivas.
+     */
+    data: XOR<FechaNoLectivasCreateInput, FechaNoLectivasUncheckedCreateInput>
+  }
+
+  /**
+   * FechaNoLectivas createMany
+   */
+  export type FechaNoLectivasCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many FechaNoLectivas.
+     */
+    data: FechaNoLectivasCreateManyInput | FechaNoLectivasCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * FechaNoLectivas createManyAndReturn
+   */
+  export type FechaNoLectivasCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FechaNoLectivas
+     */
+    select?: FechaNoLectivasSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the FechaNoLectivas
+     */
+    omit?: FechaNoLectivasOmit<ExtArgs> | null
+    /**
+     * The data used to create many FechaNoLectivas.
+     */
+    data: FechaNoLectivasCreateManyInput | FechaNoLectivasCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * FechaNoLectivas update
+   */
+  export type FechaNoLectivasUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FechaNoLectivas
+     */
+    select?: FechaNoLectivasSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FechaNoLectivas
+     */
+    omit?: FechaNoLectivasOmit<ExtArgs> | null
+    /**
+     * The data needed to update a FechaNoLectivas.
+     */
+    data: XOR<FechaNoLectivasUpdateInput, FechaNoLectivasUncheckedUpdateInput>
+    /**
+     * Choose, which FechaNoLectivas to update.
+     */
+    where: FechaNoLectivasWhereUniqueInput
+  }
+
+  /**
+   * FechaNoLectivas updateMany
+   */
+  export type FechaNoLectivasUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update FechaNoLectivas.
+     */
+    data: XOR<FechaNoLectivasUpdateManyMutationInput, FechaNoLectivasUncheckedUpdateManyInput>
+    /**
+     * Filter which FechaNoLectivas to update
+     */
+    where?: FechaNoLectivasWhereInput
+    /**
+     * Limit how many FechaNoLectivas to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * FechaNoLectivas updateManyAndReturn
+   */
+  export type FechaNoLectivasUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FechaNoLectivas
+     */
+    select?: FechaNoLectivasSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the FechaNoLectivas
+     */
+    omit?: FechaNoLectivasOmit<ExtArgs> | null
+    /**
+     * The data used to update FechaNoLectivas.
+     */
+    data: XOR<FechaNoLectivasUpdateManyMutationInput, FechaNoLectivasUncheckedUpdateManyInput>
+    /**
+     * Filter which FechaNoLectivas to update
+     */
+    where?: FechaNoLectivasWhereInput
+    /**
+     * Limit how many FechaNoLectivas to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * FechaNoLectivas upsert
+   */
+  export type FechaNoLectivasUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FechaNoLectivas
+     */
+    select?: FechaNoLectivasSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FechaNoLectivas
+     */
+    omit?: FechaNoLectivasOmit<ExtArgs> | null
+    /**
+     * The filter to search for the FechaNoLectivas to update in case it exists.
+     */
+    where: FechaNoLectivasWhereUniqueInput
+    /**
+     * In case the FechaNoLectivas found by the `where` argument doesn't exist, create a new FechaNoLectivas with this data.
+     */
+    create: XOR<FechaNoLectivasCreateInput, FechaNoLectivasUncheckedCreateInput>
+    /**
+     * In case the FechaNoLectivas was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<FechaNoLectivasUpdateInput, FechaNoLectivasUncheckedUpdateInput>
+  }
+
+  /**
+   * FechaNoLectivas delete
+   */
+  export type FechaNoLectivasDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FechaNoLectivas
+     */
+    select?: FechaNoLectivasSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FechaNoLectivas
+     */
+    omit?: FechaNoLectivasOmit<ExtArgs> | null
+    /**
+     * Filter which FechaNoLectivas to delete.
+     */
+    where: FechaNoLectivasWhereUniqueInput
+  }
+
+  /**
+   * FechaNoLectivas deleteMany
+   */
+  export type FechaNoLectivasDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FechaNoLectivas to delete
+     */
+    where?: FechaNoLectivasWhereInput
+    /**
+     * Limit how many FechaNoLectivas to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * FechaNoLectivas without action
+   */
+  export type FechaNoLectivasDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FechaNoLectivas
+     */
+    select?: FechaNoLectivasSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FechaNoLectivas
+     */
+    omit?: FechaNoLectivasOmit<ExtArgs> | null
   }
 
 
@@ -8437,7 +10889,7 @@ export namespace Prisma {
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-  export const AlumnoScalarFieldEnum: {
+  export const AlumnosScalarFieldEnum: {
     id: 'id',
     legajo: 'legajo',
     nombre: 'nombre',
@@ -8448,22 +10900,24 @@ export namespace Prisma {
     deletedAt: 'deletedAt'
   };
 
-  export type AlumnoScalarFieldEnum = (typeof AlumnoScalarFieldEnum)[keyof typeof AlumnoScalarFieldEnum]
+  export type AlumnosScalarFieldEnum = (typeof AlumnosScalarFieldEnum)[keyof typeof AlumnosScalarFieldEnum]
 
 
-  export const ClaseScalarFieldEnum: {
+  export const ClasesScalarFieldEnum: {
     id: 'id',
     fechaHora: 'fechaHora',
     idMateria: 'idMateria',
+    suspendida: 'suspendida',
+    motivo: 'motivo',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     deletedAt: 'deletedAt'
   };
 
-  export type ClaseScalarFieldEnum = (typeof ClaseScalarFieldEnum)[keyof typeof ClaseScalarFieldEnum]
+  export type ClasesScalarFieldEnum = (typeof ClasesScalarFieldEnum)[keyof typeof ClasesScalarFieldEnum]
 
 
-  export const AsistenciaScalarFieldEnum: {
+  export const AsistenciasScalarFieldEnum: {
     id: 'id',
     idAlumno: 'idAlumno',
     idClase: 'idClase',
@@ -8474,10 +10928,10 @@ export namespace Prisma {
     deletedAt: 'deletedAt'
   };
 
-  export type AsistenciaScalarFieldEnum = (typeof AsistenciaScalarFieldEnum)[keyof typeof AsistenciaScalarFieldEnum]
+  export type AsistenciasScalarFieldEnum = (typeof AsistenciasScalarFieldEnum)[keyof typeof AsistenciasScalarFieldEnum]
 
 
-  export const UserDocenteScalarFieldEnum: {
+  export const UsersDocentesScalarFieldEnum: {
     id: 'id',
     email: 'email',
     password: 'password',
@@ -8489,31 +10943,58 @@ export namespace Prisma {
     deletedAt: 'deletedAt'
   };
 
-  export type UserDocenteScalarFieldEnum = (typeof UserDocenteScalarFieldEnum)[keyof typeof UserDocenteScalarFieldEnum]
+  export type UsersDocentesScalarFieldEnum = (typeof UsersDocentesScalarFieldEnum)[keyof typeof UsersDocentesScalarFieldEnum]
 
 
-  export const MateriaScalarFieldEnum: {
+  export const MateriasScalarFieldEnum: {
     id: 'id',
     nombre: 'nombre',
     idUserDocente: 'idUserDocente',
     idCurso: 'idCurso',
+    fechaInicio: 'fechaInicio',
+    fechaFin: 'fechaFin',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     deletedAt: 'deletedAt'
   };
 
-  export type MateriaScalarFieldEnum = (typeof MateriaScalarFieldEnum)[keyof typeof MateriaScalarFieldEnum]
+  export type MateriasScalarFieldEnum = (typeof MateriasScalarFieldEnum)[keyof typeof MateriasScalarFieldEnum]
 
 
-  export const CursoScalarFieldEnum: {
+  export const DiasHorariosClasesScalarFieldEnum: {
+    id: 'id',
+    idMateria: 'idMateria',
+    dias: 'dias',
+    horaInicio: 'horaInicio',
+    duracionMinutos: 'duracionMinutos',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    deletedAt: 'deletedAt'
+  };
+
+  export type DiasHorariosClasesScalarFieldEnum = (typeof DiasHorariosClasesScalarFieldEnum)[keyof typeof DiasHorariosClasesScalarFieldEnum]
+
+
+  export const CursosScalarFieldEnum: {
     id: 'id',
     nombre: 'nombre',
+    turno: 'turno',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     deletedAt: 'deletedAt'
   };
 
-  export type CursoScalarFieldEnum = (typeof CursoScalarFieldEnum)[keyof typeof CursoScalarFieldEnum]
+  export type CursosScalarFieldEnum = (typeof CursosScalarFieldEnum)[keyof typeof CursosScalarFieldEnum]
+
+
+  export const FechaNoLectivasScalarFieldEnum: {
+    id: 'id',
+    fechaInicio: 'fechaInicio',
+    fechaFin: 'fechaFin',
+    motivo: 'motivo'
+  };
+
+  export type FechaNoLectivasScalarFieldEnum = (typeof FechaNoLectivasScalarFieldEnum)[keyof typeof FechaNoLectivasScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -8588,16 +11069,37 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Estado'
+   * Reference to a field of type 'Boolean'
    */
-  export type EnumEstadoFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Estado'>
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
   /**
-   * Reference to a field of type 'Estado[]'
+   * Reference to a field of type 'Estados'
    */
-  export type ListEnumEstadoFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Estado[]'>
+  export type EnumEstadosFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Estados'>
+    
+
+
+  /**
+   * Reference to a field of type 'Estados[]'
+   */
+  export type ListEnumEstadosFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Estados[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Dias[]'
+   */
+  export type ListEnumDiasFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Dias[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Dias'
+   */
+  export type EnumDiasFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Dias'>
     
 
 
@@ -8618,23 +11120,23 @@ export namespace Prisma {
    */
 
 
-  export type AlumnoWhereInput = {
-    AND?: AlumnoWhereInput | AlumnoWhereInput[]
-    OR?: AlumnoWhereInput[]
-    NOT?: AlumnoWhereInput | AlumnoWhereInput[]
-    id?: IntFilter<"Alumno"> | number
-    legajo?: StringFilter<"Alumno"> | string
-    nombre?: StringFilter<"Alumno"> | string
-    apellido?: StringFilter<"Alumno"> | string
-    celular?: StringFilter<"Alumno"> | string
-    createdAt?: DateTimeFilter<"Alumno"> | Date | string
-    updatedAt?: DateTimeNullableFilter<"Alumno"> | Date | string | null
-    deletedAt?: DateTimeNullableFilter<"Alumno"> | Date | string | null
-    Asistencia?: AsistenciaListRelationFilter
-    cursos?: CursoListRelationFilter
+  export type AlumnosWhereInput = {
+    AND?: AlumnosWhereInput | AlumnosWhereInput[]
+    OR?: AlumnosWhereInput[]
+    NOT?: AlumnosWhereInput | AlumnosWhereInput[]
+    id?: IntFilter<"Alumnos"> | number
+    legajo?: StringFilter<"Alumnos"> | string
+    nombre?: StringFilter<"Alumnos"> | string
+    apellido?: StringFilter<"Alumnos"> | string
+    celular?: StringFilter<"Alumnos"> | string
+    createdAt?: DateTimeFilter<"Alumnos"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Alumnos"> | Date | string | null
+    deletedAt?: DateTimeNullableFilter<"Alumnos"> | Date | string | null
+    Asistencias?: AsistenciasListRelationFilter
+    Cursos?: CursosListRelationFilter
   }
 
-  export type AlumnoOrderByWithRelationInput = {
+  export type AlumnosOrderByWithRelationInput = {
     id?: SortOrder
     legajo?: SortOrder
     nombre?: SortOrder
@@ -8643,27 +11145,27 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     deletedAt?: SortOrderInput | SortOrder
-    Asistencia?: AsistenciaOrderByRelationAggregateInput
-    cursos?: CursoOrderByRelationAggregateInput
+    Asistencias?: AsistenciasOrderByRelationAggregateInput
+    Cursos?: CursosOrderByRelationAggregateInput
   }
 
-  export type AlumnoWhereUniqueInput = Prisma.AtLeast<{
+  export type AlumnosWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    AND?: AlumnoWhereInput | AlumnoWhereInput[]
-    OR?: AlumnoWhereInput[]
-    NOT?: AlumnoWhereInput | AlumnoWhereInput[]
-    legajo?: StringFilter<"Alumno"> | string
-    nombre?: StringFilter<"Alumno"> | string
-    apellido?: StringFilter<"Alumno"> | string
-    celular?: StringFilter<"Alumno"> | string
-    createdAt?: DateTimeFilter<"Alumno"> | Date | string
-    updatedAt?: DateTimeNullableFilter<"Alumno"> | Date | string | null
-    deletedAt?: DateTimeNullableFilter<"Alumno"> | Date | string | null
-    Asistencia?: AsistenciaListRelationFilter
-    cursos?: CursoListRelationFilter
+    AND?: AlumnosWhereInput | AlumnosWhereInput[]
+    OR?: AlumnosWhereInput[]
+    NOT?: AlumnosWhereInput | AlumnosWhereInput[]
+    legajo?: StringFilter<"Alumnos"> | string
+    nombre?: StringFilter<"Alumnos"> | string
+    apellido?: StringFilter<"Alumnos"> | string
+    celular?: StringFilter<"Alumnos"> | string
+    createdAt?: DateTimeFilter<"Alumnos"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Alumnos"> | Date | string | null
+    deletedAt?: DateTimeNullableFilter<"Alumnos"> | Date | string | null
+    Asistencias?: AsistenciasListRelationFilter
+    Cursos?: CursosListRelationFilter
   }, "id">
 
-  export type AlumnoOrderByWithAggregationInput = {
+  export type AlumnosOrderByWithAggregationInput = {
     id?: SortOrder
     legajo?: SortOrder
     nombre?: SortOrder
@@ -8672,109 +11174,119 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     deletedAt?: SortOrderInput | SortOrder
-    _count?: AlumnoCountOrderByAggregateInput
-    _avg?: AlumnoAvgOrderByAggregateInput
-    _max?: AlumnoMaxOrderByAggregateInput
-    _min?: AlumnoMinOrderByAggregateInput
-    _sum?: AlumnoSumOrderByAggregateInput
+    _count?: AlumnosCountOrderByAggregateInput
+    _avg?: AlumnosAvgOrderByAggregateInput
+    _max?: AlumnosMaxOrderByAggregateInput
+    _min?: AlumnosMinOrderByAggregateInput
+    _sum?: AlumnosSumOrderByAggregateInput
   }
 
-  export type AlumnoScalarWhereWithAggregatesInput = {
-    AND?: AlumnoScalarWhereWithAggregatesInput | AlumnoScalarWhereWithAggregatesInput[]
-    OR?: AlumnoScalarWhereWithAggregatesInput[]
-    NOT?: AlumnoScalarWhereWithAggregatesInput | AlumnoScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Alumno"> | number
-    legajo?: StringWithAggregatesFilter<"Alumno"> | string
-    nombre?: StringWithAggregatesFilter<"Alumno"> | string
-    apellido?: StringWithAggregatesFilter<"Alumno"> | string
-    celular?: StringWithAggregatesFilter<"Alumno"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"Alumno"> | Date | string
-    updatedAt?: DateTimeNullableWithAggregatesFilter<"Alumno"> | Date | string | null
-    deletedAt?: DateTimeNullableWithAggregatesFilter<"Alumno"> | Date | string | null
+  export type AlumnosScalarWhereWithAggregatesInput = {
+    AND?: AlumnosScalarWhereWithAggregatesInput | AlumnosScalarWhereWithAggregatesInput[]
+    OR?: AlumnosScalarWhereWithAggregatesInput[]
+    NOT?: AlumnosScalarWhereWithAggregatesInput | AlumnosScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Alumnos"> | number
+    legajo?: StringWithAggregatesFilter<"Alumnos"> | string
+    nombre?: StringWithAggregatesFilter<"Alumnos"> | string
+    apellido?: StringWithAggregatesFilter<"Alumnos"> | string
+    celular?: StringWithAggregatesFilter<"Alumnos"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Alumnos"> | Date | string
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"Alumnos"> | Date | string | null
+    deletedAt?: DateTimeNullableWithAggregatesFilter<"Alumnos"> | Date | string | null
   }
 
-  export type ClaseWhereInput = {
-    AND?: ClaseWhereInput | ClaseWhereInput[]
-    OR?: ClaseWhereInput[]
-    NOT?: ClaseWhereInput | ClaseWhereInput[]
-    id?: IntFilter<"Clase"> | number
-    fechaHora?: DateTimeFilter<"Clase"> | Date | string
-    idMateria?: IntFilter<"Clase"> | number
-    createdAt?: DateTimeFilter<"Clase"> | Date | string
-    updatedAt?: DateTimeNullableFilter<"Clase"> | Date | string | null
-    deletedAt?: DateTimeNullableFilter<"Clase"> | Date | string | null
-    materia?: XOR<MateriaScalarRelationFilter, MateriaWhereInput>
-    Asistencia?: AsistenciaListRelationFilter
+  export type ClasesWhereInput = {
+    AND?: ClasesWhereInput | ClasesWhereInput[]
+    OR?: ClasesWhereInput[]
+    NOT?: ClasesWhereInput | ClasesWhereInput[]
+    id?: IntFilter<"Clases"> | number
+    fechaHora?: DateTimeFilter<"Clases"> | Date | string
+    idMateria?: IntFilter<"Clases"> | number
+    suspendida?: BoolFilter<"Clases"> | boolean
+    motivo?: StringNullableFilter<"Clases"> | string | null
+    createdAt?: DateTimeFilter<"Clases"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Clases"> | Date | string | null
+    deletedAt?: DateTimeNullableFilter<"Clases"> | Date | string | null
+    materia?: XOR<MateriasScalarRelationFilter, MateriasWhereInput>
+    Asistencias?: AsistenciasListRelationFilter
   }
 
-  export type ClaseOrderByWithRelationInput = {
+  export type ClasesOrderByWithRelationInput = {
     id?: SortOrder
     fechaHora?: SortOrder
     idMateria?: SortOrder
+    suspendida?: SortOrder
+    motivo?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     deletedAt?: SortOrderInput | SortOrder
-    materia?: MateriaOrderByWithRelationInput
-    Asistencia?: AsistenciaOrderByRelationAggregateInput
+    materia?: MateriasOrderByWithRelationInput
+    Asistencias?: AsistenciasOrderByRelationAggregateInput
   }
 
-  export type ClaseWhereUniqueInput = Prisma.AtLeast<{
+  export type ClasesWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    AND?: ClaseWhereInput | ClaseWhereInput[]
-    OR?: ClaseWhereInput[]
-    NOT?: ClaseWhereInput | ClaseWhereInput[]
-    fechaHora?: DateTimeFilter<"Clase"> | Date | string
-    idMateria?: IntFilter<"Clase"> | number
-    createdAt?: DateTimeFilter<"Clase"> | Date | string
-    updatedAt?: DateTimeNullableFilter<"Clase"> | Date | string | null
-    deletedAt?: DateTimeNullableFilter<"Clase"> | Date | string | null
-    materia?: XOR<MateriaScalarRelationFilter, MateriaWhereInput>
-    Asistencia?: AsistenciaListRelationFilter
+    AND?: ClasesWhereInput | ClasesWhereInput[]
+    OR?: ClasesWhereInput[]
+    NOT?: ClasesWhereInput | ClasesWhereInput[]
+    fechaHora?: DateTimeFilter<"Clases"> | Date | string
+    idMateria?: IntFilter<"Clases"> | number
+    suspendida?: BoolFilter<"Clases"> | boolean
+    motivo?: StringNullableFilter<"Clases"> | string | null
+    createdAt?: DateTimeFilter<"Clases"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Clases"> | Date | string | null
+    deletedAt?: DateTimeNullableFilter<"Clases"> | Date | string | null
+    materia?: XOR<MateriasScalarRelationFilter, MateriasWhereInput>
+    Asistencias?: AsistenciasListRelationFilter
   }, "id">
 
-  export type ClaseOrderByWithAggregationInput = {
+  export type ClasesOrderByWithAggregationInput = {
     id?: SortOrder
     fechaHora?: SortOrder
     idMateria?: SortOrder
+    suspendida?: SortOrder
+    motivo?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     deletedAt?: SortOrderInput | SortOrder
-    _count?: ClaseCountOrderByAggregateInput
-    _avg?: ClaseAvgOrderByAggregateInput
-    _max?: ClaseMaxOrderByAggregateInput
-    _min?: ClaseMinOrderByAggregateInput
-    _sum?: ClaseSumOrderByAggregateInput
+    _count?: ClasesCountOrderByAggregateInput
+    _avg?: ClasesAvgOrderByAggregateInput
+    _max?: ClasesMaxOrderByAggregateInput
+    _min?: ClasesMinOrderByAggregateInput
+    _sum?: ClasesSumOrderByAggregateInput
   }
 
-  export type ClaseScalarWhereWithAggregatesInput = {
-    AND?: ClaseScalarWhereWithAggregatesInput | ClaseScalarWhereWithAggregatesInput[]
-    OR?: ClaseScalarWhereWithAggregatesInput[]
-    NOT?: ClaseScalarWhereWithAggregatesInput | ClaseScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Clase"> | number
-    fechaHora?: DateTimeWithAggregatesFilter<"Clase"> | Date | string
-    idMateria?: IntWithAggregatesFilter<"Clase"> | number
-    createdAt?: DateTimeWithAggregatesFilter<"Clase"> | Date | string
-    updatedAt?: DateTimeNullableWithAggregatesFilter<"Clase"> | Date | string | null
-    deletedAt?: DateTimeNullableWithAggregatesFilter<"Clase"> | Date | string | null
+  export type ClasesScalarWhereWithAggregatesInput = {
+    AND?: ClasesScalarWhereWithAggregatesInput | ClasesScalarWhereWithAggregatesInput[]
+    OR?: ClasesScalarWhereWithAggregatesInput[]
+    NOT?: ClasesScalarWhereWithAggregatesInput | ClasesScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Clases"> | number
+    fechaHora?: DateTimeWithAggregatesFilter<"Clases"> | Date | string
+    idMateria?: IntWithAggregatesFilter<"Clases"> | number
+    suspendida?: BoolWithAggregatesFilter<"Clases"> | boolean
+    motivo?: StringNullableWithAggregatesFilter<"Clases"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Clases"> | Date | string
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"Clases"> | Date | string | null
+    deletedAt?: DateTimeNullableWithAggregatesFilter<"Clases"> | Date | string | null
   }
 
-  export type AsistenciaWhereInput = {
-    AND?: AsistenciaWhereInput | AsistenciaWhereInput[]
-    OR?: AsistenciaWhereInput[]
-    NOT?: AsistenciaWhereInput | AsistenciaWhereInput[]
-    id?: IntFilter<"Asistencia"> | number
-    idAlumno?: IntFilter<"Asistencia"> | number
-    idClase?: IntFilter<"Asistencia"> | number
-    estado?: EnumEstadoFilter<"Asistencia"> | $Enums.Estado
-    nota?: StringNullableFilter<"Asistencia"> | string | null
-    createdAt?: DateTimeFilter<"Asistencia"> | Date | string
-    updatedAt?: DateTimeNullableFilter<"Asistencia"> | Date | string | null
-    deletedAt?: DateTimeNullableFilter<"Asistencia"> | Date | string | null
-    alumno?: XOR<AlumnoScalarRelationFilter, AlumnoWhereInput>
-    clase?: XOR<ClaseScalarRelationFilter, ClaseWhereInput>
+  export type AsistenciasWhereInput = {
+    AND?: AsistenciasWhereInput | AsistenciasWhereInput[]
+    OR?: AsistenciasWhereInput[]
+    NOT?: AsistenciasWhereInput | AsistenciasWhereInput[]
+    id?: IntFilter<"Asistencias"> | number
+    idAlumno?: IntFilter<"Asistencias"> | number
+    idClase?: IntFilter<"Asistencias"> | number
+    estado?: EnumEstadosFilter<"Asistencias"> | $Enums.Estados
+    nota?: StringNullableFilter<"Asistencias"> | string | null
+    createdAt?: DateTimeFilter<"Asistencias"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Asistencias"> | Date | string | null
+    deletedAt?: DateTimeNullableFilter<"Asistencias"> | Date | string | null
+    alumno?: XOR<AlumnosScalarRelationFilter, AlumnosWhereInput>
+    clase?: XOR<ClasesScalarRelationFilter, ClasesWhereInput>
   }
 
-  export type AsistenciaOrderByWithRelationInput = {
+  export type AsistenciasOrderByWithRelationInput = {
     id?: SortOrder
     idAlumno?: SortOrder
     idClase?: SortOrder
@@ -8783,27 +11295,27 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     deletedAt?: SortOrderInput | SortOrder
-    alumno?: AlumnoOrderByWithRelationInput
-    clase?: ClaseOrderByWithRelationInput
+    alumno?: AlumnosOrderByWithRelationInput
+    clase?: ClasesOrderByWithRelationInput
   }
 
-  export type AsistenciaWhereUniqueInput = Prisma.AtLeast<{
+  export type AsistenciasWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    AND?: AsistenciaWhereInput | AsistenciaWhereInput[]
-    OR?: AsistenciaWhereInput[]
-    NOT?: AsistenciaWhereInput | AsistenciaWhereInput[]
-    idAlumno?: IntFilter<"Asistencia"> | number
-    idClase?: IntFilter<"Asistencia"> | number
-    estado?: EnumEstadoFilter<"Asistencia"> | $Enums.Estado
-    nota?: StringNullableFilter<"Asistencia"> | string | null
-    createdAt?: DateTimeFilter<"Asistencia"> | Date | string
-    updatedAt?: DateTimeNullableFilter<"Asistencia"> | Date | string | null
-    deletedAt?: DateTimeNullableFilter<"Asistencia"> | Date | string | null
-    alumno?: XOR<AlumnoScalarRelationFilter, AlumnoWhereInput>
-    clase?: XOR<ClaseScalarRelationFilter, ClaseWhereInput>
+    AND?: AsistenciasWhereInput | AsistenciasWhereInput[]
+    OR?: AsistenciasWhereInput[]
+    NOT?: AsistenciasWhereInput | AsistenciasWhereInput[]
+    idAlumno?: IntFilter<"Asistencias"> | number
+    idClase?: IntFilter<"Asistencias"> | number
+    estado?: EnumEstadosFilter<"Asistencias"> | $Enums.Estados
+    nota?: StringNullableFilter<"Asistencias"> | string | null
+    createdAt?: DateTimeFilter<"Asistencias"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Asistencias"> | Date | string | null
+    deletedAt?: DateTimeNullableFilter<"Asistencias"> | Date | string | null
+    alumno?: XOR<AlumnosScalarRelationFilter, AlumnosWhereInput>
+    clase?: XOR<ClasesScalarRelationFilter, ClasesWhereInput>
   }, "id">
 
-  export type AsistenciaOrderByWithAggregationInput = {
+  export type AsistenciasOrderByWithAggregationInput = {
     id?: SortOrder
     idAlumno?: SortOrder
     idClase?: SortOrder
@@ -8812,44 +11324,44 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     deletedAt?: SortOrderInput | SortOrder
-    _count?: AsistenciaCountOrderByAggregateInput
-    _avg?: AsistenciaAvgOrderByAggregateInput
-    _max?: AsistenciaMaxOrderByAggregateInput
-    _min?: AsistenciaMinOrderByAggregateInput
-    _sum?: AsistenciaSumOrderByAggregateInput
+    _count?: AsistenciasCountOrderByAggregateInput
+    _avg?: AsistenciasAvgOrderByAggregateInput
+    _max?: AsistenciasMaxOrderByAggregateInput
+    _min?: AsistenciasMinOrderByAggregateInput
+    _sum?: AsistenciasSumOrderByAggregateInput
   }
 
-  export type AsistenciaScalarWhereWithAggregatesInput = {
-    AND?: AsistenciaScalarWhereWithAggregatesInput | AsistenciaScalarWhereWithAggregatesInput[]
-    OR?: AsistenciaScalarWhereWithAggregatesInput[]
-    NOT?: AsistenciaScalarWhereWithAggregatesInput | AsistenciaScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Asistencia"> | number
-    idAlumno?: IntWithAggregatesFilter<"Asistencia"> | number
-    idClase?: IntWithAggregatesFilter<"Asistencia"> | number
-    estado?: EnumEstadoWithAggregatesFilter<"Asistencia"> | $Enums.Estado
-    nota?: StringNullableWithAggregatesFilter<"Asistencia"> | string | null
-    createdAt?: DateTimeWithAggregatesFilter<"Asistencia"> | Date | string
-    updatedAt?: DateTimeNullableWithAggregatesFilter<"Asistencia"> | Date | string | null
-    deletedAt?: DateTimeNullableWithAggregatesFilter<"Asistencia"> | Date | string | null
+  export type AsistenciasScalarWhereWithAggregatesInput = {
+    AND?: AsistenciasScalarWhereWithAggregatesInput | AsistenciasScalarWhereWithAggregatesInput[]
+    OR?: AsistenciasScalarWhereWithAggregatesInput[]
+    NOT?: AsistenciasScalarWhereWithAggregatesInput | AsistenciasScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Asistencias"> | number
+    idAlumno?: IntWithAggregatesFilter<"Asistencias"> | number
+    idClase?: IntWithAggregatesFilter<"Asistencias"> | number
+    estado?: EnumEstadosWithAggregatesFilter<"Asistencias"> | $Enums.Estados
+    nota?: StringNullableWithAggregatesFilter<"Asistencias"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Asistencias"> | Date | string
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"Asistencias"> | Date | string | null
+    deletedAt?: DateTimeNullableWithAggregatesFilter<"Asistencias"> | Date | string | null
   }
 
-  export type UserDocenteWhereInput = {
-    AND?: UserDocenteWhereInput | UserDocenteWhereInput[]
-    OR?: UserDocenteWhereInput[]
-    NOT?: UserDocenteWhereInput | UserDocenteWhereInput[]
-    id?: IntFilter<"UserDocente"> | number
-    email?: StringFilter<"UserDocente"> | string
-    password?: StringFilter<"UserDocente"> | string
-    nombre?: StringFilter<"UserDocente"> | string
-    apellido?: StringFilter<"UserDocente"> | string
-    rol?: StringFilter<"UserDocente"> | string
-    createdAt?: DateTimeFilter<"UserDocente"> | Date | string
-    updatedAt?: DateTimeNullableFilter<"UserDocente"> | Date | string | null
-    deletedAt?: DateTimeNullableFilter<"UserDocente"> | Date | string | null
-    Materia?: MateriaListRelationFilter
+  export type UsersDocentesWhereInput = {
+    AND?: UsersDocentesWhereInput | UsersDocentesWhereInput[]
+    OR?: UsersDocentesWhereInput[]
+    NOT?: UsersDocentesWhereInput | UsersDocentesWhereInput[]
+    id?: IntFilter<"UsersDocentes"> | number
+    email?: StringFilter<"UsersDocentes"> | string
+    password?: StringFilter<"UsersDocentes"> | string
+    nombre?: StringFilter<"UsersDocentes"> | string
+    apellido?: StringFilter<"UsersDocentes"> | string
+    rol?: StringFilter<"UsersDocentes"> | string
+    createdAt?: DateTimeFilter<"UsersDocentes"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"UsersDocentes"> | Date | string | null
+    deletedAt?: DateTimeNullableFilter<"UsersDocentes"> | Date | string | null
+    Materias?: MateriasListRelationFilter
   }
 
-  export type UserDocenteOrderByWithRelationInput = {
+  export type UsersDocentesOrderByWithRelationInput = {
     id?: SortOrder
     email?: SortOrder
     password?: SortOrder
@@ -8859,26 +11371,26 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     deletedAt?: SortOrderInput | SortOrder
-    Materia?: MateriaOrderByRelationAggregateInput
+    Materias?: MateriasOrderByRelationAggregateInput
   }
 
-  export type UserDocenteWhereUniqueInput = Prisma.AtLeast<{
+  export type UsersDocentesWhereUniqueInput = Prisma.AtLeast<{
     id?: number
     email?: string
-    AND?: UserDocenteWhereInput | UserDocenteWhereInput[]
-    OR?: UserDocenteWhereInput[]
-    NOT?: UserDocenteWhereInput | UserDocenteWhereInput[]
-    password?: StringFilter<"UserDocente"> | string
-    nombre?: StringFilter<"UserDocente"> | string
-    apellido?: StringFilter<"UserDocente"> | string
-    rol?: StringFilter<"UserDocente"> | string
-    createdAt?: DateTimeFilter<"UserDocente"> | Date | string
-    updatedAt?: DateTimeNullableFilter<"UserDocente"> | Date | string | null
-    deletedAt?: DateTimeNullableFilter<"UserDocente"> | Date | string | null
-    Materia?: MateriaListRelationFilter
+    AND?: UsersDocentesWhereInput | UsersDocentesWhereInput[]
+    OR?: UsersDocentesWhereInput[]
+    NOT?: UsersDocentesWhereInput | UsersDocentesWhereInput[]
+    password?: StringFilter<"UsersDocentes"> | string
+    nombre?: StringFilter<"UsersDocentes"> | string
+    apellido?: StringFilter<"UsersDocentes"> | string
+    rol?: StringFilter<"UsersDocentes"> | string
+    createdAt?: DateTimeFilter<"UsersDocentes"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"UsersDocentes"> | Date | string | null
+    deletedAt?: DateTimeNullableFilter<"UsersDocentes"> | Date | string | null
+    Materias?: MateriasListRelationFilter
   }, "id" | "email">
 
-  export type UserDocenteOrderByWithAggregationInput = {
+  export type UsersDocentesOrderByWithAggregationInput = {
     id?: SortOrder
     email?: SortOrder
     password?: SortOrder
@@ -8888,162 +11400,301 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     deletedAt?: SortOrderInput | SortOrder
-    _count?: UserDocenteCountOrderByAggregateInput
-    _avg?: UserDocenteAvgOrderByAggregateInput
-    _max?: UserDocenteMaxOrderByAggregateInput
-    _min?: UserDocenteMinOrderByAggregateInput
-    _sum?: UserDocenteSumOrderByAggregateInput
+    _count?: UsersDocentesCountOrderByAggregateInput
+    _avg?: UsersDocentesAvgOrderByAggregateInput
+    _max?: UsersDocentesMaxOrderByAggregateInput
+    _min?: UsersDocentesMinOrderByAggregateInput
+    _sum?: UsersDocentesSumOrderByAggregateInput
   }
 
-  export type UserDocenteScalarWhereWithAggregatesInput = {
-    AND?: UserDocenteScalarWhereWithAggregatesInput | UserDocenteScalarWhereWithAggregatesInput[]
-    OR?: UserDocenteScalarWhereWithAggregatesInput[]
-    NOT?: UserDocenteScalarWhereWithAggregatesInput | UserDocenteScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"UserDocente"> | number
-    email?: StringWithAggregatesFilter<"UserDocente"> | string
-    password?: StringWithAggregatesFilter<"UserDocente"> | string
-    nombre?: StringWithAggregatesFilter<"UserDocente"> | string
-    apellido?: StringWithAggregatesFilter<"UserDocente"> | string
-    rol?: StringWithAggregatesFilter<"UserDocente"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"UserDocente"> | Date | string
-    updatedAt?: DateTimeNullableWithAggregatesFilter<"UserDocente"> | Date | string | null
-    deletedAt?: DateTimeNullableWithAggregatesFilter<"UserDocente"> | Date | string | null
+  export type UsersDocentesScalarWhereWithAggregatesInput = {
+    AND?: UsersDocentesScalarWhereWithAggregatesInput | UsersDocentesScalarWhereWithAggregatesInput[]
+    OR?: UsersDocentesScalarWhereWithAggregatesInput[]
+    NOT?: UsersDocentesScalarWhereWithAggregatesInput | UsersDocentesScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"UsersDocentes"> | number
+    email?: StringWithAggregatesFilter<"UsersDocentes"> | string
+    password?: StringWithAggregatesFilter<"UsersDocentes"> | string
+    nombre?: StringWithAggregatesFilter<"UsersDocentes"> | string
+    apellido?: StringWithAggregatesFilter<"UsersDocentes"> | string
+    rol?: StringWithAggregatesFilter<"UsersDocentes"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"UsersDocentes"> | Date | string
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"UsersDocentes"> | Date | string | null
+    deletedAt?: DateTimeNullableWithAggregatesFilter<"UsersDocentes"> | Date | string | null
   }
 
-  export type MateriaWhereInput = {
-    AND?: MateriaWhereInput | MateriaWhereInput[]
-    OR?: MateriaWhereInput[]
-    NOT?: MateriaWhereInput | MateriaWhereInput[]
-    id?: IntFilter<"Materia"> | number
-    nombre?: StringFilter<"Materia"> | string
-    idUserDocente?: IntFilter<"Materia"> | number
-    idCurso?: IntFilter<"Materia"> | number
-    createdAt?: DateTimeFilter<"Materia"> | Date | string
-    updatedAt?: DateTimeNullableFilter<"Materia"> | Date | string | null
-    deletedAt?: DateTimeNullableFilter<"Materia"> | Date | string | null
-    userDocente?: XOR<UserDocenteScalarRelationFilter, UserDocenteWhereInput>
-    curso?: XOR<CursoScalarRelationFilter, CursoWhereInput>
-    Clase?: ClaseListRelationFilter
+  export type MateriasWhereInput = {
+    AND?: MateriasWhereInput | MateriasWhereInput[]
+    OR?: MateriasWhereInput[]
+    NOT?: MateriasWhereInput | MateriasWhereInput[]
+    id?: IntFilter<"Materias"> | number
+    nombre?: StringFilter<"Materias"> | string
+    idUserDocente?: IntFilter<"Materias"> | number
+    idCurso?: IntFilter<"Materias"> | number
+    fechaInicio?: DateTimeFilter<"Materias"> | Date | string
+    fechaFin?: DateTimeFilter<"Materias"> | Date | string
+    createdAt?: DateTimeFilter<"Materias"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Materias"> | Date | string | null
+    deletedAt?: DateTimeNullableFilter<"Materias"> | Date | string | null
+    userDocente?: XOR<UsersDocentesScalarRelationFilter, UsersDocentesWhereInput>
+    curso?: XOR<CursosScalarRelationFilter, CursosWhereInput>
+    Clases?: ClasesListRelationFilter
+    DiasHorariosClases?: DiasHorariosClasesListRelationFilter
   }
 
-  export type MateriaOrderByWithRelationInput = {
+  export type MateriasOrderByWithRelationInput = {
     id?: SortOrder
     nombre?: SortOrder
     idUserDocente?: SortOrder
     idCurso?: SortOrder
+    fechaInicio?: SortOrder
+    fechaFin?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     deletedAt?: SortOrderInput | SortOrder
-    userDocente?: UserDocenteOrderByWithRelationInput
-    curso?: CursoOrderByWithRelationInput
-    Clase?: ClaseOrderByRelationAggregateInput
+    userDocente?: UsersDocentesOrderByWithRelationInput
+    curso?: CursosOrderByWithRelationInput
+    Clases?: ClasesOrderByRelationAggregateInput
+    DiasHorariosClases?: DiasHorariosClasesOrderByRelationAggregateInput
   }
 
-  export type MateriaWhereUniqueInput = Prisma.AtLeast<{
+  export type MateriasWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    AND?: MateriaWhereInput | MateriaWhereInput[]
-    OR?: MateriaWhereInput[]
-    NOT?: MateriaWhereInput | MateriaWhereInput[]
-    nombre?: StringFilter<"Materia"> | string
-    idUserDocente?: IntFilter<"Materia"> | number
-    idCurso?: IntFilter<"Materia"> | number
-    createdAt?: DateTimeFilter<"Materia"> | Date | string
-    updatedAt?: DateTimeNullableFilter<"Materia"> | Date | string | null
-    deletedAt?: DateTimeNullableFilter<"Materia"> | Date | string | null
-    userDocente?: XOR<UserDocenteScalarRelationFilter, UserDocenteWhereInput>
-    curso?: XOR<CursoScalarRelationFilter, CursoWhereInput>
-    Clase?: ClaseListRelationFilter
+    AND?: MateriasWhereInput | MateriasWhereInput[]
+    OR?: MateriasWhereInput[]
+    NOT?: MateriasWhereInput | MateriasWhereInput[]
+    nombre?: StringFilter<"Materias"> | string
+    idUserDocente?: IntFilter<"Materias"> | number
+    idCurso?: IntFilter<"Materias"> | number
+    fechaInicio?: DateTimeFilter<"Materias"> | Date | string
+    fechaFin?: DateTimeFilter<"Materias"> | Date | string
+    createdAt?: DateTimeFilter<"Materias"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Materias"> | Date | string | null
+    deletedAt?: DateTimeNullableFilter<"Materias"> | Date | string | null
+    userDocente?: XOR<UsersDocentesScalarRelationFilter, UsersDocentesWhereInput>
+    curso?: XOR<CursosScalarRelationFilter, CursosWhereInput>
+    Clases?: ClasesListRelationFilter
+    DiasHorariosClases?: DiasHorariosClasesListRelationFilter
   }, "id">
 
-  export type MateriaOrderByWithAggregationInput = {
+  export type MateriasOrderByWithAggregationInput = {
     id?: SortOrder
     nombre?: SortOrder
     idUserDocente?: SortOrder
     idCurso?: SortOrder
+    fechaInicio?: SortOrder
+    fechaFin?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     deletedAt?: SortOrderInput | SortOrder
-    _count?: MateriaCountOrderByAggregateInput
-    _avg?: MateriaAvgOrderByAggregateInput
-    _max?: MateriaMaxOrderByAggregateInput
-    _min?: MateriaMinOrderByAggregateInput
-    _sum?: MateriaSumOrderByAggregateInput
+    _count?: MateriasCountOrderByAggregateInput
+    _avg?: MateriasAvgOrderByAggregateInput
+    _max?: MateriasMaxOrderByAggregateInput
+    _min?: MateriasMinOrderByAggregateInput
+    _sum?: MateriasSumOrderByAggregateInput
   }
 
-  export type MateriaScalarWhereWithAggregatesInput = {
-    AND?: MateriaScalarWhereWithAggregatesInput | MateriaScalarWhereWithAggregatesInput[]
-    OR?: MateriaScalarWhereWithAggregatesInput[]
-    NOT?: MateriaScalarWhereWithAggregatesInput | MateriaScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Materia"> | number
-    nombre?: StringWithAggregatesFilter<"Materia"> | string
-    idUserDocente?: IntWithAggregatesFilter<"Materia"> | number
-    idCurso?: IntWithAggregatesFilter<"Materia"> | number
-    createdAt?: DateTimeWithAggregatesFilter<"Materia"> | Date | string
-    updatedAt?: DateTimeNullableWithAggregatesFilter<"Materia"> | Date | string | null
-    deletedAt?: DateTimeNullableWithAggregatesFilter<"Materia"> | Date | string | null
+  export type MateriasScalarWhereWithAggregatesInput = {
+    AND?: MateriasScalarWhereWithAggregatesInput | MateriasScalarWhereWithAggregatesInput[]
+    OR?: MateriasScalarWhereWithAggregatesInput[]
+    NOT?: MateriasScalarWhereWithAggregatesInput | MateriasScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Materias"> | number
+    nombre?: StringWithAggregatesFilter<"Materias"> | string
+    idUserDocente?: IntWithAggregatesFilter<"Materias"> | number
+    idCurso?: IntWithAggregatesFilter<"Materias"> | number
+    fechaInicio?: DateTimeWithAggregatesFilter<"Materias"> | Date | string
+    fechaFin?: DateTimeWithAggregatesFilter<"Materias"> | Date | string
+    createdAt?: DateTimeWithAggregatesFilter<"Materias"> | Date | string
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"Materias"> | Date | string | null
+    deletedAt?: DateTimeNullableWithAggregatesFilter<"Materias"> | Date | string | null
   }
 
-  export type CursoWhereInput = {
-    AND?: CursoWhereInput | CursoWhereInput[]
-    OR?: CursoWhereInput[]
-    NOT?: CursoWhereInput | CursoWhereInput[]
-    id?: IntFilter<"Curso"> | number
-    nombre?: StringFilter<"Curso"> | string
-    createdAt?: DateTimeFilter<"Curso"> | Date | string
-    updatedAt?: DateTimeNullableFilter<"Curso"> | Date | string | null
-    deletedAt?: DateTimeNullableFilter<"Curso"> | Date | string | null
-    Materia?: MateriaListRelationFilter
-    alumnos?: AlumnoListRelationFilter
+  export type DiasHorariosClasesWhereInput = {
+    AND?: DiasHorariosClasesWhereInput | DiasHorariosClasesWhereInput[]
+    OR?: DiasHorariosClasesWhereInput[]
+    NOT?: DiasHorariosClasesWhereInput | DiasHorariosClasesWhereInput[]
+    id?: IntFilter<"DiasHorariosClases"> | number
+    idMateria?: IntFilter<"DiasHorariosClases"> | number
+    dias?: EnumDiasNullableListFilter<"DiasHorariosClases">
+    horaInicio?: StringFilter<"DiasHorariosClases"> | string
+    duracionMinutos?: IntFilter<"DiasHorariosClases"> | number
+    createdAt?: DateTimeFilter<"DiasHorariosClases"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"DiasHorariosClases"> | Date | string | null
+    deletedAt?: DateTimeNullableFilter<"DiasHorariosClases"> | Date | string | null
+    materia?: XOR<MateriasScalarRelationFilter, MateriasWhereInput>
   }
 
-  export type CursoOrderByWithRelationInput = {
+  export type DiasHorariosClasesOrderByWithRelationInput = {
     id?: SortOrder
-    nombre?: SortOrder
+    idMateria?: SortOrder
+    dias?: SortOrder
+    horaInicio?: SortOrder
+    duracionMinutos?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     deletedAt?: SortOrderInput | SortOrder
-    Materia?: MateriaOrderByRelationAggregateInput
-    alumnos?: AlumnoOrderByRelationAggregateInput
+    materia?: MateriasOrderByWithRelationInput
   }
 
-  export type CursoWhereUniqueInput = Prisma.AtLeast<{
+  export type DiasHorariosClasesWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    AND?: CursoWhereInput | CursoWhereInput[]
-    OR?: CursoWhereInput[]
-    NOT?: CursoWhereInput | CursoWhereInput[]
-    nombre?: StringFilter<"Curso"> | string
-    createdAt?: DateTimeFilter<"Curso"> | Date | string
-    updatedAt?: DateTimeNullableFilter<"Curso"> | Date | string | null
-    deletedAt?: DateTimeNullableFilter<"Curso"> | Date | string | null
-    Materia?: MateriaListRelationFilter
-    alumnos?: AlumnoListRelationFilter
+    AND?: DiasHorariosClasesWhereInput | DiasHorariosClasesWhereInput[]
+    OR?: DiasHorariosClasesWhereInput[]
+    NOT?: DiasHorariosClasesWhereInput | DiasHorariosClasesWhereInput[]
+    idMateria?: IntFilter<"DiasHorariosClases"> | number
+    dias?: EnumDiasNullableListFilter<"DiasHorariosClases">
+    horaInicio?: StringFilter<"DiasHorariosClases"> | string
+    duracionMinutos?: IntFilter<"DiasHorariosClases"> | number
+    createdAt?: DateTimeFilter<"DiasHorariosClases"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"DiasHorariosClases"> | Date | string | null
+    deletedAt?: DateTimeNullableFilter<"DiasHorariosClases"> | Date | string | null
+    materia?: XOR<MateriasScalarRelationFilter, MateriasWhereInput>
   }, "id">
 
-  export type CursoOrderByWithAggregationInput = {
+  export type DiasHorariosClasesOrderByWithAggregationInput = {
     id?: SortOrder
-    nombre?: SortOrder
+    idMateria?: SortOrder
+    dias?: SortOrder
+    horaInicio?: SortOrder
+    duracionMinutos?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     deletedAt?: SortOrderInput | SortOrder
-    _count?: CursoCountOrderByAggregateInput
-    _avg?: CursoAvgOrderByAggregateInput
-    _max?: CursoMaxOrderByAggregateInput
-    _min?: CursoMinOrderByAggregateInput
-    _sum?: CursoSumOrderByAggregateInput
+    _count?: DiasHorariosClasesCountOrderByAggregateInput
+    _avg?: DiasHorariosClasesAvgOrderByAggregateInput
+    _max?: DiasHorariosClasesMaxOrderByAggregateInput
+    _min?: DiasHorariosClasesMinOrderByAggregateInput
+    _sum?: DiasHorariosClasesSumOrderByAggregateInput
   }
 
-  export type CursoScalarWhereWithAggregatesInput = {
-    AND?: CursoScalarWhereWithAggregatesInput | CursoScalarWhereWithAggregatesInput[]
-    OR?: CursoScalarWhereWithAggregatesInput[]
-    NOT?: CursoScalarWhereWithAggregatesInput | CursoScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Curso"> | number
-    nombre?: StringWithAggregatesFilter<"Curso"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"Curso"> | Date | string
-    updatedAt?: DateTimeNullableWithAggregatesFilter<"Curso"> | Date | string | null
-    deletedAt?: DateTimeNullableWithAggregatesFilter<"Curso"> | Date | string | null
+  export type DiasHorariosClasesScalarWhereWithAggregatesInput = {
+    AND?: DiasHorariosClasesScalarWhereWithAggregatesInput | DiasHorariosClasesScalarWhereWithAggregatesInput[]
+    OR?: DiasHorariosClasesScalarWhereWithAggregatesInput[]
+    NOT?: DiasHorariosClasesScalarWhereWithAggregatesInput | DiasHorariosClasesScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"DiasHorariosClases"> | number
+    idMateria?: IntWithAggregatesFilter<"DiasHorariosClases"> | number
+    dias?: EnumDiasNullableListFilter<"DiasHorariosClases">
+    horaInicio?: StringWithAggregatesFilter<"DiasHorariosClases"> | string
+    duracionMinutos?: IntWithAggregatesFilter<"DiasHorariosClases"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"DiasHorariosClases"> | Date | string
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"DiasHorariosClases"> | Date | string | null
+    deletedAt?: DateTimeNullableWithAggregatesFilter<"DiasHorariosClases"> | Date | string | null
   }
 
-  export type AlumnoCreateInput = {
+  export type CursosWhereInput = {
+    AND?: CursosWhereInput | CursosWhereInput[]
+    OR?: CursosWhereInput[]
+    NOT?: CursosWhereInput | CursosWhereInput[]
+    id?: IntFilter<"Cursos"> | number
+    nombre?: StringFilter<"Cursos"> | string
+    turno?: StringNullableFilter<"Cursos"> | string | null
+    createdAt?: DateTimeFilter<"Cursos"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Cursos"> | Date | string | null
+    deletedAt?: DateTimeNullableFilter<"Cursos"> | Date | string | null
+    Materias?: MateriasListRelationFilter
+    Alumnos?: AlumnosListRelationFilter
+  }
+
+  export type CursosOrderByWithRelationInput = {
+    id?: SortOrder
+    nombre?: SortOrder
+    turno?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    deletedAt?: SortOrderInput | SortOrder
+    Materias?: MateriasOrderByRelationAggregateInput
+    Alumnos?: AlumnosOrderByRelationAggregateInput
+  }
+
+  export type CursosWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: CursosWhereInput | CursosWhereInput[]
+    OR?: CursosWhereInput[]
+    NOT?: CursosWhereInput | CursosWhereInput[]
+    nombre?: StringFilter<"Cursos"> | string
+    turno?: StringNullableFilter<"Cursos"> | string | null
+    createdAt?: DateTimeFilter<"Cursos"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Cursos"> | Date | string | null
+    deletedAt?: DateTimeNullableFilter<"Cursos"> | Date | string | null
+    Materias?: MateriasListRelationFilter
+    Alumnos?: AlumnosListRelationFilter
+  }, "id">
+
+  export type CursosOrderByWithAggregationInput = {
+    id?: SortOrder
+    nombre?: SortOrder
+    turno?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrderInput | SortOrder
+    deletedAt?: SortOrderInput | SortOrder
+    _count?: CursosCountOrderByAggregateInput
+    _avg?: CursosAvgOrderByAggregateInput
+    _max?: CursosMaxOrderByAggregateInput
+    _min?: CursosMinOrderByAggregateInput
+    _sum?: CursosSumOrderByAggregateInput
+  }
+
+  export type CursosScalarWhereWithAggregatesInput = {
+    AND?: CursosScalarWhereWithAggregatesInput | CursosScalarWhereWithAggregatesInput[]
+    OR?: CursosScalarWhereWithAggregatesInput[]
+    NOT?: CursosScalarWhereWithAggregatesInput | CursosScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Cursos"> | number
+    nombre?: StringWithAggregatesFilter<"Cursos"> | string
+    turno?: StringNullableWithAggregatesFilter<"Cursos"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Cursos"> | Date | string
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"Cursos"> | Date | string | null
+    deletedAt?: DateTimeNullableWithAggregatesFilter<"Cursos"> | Date | string | null
+  }
+
+  export type FechaNoLectivasWhereInput = {
+    AND?: FechaNoLectivasWhereInput | FechaNoLectivasWhereInput[]
+    OR?: FechaNoLectivasWhereInput[]
+    NOT?: FechaNoLectivasWhereInput | FechaNoLectivasWhereInput[]
+    id?: IntFilter<"FechaNoLectivas"> | number
+    fechaInicio?: DateTimeFilter<"FechaNoLectivas"> | Date | string
+    fechaFin?: DateTimeFilter<"FechaNoLectivas"> | Date | string
+    motivo?: StringFilter<"FechaNoLectivas"> | string
+  }
+
+  export type FechaNoLectivasOrderByWithRelationInput = {
+    id?: SortOrder
+    fechaInicio?: SortOrder
+    fechaFin?: SortOrder
+    motivo?: SortOrder
+  }
+
+  export type FechaNoLectivasWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    fechaInicio?: Date | string
+    fechaFin?: Date | string
+    AND?: FechaNoLectivasWhereInput | FechaNoLectivasWhereInput[]
+    OR?: FechaNoLectivasWhereInput[]
+    NOT?: FechaNoLectivasWhereInput | FechaNoLectivasWhereInput[]
+    motivo?: StringFilter<"FechaNoLectivas"> | string
+  }, "id" | "fechaInicio" | "fechaFin">
+
+  export type FechaNoLectivasOrderByWithAggregationInput = {
+    id?: SortOrder
+    fechaInicio?: SortOrder
+    fechaFin?: SortOrder
+    motivo?: SortOrder
+    _count?: FechaNoLectivasCountOrderByAggregateInput
+    _avg?: FechaNoLectivasAvgOrderByAggregateInput
+    _max?: FechaNoLectivasMaxOrderByAggregateInput
+    _min?: FechaNoLectivasMinOrderByAggregateInput
+    _sum?: FechaNoLectivasSumOrderByAggregateInput
+  }
+
+  export type FechaNoLectivasScalarWhereWithAggregatesInput = {
+    AND?: FechaNoLectivasScalarWhereWithAggregatesInput | FechaNoLectivasScalarWhereWithAggregatesInput[]
+    OR?: FechaNoLectivasScalarWhereWithAggregatesInput[]
+    NOT?: FechaNoLectivasScalarWhereWithAggregatesInput | FechaNoLectivasScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"FechaNoLectivas"> | number
+    fechaInicio?: DateTimeWithAggregatesFilter<"FechaNoLectivas"> | Date | string
+    fechaFin?: DateTimeWithAggregatesFilter<"FechaNoLectivas"> | Date | string
+    motivo?: StringWithAggregatesFilter<"FechaNoLectivas"> | string
+  }
+
+  export type AlumnosCreateInput = {
     legajo: string
     nombre: string
     apellido: string
@@ -9051,11 +11702,11 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
-    Asistencia?: AsistenciaCreateNestedManyWithoutAlumnoInput
-    cursos?: CursoCreateNestedManyWithoutAlumnosInput
+    Asistencias?: AsistenciasCreateNestedManyWithoutAlumnoInput
+    Cursos?: CursosCreateNestedManyWithoutAlumnosInput
   }
 
-  export type AlumnoUncheckedCreateInput = {
+  export type AlumnosUncheckedCreateInput = {
     id?: number
     legajo: string
     nombre: string
@@ -9064,11 +11715,11 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
-    Asistencia?: AsistenciaUncheckedCreateNestedManyWithoutAlumnoInput
-    cursos?: CursoUncheckedCreateNestedManyWithoutAlumnosInput
+    Asistencias?: AsistenciasUncheckedCreateNestedManyWithoutAlumnoInput
+    Cursos?: CursosUncheckedCreateNestedManyWithoutAlumnosInput
   }
 
-  export type AlumnoUpdateInput = {
+  export type AlumnosUpdateInput = {
     legajo?: StringFieldUpdateOperationsInput | string
     nombre?: StringFieldUpdateOperationsInput | string
     apellido?: StringFieldUpdateOperationsInput | string
@@ -9076,11 +11727,11 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Asistencia?: AsistenciaUpdateManyWithoutAlumnoNestedInput
-    cursos?: CursoUpdateManyWithoutAlumnosNestedInput
+    Asistencias?: AsistenciasUpdateManyWithoutAlumnoNestedInput
+    Cursos?: CursosUpdateManyWithoutAlumnosNestedInput
   }
 
-  export type AlumnoUncheckedUpdateInput = {
+  export type AlumnosUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     legajo?: StringFieldUpdateOperationsInput | string
     nombre?: StringFieldUpdateOperationsInput | string
@@ -9089,11 +11740,11 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Asistencia?: AsistenciaUncheckedUpdateManyWithoutAlumnoNestedInput
-    cursos?: CursoUncheckedUpdateManyWithoutAlumnosNestedInput
+    Asistencias?: AsistenciasUncheckedUpdateManyWithoutAlumnoNestedInput
+    Cursos?: CursosUncheckedUpdateManyWithoutAlumnosNestedInput
   }
 
-  export type AlumnoCreateManyInput = {
+  export type AlumnosCreateManyInput = {
     id?: number
     legajo: string
     nombre: string
@@ -9104,7 +11755,7 @@ export namespace Prisma {
     deletedAt?: Date | string | null
   }
 
-  export type AlumnoUpdateManyMutationInput = {
+  export type AlumnosUpdateManyMutationInput = {
     legajo?: StringFieldUpdateOperationsInput | string
     nombre?: StringFieldUpdateOperationsInput | string
     apellido?: StringFieldUpdateOperationsInput | string
@@ -9114,7 +11765,7 @@ export namespace Prisma {
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type AlumnoUncheckedUpdateManyInput = {
+  export type AlumnosUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     legajo?: StringFieldUpdateOperationsInput | string
     nombre?: StringFieldUpdateOperationsInput | string
@@ -9125,142 +11776,156 @@ export namespace Prisma {
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type ClaseCreateInput = {
+  export type ClasesCreateInput = {
     fechaHora: Date | string
+    suspendida?: boolean
+    motivo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
-    materia: MateriaCreateNestedOneWithoutClaseInput
-    Asistencia?: AsistenciaCreateNestedManyWithoutClaseInput
+    materia: MateriasCreateNestedOneWithoutClasesInput
+    Asistencias?: AsistenciasCreateNestedManyWithoutClaseInput
   }
 
-  export type ClaseUncheckedCreateInput = {
+  export type ClasesUncheckedCreateInput = {
     id?: number
     fechaHora: Date | string
     idMateria: number
+    suspendida?: boolean
+    motivo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
-    Asistencia?: AsistenciaUncheckedCreateNestedManyWithoutClaseInput
+    Asistencias?: AsistenciasUncheckedCreateNestedManyWithoutClaseInput
   }
 
-  export type ClaseUpdateInput = {
+  export type ClasesUpdateInput = {
     fechaHora?: DateTimeFieldUpdateOperationsInput | Date | string
+    suspendida?: BoolFieldUpdateOperationsInput | boolean
+    motivo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    materia?: MateriaUpdateOneRequiredWithoutClaseNestedInput
-    Asistencia?: AsistenciaUpdateManyWithoutClaseNestedInput
+    materia?: MateriasUpdateOneRequiredWithoutClasesNestedInput
+    Asistencias?: AsistenciasUpdateManyWithoutClaseNestedInput
   }
 
-  export type ClaseUncheckedUpdateInput = {
+  export type ClasesUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     fechaHora?: DateTimeFieldUpdateOperationsInput | Date | string
     idMateria?: IntFieldUpdateOperationsInput | number
+    suspendida?: BoolFieldUpdateOperationsInput | boolean
+    motivo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Asistencia?: AsistenciaUncheckedUpdateManyWithoutClaseNestedInput
+    Asistencias?: AsistenciasUncheckedUpdateManyWithoutClaseNestedInput
   }
 
-  export type ClaseCreateManyInput = {
+  export type ClasesCreateManyInput = {
     id?: number
     fechaHora: Date | string
     idMateria: number
+    suspendida?: boolean
+    motivo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
   }
 
-  export type ClaseUpdateManyMutationInput = {
+  export type ClasesUpdateManyMutationInput = {
     fechaHora?: DateTimeFieldUpdateOperationsInput | Date | string
+    suspendida?: BoolFieldUpdateOperationsInput | boolean
+    motivo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type ClaseUncheckedUpdateManyInput = {
+  export type ClasesUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     fechaHora?: DateTimeFieldUpdateOperationsInput | Date | string
     idMateria?: IntFieldUpdateOperationsInput | number
+    suspendida?: BoolFieldUpdateOperationsInput | boolean
+    motivo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type AsistenciaCreateInput = {
-    estado?: $Enums.Estado
+  export type AsistenciasCreateInput = {
+    estado?: $Enums.Estados
     nota?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
-    alumno: AlumnoCreateNestedOneWithoutAsistenciaInput
-    clase: ClaseCreateNestedOneWithoutAsistenciaInput
+    alumno: AlumnosCreateNestedOneWithoutAsistenciasInput
+    clase: ClasesCreateNestedOneWithoutAsistenciasInput
   }
 
-  export type AsistenciaUncheckedCreateInput = {
+  export type AsistenciasUncheckedCreateInput = {
     id?: number
     idAlumno: number
     idClase: number
-    estado?: $Enums.Estado
+    estado?: $Enums.Estados
     nota?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
   }
 
-  export type AsistenciaUpdateInput = {
-    estado?: EnumEstadoFieldUpdateOperationsInput | $Enums.Estado
+  export type AsistenciasUpdateInput = {
+    estado?: EnumEstadosFieldUpdateOperationsInput | $Enums.Estados
     nota?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    alumno?: AlumnoUpdateOneRequiredWithoutAsistenciaNestedInput
-    clase?: ClaseUpdateOneRequiredWithoutAsistenciaNestedInput
+    alumno?: AlumnosUpdateOneRequiredWithoutAsistenciasNestedInput
+    clase?: ClasesUpdateOneRequiredWithoutAsistenciasNestedInput
   }
 
-  export type AsistenciaUncheckedUpdateInput = {
+  export type AsistenciasUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     idAlumno?: IntFieldUpdateOperationsInput | number
     idClase?: IntFieldUpdateOperationsInput | number
-    estado?: EnumEstadoFieldUpdateOperationsInput | $Enums.Estado
+    estado?: EnumEstadosFieldUpdateOperationsInput | $Enums.Estados
     nota?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type AsistenciaCreateManyInput = {
+  export type AsistenciasCreateManyInput = {
     id?: number
     idAlumno: number
     idClase: number
-    estado?: $Enums.Estado
+    estado?: $Enums.Estados
     nota?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
   }
 
-  export type AsistenciaUpdateManyMutationInput = {
-    estado?: EnumEstadoFieldUpdateOperationsInput | $Enums.Estado
+  export type AsistenciasUpdateManyMutationInput = {
+    estado?: EnumEstadosFieldUpdateOperationsInput | $Enums.Estados
     nota?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type AsistenciaUncheckedUpdateManyInput = {
+  export type AsistenciasUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     idAlumno?: IntFieldUpdateOperationsInput | number
     idClase?: IntFieldUpdateOperationsInput | number
-    estado?: EnumEstadoFieldUpdateOperationsInput | $Enums.Estado
+    estado?: EnumEstadosFieldUpdateOperationsInput | $Enums.Estados
     nota?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type UserDocenteCreateInput = {
+  export type UsersDocentesCreateInput = {
     email: string
     password: string
     nombre: string
@@ -9269,10 +11934,10 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
-    Materia?: MateriaCreateNestedManyWithoutUserDocenteInput
+    Materias?: MateriasCreateNestedManyWithoutUserDocenteInput
   }
 
-  export type UserDocenteUncheckedCreateInput = {
+  export type UsersDocentesUncheckedCreateInput = {
     id?: number
     email: string
     password: string
@@ -9282,10 +11947,10 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
-    Materia?: MateriaUncheckedCreateNestedManyWithoutUserDocenteInput
+    Materias?: MateriasUncheckedCreateNestedManyWithoutUserDocenteInput
   }
 
-  export type UserDocenteUpdateInput = {
+  export type UsersDocentesUpdateInput = {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     nombre?: StringFieldUpdateOperationsInput | string
@@ -9294,10 +11959,10 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Materia?: MateriaUpdateManyWithoutUserDocenteNestedInput
+    Materias?: MateriasUpdateManyWithoutUserDocenteNestedInput
   }
 
-  export type UserDocenteUncheckedUpdateInput = {
+  export type UsersDocentesUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
@@ -9307,10 +11972,10 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Materia?: MateriaUncheckedUpdateManyWithoutUserDocenteNestedInput
+    Materias?: MateriasUncheckedUpdateManyWithoutUserDocenteNestedInput
   }
 
-  export type UserDocenteCreateManyInput = {
+  export type UsersDocentesCreateManyInput = {
     id?: number
     email: string
     password: string
@@ -9322,7 +11987,7 @@ export namespace Prisma {
     deletedAt?: Date | string | null
   }
 
-  export type UserDocenteUpdateManyMutationInput = {
+  export type UsersDocentesUpdateManyMutationInput = {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     nombre?: StringFieldUpdateOperationsInput | string
@@ -9333,7 +11998,7 @@ export namespace Prisma {
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type UserDocenteUncheckedUpdateManyInput = {
+  export type UsersDocentesUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
@@ -9345,134 +12010,278 @@ export namespace Prisma {
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type MateriaCreateInput = {
+  export type MateriasCreateInput = {
     nombre: string
+    fechaInicio: Date | string
+    fechaFin: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
-    userDocente: UserDocenteCreateNestedOneWithoutMateriaInput
-    curso: CursoCreateNestedOneWithoutMateriaInput
-    Clase?: ClaseCreateNestedManyWithoutMateriaInput
+    userDocente: UsersDocentesCreateNestedOneWithoutMateriasInput
+    curso: CursosCreateNestedOneWithoutMateriasInput
+    Clases?: ClasesCreateNestedManyWithoutMateriaInput
+    DiasHorariosClases?: DiasHorariosClasesCreateNestedManyWithoutMateriaInput
   }
 
-  export type MateriaUncheckedCreateInput = {
+  export type MateriasUncheckedCreateInput = {
     id?: number
     nombre: string
     idUserDocente: number
     idCurso: number
+    fechaInicio: Date | string
+    fechaFin: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
-    Clase?: ClaseUncheckedCreateNestedManyWithoutMateriaInput
+    Clases?: ClasesUncheckedCreateNestedManyWithoutMateriaInput
+    DiasHorariosClases?: DiasHorariosClasesUncheckedCreateNestedManyWithoutMateriaInput
   }
 
-  export type MateriaUpdateInput = {
+  export type MateriasUpdateInput = {
     nombre?: StringFieldUpdateOperationsInput | string
+    fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
+    fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    userDocente?: UserDocenteUpdateOneRequiredWithoutMateriaNestedInput
-    curso?: CursoUpdateOneRequiredWithoutMateriaNestedInput
-    Clase?: ClaseUpdateManyWithoutMateriaNestedInput
+    userDocente?: UsersDocentesUpdateOneRequiredWithoutMateriasNestedInput
+    curso?: CursosUpdateOneRequiredWithoutMateriasNestedInput
+    Clases?: ClasesUpdateManyWithoutMateriaNestedInput
+    DiasHorariosClases?: DiasHorariosClasesUpdateManyWithoutMateriaNestedInput
   }
 
-  export type MateriaUncheckedUpdateInput = {
+  export type MateriasUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     nombre?: StringFieldUpdateOperationsInput | string
     idUserDocente?: IntFieldUpdateOperationsInput | number
     idCurso?: IntFieldUpdateOperationsInput | number
+    fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
+    fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Clase?: ClaseUncheckedUpdateManyWithoutMateriaNestedInput
+    Clases?: ClasesUncheckedUpdateManyWithoutMateriaNestedInput
+    DiasHorariosClases?: DiasHorariosClasesUncheckedUpdateManyWithoutMateriaNestedInput
   }
 
-  export type MateriaCreateManyInput = {
+  export type MateriasCreateManyInput = {
     id?: number
     nombre: string
     idUserDocente: number
     idCurso: number
+    fechaInicio: Date | string
+    fechaFin: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
   }
 
-  export type MateriaUpdateManyMutationInput = {
+  export type MateriasUpdateManyMutationInput = {
     nombre?: StringFieldUpdateOperationsInput | string
+    fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
+    fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type MateriaUncheckedUpdateManyInput = {
+  export type MateriasUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     nombre?: StringFieldUpdateOperationsInput | string
     idUserDocente?: IntFieldUpdateOperationsInput | number
     idCurso?: IntFieldUpdateOperationsInput | number
+    fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
+    fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type CursoCreateInput = {
-    nombre: string
+  export type DiasHorariosClasesCreateInput = {
+    dias?: DiasHorariosClasesCreatediasInput | $Enums.Dias[]
+    horaInicio: string
+    duracionMinutos: number
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
-    Materia?: MateriaCreateNestedManyWithoutCursoInput
-    alumnos?: AlumnoCreateNestedManyWithoutCursosInput
+    materia: MateriasCreateNestedOneWithoutDiasHorariosClasesInput
   }
 
-  export type CursoUncheckedCreateInput = {
+  export type DiasHorariosClasesUncheckedCreateInput = {
+    id?: number
+    idMateria: number
+    dias?: DiasHorariosClasesCreatediasInput | $Enums.Dias[]
+    horaInicio: string
+    duracionMinutos: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    deletedAt?: Date | string | null
+  }
+
+  export type DiasHorariosClasesUpdateInput = {
+    dias?: DiasHorariosClasesUpdatediasInput | $Enums.Dias[]
+    horaInicio?: StringFieldUpdateOperationsInput | string
+    duracionMinutos?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    materia?: MateriasUpdateOneRequiredWithoutDiasHorariosClasesNestedInput
+  }
+
+  export type DiasHorariosClasesUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    idMateria?: IntFieldUpdateOperationsInput | number
+    dias?: DiasHorariosClasesUpdatediasInput | $Enums.Dias[]
+    horaInicio?: StringFieldUpdateOperationsInput | string
+    duracionMinutos?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type DiasHorariosClasesCreateManyInput = {
+    id?: number
+    idMateria: number
+    dias?: DiasHorariosClasesCreatediasInput | $Enums.Dias[]
+    horaInicio: string
+    duracionMinutos: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    deletedAt?: Date | string | null
+  }
+
+  export type DiasHorariosClasesUpdateManyMutationInput = {
+    dias?: DiasHorariosClasesUpdatediasInput | $Enums.Dias[]
+    horaInicio?: StringFieldUpdateOperationsInput | string
+    duracionMinutos?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type DiasHorariosClasesUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    idMateria?: IntFieldUpdateOperationsInput | number
+    dias?: DiasHorariosClasesUpdatediasInput | $Enums.Dias[]
+    horaInicio?: StringFieldUpdateOperationsInput | string
+    duracionMinutos?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type CursosCreateInput = {
+    nombre: string
+    turno?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    deletedAt?: Date | string | null
+    Materias?: MateriasCreateNestedManyWithoutCursoInput
+    Alumnos?: AlumnosCreateNestedManyWithoutCursosInput
+  }
+
+  export type CursosUncheckedCreateInput = {
     id?: number
     nombre: string
+    turno?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
-    Materia?: MateriaUncheckedCreateNestedManyWithoutCursoInput
-    alumnos?: AlumnoUncheckedCreateNestedManyWithoutCursosInput
+    Materias?: MateriasUncheckedCreateNestedManyWithoutCursoInput
+    Alumnos?: AlumnosUncheckedCreateNestedManyWithoutCursosInput
   }
 
-  export type CursoUpdateInput = {
+  export type CursosUpdateInput = {
     nombre?: StringFieldUpdateOperationsInput | string
+    turno?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Materia?: MateriaUpdateManyWithoutCursoNestedInput
-    alumnos?: AlumnoUpdateManyWithoutCursosNestedInput
+    Materias?: MateriasUpdateManyWithoutCursoNestedInput
+    Alumnos?: AlumnosUpdateManyWithoutCursosNestedInput
   }
 
-  export type CursoUncheckedUpdateInput = {
+  export type CursosUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     nombre?: StringFieldUpdateOperationsInput | string
+    turno?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Materia?: MateriaUncheckedUpdateManyWithoutCursoNestedInput
-    alumnos?: AlumnoUncheckedUpdateManyWithoutCursosNestedInput
+    Materias?: MateriasUncheckedUpdateManyWithoutCursoNestedInput
+    Alumnos?: AlumnosUncheckedUpdateManyWithoutCursosNestedInput
   }
 
-  export type CursoCreateManyInput = {
+  export type CursosCreateManyInput = {
     id?: number
     nombre: string
+    turno?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
   }
 
-  export type CursoUpdateManyMutationInput = {
+  export type CursosUpdateManyMutationInput = {
     nombre?: StringFieldUpdateOperationsInput | string
+    turno?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type CursoUncheckedUpdateManyInput = {
+  export type CursosUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     nombre?: StringFieldUpdateOperationsInput | string
+    turno?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type FechaNoLectivasCreateInput = {
+    fechaInicio: Date | string
+    fechaFin: Date | string
+    motivo: string
+  }
+
+  export type FechaNoLectivasUncheckedCreateInput = {
+    id?: number
+    fechaInicio: Date | string
+    fechaFin: Date | string
+    motivo: string
+  }
+
+  export type FechaNoLectivasUpdateInput = {
+    fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
+    fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
+    motivo?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type FechaNoLectivasUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
+    fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
+    motivo?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type FechaNoLectivasCreateManyInput = {
+    id?: number
+    fechaInicio: Date | string
+    fechaFin: Date | string
+    motivo: string
+  }
+
+  export type FechaNoLectivasUpdateManyMutationInput = {
+    fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
+    fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
+    motivo?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type FechaNoLectivasUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
+    fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
+    motivo?: StringFieldUpdateOperationsInput | string
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -9523,16 +12332,16 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
-  export type AsistenciaListRelationFilter = {
-    every?: AsistenciaWhereInput
-    some?: AsistenciaWhereInput
-    none?: AsistenciaWhereInput
+  export type AsistenciasListRelationFilter = {
+    every?: AsistenciasWhereInput
+    some?: AsistenciasWhereInput
+    none?: AsistenciasWhereInput
   }
 
-  export type CursoListRelationFilter = {
-    every?: CursoWhereInput
-    some?: CursoWhereInput
-    none?: CursoWhereInput
+  export type CursosListRelationFilter = {
+    every?: CursosWhereInput
+    some?: CursosWhereInput
+    none?: CursosWhereInput
   }
 
   export type SortOrderInput = {
@@ -9540,15 +12349,15 @@ export namespace Prisma {
     nulls?: NullsOrder
   }
 
-  export type AsistenciaOrderByRelationAggregateInput = {
+  export type AsistenciasOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
-  export type CursoOrderByRelationAggregateInput = {
+  export type CursosOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
-  export type AlumnoCountOrderByAggregateInput = {
+  export type AlumnosCountOrderByAggregateInput = {
     id?: SortOrder
     legajo?: SortOrder
     nombre?: SortOrder
@@ -9559,22 +12368,11 @@ export namespace Prisma {
     deletedAt?: SortOrder
   }
 
-  export type AlumnoAvgOrderByAggregateInput = {
+  export type AlumnosAvgOrderByAggregateInput = {
     id?: SortOrder
   }
 
-  export type AlumnoMaxOrderByAggregateInput = {
-    id?: SortOrder
-    legajo?: SortOrder
-    nombre?: SortOrder
-    apellido?: SortOrder
-    celular?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    deletedAt?: SortOrder
-  }
-
-  export type AlumnoMinOrderByAggregateInput = {
+  export type AlumnosMaxOrderByAggregateInput = {
     id?: SortOrder
     legajo?: SortOrder
     nombre?: SortOrder
@@ -9585,7 +12383,18 @@ export namespace Prisma {
     deletedAt?: SortOrder
   }
 
-  export type AlumnoSumOrderByAggregateInput = {
+  export type AlumnosMinOrderByAggregateInput = {
+    id?: SortOrder
+    legajo?: SortOrder
+    nombre?: SortOrder
+    apellido?: SortOrder
+    celular?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+  }
+
+  export type AlumnosSumOrderByAggregateInput = {
     id?: SortOrder
   }
 
@@ -9651,53 +12460,9 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
-  export type MateriaScalarRelationFilter = {
-    is?: MateriaWhereInput
-    isNot?: MateriaWhereInput
-  }
-
-  export type ClaseCountOrderByAggregateInput = {
-    id?: SortOrder
-    fechaHora?: SortOrder
-    idMateria?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    deletedAt?: SortOrder
-  }
-
-  export type ClaseAvgOrderByAggregateInput = {
-    id?: SortOrder
-    idMateria?: SortOrder
-  }
-
-  export type ClaseMaxOrderByAggregateInput = {
-    id?: SortOrder
-    fechaHora?: SortOrder
-    idMateria?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    deletedAt?: SortOrder
-  }
-
-  export type ClaseMinOrderByAggregateInput = {
-    id?: SortOrder
-    fechaHora?: SortOrder
-    idMateria?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    deletedAt?: SortOrder
-  }
-
-  export type ClaseSumOrderByAggregateInput = {
-    id?: SortOrder
-    idMateria?: SortOrder
-  }
-
-  export type EnumEstadoFilter<$PrismaModel = never> = {
-    equals?: $Enums.Estado | EnumEstadoFieldRefInput<$PrismaModel>
-    in?: $Enums.Estado[] | ListEnumEstadoFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Estado[] | ListEnumEstadoFieldRefInput<$PrismaModel>
-    not?: NestedEnumEstadoFilter<$PrismaModel> | $Enums.Estado
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type StringNullableFilter<$PrismaModel = never> = {
@@ -9715,69 +12480,60 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type AlumnoScalarRelationFilter = {
-    is?: AlumnoWhereInput
-    isNot?: AlumnoWhereInput
+  export type MateriasScalarRelationFilter = {
+    is?: MateriasWhereInput
+    isNot?: MateriasWhereInput
   }
 
-  export type ClaseScalarRelationFilter = {
-    is?: ClaseWhereInput
-    isNot?: ClaseWhereInput
-  }
-
-  export type AsistenciaCountOrderByAggregateInput = {
+  export type ClasesCountOrderByAggregateInput = {
     id?: SortOrder
-    idAlumno?: SortOrder
-    idClase?: SortOrder
-    estado?: SortOrder
-    nota?: SortOrder
+    fechaHora?: SortOrder
+    idMateria?: SortOrder
+    suspendida?: SortOrder
+    motivo?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrder
   }
 
-  export type AsistenciaAvgOrderByAggregateInput = {
+  export type ClasesAvgOrderByAggregateInput = {
     id?: SortOrder
-    idAlumno?: SortOrder
-    idClase?: SortOrder
+    idMateria?: SortOrder
   }
 
-  export type AsistenciaMaxOrderByAggregateInput = {
+  export type ClasesMaxOrderByAggregateInput = {
     id?: SortOrder
-    idAlumno?: SortOrder
-    idClase?: SortOrder
-    estado?: SortOrder
-    nota?: SortOrder
+    fechaHora?: SortOrder
+    idMateria?: SortOrder
+    suspendida?: SortOrder
+    motivo?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrder
   }
 
-  export type AsistenciaMinOrderByAggregateInput = {
+  export type ClasesMinOrderByAggregateInput = {
     id?: SortOrder
-    idAlumno?: SortOrder
-    idClase?: SortOrder
-    estado?: SortOrder
-    nota?: SortOrder
+    fechaHora?: SortOrder
+    idMateria?: SortOrder
+    suspendida?: SortOrder
+    motivo?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrder
   }
 
-  export type AsistenciaSumOrderByAggregateInput = {
+  export type ClasesSumOrderByAggregateInput = {
     id?: SortOrder
-    idAlumno?: SortOrder
-    idClase?: SortOrder
+    idMateria?: SortOrder
   }
 
-  export type EnumEstadoWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.Estado | EnumEstadoFieldRefInput<$PrismaModel>
-    in?: $Enums.Estado[] | ListEnumEstadoFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Estado[] | ListEnumEstadoFieldRefInput<$PrismaModel>
-    not?: NestedEnumEstadoWithAggregatesFilter<$PrismaModel> | $Enums.Estado
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumEstadoFilter<$PrismaModel>
-    _max?: NestedEnumEstadoFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -9798,17 +12554,89 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type MateriaListRelationFilter = {
-    every?: MateriaWhereInput
-    some?: MateriaWhereInput
-    none?: MateriaWhereInput
+  export type EnumEstadosFilter<$PrismaModel = never> = {
+    equals?: $Enums.Estados | EnumEstadosFieldRefInput<$PrismaModel>
+    in?: $Enums.Estados[] | ListEnumEstadosFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Estados[] | ListEnumEstadosFieldRefInput<$PrismaModel>
+    not?: NestedEnumEstadosFilter<$PrismaModel> | $Enums.Estados
   }
 
-  export type MateriaOrderByRelationAggregateInput = {
+  export type AlumnosScalarRelationFilter = {
+    is?: AlumnosWhereInput
+    isNot?: AlumnosWhereInput
+  }
+
+  export type ClasesScalarRelationFilter = {
+    is?: ClasesWhereInput
+    isNot?: ClasesWhereInput
+  }
+
+  export type AsistenciasCountOrderByAggregateInput = {
+    id?: SortOrder
+    idAlumno?: SortOrder
+    idClase?: SortOrder
+    estado?: SortOrder
+    nota?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+  }
+
+  export type AsistenciasAvgOrderByAggregateInput = {
+    id?: SortOrder
+    idAlumno?: SortOrder
+    idClase?: SortOrder
+  }
+
+  export type AsistenciasMaxOrderByAggregateInput = {
+    id?: SortOrder
+    idAlumno?: SortOrder
+    idClase?: SortOrder
+    estado?: SortOrder
+    nota?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+  }
+
+  export type AsistenciasMinOrderByAggregateInput = {
+    id?: SortOrder
+    idAlumno?: SortOrder
+    idClase?: SortOrder
+    estado?: SortOrder
+    nota?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+  }
+
+  export type AsistenciasSumOrderByAggregateInput = {
+    id?: SortOrder
+    idAlumno?: SortOrder
+    idClase?: SortOrder
+  }
+
+  export type EnumEstadosWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Estados | EnumEstadosFieldRefInput<$PrismaModel>
+    in?: $Enums.Estados[] | ListEnumEstadosFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Estados[] | ListEnumEstadosFieldRefInput<$PrismaModel>
+    not?: NestedEnumEstadosWithAggregatesFilter<$PrismaModel> | $Enums.Estados
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumEstadosFilter<$PrismaModel>
+    _max?: NestedEnumEstadosFilter<$PrismaModel>
+  }
+
+  export type MateriasListRelationFilter = {
+    every?: MateriasWhereInput
+    some?: MateriasWhereInput
+    none?: MateriasWhereInput
+  }
+
+  export type MateriasOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
-  export type UserDocenteCountOrderByAggregateInput = {
+  export type UsersDocentesCountOrderByAggregateInput = {
     id?: SortOrder
     email?: SortOrder
     password?: SortOrder
@@ -9820,23 +12648,11 @@ export namespace Prisma {
     deletedAt?: SortOrder
   }
 
-  export type UserDocenteAvgOrderByAggregateInput = {
+  export type UsersDocentesAvgOrderByAggregateInput = {
     id?: SortOrder
   }
 
-  export type UserDocenteMaxOrderByAggregateInput = {
-    id?: SortOrder
-    email?: SortOrder
-    password?: SortOrder
-    nombre?: SortOrder
-    apellido?: SortOrder
-    rol?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    deletedAt?: SortOrder
-  }
-
-  export type UserDocenteMinOrderByAggregateInput = {
+  export type UsersDocentesMaxOrderByAggregateInput = {
     id?: SortOrder
     email?: SortOrder
     password?: SortOrder
@@ -9848,138 +12664,249 @@ export namespace Prisma {
     deletedAt?: SortOrder
   }
 
-  export type UserDocenteSumOrderByAggregateInput = {
+  export type UsersDocentesMinOrderByAggregateInput = {
+    id?: SortOrder
+    email?: SortOrder
+    password?: SortOrder
+    nombre?: SortOrder
+    apellido?: SortOrder
+    rol?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+  }
+
+  export type UsersDocentesSumOrderByAggregateInput = {
     id?: SortOrder
   }
 
-  export type UserDocenteScalarRelationFilter = {
-    is?: UserDocenteWhereInput
-    isNot?: UserDocenteWhereInput
+  export type UsersDocentesScalarRelationFilter = {
+    is?: UsersDocentesWhereInput
+    isNot?: UsersDocentesWhereInput
   }
 
-  export type CursoScalarRelationFilter = {
-    is?: CursoWhereInput
-    isNot?: CursoWhereInput
+  export type CursosScalarRelationFilter = {
+    is?: CursosWhereInput
+    isNot?: CursosWhereInput
   }
 
-  export type ClaseListRelationFilter = {
-    every?: ClaseWhereInput
-    some?: ClaseWhereInput
-    none?: ClaseWhereInput
+  export type ClasesListRelationFilter = {
+    every?: ClasesWhereInput
+    some?: ClasesWhereInput
+    none?: ClasesWhereInput
   }
 
-  export type ClaseOrderByRelationAggregateInput = {
+  export type DiasHorariosClasesListRelationFilter = {
+    every?: DiasHorariosClasesWhereInput
+    some?: DiasHorariosClasesWhereInput
+    none?: DiasHorariosClasesWhereInput
+  }
+
+  export type ClasesOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
-  export type MateriaCountOrderByAggregateInput = {
-    id?: SortOrder
-    nombre?: SortOrder
-    idUserDocente?: SortOrder
-    idCurso?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    deletedAt?: SortOrder
-  }
-
-  export type MateriaAvgOrderByAggregateInput = {
-    id?: SortOrder
-    idUserDocente?: SortOrder
-    idCurso?: SortOrder
-  }
-
-  export type MateriaMaxOrderByAggregateInput = {
-    id?: SortOrder
-    nombre?: SortOrder
-    idUserDocente?: SortOrder
-    idCurso?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    deletedAt?: SortOrder
-  }
-
-  export type MateriaMinOrderByAggregateInput = {
-    id?: SortOrder
-    nombre?: SortOrder
-    idUserDocente?: SortOrder
-    idCurso?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    deletedAt?: SortOrder
-  }
-
-  export type MateriaSumOrderByAggregateInput = {
-    id?: SortOrder
-    idUserDocente?: SortOrder
-    idCurso?: SortOrder
-  }
-
-  export type AlumnoListRelationFilter = {
-    every?: AlumnoWhereInput
-    some?: AlumnoWhereInput
-    none?: AlumnoWhereInput
-  }
-
-  export type AlumnoOrderByRelationAggregateInput = {
+  export type DiasHorariosClasesOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
-  export type CursoCountOrderByAggregateInput = {
+  export type MateriasCountOrderByAggregateInput = {
     id?: SortOrder
     nombre?: SortOrder
+    idUserDocente?: SortOrder
+    idCurso?: SortOrder
+    fechaInicio?: SortOrder
+    fechaFin?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrder
   }
 
-  export type CursoAvgOrderByAggregateInput = {
+  export type MateriasAvgOrderByAggregateInput = {
     id?: SortOrder
+    idUserDocente?: SortOrder
+    idCurso?: SortOrder
   }
 
-  export type CursoMaxOrderByAggregateInput = {
+  export type MateriasMaxOrderByAggregateInput = {
     id?: SortOrder
     nombre?: SortOrder
+    idUserDocente?: SortOrder
+    idCurso?: SortOrder
+    fechaInicio?: SortOrder
+    fechaFin?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrder
   }
 
-  export type CursoMinOrderByAggregateInput = {
+  export type MateriasMinOrderByAggregateInput = {
     id?: SortOrder
     nombre?: SortOrder
+    idUserDocente?: SortOrder
+    idCurso?: SortOrder
+    fechaInicio?: SortOrder
+    fechaFin?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     deletedAt?: SortOrder
   }
 
-  export type CursoSumOrderByAggregateInput = {
+  export type MateriasSumOrderByAggregateInput = {
+    id?: SortOrder
+    idUserDocente?: SortOrder
+    idCurso?: SortOrder
+  }
+
+  export type EnumDiasNullableListFilter<$PrismaModel = never> = {
+    equals?: $Enums.Dias[] | ListEnumDiasFieldRefInput<$PrismaModel> | null
+    has?: $Enums.Dias | EnumDiasFieldRefInput<$PrismaModel> | null
+    hasEvery?: $Enums.Dias[] | ListEnumDiasFieldRefInput<$PrismaModel>
+    hasSome?: $Enums.Dias[] | ListEnumDiasFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
+  export type DiasHorariosClasesCountOrderByAggregateInput = {
+    id?: SortOrder
+    idMateria?: SortOrder
+    dias?: SortOrder
+    horaInicio?: SortOrder
+    duracionMinutos?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+  }
+
+  export type DiasHorariosClasesAvgOrderByAggregateInput = {
+    id?: SortOrder
+    idMateria?: SortOrder
+    duracionMinutos?: SortOrder
+  }
+
+  export type DiasHorariosClasesMaxOrderByAggregateInput = {
+    id?: SortOrder
+    idMateria?: SortOrder
+    horaInicio?: SortOrder
+    duracionMinutos?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+  }
+
+  export type DiasHorariosClasesMinOrderByAggregateInput = {
+    id?: SortOrder
+    idMateria?: SortOrder
+    horaInicio?: SortOrder
+    duracionMinutos?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+  }
+
+  export type DiasHorariosClasesSumOrderByAggregateInput = {
+    id?: SortOrder
+    idMateria?: SortOrder
+    duracionMinutos?: SortOrder
+  }
+
+  export type AlumnosListRelationFilter = {
+    every?: AlumnosWhereInput
+    some?: AlumnosWhereInput
+    none?: AlumnosWhereInput
+  }
+
+  export type AlumnosOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type CursosCountOrderByAggregateInput = {
+    id?: SortOrder
+    nombre?: SortOrder
+    turno?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
+  }
+
+  export type CursosAvgOrderByAggregateInput = {
     id?: SortOrder
   }
 
-  export type AsistenciaCreateNestedManyWithoutAlumnoInput = {
-    create?: XOR<AsistenciaCreateWithoutAlumnoInput, AsistenciaUncheckedCreateWithoutAlumnoInput> | AsistenciaCreateWithoutAlumnoInput[] | AsistenciaUncheckedCreateWithoutAlumnoInput[]
-    connectOrCreate?: AsistenciaCreateOrConnectWithoutAlumnoInput | AsistenciaCreateOrConnectWithoutAlumnoInput[]
-    createMany?: AsistenciaCreateManyAlumnoInputEnvelope
-    connect?: AsistenciaWhereUniqueInput | AsistenciaWhereUniqueInput[]
+  export type CursosMaxOrderByAggregateInput = {
+    id?: SortOrder
+    nombre?: SortOrder
+    turno?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
   }
 
-  export type CursoCreateNestedManyWithoutAlumnosInput = {
-    create?: XOR<CursoCreateWithoutAlumnosInput, CursoUncheckedCreateWithoutAlumnosInput> | CursoCreateWithoutAlumnosInput[] | CursoUncheckedCreateWithoutAlumnosInput[]
-    connectOrCreate?: CursoCreateOrConnectWithoutAlumnosInput | CursoCreateOrConnectWithoutAlumnosInput[]
-    connect?: CursoWhereUniqueInput | CursoWhereUniqueInput[]
+  export type CursosMinOrderByAggregateInput = {
+    id?: SortOrder
+    nombre?: SortOrder
+    turno?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    deletedAt?: SortOrder
   }
 
-  export type AsistenciaUncheckedCreateNestedManyWithoutAlumnoInput = {
-    create?: XOR<AsistenciaCreateWithoutAlumnoInput, AsistenciaUncheckedCreateWithoutAlumnoInput> | AsistenciaCreateWithoutAlumnoInput[] | AsistenciaUncheckedCreateWithoutAlumnoInput[]
-    connectOrCreate?: AsistenciaCreateOrConnectWithoutAlumnoInput | AsistenciaCreateOrConnectWithoutAlumnoInput[]
-    createMany?: AsistenciaCreateManyAlumnoInputEnvelope
-    connect?: AsistenciaWhereUniqueInput | AsistenciaWhereUniqueInput[]
+  export type CursosSumOrderByAggregateInput = {
+    id?: SortOrder
   }
 
-  export type CursoUncheckedCreateNestedManyWithoutAlumnosInput = {
-    create?: XOR<CursoCreateWithoutAlumnosInput, CursoUncheckedCreateWithoutAlumnosInput> | CursoCreateWithoutAlumnosInput[] | CursoUncheckedCreateWithoutAlumnosInput[]
-    connectOrCreate?: CursoCreateOrConnectWithoutAlumnosInput | CursoCreateOrConnectWithoutAlumnosInput[]
-    connect?: CursoWhereUniqueInput | CursoWhereUniqueInput[]
+  export type FechaNoLectivasCountOrderByAggregateInput = {
+    id?: SortOrder
+    fechaInicio?: SortOrder
+    fechaFin?: SortOrder
+    motivo?: SortOrder
+  }
+
+  export type FechaNoLectivasAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type FechaNoLectivasMaxOrderByAggregateInput = {
+    id?: SortOrder
+    fechaInicio?: SortOrder
+    fechaFin?: SortOrder
+    motivo?: SortOrder
+  }
+
+  export type FechaNoLectivasMinOrderByAggregateInput = {
+    id?: SortOrder
+    fechaInicio?: SortOrder
+    fechaFin?: SortOrder
+    motivo?: SortOrder
+  }
+
+  export type FechaNoLectivasSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type AsistenciasCreateNestedManyWithoutAlumnoInput = {
+    create?: XOR<AsistenciasCreateWithoutAlumnoInput, AsistenciasUncheckedCreateWithoutAlumnoInput> | AsistenciasCreateWithoutAlumnoInput[] | AsistenciasUncheckedCreateWithoutAlumnoInput[]
+    connectOrCreate?: AsistenciasCreateOrConnectWithoutAlumnoInput | AsistenciasCreateOrConnectWithoutAlumnoInput[]
+    createMany?: AsistenciasCreateManyAlumnoInputEnvelope
+    connect?: AsistenciasWhereUniqueInput | AsistenciasWhereUniqueInput[]
+  }
+
+  export type CursosCreateNestedManyWithoutAlumnosInput = {
+    create?: XOR<CursosCreateWithoutAlumnosInput, CursosUncheckedCreateWithoutAlumnosInput> | CursosCreateWithoutAlumnosInput[] | CursosUncheckedCreateWithoutAlumnosInput[]
+    connectOrCreate?: CursosCreateOrConnectWithoutAlumnosInput | CursosCreateOrConnectWithoutAlumnosInput[]
+    connect?: CursosWhereUniqueInput | CursosWhereUniqueInput[]
+  }
+
+  export type AsistenciasUncheckedCreateNestedManyWithoutAlumnoInput = {
+    create?: XOR<AsistenciasCreateWithoutAlumnoInput, AsistenciasUncheckedCreateWithoutAlumnoInput> | AsistenciasCreateWithoutAlumnoInput[] | AsistenciasUncheckedCreateWithoutAlumnoInput[]
+    connectOrCreate?: AsistenciasCreateOrConnectWithoutAlumnoInput | AsistenciasCreateOrConnectWithoutAlumnoInput[]
+    createMany?: AsistenciasCreateManyAlumnoInputEnvelope
+    connect?: AsistenciasWhereUniqueInput | AsistenciasWhereUniqueInput[]
+  }
+
+  export type CursosUncheckedCreateNestedManyWithoutAlumnosInput = {
+    create?: XOR<CursosCreateWithoutAlumnosInput, CursosUncheckedCreateWithoutAlumnosInput> | CursosCreateWithoutAlumnosInput[] | CursosUncheckedCreateWithoutAlumnosInput[]
+    connectOrCreate?: CursosCreateOrConnectWithoutAlumnosInput | CursosCreateOrConnectWithoutAlumnosInput[]
+    connect?: CursosWhereUniqueInput | CursosWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -9994,31 +12921,31 @@ export namespace Prisma {
     set?: Date | string | null
   }
 
-  export type AsistenciaUpdateManyWithoutAlumnoNestedInput = {
-    create?: XOR<AsistenciaCreateWithoutAlumnoInput, AsistenciaUncheckedCreateWithoutAlumnoInput> | AsistenciaCreateWithoutAlumnoInput[] | AsistenciaUncheckedCreateWithoutAlumnoInput[]
-    connectOrCreate?: AsistenciaCreateOrConnectWithoutAlumnoInput | AsistenciaCreateOrConnectWithoutAlumnoInput[]
-    upsert?: AsistenciaUpsertWithWhereUniqueWithoutAlumnoInput | AsistenciaUpsertWithWhereUniqueWithoutAlumnoInput[]
-    createMany?: AsistenciaCreateManyAlumnoInputEnvelope
-    set?: AsistenciaWhereUniqueInput | AsistenciaWhereUniqueInput[]
-    disconnect?: AsistenciaWhereUniqueInput | AsistenciaWhereUniqueInput[]
-    delete?: AsistenciaWhereUniqueInput | AsistenciaWhereUniqueInput[]
-    connect?: AsistenciaWhereUniqueInput | AsistenciaWhereUniqueInput[]
-    update?: AsistenciaUpdateWithWhereUniqueWithoutAlumnoInput | AsistenciaUpdateWithWhereUniqueWithoutAlumnoInput[]
-    updateMany?: AsistenciaUpdateManyWithWhereWithoutAlumnoInput | AsistenciaUpdateManyWithWhereWithoutAlumnoInput[]
-    deleteMany?: AsistenciaScalarWhereInput | AsistenciaScalarWhereInput[]
+  export type AsistenciasUpdateManyWithoutAlumnoNestedInput = {
+    create?: XOR<AsistenciasCreateWithoutAlumnoInput, AsistenciasUncheckedCreateWithoutAlumnoInput> | AsistenciasCreateWithoutAlumnoInput[] | AsistenciasUncheckedCreateWithoutAlumnoInput[]
+    connectOrCreate?: AsistenciasCreateOrConnectWithoutAlumnoInput | AsistenciasCreateOrConnectWithoutAlumnoInput[]
+    upsert?: AsistenciasUpsertWithWhereUniqueWithoutAlumnoInput | AsistenciasUpsertWithWhereUniqueWithoutAlumnoInput[]
+    createMany?: AsistenciasCreateManyAlumnoInputEnvelope
+    set?: AsistenciasWhereUniqueInput | AsistenciasWhereUniqueInput[]
+    disconnect?: AsistenciasWhereUniqueInput | AsistenciasWhereUniqueInput[]
+    delete?: AsistenciasWhereUniqueInput | AsistenciasWhereUniqueInput[]
+    connect?: AsistenciasWhereUniqueInput | AsistenciasWhereUniqueInput[]
+    update?: AsistenciasUpdateWithWhereUniqueWithoutAlumnoInput | AsistenciasUpdateWithWhereUniqueWithoutAlumnoInput[]
+    updateMany?: AsistenciasUpdateManyWithWhereWithoutAlumnoInput | AsistenciasUpdateManyWithWhereWithoutAlumnoInput[]
+    deleteMany?: AsistenciasScalarWhereInput | AsistenciasScalarWhereInput[]
   }
 
-  export type CursoUpdateManyWithoutAlumnosNestedInput = {
-    create?: XOR<CursoCreateWithoutAlumnosInput, CursoUncheckedCreateWithoutAlumnosInput> | CursoCreateWithoutAlumnosInput[] | CursoUncheckedCreateWithoutAlumnosInput[]
-    connectOrCreate?: CursoCreateOrConnectWithoutAlumnosInput | CursoCreateOrConnectWithoutAlumnosInput[]
-    upsert?: CursoUpsertWithWhereUniqueWithoutAlumnosInput | CursoUpsertWithWhereUniqueWithoutAlumnosInput[]
-    set?: CursoWhereUniqueInput | CursoWhereUniqueInput[]
-    disconnect?: CursoWhereUniqueInput | CursoWhereUniqueInput[]
-    delete?: CursoWhereUniqueInput | CursoWhereUniqueInput[]
-    connect?: CursoWhereUniqueInput | CursoWhereUniqueInput[]
-    update?: CursoUpdateWithWhereUniqueWithoutAlumnosInput | CursoUpdateWithWhereUniqueWithoutAlumnosInput[]
-    updateMany?: CursoUpdateManyWithWhereWithoutAlumnosInput | CursoUpdateManyWithWhereWithoutAlumnosInput[]
-    deleteMany?: CursoScalarWhereInput | CursoScalarWhereInput[]
+  export type CursosUpdateManyWithoutAlumnosNestedInput = {
+    create?: XOR<CursosCreateWithoutAlumnosInput, CursosUncheckedCreateWithoutAlumnosInput> | CursosCreateWithoutAlumnosInput[] | CursosUncheckedCreateWithoutAlumnosInput[]
+    connectOrCreate?: CursosCreateOrConnectWithoutAlumnosInput | CursosCreateOrConnectWithoutAlumnosInput[]
+    upsert?: CursosUpsertWithWhereUniqueWithoutAlumnosInput | CursosUpsertWithWhereUniqueWithoutAlumnosInput[]
+    set?: CursosWhereUniqueInput | CursosWhereUniqueInput[]
+    disconnect?: CursosWhereUniqueInput | CursosWhereUniqueInput[]
+    delete?: CursosWhereUniqueInput | CursosWhereUniqueInput[]
+    connect?: CursosWhereUniqueInput | CursosWhereUniqueInput[]
+    update?: CursosUpdateWithWhereUniqueWithoutAlumnosInput | CursosUpdateWithWhereUniqueWithoutAlumnosInput[]
+    updateMany?: CursosUpdateManyWithWhereWithoutAlumnosInput | CursosUpdateManyWithWhereWithoutAlumnosInput[]
+    deleteMany?: CursosScalarWhereInput | CursosScalarWhereInput[]
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -10029,315 +12956,384 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type AsistenciaUncheckedUpdateManyWithoutAlumnoNestedInput = {
-    create?: XOR<AsistenciaCreateWithoutAlumnoInput, AsistenciaUncheckedCreateWithoutAlumnoInput> | AsistenciaCreateWithoutAlumnoInput[] | AsistenciaUncheckedCreateWithoutAlumnoInput[]
-    connectOrCreate?: AsistenciaCreateOrConnectWithoutAlumnoInput | AsistenciaCreateOrConnectWithoutAlumnoInput[]
-    upsert?: AsistenciaUpsertWithWhereUniqueWithoutAlumnoInput | AsistenciaUpsertWithWhereUniqueWithoutAlumnoInput[]
-    createMany?: AsistenciaCreateManyAlumnoInputEnvelope
-    set?: AsistenciaWhereUniqueInput | AsistenciaWhereUniqueInput[]
-    disconnect?: AsistenciaWhereUniqueInput | AsistenciaWhereUniqueInput[]
-    delete?: AsistenciaWhereUniqueInput | AsistenciaWhereUniqueInput[]
-    connect?: AsistenciaWhereUniqueInput | AsistenciaWhereUniqueInput[]
-    update?: AsistenciaUpdateWithWhereUniqueWithoutAlumnoInput | AsistenciaUpdateWithWhereUniqueWithoutAlumnoInput[]
-    updateMany?: AsistenciaUpdateManyWithWhereWithoutAlumnoInput | AsistenciaUpdateManyWithWhereWithoutAlumnoInput[]
-    deleteMany?: AsistenciaScalarWhereInput | AsistenciaScalarWhereInput[]
+  export type AsistenciasUncheckedUpdateManyWithoutAlumnoNestedInput = {
+    create?: XOR<AsistenciasCreateWithoutAlumnoInput, AsistenciasUncheckedCreateWithoutAlumnoInput> | AsistenciasCreateWithoutAlumnoInput[] | AsistenciasUncheckedCreateWithoutAlumnoInput[]
+    connectOrCreate?: AsistenciasCreateOrConnectWithoutAlumnoInput | AsistenciasCreateOrConnectWithoutAlumnoInput[]
+    upsert?: AsistenciasUpsertWithWhereUniqueWithoutAlumnoInput | AsistenciasUpsertWithWhereUniqueWithoutAlumnoInput[]
+    createMany?: AsistenciasCreateManyAlumnoInputEnvelope
+    set?: AsistenciasWhereUniqueInput | AsistenciasWhereUniqueInput[]
+    disconnect?: AsistenciasWhereUniqueInput | AsistenciasWhereUniqueInput[]
+    delete?: AsistenciasWhereUniqueInput | AsistenciasWhereUniqueInput[]
+    connect?: AsistenciasWhereUniqueInput | AsistenciasWhereUniqueInput[]
+    update?: AsistenciasUpdateWithWhereUniqueWithoutAlumnoInput | AsistenciasUpdateWithWhereUniqueWithoutAlumnoInput[]
+    updateMany?: AsistenciasUpdateManyWithWhereWithoutAlumnoInput | AsistenciasUpdateManyWithWhereWithoutAlumnoInput[]
+    deleteMany?: AsistenciasScalarWhereInput | AsistenciasScalarWhereInput[]
   }
 
-  export type CursoUncheckedUpdateManyWithoutAlumnosNestedInput = {
-    create?: XOR<CursoCreateWithoutAlumnosInput, CursoUncheckedCreateWithoutAlumnosInput> | CursoCreateWithoutAlumnosInput[] | CursoUncheckedCreateWithoutAlumnosInput[]
-    connectOrCreate?: CursoCreateOrConnectWithoutAlumnosInput | CursoCreateOrConnectWithoutAlumnosInput[]
-    upsert?: CursoUpsertWithWhereUniqueWithoutAlumnosInput | CursoUpsertWithWhereUniqueWithoutAlumnosInput[]
-    set?: CursoWhereUniqueInput | CursoWhereUniqueInput[]
-    disconnect?: CursoWhereUniqueInput | CursoWhereUniqueInput[]
-    delete?: CursoWhereUniqueInput | CursoWhereUniqueInput[]
-    connect?: CursoWhereUniqueInput | CursoWhereUniqueInput[]
-    update?: CursoUpdateWithWhereUniqueWithoutAlumnosInput | CursoUpdateWithWhereUniqueWithoutAlumnosInput[]
-    updateMany?: CursoUpdateManyWithWhereWithoutAlumnosInput | CursoUpdateManyWithWhereWithoutAlumnosInput[]
-    deleteMany?: CursoScalarWhereInput | CursoScalarWhereInput[]
+  export type CursosUncheckedUpdateManyWithoutAlumnosNestedInput = {
+    create?: XOR<CursosCreateWithoutAlumnosInput, CursosUncheckedCreateWithoutAlumnosInput> | CursosCreateWithoutAlumnosInput[] | CursosUncheckedCreateWithoutAlumnosInput[]
+    connectOrCreate?: CursosCreateOrConnectWithoutAlumnosInput | CursosCreateOrConnectWithoutAlumnosInput[]
+    upsert?: CursosUpsertWithWhereUniqueWithoutAlumnosInput | CursosUpsertWithWhereUniqueWithoutAlumnosInput[]
+    set?: CursosWhereUniqueInput | CursosWhereUniqueInput[]
+    disconnect?: CursosWhereUniqueInput | CursosWhereUniqueInput[]
+    delete?: CursosWhereUniqueInput | CursosWhereUniqueInput[]
+    connect?: CursosWhereUniqueInput | CursosWhereUniqueInput[]
+    update?: CursosUpdateWithWhereUniqueWithoutAlumnosInput | CursosUpdateWithWhereUniqueWithoutAlumnosInput[]
+    updateMany?: CursosUpdateManyWithWhereWithoutAlumnosInput | CursosUpdateManyWithWhereWithoutAlumnosInput[]
+    deleteMany?: CursosScalarWhereInput | CursosScalarWhereInput[]
   }
 
-  export type MateriaCreateNestedOneWithoutClaseInput = {
-    create?: XOR<MateriaCreateWithoutClaseInput, MateriaUncheckedCreateWithoutClaseInput>
-    connectOrCreate?: MateriaCreateOrConnectWithoutClaseInput
-    connect?: MateriaWhereUniqueInput
+  export type MateriasCreateNestedOneWithoutClasesInput = {
+    create?: XOR<MateriasCreateWithoutClasesInput, MateriasUncheckedCreateWithoutClasesInput>
+    connectOrCreate?: MateriasCreateOrConnectWithoutClasesInput
+    connect?: MateriasWhereUniqueInput
   }
 
-  export type AsistenciaCreateNestedManyWithoutClaseInput = {
-    create?: XOR<AsistenciaCreateWithoutClaseInput, AsistenciaUncheckedCreateWithoutClaseInput> | AsistenciaCreateWithoutClaseInput[] | AsistenciaUncheckedCreateWithoutClaseInput[]
-    connectOrCreate?: AsistenciaCreateOrConnectWithoutClaseInput | AsistenciaCreateOrConnectWithoutClaseInput[]
-    createMany?: AsistenciaCreateManyClaseInputEnvelope
-    connect?: AsistenciaWhereUniqueInput | AsistenciaWhereUniqueInput[]
+  export type AsistenciasCreateNestedManyWithoutClaseInput = {
+    create?: XOR<AsistenciasCreateWithoutClaseInput, AsistenciasUncheckedCreateWithoutClaseInput> | AsistenciasCreateWithoutClaseInput[] | AsistenciasUncheckedCreateWithoutClaseInput[]
+    connectOrCreate?: AsistenciasCreateOrConnectWithoutClaseInput | AsistenciasCreateOrConnectWithoutClaseInput[]
+    createMany?: AsistenciasCreateManyClaseInputEnvelope
+    connect?: AsistenciasWhereUniqueInput | AsistenciasWhereUniqueInput[]
   }
 
-  export type AsistenciaUncheckedCreateNestedManyWithoutClaseInput = {
-    create?: XOR<AsistenciaCreateWithoutClaseInput, AsistenciaUncheckedCreateWithoutClaseInput> | AsistenciaCreateWithoutClaseInput[] | AsistenciaUncheckedCreateWithoutClaseInput[]
-    connectOrCreate?: AsistenciaCreateOrConnectWithoutClaseInput | AsistenciaCreateOrConnectWithoutClaseInput[]
-    createMany?: AsistenciaCreateManyClaseInputEnvelope
-    connect?: AsistenciaWhereUniqueInput | AsistenciaWhereUniqueInput[]
+  export type AsistenciasUncheckedCreateNestedManyWithoutClaseInput = {
+    create?: XOR<AsistenciasCreateWithoutClaseInput, AsistenciasUncheckedCreateWithoutClaseInput> | AsistenciasCreateWithoutClaseInput[] | AsistenciasUncheckedCreateWithoutClaseInput[]
+    connectOrCreate?: AsistenciasCreateOrConnectWithoutClaseInput | AsistenciasCreateOrConnectWithoutClaseInput[]
+    createMany?: AsistenciasCreateManyClaseInputEnvelope
+    connect?: AsistenciasWhereUniqueInput | AsistenciasWhereUniqueInput[]
   }
 
-  export type MateriaUpdateOneRequiredWithoutClaseNestedInput = {
-    create?: XOR<MateriaCreateWithoutClaseInput, MateriaUncheckedCreateWithoutClaseInput>
-    connectOrCreate?: MateriaCreateOrConnectWithoutClaseInput
-    upsert?: MateriaUpsertWithoutClaseInput
-    connect?: MateriaWhereUniqueInput
-    update?: XOR<XOR<MateriaUpdateToOneWithWhereWithoutClaseInput, MateriaUpdateWithoutClaseInput>, MateriaUncheckedUpdateWithoutClaseInput>
-  }
-
-  export type AsistenciaUpdateManyWithoutClaseNestedInput = {
-    create?: XOR<AsistenciaCreateWithoutClaseInput, AsistenciaUncheckedCreateWithoutClaseInput> | AsistenciaCreateWithoutClaseInput[] | AsistenciaUncheckedCreateWithoutClaseInput[]
-    connectOrCreate?: AsistenciaCreateOrConnectWithoutClaseInput | AsistenciaCreateOrConnectWithoutClaseInput[]
-    upsert?: AsistenciaUpsertWithWhereUniqueWithoutClaseInput | AsistenciaUpsertWithWhereUniqueWithoutClaseInput[]
-    createMany?: AsistenciaCreateManyClaseInputEnvelope
-    set?: AsistenciaWhereUniqueInput | AsistenciaWhereUniqueInput[]
-    disconnect?: AsistenciaWhereUniqueInput | AsistenciaWhereUniqueInput[]
-    delete?: AsistenciaWhereUniqueInput | AsistenciaWhereUniqueInput[]
-    connect?: AsistenciaWhereUniqueInput | AsistenciaWhereUniqueInput[]
-    update?: AsistenciaUpdateWithWhereUniqueWithoutClaseInput | AsistenciaUpdateWithWhereUniqueWithoutClaseInput[]
-    updateMany?: AsistenciaUpdateManyWithWhereWithoutClaseInput | AsistenciaUpdateManyWithWhereWithoutClaseInput[]
-    deleteMany?: AsistenciaScalarWhereInput | AsistenciaScalarWhereInput[]
-  }
-
-  export type AsistenciaUncheckedUpdateManyWithoutClaseNestedInput = {
-    create?: XOR<AsistenciaCreateWithoutClaseInput, AsistenciaUncheckedCreateWithoutClaseInput> | AsistenciaCreateWithoutClaseInput[] | AsistenciaUncheckedCreateWithoutClaseInput[]
-    connectOrCreate?: AsistenciaCreateOrConnectWithoutClaseInput | AsistenciaCreateOrConnectWithoutClaseInput[]
-    upsert?: AsistenciaUpsertWithWhereUniqueWithoutClaseInput | AsistenciaUpsertWithWhereUniqueWithoutClaseInput[]
-    createMany?: AsistenciaCreateManyClaseInputEnvelope
-    set?: AsistenciaWhereUniqueInput | AsistenciaWhereUniqueInput[]
-    disconnect?: AsistenciaWhereUniqueInput | AsistenciaWhereUniqueInput[]
-    delete?: AsistenciaWhereUniqueInput | AsistenciaWhereUniqueInput[]
-    connect?: AsistenciaWhereUniqueInput | AsistenciaWhereUniqueInput[]
-    update?: AsistenciaUpdateWithWhereUniqueWithoutClaseInput | AsistenciaUpdateWithWhereUniqueWithoutClaseInput[]
-    updateMany?: AsistenciaUpdateManyWithWhereWithoutClaseInput | AsistenciaUpdateManyWithWhereWithoutClaseInput[]
-    deleteMany?: AsistenciaScalarWhereInput | AsistenciaScalarWhereInput[]
-  }
-
-  export type AlumnoCreateNestedOneWithoutAsistenciaInput = {
-    create?: XOR<AlumnoCreateWithoutAsistenciaInput, AlumnoUncheckedCreateWithoutAsistenciaInput>
-    connectOrCreate?: AlumnoCreateOrConnectWithoutAsistenciaInput
-    connect?: AlumnoWhereUniqueInput
-  }
-
-  export type ClaseCreateNestedOneWithoutAsistenciaInput = {
-    create?: XOR<ClaseCreateWithoutAsistenciaInput, ClaseUncheckedCreateWithoutAsistenciaInput>
-    connectOrCreate?: ClaseCreateOrConnectWithoutAsistenciaInput
-    connect?: ClaseWhereUniqueInput
-  }
-
-  export type EnumEstadoFieldUpdateOperationsInput = {
-    set?: $Enums.Estado
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
   }
 
-  export type AlumnoUpdateOneRequiredWithoutAsistenciaNestedInput = {
-    create?: XOR<AlumnoCreateWithoutAsistenciaInput, AlumnoUncheckedCreateWithoutAsistenciaInput>
-    connectOrCreate?: AlumnoCreateOrConnectWithoutAsistenciaInput
-    upsert?: AlumnoUpsertWithoutAsistenciaInput
-    connect?: AlumnoWhereUniqueInput
-    update?: XOR<XOR<AlumnoUpdateToOneWithWhereWithoutAsistenciaInput, AlumnoUpdateWithoutAsistenciaInput>, AlumnoUncheckedUpdateWithoutAsistenciaInput>
+  export type MateriasUpdateOneRequiredWithoutClasesNestedInput = {
+    create?: XOR<MateriasCreateWithoutClasesInput, MateriasUncheckedCreateWithoutClasesInput>
+    connectOrCreate?: MateriasCreateOrConnectWithoutClasesInput
+    upsert?: MateriasUpsertWithoutClasesInput
+    connect?: MateriasWhereUniqueInput
+    update?: XOR<XOR<MateriasUpdateToOneWithWhereWithoutClasesInput, MateriasUpdateWithoutClasesInput>, MateriasUncheckedUpdateWithoutClasesInput>
   }
 
-  export type ClaseUpdateOneRequiredWithoutAsistenciaNestedInput = {
-    create?: XOR<ClaseCreateWithoutAsistenciaInput, ClaseUncheckedCreateWithoutAsistenciaInput>
-    connectOrCreate?: ClaseCreateOrConnectWithoutAsistenciaInput
-    upsert?: ClaseUpsertWithoutAsistenciaInput
-    connect?: ClaseWhereUniqueInput
-    update?: XOR<XOR<ClaseUpdateToOneWithWhereWithoutAsistenciaInput, ClaseUpdateWithoutAsistenciaInput>, ClaseUncheckedUpdateWithoutAsistenciaInput>
+  export type AsistenciasUpdateManyWithoutClaseNestedInput = {
+    create?: XOR<AsistenciasCreateWithoutClaseInput, AsistenciasUncheckedCreateWithoutClaseInput> | AsistenciasCreateWithoutClaseInput[] | AsistenciasUncheckedCreateWithoutClaseInput[]
+    connectOrCreate?: AsistenciasCreateOrConnectWithoutClaseInput | AsistenciasCreateOrConnectWithoutClaseInput[]
+    upsert?: AsistenciasUpsertWithWhereUniqueWithoutClaseInput | AsistenciasUpsertWithWhereUniqueWithoutClaseInput[]
+    createMany?: AsistenciasCreateManyClaseInputEnvelope
+    set?: AsistenciasWhereUniqueInput | AsistenciasWhereUniqueInput[]
+    disconnect?: AsistenciasWhereUniqueInput | AsistenciasWhereUniqueInput[]
+    delete?: AsistenciasWhereUniqueInput | AsistenciasWhereUniqueInput[]
+    connect?: AsistenciasWhereUniqueInput | AsistenciasWhereUniqueInput[]
+    update?: AsistenciasUpdateWithWhereUniqueWithoutClaseInput | AsistenciasUpdateWithWhereUniqueWithoutClaseInput[]
+    updateMany?: AsistenciasUpdateManyWithWhereWithoutClaseInput | AsistenciasUpdateManyWithWhereWithoutClaseInput[]
+    deleteMany?: AsistenciasScalarWhereInput | AsistenciasScalarWhereInput[]
   }
 
-  export type MateriaCreateNestedManyWithoutUserDocenteInput = {
-    create?: XOR<MateriaCreateWithoutUserDocenteInput, MateriaUncheckedCreateWithoutUserDocenteInput> | MateriaCreateWithoutUserDocenteInput[] | MateriaUncheckedCreateWithoutUserDocenteInput[]
-    connectOrCreate?: MateriaCreateOrConnectWithoutUserDocenteInput | MateriaCreateOrConnectWithoutUserDocenteInput[]
-    createMany?: MateriaCreateManyUserDocenteInputEnvelope
-    connect?: MateriaWhereUniqueInput | MateriaWhereUniqueInput[]
+  export type AsistenciasUncheckedUpdateManyWithoutClaseNestedInput = {
+    create?: XOR<AsistenciasCreateWithoutClaseInput, AsistenciasUncheckedCreateWithoutClaseInput> | AsistenciasCreateWithoutClaseInput[] | AsistenciasUncheckedCreateWithoutClaseInput[]
+    connectOrCreate?: AsistenciasCreateOrConnectWithoutClaseInput | AsistenciasCreateOrConnectWithoutClaseInput[]
+    upsert?: AsistenciasUpsertWithWhereUniqueWithoutClaseInput | AsistenciasUpsertWithWhereUniqueWithoutClaseInput[]
+    createMany?: AsistenciasCreateManyClaseInputEnvelope
+    set?: AsistenciasWhereUniqueInput | AsistenciasWhereUniqueInput[]
+    disconnect?: AsistenciasWhereUniqueInput | AsistenciasWhereUniqueInput[]
+    delete?: AsistenciasWhereUniqueInput | AsistenciasWhereUniqueInput[]
+    connect?: AsistenciasWhereUniqueInput | AsistenciasWhereUniqueInput[]
+    update?: AsistenciasUpdateWithWhereUniqueWithoutClaseInput | AsistenciasUpdateWithWhereUniqueWithoutClaseInput[]
+    updateMany?: AsistenciasUpdateManyWithWhereWithoutClaseInput | AsistenciasUpdateManyWithWhereWithoutClaseInput[]
+    deleteMany?: AsistenciasScalarWhereInput | AsistenciasScalarWhereInput[]
   }
 
-  export type MateriaUncheckedCreateNestedManyWithoutUserDocenteInput = {
-    create?: XOR<MateriaCreateWithoutUserDocenteInput, MateriaUncheckedCreateWithoutUserDocenteInput> | MateriaCreateWithoutUserDocenteInput[] | MateriaUncheckedCreateWithoutUserDocenteInput[]
-    connectOrCreate?: MateriaCreateOrConnectWithoutUserDocenteInput | MateriaCreateOrConnectWithoutUserDocenteInput[]
-    createMany?: MateriaCreateManyUserDocenteInputEnvelope
-    connect?: MateriaWhereUniqueInput | MateriaWhereUniqueInput[]
+  export type AlumnosCreateNestedOneWithoutAsistenciasInput = {
+    create?: XOR<AlumnosCreateWithoutAsistenciasInput, AlumnosUncheckedCreateWithoutAsistenciasInput>
+    connectOrCreate?: AlumnosCreateOrConnectWithoutAsistenciasInput
+    connect?: AlumnosWhereUniqueInput
   }
 
-  export type MateriaUpdateManyWithoutUserDocenteNestedInput = {
-    create?: XOR<MateriaCreateWithoutUserDocenteInput, MateriaUncheckedCreateWithoutUserDocenteInput> | MateriaCreateWithoutUserDocenteInput[] | MateriaUncheckedCreateWithoutUserDocenteInput[]
-    connectOrCreate?: MateriaCreateOrConnectWithoutUserDocenteInput | MateriaCreateOrConnectWithoutUserDocenteInput[]
-    upsert?: MateriaUpsertWithWhereUniqueWithoutUserDocenteInput | MateriaUpsertWithWhereUniqueWithoutUserDocenteInput[]
-    createMany?: MateriaCreateManyUserDocenteInputEnvelope
-    set?: MateriaWhereUniqueInput | MateriaWhereUniqueInput[]
-    disconnect?: MateriaWhereUniqueInput | MateriaWhereUniqueInput[]
-    delete?: MateriaWhereUniqueInput | MateriaWhereUniqueInput[]
-    connect?: MateriaWhereUniqueInput | MateriaWhereUniqueInput[]
-    update?: MateriaUpdateWithWhereUniqueWithoutUserDocenteInput | MateriaUpdateWithWhereUniqueWithoutUserDocenteInput[]
-    updateMany?: MateriaUpdateManyWithWhereWithoutUserDocenteInput | MateriaUpdateManyWithWhereWithoutUserDocenteInput[]
-    deleteMany?: MateriaScalarWhereInput | MateriaScalarWhereInput[]
+  export type ClasesCreateNestedOneWithoutAsistenciasInput = {
+    create?: XOR<ClasesCreateWithoutAsistenciasInput, ClasesUncheckedCreateWithoutAsistenciasInput>
+    connectOrCreate?: ClasesCreateOrConnectWithoutAsistenciasInput
+    connect?: ClasesWhereUniqueInput
   }
 
-  export type MateriaUncheckedUpdateManyWithoutUserDocenteNestedInput = {
-    create?: XOR<MateriaCreateWithoutUserDocenteInput, MateriaUncheckedCreateWithoutUserDocenteInput> | MateriaCreateWithoutUserDocenteInput[] | MateriaUncheckedCreateWithoutUserDocenteInput[]
-    connectOrCreate?: MateriaCreateOrConnectWithoutUserDocenteInput | MateriaCreateOrConnectWithoutUserDocenteInput[]
-    upsert?: MateriaUpsertWithWhereUniqueWithoutUserDocenteInput | MateriaUpsertWithWhereUniqueWithoutUserDocenteInput[]
-    createMany?: MateriaCreateManyUserDocenteInputEnvelope
-    set?: MateriaWhereUniqueInput | MateriaWhereUniqueInput[]
-    disconnect?: MateriaWhereUniqueInput | MateriaWhereUniqueInput[]
-    delete?: MateriaWhereUniqueInput | MateriaWhereUniqueInput[]
-    connect?: MateriaWhereUniqueInput | MateriaWhereUniqueInput[]
-    update?: MateriaUpdateWithWhereUniqueWithoutUserDocenteInput | MateriaUpdateWithWhereUniqueWithoutUserDocenteInput[]
-    updateMany?: MateriaUpdateManyWithWhereWithoutUserDocenteInput | MateriaUpdateManyWithWhereWithoutUserDocenteInput[]
-    deleteMany?: MateriaScalarWhereInput | MateriaScalarWhereInput[]
+  export type EnumEstadosFieldUpdateOperationsInput = {
+    set?: $Enums.Estados
   }
 
-  export type UserDocenteCreateNestedOneWithoutMateriaInput = {
-    create?: XOR<UserDocenteCreateWithoutMateriaInput, UserDocenteUncheckedCreateWithoutMateriaInput>
-    connectOrCreate?: UserDocenteCreateOrConnectWithoutMateriaInput
-    connect?: UserDocenteWhereUniqueInput
+  export type AlumnosUpdateOneRequiredWithoutAsistenciasNestedInput = {
+    create?: XOR<AlumnosCreateWithoutAsistenciasInput, AlumnosUncheckedCreateWithoutAsistenciasInput>
+    connectOrCreate?: AlumnosCreateOrConnectWithoutAsistenciasInput
+    upsert?: AlumnosUpsertWithoutAsistenciasInput
+    connect?: AlumnosWhereUniqueInput
+    update?: XOR<XOR<AlumnosUpdateToOneWithWhereWithoutAsistenciasInput, AlumnosUpdateWithoutAsistenciasInput>, AlumnosUncheckedUpdateWithoutAsistenciasInput>
   }
 
-  export type CursoCreateNestedOneWithoutMateriaInput = {
-    create?: XOR<CursoCreateWithoutMateriaInput, CursoUncheckedCreateWithoutMateriaInput>
-    connectOrCreate?: CursoCreateOrConnectWithoutMateriaInput
-    connect?: CursoWhereUniqueInput
+  export type ClasesUpdateOneRequiredWithoutAsistenciasNestedInput = {
+    create?: XOR<ClasesCreateWithoutAsistenciasInput, ClasesUncheckedCreateWithoutAsistenciasInput>
+    connectOrCreate?: ClasesCreateOrConnectWithoutAsistenciasInput
+    upsert?: ClasesUpsertWithoutAsistenciasInput
+    connect?: ClasesWhereUniqueInput
+    update?: XOR<XOR<ClasesUpdateToOneWithWhereWithoutAsistenciasInput, ClasesUpdateWithoutAsistenciasInput>, ClasesUncheckedUpdateWithoutAsistenciasInput>
   }
 
-  export type ClaseCreateNestedManyWithoutMateriaInput = {
-    create?: XOR<ClaseCreateWithoutMateriaInput, ClaseUncheckedCreateWithoutMateriaInput> | ClaseCreateWithoutMateriaInput[] | ClaseUncheckedCreateWithoutMateriaInput[]
-    connectOrCreate?: ClaseCreateOrConnectWithoutMateriaInput | ClaseCreateOrConnectWithoutMateriaInput[]
-    createMany?: ClaseCreateManyMateriaInputEnvelope
-    connect?: ClaseWhereUniqueInput | ClaseWhereUniqueInput[]
+  export type MateriasCreateNestedManyWithoutUserDocenteInput = {
+    create?: XOR<MateriasCreateWithoutUserDocenteInput, MateriasUncheckedCreateWithoutUserDocenteInput> | MateriasCreateWithoutUserDocenteInput[] | MateriasUncheckedCreateWithoutUserDocenteInput[]
+    connectOrCreate?: MateriasCreateOrConnectWithoutUserDocenteInput | MateriasCreateOrConnectWithoutUserDocenteInput[]
+    createMany?: MateriasCreateManyUserDocenteInputEnvelope
+    connect?: MateriasWhereUniqueInput | MateriasWhereUniqueInput[]
   }
 
-  export type ClaseUncheckedCreateNestedManyWithoutMateriaInput = {
-    create?: XOR<ClaseCreateWithoutMateriaInput, ClaseUncheckedCreateWithoutMateriaInput> | ClaseCreateWithoutMateriaInput[] | ClaseUncheckedCreateWithoutMateriaInput[]
-    connectOrCreate?: ClaseCreateOrConnectWithoutMateriaInput | ClaseCreateOrConnectWithoutMateriaInput[]
-    createMany?: ClaseCreateManyMateriaInputEnvelope
-    connect?: ClaseWhereUniqueInput | ClaseWhereUniqueInput[]
+  export type MateriasUncheckedCreateNestedManyWithoutUserDocenteInput = {
+    create?: XOR<MateriasCreateWithoutUserDocenteInput, MateriasUncheckedCreateWithoutUserDocenteInput> | MateriasCreateWithoutUserDocenteInput[] | MateriasUncheckedCreateWithoutUserDocenteInput[]
+    connectOrCreate?: MateriasCreateOrConnectWithoutUserDocenteInput | MateriasCreateOrConnectWithoutUserDocenteInput[]
+    createMany?: MateriasCreateManyUserDocenteInputEnvelope
+    connect?: MateriasWhereUniqueInput | MateriasWhereUniqueInput[]
   }
 
-  export type UserDocenteUpdateOneRequiredWithoutMateriaNestedInput = {
-    create?: XOR<UserDocenteCreateWithoutMateriaInput, UserDocenteUncheckedCreateWithoutMateriaInput>
-    connectOrCreate?: UserDocenteCreateOrConnectWithoutMateriaInput
-    upsert?: UserDocenteUpsertWithoutMateriaInput
-    connect?: UserDocenteWhereUniqueInput
-    update?: XOR<XOR<UserDocenteUpdateToOneWithWhereWithoutMateriaInput, UserDocenteUpdateWithoutMateriaInput>, UserDocenteUncheckedUpdateWithoutMateriaInput>
+  export type MateriasUpdateManyWithoutUserDocenteNestedInput = {
+    create?: XOR<MateriasCreateWithoutUserDocenteInput, MateriasUncheckedCreateWithoutUserDocenteInput> | MateriasCreateWithoutUserDocenteInput[] | MateriasUncheckedCreateWithoutUserDocenteInput[]
+    connectOrCreate?: MateriasCreateOrConnectWithoutUserDocenteInput | MateriasCreateOrConnectWithoutUserDocenteInput[]
+    upsert?: MateriasUpsertWithWhereUniqueWithoutUserDocenteInput | MateriasUpsertWithWhereUniqueWithoutUserDocenteInput[]
+    createMany?: MateriasCreateManyUserDocenteInputEnvelope
+    set?: MateriasWhereUniqueInput | MateriasWhereUniqueInput[]
+    disconnect?: MateriasWhereUniqueInput | MateriasWhereUniqueInput[]
+    delete?: MateriasWhereUniqueInput | MateriasWhereUniqueInput[]
+    connect?: MateriasWhereUniqueInput | MateriasWhereUniqueInput[]
+    update?: MateriasUpdateWithWhereUniqueWithoutUserDocenteInput | MateriasUpdateWithWhereUniqueWithoutUserDocenteInput[]
+    updateMany?: MateriasUpdateManyWithWhereWithoutUserDocenteInput | MateriasUpdateManyWithWhereWithoutUserDocenteInput[]
+    deleteMany?: MateriasScalarWhereInput | MateriasScalarWhereInput[]
   }
 
-  export type CursoUpdateOneRequiredWithoutMateriaNestedInput = {
-    create?: XOR<CursoCreateWithoutMateriaInput, CursoUncheckedCreateWithoutMateriaInput>
-    connectOrCreate?: CursoCreateOrConnectWithoutMateriaInput
-    upsert?: CursoUpsertWithoutMateriaInput
-    connect?: CursoWhereUniqueInput
-    update?: XOR<XOR<CursoUpdateToOneWithWhereWithoutMateriaInput, CursoUpdateWithoutMateriaInput>, CursoUncheckedUpdateWithoutMateriaInput>
+  export type MateriasUncheckedUpdateManyWithoutUserDocenteNestedInput = {
+    create?: XOR<MateriasCreateWithoutUserDocenteInput, MateriasUncheckedCreateWithoutUserDocenteInput> | MateriasCreateWithoutUserDocenteInput[] | MateriasUncheckedCreateWithoutUserDocenteInput[]
+    connectOrCreate?: MateriasCreateOrConnectWithoutUserDocenteInput | MateriasCreateOrConnectWithoutUserDocenteInput[]
+    upsert?: MateriasUpsertWithWhereUniqueWithoutUserDocenteInput | MateriasUpsertWithWhereUniqueWithoutUserDocenteInput[]
+    createMany?: MateriasCreateManyUserDocenteInputEnvelope
+    set?: MateriasWhereUniqueInput | MateriasWhereUniqueInput[]
+    disconnect?: MateriasWhereUniqueInput | MateriasWhereUniqueInput[]
+    delete?: MateriasWhereUniqueInput | MateriasWhereUniqueInput[]
+    connect?: MateriasWhereUniqueInput | MateriasWhereUniqueInput[]
+    update?: MateriasUpdateWithWhereUniqueWithoutUserDocenteInput | MateriasUpdateWithWhereUniqueWithoutUserDocenteInput[]
+    updateMany?: MateriasUpdateManyWithWhereWithoutUserDocenteInput | MateriasUpdateManyWithWhereWithoutUserDocenteInput[]
+    deleteMany?: MateriasScalarWhereInput | MateriasScalarWhereInput[]
   }
 
-  export type ClaseUpdateManyWithoutMateriaNestedInput = {
-    create?: XOR<ClaseCreateWithoutMateriaInput, ClaseUncheckedCreateWithoutMateriaInput> | ClaseCreateWithoutMateriaInput[] | ClaseUncheckedCreateWithoutMateriaInput[]
-    connectOrCreate?: ClaseCreateOrConnectWithoutMateriaInput | ClaseCreateOrConnectWithoutMateriaInput[]
-    upsert?: ClaseUpsertWithWhereUniqueWithoutMateriaInput | ClaseUpsertWithWhereUniqueWithoutMateriaInput[]
-    createMany?: ClaseCreateManyMateriaInputEnvelope
-    set?: ClaseWhereUniqueInput | ClaseWhereUniqueInput[]
-    disconnect?: ClaseWhereUniqueInput | ClaseWhereUniqueInput[]
-    delete?: ClaseWhereUniqueInput | ClaseWhereUniqueInput[]
-    connect?: ClaseWhereUniqueInput | ClaseWhereUniqueInput[]
-    update?: ClaseUpdateWithWhereUniqueWithoutMateriaInput | ClaseUpdateWithWhereUniqueWithoutMateriaInput[]
-    updateMany?: ClaseUpdateManyWithWhereWithoutMateriaInput | ClaseUpdateManyWithWhereWithoutMateriaInput[]
-    deleteMany?: ClaseScalarWhereInput | ClaseScalarWhereInput[]
+  export type UsersDocentesCreateNestedOneWithoutMateriasInput = {
+    create?: XOR<UsersDocentesCreateWithoutMateriasInput, UsersDocentesUncheckedCreateWithoutMateriasInput>
+    connectOrCreate?: UsersDocentesCreateOrConnectWithoutMateriasInput
+    connect?: UsersDocentesWhereUniqueInput
   }
 
-  export type ClaseUncheckedUpdateManyWithoutMateriaNestedInput = {
-    create?: XOR<ClaseCreateWithoutMateriaInput, ClaseUncheckedCreateWithoutMateriaInput> | ClaseCreateWithoutMateriaInput[] | ClaseUncheckedCreateWithoutMateriaInput[]
-    connectOrCreate?: ClaseCreateOrConnectWithoutMateriaInput | ClaseCreateOrConnectWithoutMateriaInput[]
-    upsert?: ClaseUpsertWithWhereUniqueWithoutMateriaInput | ClaseUpsertWithWhereUniqueWithoutMateriaInput[]
-    createMany?: ClaseCreateManyMateriaInputEnvelope
-    set?: ClaseWhereUniqueInput | ClaseWhereUniqueInput[]
-    disconnect?: ClaseWhereUniqueInput | ClaseWhereUniqueInput[]
-    delete?: ClaseWhereUniqueInput | ClaseWhereUniqueInput[]
-    connect?: ClaseWhereUniqueInput | ClaseWhereUniqueInput[]
-    update?: ClaseUpdateWithWhereUniqueWithoutMateriaInput | ClaseUpdateWithWhereUniqueWithoutMateriaInput[]
-    updateMany?: ClaseUpdateManyWithWhereWithoutMateriaInput | ClaseUpdateManyWithWhereWithoutMateriaInput[]
-    deleteMany?: ClaseScalarWhereInput | ClaseScalarWhereInput[]
+  export type CursosCreateNestedOneWithoutMateriasInput = {
+    create?: XOR<CursosCreateWithoutMateriasInput, CursosUncheckedCreateWithoutMateriasInput>
+    connectOrCreate?: CursosCreateOrConnectWithoutMateriasInput
+    connect?: CursosWhereUniqueInput
   }
 
-  export type MateriaCreateNestedManyWithoutCursoInput = {
-    create?: XOR<MateriaCreateWithoutCursoInput, MateriaUncheckedCreateWithoutCursoInput> | MateriaCreateWithoutCursoInput[] | MateriaUncheckedCreateWithoutCursoInput[]
-    connectOrCreate?: MateriaCreateOrConnectWithoutCursoInput | MateriaCreateOrConnectWithoutCursoInput[]
-    createMany?: MateriaCreateManyCursoInputEnvelope
-    connect?: MateriaWhereUniqueInput | MateriaWhereUniqueInput[]
+  export type ClasesCreateNestedManyWithoutMateriaInput = {
+    create?: XOR<ClasesCreateWithoutMateriaInput, ClasesUncheckedCreateWithoutMateriaInput> | ClasesCreateWithoutMateriaInput[] | ClasesUncheckedCreateWithoutMateriaInput[]
+    connectOrCreate?: ClasesCreateOrConnectWithoutMateriaInput | ClasesCreateOrConnectWithoutMateriaInput[]
+    createMany?: ClasesCreateManyMateriaInputEnvelope
+    connect?: ClasesWhereUniqueInput | ClasesWhereUniqueInput[]
   }
 
-  export type AlumnoCreateNestedManyWithoutCursosInput = {
-    create?: XOR<AlumnoCreateWithoutCursosInput, AlumnoUncheckedCreateWithoutCursosInput> | AlumnoCreateWithoutCursosInput[] | AlumnoUncheckedCreateWithoutCursosInput[]
-    connectOrCreate?: AlumnoCreateOrConnectWithoutCursosInput | AlumnoCreateOrConnectWithoutCursosInput[]
-    connect?: AlumnoWhereUniqueInput | AlumnoWhereUniqueInput[]
+  export type DiasHorariosClasesCreateNestedManyWithoutMateriaInput = {
+    create?: XOR<DiasHorariosClasesCreateWithoutMateriaInput, DiasHorariosClasesUncheckedCreateWithoutMateriaInput> | DiasHorariosClasesCreateWithoutMateriaInput[] | DiasHorariosClasesUncheckedCreateWithoutMateriaInput[]
+    connectOrCreate?: DiasHorariosClasesCreateOrConnectWithoutMateriaInput | DiasHorariosClasesCreateOrConnectWithoutMateriaInput[]
+    createMany?: DiasHorariosClasesCreateManyMateriaInputEnvelope
+    connect?: DiasHorariosClasesWhereUniqueInput | DiasHorariosClasesWhereUniqueInput[]
   }
 
-  export type MateriaUncheckedCreateNestedManyWithoutCursoInput = {
-    create?: XOR<MateriaCreateWithoutCursoInput, MateriaUncheckedCreateWithoutCursoInput> | MateriaCreateWithoutCursoInput[] | MateriaUncheckedCreateWithoutCursoInput[]
-    connectOrCreate?: MateriaCreateOrConnectWithoutCursoInput | MateriaCreateOrConnectWithoutCursoInput[]
-    createMany?: MateriaCreateManyCursoInputEnvelope
-    connect?: MateriaWhereUniqueInput | MateriaWhereUniqueInput[]
+  export type ClasesUncheckedCreateNestedManyWithoutMateriaInput = {
+    create?: XOR<ClasesCreateWithoutMateriaInput, ClasesUncheckedCreateWithoutMateriaInput> | ClasesCreateWithoutMateriaInput[] | ClasesUncheckedCreateWithoutMateriaInput[]
+    connectOrCreate?: ClasesCreateOrConnectWithoutMateriaInput | ClasesCreateOrConnectWithoutMateriaInput[]
+    createMany?: ClasesCreateManyMateriaInputEnvelope
+    connect?: ClasesWhereUniqueInput | ClasesWhereUniqueInput[]
   }
 
-  export type AlumnoUncheckedCreateNestedManyWithoutCursosInput = {
-    create?: XOR<AlumnoCreateWithoutCursosInput, AlumnoUncheckedCreateWithoutCursosInput> | AlumnoCreateWithoutCursosInput[] | AlumnoUncheckedCreateWithoutCursosInput[]
-    connectOrCreate?: AlumnoCreateOrConnectWithoutCursosInput | AlumnoCreateOrConnectWithoutCursosInput[]
-    connect?: AlumnoWhereUniqueInput | AlumnoWhereUniqueInput[]
+  export type DiasHorariosClasesUncheckedCreateNestedManyWithoutMateriaInput = {
+    create?: XOR<DiasHorariosClasesCreateWithoutMateriaInput, DiasHorariosClasesUncheckedCreateWithoutMateriaInput> | DiasHorariosClasesCreateWithoutMateriaInput[] | DiasHorariosClasesUncheckedCreateWithoutMateriaInput[]
+    connectOrCreate?: DiasHorariosClasesCreateOrConnectWithoutMateriaInput | DiasHorariosClasesCreateOrConnectWithoutMateriaInput[]
+    createMany?: DiasHorariosClasesCreateManyMateriaInputEnvelope
+    connect?: DiasHorariosClasesWhereUniqueInput | DiasHorariosClasesWhereUniqueInput[]
   }
 
-  export type MateriaUpdateManyWithoutCursoNestedInput = {
-    create?: XOR<MateriaCreateWithoutCursoInput, MateriaUncheckedCreateWithoutCursoInput> | MateriaCreateWithoutCursoInput[] | MateriaUncheckedCreateWithoutCursoInput[]
-    connectOrCreate?: MateriaCreateOrConnectWithoutCursoInput | MateriaCreateOrConnectWithoutCursoInput[]
-    upsert?: MateriaUpsertWithWhereUniqueWithoutCursoInput | MateriaUpsertWithWhereUniqueWithoutCursoInput[]
-    createMany?: MateriaCreateManyCursoInputEnvelope
-    set?: MateriaWhereUniqueInput | MateriaWhereUniqueInput[]
-    disconnect?: MateriaWhereUniqueInput | MateriaWhereUniqueInput[]
-    delete?: MateriaWhereUniqueInput | MateriaWhereUniqueInput[]
-    connect?: MateriaWhereUniqueInput | MateriaWhereUniqueInput[]
-    update?: MateriaUpdateWithWhereUniqueWithoutCursoInput | MateriaUpdateWithWhereUniqueWithoutCursoInput[]
-    updateMany?: MateriaUpdateManyWithWhereWithoutCursoInput | MateriaUpdateManyWithWhereWithoutCursoInput[]
-    deleteMany?: MateriaScalarWhereInput | MateriaScalarWhereInput[]
+  export type UsersDocentesUpdateOneRequiredWithoutMateriasNestedInput = {
+    create?: XOR<UsersDocentesCreateWithoutMateriasInput, UsersDocentesUncheckedCreateWithoutMateriasInput>
+    connectOrCreate?: UsersDocentesCreateOrConnectWithoutMateriasInput
+    upsert?: UsersDocentesUpsertWithoutMateriasInput
+    connect?: UsersDocentesWhereUniqueInput
+    update?: XOR<XOR<UsersDocentesUpdateToOneWithWhereWithoutMateriasInput, UsersDocentesUpdateWithoutMateriasInput>, UsersDocentesUncheckedUpdateWithoutMateriasInput>
   }
 
-  export type AlumnoUpdateManyWithoutCursosNestedInput = {
-    create?: XOR<AlumnoCreateWithoutCursosInput, AlumnoUncheckedCreateWithoutCursosInput> | AlumnoCreateWithoutCursosInput[] | AlumnoUncheckedCreateWithoutCursosInput[]
-    connectOrCreate?: AlumnoCreateOrConnectWithoutCursosInput | AlumnoCreateOrConnectWithoutCursosInput[]
-    upsert?: AlumnoUpsertWithWhereUniqueWithoutCursosInput | AlumnoUpsertWithWhereUniqueWithoutCursosInput[]
-    set?: AlumnoWhereUniqueInput | AlumnoWhereUniqueInput[]
-    disconnect?: AlumnoWhereUniqueInput | AlumnoWhereUniqueInput[]
-    delete?: AlumnoWhereUniqueInput | AlumnoWhereUniqueInput[]
-    connect?: AlumnoWhereUniqueInput | AlumnoWhereUniqueInput[]
-    update?: AlumnoUpdateWithWhereUniqueWithoutCursosInput | AlumnoUpdateWithWhereUniqueWithoutCursosInput[]
-    updateMany?: AlumnoUpdateManyWithWhereWithoutCursosInput | AlumnoUpdateManyWithWhereWithoutCursosInput[]
-    deleteMany?: AlumnoScalarWhereInput | AlumnoScalarWhereInput[]
+  export type CursosUpdateOneRequiredWithoutMateriasNestedInput = {
+    create?: XOR<CursosCreateWithoutMateriasInput, CursosUncheckedCreateWithoutMateriasInput>
+    connectOrCreate?: CursosCreateOrConnectWithoutMateriasInput
+    upsert?: CursosUpsertWithoutMateriasInput
+    connect?: CursosWhereUniqueInput
+    update?: XOR<XOR<CursosUpdateToOneWithWhereWithoutMateriasInput, CursosUpdateWithoutMateriasInput>, CursosUncheckedUpdateWithoutMateriasInput>
   }
 
-  export type MateriaUncheckedUpdateManyWithoutCursoNestedInput = {
-    create?: XOR<MateriaCreateWithoutCursoInput, MateriaUncheckedCreateWithoutCursoInput> | MateriaCreateWithoutCursoInput[] | MateriaUncheckedCreateWithoutCursoInput[]
-    connectOrCreate?: MateriaCreateOrConnectWithoutCursoInput | MateriaCreateOrConnectWithoutCursoInput[]
-    upsert?: MateriaUpsertWithWhereUniqueWithoutCursoInput | MateriaUpsertWithWhereUniqueWithoutCursoInput[]
-    createMany?: MateriaCreateManyCursoInputEnvelope
-    set?: MateriaWhereUniqueInput | MateriaWhereUniqueInput[]
-    disconnect?: MateriaWhereUniqueInput | MateriaWhereUniqueInput[]
-    delete?: MateriaWhereUniqueInput | MateriaWhereUniqueInput[]
-    connect?: MateriaWhereUniqueInput | MateriaWhereUniqueInput[]
-    update?: MateriaUpdateWithWhereUniqueWithoutCursoInput | MateriaUpdateWithWhereUniqueWithoutCursoInput[]
-    updateMany?: MateriaUpdateManyWithWhereWithoutCursoInput | MateriaUpdateManyWithWhereWithoutCursoInput[]
-    deleteMany?: MateriaScalarWhereInput | MateriaScalarWhereInput[]
+  export type ClasesUpdateManyWithoutMateriaNestedInput = {
+    create?: XOR<ClasesCreateWithoutMateriaInput, ClasesUncheckedCreateWithoutMateriaInput> | ClasesCreateWithoutMateriaInput[] | ClasesUncheckedCreateWithoutMateriaInput[]
+    connectOrCreate?: ClasesCreateOrConnectWithoutMateriaInput | ClasesCreateOrConnectWithoutMateriaInput[]
+    upsert?: ClasesUpsertWithWhereUniqueWithoutMateriaInput | ClasesUpsertWithWhereUniqueWithoutMateriaInput[]
+    createMany?: ClasesCreateManyMateriaInputEnvelope
+    set?: ClasesWhereUniqueInput | ClasesWhereUniqueInput[]
+    disconnect?: ClasesWhereUniqueInput | ClasesWhereUniqueInput[]
+    delete?: ClasesWhereUniqueInput | ClasesWhereUniqueInput[]
+    connect?: ClasesWhereUniqueInput | ClasesWhereUniqueInput[]
+    update?: ClasesUpdateWithWhereUniqueWithoutMateriaInput | ClasesUpdateWithWhereUniqueWithoutMateriaInput[]
+    updateMany?: ClasesUpdateManyWithWhereWithoutMateriaInput | ClasesUpdateManyWithWhereWithoutMateriaInput[]
+    deleteMany?: ClasesScalarWhereInput | ClasesScalarWhereInput[]
   }
 
-  export type AlumnoUncheckedUpdateManyWithoutCursosNestedInput = {
-    create?: XOR<AlumnoCreateWithoutCursosInput, AlumnoUncheckedCreateWithoutCursosInput> | AlumnoCreateWithoutCursosInput[] | AlumnoUncheckedCreateWithoutCursosInput[]
-    connectOrCreate?: AlumnoCreateOrConnectWithoutCursosInput | AlumnoCreateOrConnectWithoutCursosInput[]
-    upsert?: AlumnoUpsertWithWhereUniqueWithoutCursosInput | AlumnoUpsertWithWhereUniqueWithoutCursosInput[]
-    set?: AlumnoWhereUniqueInput | AlumnoWhereUniqueInput[]
-    disconnect?: AlumnoWhereUniqueInput | AlumnoWhereUniqueInput[]
-    delete?: AlumnoWhereUniqueInput | AlumnoWhereUniqueInput[]
-    connect?: AlumnoWhereUniqueInput | AlumnoWhereUniqueInput[]
-    update?: AlumnoUpdateWithWhereUniqueWithoutCursosInput | AlumnoUpdateWithWhereUniqueWithoutCursosInput[]
-    updateMany?: AlumnoUpdateManyWithWhereWithoutCursosInput | AlumnoUpdateManyWithWhereWithoutCursosInput[]
-    deleteMany?: AlumnoScalarWhereInput | AlumnoScalarWhereInput[]
+  export type DiasHorariosClasesUpdateManyWithoutMateriaNestedInput = {
+    create?: XOR<DiasHorariosClasesCreateWithoutMateriaInput, DiasHorariosClasesUncheckedCreateWithoutMateriaInput> | DiasHorariosClasesCreateWithoutMateriaInput[] | DiasHorariosClasesUncheckedCreateWithoutMateriaInput[]
+    connectOrCreate?: DiasHorariosClasesCreateOrConnectWithoutMateriaInput | DiasHorariosClasesCreateOrConnectWithoutMateriaInput[]
+    upsert?: DiasHorariosClasesUpsertWithWhereUniqueWithoutMateriaInput | DiasHorariosClasesUpsertWithWhereUniqueWithoutMateriaInput[]
+    createMany?: DiasHorariosClasesCreateManyMateriaInputEnvelope
+    set?: DiasHorariosClasesWhereUniqueInput | DiasHorariosClasesWhereUniqueInput[]
+    disconnect?: DiasHorariosClasesWhereUniqueInput | DiasHorariosClasesWhereUniqueInput[]
+    delete?: DiasHorariosClasesWhereUniqueInput | DiasHorariosClasesWhereUniqueInput[]
+    connect?: DiasHorariosClasesWhereUniqueInput | DiasHorariosClasesWhereUniqueInput[]
+    update?: DiasHorariosClasesUpdateWithWhereUniqueWithoutMateriaInput | DiasHorariosClasesUpdateWithWhereUniqueWithoutMateriaInput[]
+    updateMany?: DiasHorariosClasesUpdateManyWithWhereWithoutMateriaInput | DiasHorariosClasesUpdateManyWithWhereWithoutMateriaInput[]
+    deleteMany?: DiasHorariosClasesScalarWhereInput | DiasHorariosClasesScalarWhereInput[]
+  }
+
+  export type ClasesUncheckedUpdateManyWithoutMateriaNestedInput = {
+    create?: XOR<ClasesCreateWithoutMateriaInput, ClasesUncheckedCreateWithoutMateriaInput> | ClasesCreateWithoutMateriaInput[] | ClasesUncheckedCreateWithoutMateriaInput[]
+    connectOrCreate?: ClasesCreateOrConnectWithoutMateriaInput | ClasesCreateOrConnectWithoutMateriaInput[]
+    upsert?: ClasesUpsertWithWhereUniqueWithoutMateriaInput | ClasesUpsertWithWhereUniqueWithoutMateriaInput[]
+    createMany?: ClasesCreateManyMateriaInputEnvelope
+    set?: ClasesWhereUniqueInput | ClasesWhereUniqueInput[]
+    disconnect?: ClasesWhereUniqueInput | ClasesWhereUniqueInput[]
+    delete?: ClasesWhereUniqueInput | ClasesWhereUniqueInput[]
+    connect?: ClasesWhereUniqueInput | ClasesWhereUniqueInput[]
+    update?: ClasesUpdateWithWhereUniqueWithoutMateriaInput | ClasesUpdateWithWhereUniqueWithoutMateriaInput[]
+    updateMany?: ClasesUpdateManyWithWhereWithoutMateriaInput | ClasesUpdateManyWithWhereWithoutMateriaInput[]
+    deleteMany?: ClasesScalarWhereInput | ClasesScalarWhereInput[]
+  }
+
+  export type DiasHorariosClasesUncheckedUpdateManyWithoutMateriaNestedInput = {
+    create?: XOR<DiasHorariosClasesCreateWithoutMateriaInput, DiasHorariosClasesUncheckedCreateWithoutMateriaInput> | DiasHorariosClasesCreateWithoutMateriaInput[] | DiasHorariosClasesUncheckedCreateWithoutMateriaInput[]
+    connectOrCreate?: DiasHorariosClasesCreateOrConnectWithoutMateriaInput | DiasHorariosClasesCreateOrConnectWithoutMateriaInput[]
+    upsert?: DiasHorariosClasesUpsertWithWhereUniqueWithoutMateriaInput | DiasHorariosClasesUpsertWithWhereUniqueWithoutMateriaInput[]
+    createMany?: DiasHorariosClasesCreateManyMateriaInputEnvelope
+    set?: DiasHorariosClasesWhereUniqueInput | DiasHorariosClasesWhereUniqueInput[]
+    disconnect?: DiasHorariosClasesWhereUniqueInput | DiasHorariosClasesWhereUniqueInput[]
+    delete?: DiasHorariosClasesWhereUniqueInput | DiasHorariosClasesWhereUniqueInput[]
+    connect?: DiasHorariosClasesWhereUniqueInput | DiasHorariosClasesWhereUniqueInput[]
+    update?: DiasHorariosClasesUpdateWithWhereUniqueWithoutMateriaInput | DiasHorariosClasesUpdateWithWhereUniqueWithoutMateriaInput[]
+    updateMany?: DiasHorariosClasesUpdateManyWithWhereWithoutMateriaInput | DiasHorariosClasesUpdateManyWithWhereWithoutMateriaInput[]
+    deleteMany?: DiasHorariosClasesScalarWhereInput | DiasHorariosClasesScalarWhereInput[]
+  }
+
+  export type DiasHorariosClasesCreatediasInput = {
+    set: $Enums.Dias[]
+  }
+
+  export type MateriasCreateNestedOneWithoutDiasHorariosClasesInput = {
+    create?: XOR<MateriasCreateWithoutDiasHorariosClasesInput, MateriasUncheckedCreateWithoutDiasHorariosClasesInput>
+    connectOrCreate?: MateriasCreateOrConnectWithoutDiasHorariosClasesInput
+    connect?: MateriasWhereUniqueInput
+  }
+
+  export type DiasHorariosClasesUpdatediasInput = {
+    set?: $Enums.Dias[]
+    push?: $Enums.Dias | $Enums.Dias[]
+  }
+
+  export type MateriasUpdateOneRequiredWithoutDiasHorariosClasesNestedInput = {
+    create?: XOR<MateriasCreateWithoutDiasHorariosClasesInput, MateriasUncheckedCreateWithoutDiasHorariosClasesInput>
+    connectOrCreate?: MateriasCreateOrConnectWithoutDiasHorariosClasesInput
+    upsert?: MateriasUpsertWithoutDiasHorariosClasesInput
+    connect?: MateriasWhereUniqueInput
+    update?: XOR<XOR<MateriasUpdateToOneWithWhereWithoutDiasHorariosClasesInput, MateriasUpdateWithoutDiasHorariosClasesInput>, MateriasUncheckedUpdateWithoutDiasHorariosClasesInput>
+  }
+
+  export type MateriasCreateNestedManyWithoutCursoInput = {
+    create?: XOR<MateriasCreateWithoutCursoInput, MateriasUncheckedCreateWithoutCursoInput> | MateriasCreateWithoutCursoInput[] | MateriasUncheckedCreateWithoutCursoInput[]
+    connectOrCreate?: MateriasCreateOrConnectWithoutCursoInput | MateriasCreateOrConnectWithoutCursoInput[]
+    createMany?: MateriasCreateManyCursoInputEnvelope
+    connect?: MateriasWhereUniqueInput | MateriasWhereUniqueInput[]
+  }
+
+  export type AlumnosCreateNestedManyWithoutCursosInput = {
+    create?: XOR<AlumnosCreateWithoutCursosInput, AlumnosUncheckedCreateWithoutCursosInput> | AlumnosCreateWithoutCursosInput[] | AlumnosUncheckedCreateWithoutCursosInput[]
+    connectOrCreate?: AlumnosCreateOrConnectWithoutCursosInput | AlumnosCreateOrConnectWithoutCursosInput[]
+    connect?: AlumnosWhereUniqueInput | AlumnosWhereUniqueInput[]
+  }
+
+  export type MateriasUncheckedCreateNestedManyWithoutCursoInput = {
+    create?: XOR<MateriasCreateWithoutCursoInput, MateriasUncheckedCreateWithoutCursoInput> | MateriasCreateWithoutCursoInput[] | MateriasUncheckedCreateWithoutCursoInput[]
+    connectOrCreate?: MateriasCreateOrConnectWithoutCursoInput | MateriasCreateOrConnectWithoutCursoInput[]
+    createMany?: MateriasCreateManyCursoInputEnvelope
+    connect?: MateriasWhereUniqueInput | MateriasWhereUniqueInput[]
+  }
+
+  export type AlumnosUncheckedCreateNestedManyWithoutCursosInput = {
+    create?: XOR<AlumnosCreateWithoutCursosInput, AlumnosUncheckedCreateWithoutCursosInput> | AlumnosCreateWithoutCursosInput[] | AlumnosUncheckedCreateWithoutCursosInput[]
+    connectOrCreate?: AlumnosCreateOrConnectWithoutCursosInput | AlumnosCreateOrConnectWithoutCursosInput[]
+    connect?: AlumnosWhereUniqueInput | AlumnosWhereUniqueInput[]
+  }
+
+  export type MateriasUpdateManyWithoutCursoNestedInput = {
+    create?: XOR<MateriasCreateWithoutCursoInput, MateriasUncheckedCreateWithoutCursoInput> | MateriasCreateWithoutCursoInput[] | MateriasUncheckedCreateWithoutCursoInput[]
+    connectOrCreate?: MateriasCreateOrConnectWithoutCursoInput | MateriasCreateOrConnectWithoutCursoInput[]
+    upsert?: MateriasUpsertWithWhereUniqueWithoutCursoInput | MateriasUpsertWithWhereUniqueWithoutCursoInput[]
+    createMany?: MateriasCreateManyCursoInputEnvelope
+    set?: MateriasWhereUniqueInput | MateriasWhereUniqueInput[]
+    disconnect?: MateriasWhereUniqueInput | MateriasWhereUniqueInput[]
+    delete?: MateriasWhereUniqueInput | MateriasWhereUniqueInput[]
+    connect?: MateriasWhereUniqueInput | MateriasWhereUniqueInput[]
+    update?: MateriasUpdateWithWhereUniqueWithoutCursoInput | MateriasUpdateWithWhereUniqueWithoutCursoInput[]
+    updateMany?: MateriasUpdateManyWithWhereWithoutCursoInput | MateriasUpdateManyWithWhereWithoutCursoInput[]
+    deleteMany?: MateriasScalarWhereInput | MateriasScalarWhereInput[]
+  }
+
+  export type AlumnosUpdateManyWithoutCursosNestedInput = {
+    create?: XOR<AlumnosCreateWithoutCursosInput, AlumnosUncheckedCreateWithoutCursosInput> | AlumnosCreateWithoutCursosInput[] | AlumnosUncheckedCreateWithoutCursosInput[]
+    connectOrCreate?: AlumnosCreateOrConnectWithoutCursosInput | AlumnosCreateOrConnectWithoutCursosInput[]
+    upsert?: AlumnosUpsertWithWhereUniqueWithoutCursosInput | AlumnosUpsertWithWhereUniqueWithoutCursosInput[]
+    set?: AlumnosWhereUniqueInput | AlumnosWhereUniqueInput[]
+    disconnect?: AlumnosWhereUniqueInput | AlumnosWhereUniqueInput[]
+    delete?: AlumnosWhereUniqueInput | AlumnosWhereUniqueInput[]
+    connect?: AlumnosWhereUniqueInput | AlumnosWhereUniqueInput[]
+    update?: AlumnosUpdateWithWhereUniqueWithoutCursosInput | AlumnosUpdateWithWhereUniqueWithoutCursosInput[]
+    updateMany?: AlumnosUpdateManyWithWhereWithoutCursosInput | AlumnosUpdateManyWithWhereWithoutCursosInput[]
+    deleteMany?: AlumnosScalarWhereInput | AlumnosScalarWhereInput[]
+  }
+
+  export type MateriasUncheckedUpdateManyWithoutCursoNestedInput = {
+    create?: XOR<MateriasCreateWithoutCursoInput, MateriasUncheckedCreateWithoutCursoInput> | MateriasCreateWithoutCursoInput[] | MateriasUncheckedCreateWithoutCursoInput[]
+    connectOrCreate?: MateriasCreateOrConnectWithoutCursoInput | MateriasCreateOrConnectWithoutCursoInput[]
+    upsert?: MateriasUpsertWithWhereUniqueWithoutCursoInput | MateriasUpsertWithWhereUniqueWithoutCursoInput[]
+    createMany?: MateriasCreateManyCursoInputEnvelope
+    set?: MateriasWhereUniqueInput | MateriasWhereUniqueInput[]
+    disconnect?: MateriasWhereUniqueInput | MateriasWhereUniqueInput[]
+    delete?: MateriasWhereUniqueInput | MateriasWhereUniqueInput[]
+    connect?: MateriasWhereUniqueInput | MateriasWhereUniqueInput[]
+    update?: MateriasUpdateWithWhereUniqueWithoutCursoInput | MateriasUpdateWithWhereUniqueWithoutCursoInput[]
+    updateMany?: MateriasUpdateManyWithWhereWithoutCursoInput | MateriasUpdateManyWithWhereWithoutCursoInput[]
+    deleteMany?: MateriasScalarWhereInput | MateriasScalarWhereInput[]
+  }
+
+  export type AlumnosUncheckedUpdateManyWithoutCursosNestedInput = {
+    create?: XOR<AlumnosCreateWithoutCursosInput, AlumnosUncheckedCreateWithoutCursosInput> | AlumnosCreateWithoutCursosInput[] | AlumnosUncheckedCreateWithoutCursosInput[]
+    connectOrCreate?: AlumnosCreateOrConnectWithoutCursosInput | AlumnosCreateOrConnectWithoutCursosInput[]
+    upsert?: AlumnosUpsertWithWhereUniqueWithoutCursosInput | AlumnosUpsertWithWhereUniqueWithoutCursosInput[]
+    set?: AlumnosWhereUniqueInput | AlumnosWhereUniqueInput[]
+    disconnect?: AlumnosWhereUniqueInput | AlumnosWhereUniqueInput[]
+    delete?: AlumnosWhereUniqueInput | AlumnosWhereUniqueInput[]
+    connect?: AlumnosWhereUniqueInput | AlumnosWhereUniqueInput[]
+    update?: AlumnosUpdateWithWhereUniqueWithoutCursosInput | AlumnosUpdateWithWhereUniqueWithoutCursosInput[]
+    updateMany?: AlumnosUpdateManyWithWhereWithoutCursosInput | AlumnosUpdateManyWithWhereWithoutCursosInput[]
+    deleteMany?: AlumnosScalarWhereInput | AlumnosScalarWhereInput[]
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -10470,11 +13466,9 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type NestedEnumEstadoFilter<$PrismaModel = never> = {
-    equals?: $Enums.Estado | EnumEstadoFieldRefInput<$PrismaModel>
-    in?: $Enums.Estado[] | ListEnumEstadoFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Estado[] | ListEnumEstadoFieldRefInput<$PrismaModel>
-    not?: NestedEnumEstadoFilter<$PrismaModel> | $Enums.Estado
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type NestedStringNullableFilter<$PrismaModel = never> = {
@@ -10491,14 +13485,12 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type NestedEnumEstadoWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.Estado | EnumEstadoFieldRefInput<$PrismaModel>
-    in?: $Enums.Estado[] | ListEnumEstadoFieldRefInput<$PrismaModel>
-    notIn?: $Enums.Estado[] | ListEnumEstadoFieldRefInput<$PrismaModel>
-    not?: NestedEnumEstadoWithAggregatesFilter<$PrismaModel> | $Enums.Estado
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumEstadoFilter<$PrismaModel>
-    _max?: NestedEnumEstadoFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -10518,214 +13510,246 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type AsistenciaCreateWithoutAlumnoInput = {
-    estado?: $Enums.Estado
+  export type NestedEnumEstadosFilter<$PrismaModel = never> = {
+    equals?: $Enums.Estados | EnumEstadosFieldRefInput<$PrismaModel>
+    in?: $Enums.Estados[] | ListEnumEstadosFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Estados[] | ListEnumEstadosFieldRefInput<$PrismaModel>
+    not?: NestedEnumEstadosFilter<$PrismaModel> | $Enums.Estados
+  }
+
+  export type NestedEnumEstadosWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Estados | EnumEstadosFieldRefInput<$PrismaModel>
+    in?: $Enums.Estados[] | ListEnumEstadosFieldRefInput<$PrismaModel>
+    notIn?: $Enums.Estados[] | ListEnumEstadosFieldRefInput<$PrismaModel>
+    not?: NestedEnumEstadosWithAggregatesFilter<$PrismaModel> | $Enums.Estados
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumEstadosFilter<$PrismaModel>
+    _max?: NestedEnumEstadosFilter<$PrismaModel>
+  }
+
+  export type AsistenciasCreateWithoutAlumnoInput = {
+    estado?: $Enums.Estados
     nota?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
-    clase: ClaseCreateNestedOneWithoutAsistenciaInput
+    clase: ClasesCreateNestedOneWithoutAsistenciasInput
   }
 
-  export type AsistenciaUncheckedCreateWithoutAlumnoInput = {
+  export type AsistenciasUncheckedCreateWithoutAlumnoInput = {
     id?: number
     idClase: number
-    estado?: $Enums.Estado
+    estado?: $Enums.Estados
     nota?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
   }
 
-  export type AsistenciaCreateOrConnectWithoutAlumnoInput = {
-    where: AsistenciaWhereUniqueInput
-    create: XOR<AsistenciaCreateWithoutAlumnoInput, AsistenciaUncheckedCreateWithoutAlumnoInput>
+  export type AsistenciasCreateOrConnectWithoutAlumnoInput = {
+    where: AsistenciasWhereUniqueInput
+    create: XOR<AsistenciasCreateWithoutAlumnoInput, AsistenciasUncheckedCreateWithoutAlumnoInput>
   }
 
-  export type AsistenciaCreateManyAlumnoInputEnvelope = {
-    data: AsistenciaCreateManyAlumnoInput | AsistenciaCreateManyAlumnoInput[]
+  export type AsistenciasCreateManyAlumnoInputEnvelope = {
+    data: AsistenciasCreateManyAlumnoInput | AsistenciasCreateManyAlumnoInput[]
     skipDuplicates?: boolean
   }
 
-  export type CursoCreateWithoutAlumnosInput = {
+  export type CursosCreateWithoutAlumnosInput = {
     nombre: string
+    turno?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
-    Materia?: MateriaCreateNestedManyWithoutCursoInput
+    Materias?: MateriasCreateNestedManyWithoutCursoInput
   }
 
-  export type CursoUncheckedCreateWithoutAlumnosInput = {
+  export type CursosUncheckedCreateWithoutAlumnosInput = {
     id?: number
     nombre: string
+    turno?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
-    Materia?: MateriaUncheckedCreateNestedManyWithoutCursoInput
+    Materias?: MateriasUncheckedCreateNestedManyWithoutCursoInput
   }
 
-  export type CursoCreateOrConnectWithoutAlumnosInput = {
-    where: CursoWhereUniqueInput
-    create: XOR<CursoCreateWithoutAlumnosInput, CursoUncheckedCreateWithoutAlumnosInput>
+  export type CursosCreateOrConnectWithoutAlumnosInput = {
+    where: CursosWhereUniqueInput
+    create: XOR<CursosCreateWithoutAlumnosInput, CursosUncheckedCreateWithoutAlumnosInput>
   }
 
-  export type AsistenciaUpsertWithWhereUniqueWithoutAlumnoInput = {
-    where: AsistenciaWhereUniqueInput
-    update: XOR<AsistenciaUpdateWithoutAlumnoInput, AsistenciaUncheckedUpdateWithoutAlumnoInput>
-    create: XOR<AsistenciaCreateWithoutAlumnoInput, AsistenciaUncheckedCreateWithoutAlumnoInput>
+  export type AsistenciasUpsertWithWhereUniqueWithoutAlumnoInput = {
+    where: AsistenciasWhereUniqueInput
+    update: XOR<AsistenciasUpdateWithoutAlumnoInput, AsistenciasUncheckedUpdateWithoutAlumnoInput>
+    create: XOR<AsistenciasCreateWithoutAlumnoInput, AsistenciasUncheckedCreateWithoutAlumnoInput>
   }
 
-  export type AsistenciaUpdateWithWhereUniqueWithoutAlumnoInput = {
-    where: AsistenciaWhereUniqueInput
-    data: XOR<AsistenciaUpdateWithoutAlumnoInput, AsistenciaUncheckedUpdateWithoutAlumnoInput>
+  export type AsistenciasUpdateWithWhereUniqueWithoutAlumnoInput = {
+    where: AsistenciasWhereUniqueInput
+    data: XOR<AsistenciasUpdateWithoutAlumnoInput, AsistenciasUncheckedUpdateWithoutAlumnoInput>
   }
 
-  export type AsistenciaUpdateManyWithWhereWithoutAlumnoInput = {
-    where: AsistenciaScalarWhereInput
-    data: XOR<AsistenciaUpdateManyMutationInput, AsistenciaUncheckedUpdateManyWithoutAlumnoInput>
+  export type AsistenciasUpdateManyWithWhereWithoutAlumnoInput = {
+    where: AsistenciasScalarWhereInput
+    data: XOR<AsistenciasUpdateManyMutationInput, AsistenciasUncheckedUpdateManyWithoutAlumnoInput>
   }
 
-  export type AsistenciaScalarWhereInput = {
-    AND?: AsistenciaScalarWhereInput | AsistenciaScalarWhereInput[]
-    OR?: AsistenciaScalarWhereInput[]
-    NOT?: AsistenciaScalarWhereInput | AsistenciaScalarWhereInput[]
-    id?: IntFilter<"Asistencia"> | number
-    idAlumno?: IntFilter<"Asistencia"> | number
-    idClase?: IntFilter<"Asistencia"> | number
-    estado?: EnumEstadoFilter<"Asistencia"> | $Enums.Estado
-    nota?: StringNullableFilter<"Asistencia"> | string | null
-    createdAt?: DateTimeFilter<"Asistencia"> | Date | string
-    updatedAt?: DateTimeNullableFilter<"Asistencia"> | Date | string | null
-    deletedAt?: DateTimeNullableFilter<"Asistencia"> | Date | string | null
+  export type AsistenciasScalarWhereInput = {
+    AND?: AsistenciasScalarWhereInput | AsistenciasScalarWhereInput[]
+    OR?: AsistenciasScalarWhereInput[]
+    NOT?: AsistenciasScalarWhereInput | AsistenciasScalarWhereInput[]
+    id?: IntFilter<"Asistencias"> | number
+    idAlumno?: IntFilter<"Asistencias"> | number
+    idClase?: IntFilter<"Asistencias"> | number
+    estado?: EnumEstadosFilter<"Asistencias"> | $Enums.Estados
+    nota?: StringNullableFilter<"Asistencias"> | string | null
+    createdAt?: DateTimeFilter<"Asistencias"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Asistencias"> | Date | string | null
+    deletedAt?: DateTimeNullableFilter<"Asistencias"> | Date | string | null
   }
 
-  export type CursoUpsertWithWhereUniqueWithoutAlumnosInput = {
-    where: CursoWhereUniqueInput
-    update: XOR<CursoUpdateWithoutAlumnosInput, CursoUncheckedUpdateWithoutAlumnosInput>
-    create: XOR<CursoCreateWithoutAlumnosInput, CursoUncheckedCreateWithoutAlumnosInput>
+  export type CursosUpsertWithWhereUniqueWithoutAlumnosInput = {
+    where: CursosWhereUniqueInput
+    update: XOR<CursosUpdateWithoutAlumnosInput, CursosUncheckedUpdateWithoutAlumnosInput>
+    create: XOR<CursosCreateWithoutAlumnosInput, CursosUncheckedCreateWithoutAlumnosInput>
   }
 
-  export type CursoUpdateWithWhereUniqueWithoutAlumnosInput = {
-    where: CursoWhereUniqueInput
-    data: XOR<CursoUpdateWithoutAlumnosInput, CursoUncheckedUpdateWithoutAlumnosInput>
+  export type CursosUpdateWithWhereUniqueWithoutAlumnosInput = {
+    where: CursosWhereUniqueInput
+    data: XOR<CursosUpdateWithoutAlumnosInput, CursosUncheckedUpdateWithoutAlumnosInput>
   }
 
-  export type CursoUpdateManyWithWhereWithoutAlumnosInput = {
-    where: CursoScalarWhereInput
-    data: XOR<CursoUpdateManyMutationInput, CursoUncheckedUpdateManyWithoutAlumnosInput>
+  export type CursosUpdateManyWithWhereWithoutAlumnosInput = {
+    where: CursosScalarWhereInput
+    data: XOR<CursosUpdateManyMutationInput, CursosUncheckedUpdateManyWithoutAlumnosInput>
   }
 
-  export type CursoScalarWhereInput = {
-    AND?: CursoScalarWhereInput | CursoScalarWhereInput[]
-    OR?: CursoScalarWhereInput[]
-    NOT?: CursoScalarWhereInput | CursoScalarWhereInput[]
-    id?: IntFilter<"Curso"> | number
-    nombre?: StringFilter<"Curso"> | string
-    createdAt?: DateTimeFilter<"Curso"> | Date | string
-    updatedAt?: DateTimeNullableFilter<"Curso"> | Date | string | null
-    deletedAt?: DateTimeNullableFilter<"Curso"> | Date | string | null
+  export type CursosScalarWhereInput = {
+    AND?: CursosScalarWhereInput | CursosScalarWhereInput[]
+    OR?: CursosScalarWhereInput[]
+    NOT?: CursosScalarWhereInput | CursosScalarWhereInput[]
+    id?: IntFilter<"Cursos"> | number
+    nombre?: StringFilter<"Cursos"> | string
+    turno?: StringNullableFilter<"Cursos"> | string | null
+    createdAt?: DateTimeFilter<"Cursos"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Cursos"> | Date | string | null
+    deletedAt?: DateTimeNullableFilter<"Cursos"> | Date | string | null
   }
 
-  export type MateriaCreateWithoutClaseInput = {
+  export type MateriasCreateWithoutClasesInput = {
     nombre: string
+    fechaInicio: Date | string
+    fechaFin: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
-    userDocente: UserDocenteCreateNestedOneWithoutMateriaInput
-    curso: CursoCreateNestedOneWithoutMateriaInput
+    userDocente: UsersDocentesCreateNestedOneWithoutMateriasInput
+    curso: CursosCreateNestedOneWithoutMateriasInput
+    DiasHorariosClases?: DiasHorariosClasesCreateNestedManyWithoutMateriaInput
   }
 
-  export type MateriaUncheckedCreateWithoutClaseInput = {
+  export type MateriasUncheckedCreateWithoutClasesInput = {
     id?: number
     nombre: string
     idUserDocente: number
     idCurso: number
+    fechaInicio: Date | string
+    fechaFin: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
+    DiasHorariosClases?: DiasHorariosClasesUncheckedCreateNestedManyWithoutMateriaInput
   }
 
-  export type MateriaCreateOrConnectWithoutClaseInput = {
-    where: MateriaWhereUniqueInput
-    create: XOR<MateriaCreateWithoutClaseInput, MateriaUncheckedCreateWithoutClaseInput>
+  export type MateriasCreateOrConnectWithoutClasesInput = {
+    where: MateriasWhereUniqueInput
+    create: XOR<MateriasCreateWithoutClasesInput, MateriasUncheckedCreateWithoutClasesInput>
   }
 
-  export type AsistenciaCreateWithoutClaseInput = {
-    estado?: $Enums.Estado
+  export type AsistenciasCreateWithoutClaseInput = {
+    estado?: $Enums.Estados
     nota?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
-    alumno: AlumnoCreateNestedOneWithoutAsistenciaInput
+    alumno: AlumnosCreateNestedOneWithoutAsistenciasInput
   }
 
-  export type AsistenciaUncheckedCreateWithoutClaseInput = {
+  export type AsistenciasUncheckedCreateWithoutClaseInput = {
     id?: number
     idAlumno: number
-    estado?: $Enums.Estado
+    estado?: $Enums.Estados
     nota?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
   }
 
-  export type AsistenciaCreateOrConnectWithoutClaseInput = {
-    where: AsistenciaWhereUniqueInput
-    create: XOR<AsistenciaCreateWithoutClaseInput, AsistenciaUncheckedCreateWithoutClaseInput>
+  export type AsistenciasCreateOrConnectWithoutClaseInput = {
+    where: AsistenciasWhereUniqueInput
+    create: XOR<AsistenciasCreateWithoutClaseInput, AsistenciasUncheckedCreateWithoutClaseInput>
   }
 
-  export type AsistenciaCreateManyClaseInputEnvelope = {
-    data: AsistenciaCreateManyClaseInput | AsistenciaCreateManyClaseInput[]
+  export type AsistenciasCreateManyClaseInputEnvelope = {
+    data: AsistenciasCreateManyClaseInput | AsistenciasCreateManyClaseInput[]
     skipDuplicates?: boolean
   }
 
-  export type MateriaUpsertWithoutClaseInput = {
-    update: XOR<MateriaUpdateWithoutClaseInput, MateriaUncheckedUpdateWithoutClaseInput>
-    create: XOR<MateriaCreateWithoutClaseInput, MateriaUncheckedCreateWithoutClaseInput>
-    where?: MateriaWhereInput
+  export type MateriasUpsertWithoutClasesInput = {
+    update: XOR<MateriasUpdateWithoutClasesInput, MateriasUncheckedUpdateWithoutClasesInput>
+    create: XOR<MateriasCreateWithoutClasesInput, MateriasUncheckedCreateWithoutClasesInput>
+    where?: MateriasWhereInput
   }
 
-  export type MateriaUpdateToOneWithWhereWithoutClaseInput = {
-    where?: MateriaWhereInput
-    data: XOR<MateriaUpdateWithoutClaseInput, MateriaUncheckedUpdateWithoutClaseInput>
+  export type MateriasUpdateToOneWithWhereWithoutClasesInput = {
+    where?: MateriasWhereInput
+    data: XOR<MateriasUpdateWithoutClasesInput, MateriasUncheckedUpdateWithoutClasesInput>
   }
 
-  export type MateriaUpdateWithoutClaseInput = {
+  export type MateriasUpdateWithoutClasesInput = {
     nombre?: StringFieldUpdateOperationsInput | string
+    fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
+    fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    userDocente?: UserDocenteUpdateOneRequiredWithoutMateriaNestedInput
-    curso?: CursoUpdateOneRequiredWithoutMateriaNestedInput
+    userDocente?: UsersDocentesUpdateOneRequiredWithoutMateriasNestedInput
+    curso?: CursosUpdateOneRequiredWithoutMateriasNestedInput
+    DiasHorariosClases?: DiasHorariosClasesUpdateManyWithoutMateriaNestedInput
   }
 
-  export type MateriaUncheckedUpdateWithoutClaseInput = {
+  export type MateriasUncheckedUpdateWithoutClasesInput = {
     id?: IntFieldUpdateOperationsInput | number
     nombre?: StringFieldUpdateOperationsInput | string
     idUserDocente?: IntFieldUpdateOperationsInput | number
     idCurso?: IntFieldUpdateOperationsInput | number
+    fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
+    fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    DiasHorariosClases?: DiasHorariosClasesUncheckedUpdateManyWithoutMateriaNestedInput
   }
 
-  export type AsistenciaUpsertWithWhereUniqueWithoutClaseInput = {
-    where: AsistenciaWhereUniqueInput
-    update: XOR<AsistenciaUpdateWithoutClaseInput, AsistenciaUncheckedUpdateWithoutClaseInput>
-    create: XOR<AsistenciaCreateWithoutClaseInput, AsistenciaUncheckedCreateWithoutClaseInput>
+  export type AsistenciasUpsertWithWhereUniqueWithoutClaseInput = {
+    where: AsistenciasWhereUniqueInput
+    update: XOR<AsistenciasUpdateWithoutClaseInput, AsistenciasUncheckedUpdateWithoutClaseInput>
+    create: XOR<AsistenciasCreateWithoutClaseInput, AsistenciasUncheckedCreateWithoutClaseInput>
   }
 
-  export type AsistenciaUpdateWithWhereUniqueWithoutClaseInput = {
-    where: AsistenciaWhereUniqueInput
-    data: XOR<AsistenciaUpdateWithoutClaseInput, AsistenciaUncheckedUpdateWithoutClaseInput>
+  export type AsistenciasUpdateWithWhereUniqueWithoutClaseInput = {
+    where: AsistenciasWhereUniqueInput
+    data: XOR<AsistenciasUpdateWithoutClaseInput, AsistenciasUncheckedUpdateWithoutClaseInput>
   }
 
-  export type AsistenciaUpdateManyWithWhereWithoutClaseInput = {
-    where: AsistenciaScalarWhereInput
-    data: XOR<AsistenciaUpdateManyMutationInput, AsistenciaUncheckedUpdateManyWithoutClaseInput>
+  export type AsistenciasUpdateManyWithWhereWithoutClaseInput = {
+    where: AsistenciasScalarWhereInput
+    data: XOR<AsistenciasUpdateManyMutationInput, AsistenciasUncheckedUpdateManyWithoutClaseInput>
   }
 
-  export type AlumnoCreateWithoutAsistenciaInput = {
+  export type AlumnosCreateWithoutAsistenciasInput = {
     legajo: string
     nombre: string
     apellido: string
@@ -10733,10 +13757,10 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
-    cursos?: CursoCreateNestedManyWithoutAlumnosInput
+    Cursos?: CursosCreateNestedManyWithoutAlumnosInput
   }
 
-  export type AlumnoUncheckedCreateWithoutAsistenciaInput = {
+  export type AlumnosUncheckedCreateWithoutAsistenciasInput = {
     id?: number
     legajo: string
     nombre: string
@@ -10745,48 +13769,52 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
-    cursos?: CursoUncheckedCreateNestedManyWithoutAlumnosInput
+    Cursos?: CursosUncheckedCreateNestedManyWithoutAlumnosInput
   }
 
-  export type AlumnoCreateOrConnectWithoutAsistenciaInput = {
-    where: AlumnoWhereUniqueInput
-    create: XOR<AlumnoCreateWithoutAsistenciaInput, AlumnoUncheckedCreateWithoutAsistenciaInput>
+  export type AlumnosCreateOrConnectWithoutAsistenciasInput = {
+    where: AlumnosWhereUniqueInput
+    create: XOR<AlumnosCreateWithoutAsistenciasInput, AlumnosUncheckedCreateWithoutAsistenciasInput>
   }
 
-  export type ClaseCreateWithoutAsistenciaInput = {
+  export type ClasesCreateWithoutAsistenciasInput = {
     fechaHora: Date | string
+    suspendida?: boolean
+    motivo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
-    materia: MateriaCreateNestedOneWithoutClaseInput
+    materia: MateriasCreateNestedOneWithoutClasesInput
   }
 
-  export type ClaseUncheckedCreateWithoutAsistenciaInput = {
+  export type ClasesUncheckedCreateWithoutAsistenciasInput = {
     id?: number
     fechaHora: Date | string
     idMateria: number
+    suspendida?: boolean
+    motivo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
   }
 
-  export type ClaseCreateOrConnectWithoutAsistenciaInput = {
-    where: ClaseWhereUniqueInput
-    create: XOR<ClaseCreateWithoutAsistenciaInput, ClaseUncheckedCreateWithoutAsistenciaInput>
+  export type ClasesCreateOrConnectWithoutAsistenciasInput = {
+    where: ClasesWhereUniqueInput
+    create: XOR<ClasesCreateWithoutAsistenciasInput, ClasesUncheckedCreateWithoutAsistenciasInput>
   }
 
-  export type AlumnoUpsertWithoutAsistenciaInput = {
-    update: XOR<AlumnoUpdateWithoutAsistenciaInput, AlumnoUncheckedUpdateWithoutAsistenciaInput>
-    create: XOR<AlumnoCreateWithoutAsistenciaInput, AlumnoUncheckedCreateWithoutAsistenciaInput>
-    where?: AlumnoWhereInput
+  export type AlumnosUpsertWithoutAsistenciasInput = {
+    update: XOR<AlumnosUpdateWithoutAsistenciasInput, AlumnosUncheckedUpdateWithoutAsistenciasInput>
+    create: XOR<AlumnosCreateWithoutAsistenciasInput, AlumnosUncheckedCreateWithoutAsistenciasInput>
+    where?: AlumnosWhereInput
   }
 
-  export type AlumnoUpdateToOneWithWhereWithoutAsistenciaInput = {
-    where?: AlumnoWhereInput
-    data: XOR<AlumnoUpdateWithoutAsistenciaInput, AlumnoUncheckedUpdateWithoutAsistenciaInput>
+  export type AlumnosUpdateToOneWithWhereWithoutAsistenciasInput = {
+    where?: AlumnosWhereInput
+    data: XOR<AlumnosUpdateWithoutAsistenciasInput, AlumnosUncheckedUpdateWithoutAsistenciasInput>
   }
 
-  export type AlumnoUpdateWithoutAsistenciaInput = {
+  export type AlumnosUpdateWithoutAsistenciasInput = {
     legajo?: StringFieldUpdateOperationsInput | string
     nombre?: StringFieldUpdateOperationsInput | string
     apellido?: StringFieldUpdateOperationsInput | string
@@ -10794,10 +13822,10 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    cursos?: CursoUpdateManyWithoutAlumnosNestedInput
+    Cursos?: CursosUpdateManyWithoutAlumnosNestedInput
   }
 
-  export type AlumnoUncheckedUpdateWithoutAsistenciaInput = {
+  export type AlumnosUncheckedUpdateWithoutAsistenciasInput = {
     id?: IntFieldUpdateOperationsInput | number
     legajo?: StringFieldUpdateOperationsInput | string
     nombre?: StringFieldUpdateOperationsInput | string
@@ -10806,96 +13834,108 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    cursos?: CursoUncheckedUpdateManyWithoutAlumnosNestedInput
+    Cursos?: CursosUncheckedUpdateManyWithoutAlumnosNestedInput
   }
 
-  export type ClaseUpsertWithoutAsistenciaInput = {
-    update: XOR<ClaseUpdateWithoutAsistenciaInput, ClaseUncheckedUpdateWithoutAsistenciaInput>
-    create: XOR<ClaseCreateWithoutAsistenciaInput, ClaseUncheckedCreateWithoutAsistenciaInput>
-    where?: ClaseWhereInput
+  export type ClasesUpsertWithoutAsistenciasInput = {
+    update: XOR<ClasesUpdateWithoutAsistenciasInput, ClasesUncheckedUpdateWithoutAsistenciasInput>
+    create: XOR<ClasesCreateWithoutAsistenciasInput, ClasesUncheckedCreateWithoutAsistenciasInput>
+    where?: ClasesWhereInput
   }
 
-  export type ClaseUpdateToOneWithWhereWithoutAsistenciaInput = {
-    where?: ClaseWhereInput
-    data: XOR<ClaseUpdateWithoutAsistenciaInput, ClaseUncheckedUpdateWithoutAsistenciaInput>
+  export type ClasesUpdateToOneWithWhereWithoutAsistenciasInput = {
+    where?: ClasesWhereInput
+    data: XOR<ClasesUpdateWithoutAsistenciasInput, ClasesUncheckedUpdateWithoutAsistenciasInput>
   }
 
-  export type ClaseUpdateWithoutAsistenciaInput = {
+  export type ClasesUpdateWithoutAsistenciasInput = {
     fechaHora?: DateTimeFieldUpdateOperationsInput | Date | string
+    suspendida?: BoolFieldUpdateOperationsInput | boolean
+    motivo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    materia?: MateriaUpdateOneRequiredWithoutClaseNestedInput
+    materia?: MateriasUpdateOneRequiredWithoutClasesNestedInput
   }
 
-  export type ClaseUncheckedUpdateWithoutAsistenciaInput = {
+  export type ClasesUncheckedUpdateWithoutAsistenciasInput = {
     id?: IntFieldUpdateOperationsInput | number
     fechaHora?: DateTimeFieldUpdateOperationsInput | Date | string
     idMateria?: IntFieldUpdateOperationsInput | number
+    suspendida?: BoolFieldUpdateOperationsInput | boolean
+    motivo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type MateriaCreateWithoutUserDocenteInput = {
+  export type MateriasCreateWithoutUserDocenteInput = {
     nombre: string
+    fechaInicio: Date | string
+    fechaFin: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
-    curso: CursoCreateNestedOneWithoutMateriaInput
-    Clase?: ClaseCreateNestedManyWithoutMateriaInput
+    curso: CursosCreateNestedOneWithoutMateriasInput
+    Clases?: ClasesCreateNestedManyWithoutMateriaInput
+    DiasHorariosClases?: DiasHorariosClasesCreateNestedManyWithoutMateriaInput
   }
 
-  export type MateriaUncheckedCreateWithoutUserDocenteInput = {
+  export type MateriasUncheckedCreateWithoutUserDocenteInput = {
     id?: number
     nombre: string
     idCurso: number
+    fechaInicio: Date | string
+    fechaFin: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
-    Clase?: ClaseUncheckedCreateNestedManyWithoutMateriaInput
+    Clases?: ClasesUncheckedCreateNestedManyWithoutMateriaInput
+    DiasHorariosClases?: DiasHorariosClasesUncheckedCreateNestedManyWithoutMateriaInput
   }
 
-  export type MateriaCreateOrConnectWithoutUserDocenteInput = {
-    where: MateriaWhereUniqueInput
-    create: XOR<MateriaCreateWithoutUserDocenteInput, MateriaUncheckedCreateWithoutUserDocenteInput>
+  export type MateriasCreateOrConnectWithoutUserDocenteInput = {
+    where: MateriasWhereUniqueInput
+    create: XOR<MateriasCreateWithoutUserDocenteInput, MateriasUncheckedCreateWithoutUserDocenteInput>
   }
 
-  export type MateriaCreateManyUserDocenteInputEnvelope = {
-    data: MateriaCreateManyUserDocenteInput | MateriaCreateManyUserDocenteInput[]
+  export type MateriasCreateManyUserDocenteInputEnvelope = {
+    data: MateriasCreateManyUserDocenteInput | MateriasCreateManyUserDocenteInput[]
     skipDuplicates?: boolean
   }
 
-  export type MateriaUpsertWithWhereUniqueWithoutUserDocenteInput = {
-    where: MateriaWhereUniqueInput
-    update: XOR<MateriaUpdateWithoutUserDocenteInput, MateriaUncheckedUpdateWithoutUserDocenteInput>
-    create: XOR<MateriaCreateWithoutUserDocenteInput, MateriaUncheckedCreateWithoutUserDocenteInput>
+  export type MateriasUpsertWithWhereUniqueWithoutUserDocenteInput = {
+    where: MateriasWhereUniqueInput
+    update: XOR<MateriasUpdateWithoutUserDocenteInput, MateriasUncheckedUpdateWithoutUserDocenteInput>
+    create: XOR<MateriasCreateWithoutUserDocenteInput, MateriasUncheckedCreateWithoutUserDocenteInput>
   }
 
-  export type MateriaUpdateWithWhereUniqueWithoutUserDocenteInput = {
-    where: MateriaWhereUniqueInput
-    data: XOR<MateriaUpdateWithoutUserDocenteInput, MateriaUncheckedUpdateWithoutUserDocenteInput>
+  export type MateriasUpdateWithWhereUniqueWithoutUserDocenteInput = {
+    where: MateriasWhereUniqueInput
+    data: XOR<MateriasUpdateWithoutUserDocenteInput, MateriasUncheckedUpdateWithoutUserDocenteInput>
   }
 
-  export type MateriaUpdateManyWithWhereWithoutUserDocenteInput = {
-    where: MateriaScalarWhereInput
-    data: XOR<MateriaUpdateManyMutationInput, MateriaUncheckedUpdateManyWithoutUserDocenteInput>
+  export type MateriasUpdateManyWithWhereWithoutUserDocenteInput = {
+    where: MateriasScalarWhereInput
+    data: XOR<MateriasUpdateManyMutationInput, MateriasUncheckedUpdateManyWithoutUserDocenteInput>
   }
 
-  export type MateriaScalarWhereInput = {
-    AND?: MateriaScalarWhereInput | MateriaScalarWhereInput[]
-    OR?: MateriaScalarWhereInput[]
-    NOT?: MateriaScalarWhereInput | MateriaScalarWhereInput[]
-    id?: IntFilter<"Materia"> | number
-    nombre?: StringFilter<"Materia"> | string
-    idUserDocente?: IntFilter<"Materia"> | number
-    idCurso?: IntFilter<"Materia"> | number
-    createdAt?: DateTimeFilter<"Materia"> | Date | string
-    updatedAt?: DateTimeNullableFilter<"Materia"> | Date | string | null
-    deletedAt?: DateTimeNullableFilter<"Materia"> | Date | string | null
+  export type MateriasScalarWhereInput = {
+    AND?: MateriasScalarWhereInput | MateriasScalarWhereInput[]
+    OR?: MateriasScalarWhereInput[]
+    NOT?: MateriasScalarWhereInput | MateriasScalarWhereInput[]
+    id?: IntFilter<"Materias"> | number
+    nombre?: StringFilter<"Materias"> | string
+    idUserDocente?: IntFilter<"Materias"> | number
+    idCurso?: IntFilter<"Materias"> | number
+    fechaInicio?: DateTimeFilter<"Materias"> | Date | string
+    fechaFin?: DateTimeFilter<"Materias"> | Date | string
+    createdAt?: DateTimeFilter<"Materias"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Materias"> | Date | string | null
+    deletedAt?: DateTimeNullableFilter<"Materias"> | Date | string | null
   }
 
-  export type UserDocenteCreateWithoutMateriaInput = {
+  export type UsersDocentesCreateWithoutMateriasInput = {
     email: string
     password: string
     nombre: string
@@ -10906,7 +13946,7 @@ export namespace Prisma {
     deletedAt?: Date | string | null
   }
 
-  export type UserDocenteUncheckedCreateWithoutMateriaInput = {
+  export type UsersDocentesUncheckedCreateWithoutMateriasInput = {
     id?: number
     email: string
     password: string
@@ -10918,72 +13958,107 @@ export namespace Prisma {
     deletedAt?: Date | string | null
   }
 
-  export type UserDocenteCreateOrConnectWithoutMateriaInput = {
-    where: UserDocenteWhereUniqueInput
-    create: XOR<UserDocenteCreateWithoutMateriaInput, UserDocenteUncheckedCreateWithoutMateriaInput>
+  export type UsersDocentesCreateOrConnectWithoutMateriasInput = {
+    where: UsersDocentesWhereUniqueInput
+    create: XOR<UsersDocentesCreateWithoutMateriasInput, UsersDocentesUncheckedCreateWithoutMateriasInput>
   }
 
-  export type CursoCreateWithoutMateriaInput = {
+  export type CursosCreateWithoutMateriasInput = {
     nombre: string
+    turno?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
-    alumnos?: AlumnoCreateNestedManyWithoutCursosInput
+    Alumnos?: AlumnosCreateNestedManyWithoutCursosInput
   }
 
-  export type CursoUncheckedCreateWithoutMateriaInput = {
+  export type CursosUncheckedCreateWithoutMateriasInput = {
     id?: number
     nombre: string
+    turno?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
-    alumnos?: AlumnoUncheckedCreateNestedManyWithoutCursosInput
+    Alumnos?: AlumnosUncheckedCreateNestedManyWithoutCursosInput
   }
 
-  export type CursoCreateOrConnectWithoutMateriaInput = {
-    where: CursoWhereUniqueInput
-    create: XOR<CursoCreateWithoutMateriaInput, CursoUncheckedCreateWithoutMateriaInput>
+  export type CursosCreateOrConnectWithoutMateriasInput = {
+    where: CursosWhereUniqueInput
+    create: XOR<CursosCreateWithoutMateriasInput, CursosUncheckedCreateWithoutMateriasInput>
   }
 
-  export type ClaseCreateWithoutMateriaInput = {
+  export type ClasesCreateWithoutMateriaInput = {
     fechaHora: Date | string
+    suspendida?: boolean
+    motivo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
-    Asistencia?: AsistenciaCreateNestedManyWithoutClaseInput
+    Asistencias?: AsistenciasCreateNestedManyWithoutClaseInput
   }
 
-  export type ClaseUncheckedCreateWithoutMateriaInput = {
+  export type ClasesUncheckedCreateWithoutMateriaInput = {
     id?: number
     fechaHora: Date | string
+    suspendida?: boolean
+    motivo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
-    Asistencia?: AsistenciaUncheckedCreateNestedManyWithoutClaseInput
+    Asistencias?: AsistenciasUncheckedCreateNestedManyWithoutClaseInput
   }
 
-  export type ClaseCreateOrConnectWithoutMateriaInput = {
-    where: ClaseWhereUniqueInput
-    create: XOR<ClaseCreateWithoutMateriaInput, ClaseUncheckedCreateWithoutMateriaInput>
+  export type ClasesCreateOrConnectWithoutMateriaInput = {
+    where: ClasesWhereUniqueInput
+    create: XOR<ClasesCreateWithoutMateriaInput, ClasesUncheckedCreateWithoutMateriaInput>
   }
 
-  export type ClaseCreateManyMateriaInputEnvelope = {
-    data: ClaseCreateManyMateriaInput | ClaseCreateManyMateriaInput[]
+  export type ClasesCreateManyMateriaInputEnvelope = {
+    data: ClasesCreateManyMateriaInput | ClasesCreateManyMateriaInput[]
     skipDuplicates?: boolean
   }
 
-  export type UserDocenteUpsertWithoutMateriaInput = {
-    update: XOR<UserDocenteUpdateWithoutMateriaInput, UserDocenteUncheckedUpdateWithoutMateriaInput>
-    create: XOR<UserDocenteCreateWithoutMateriaInput, UserDocenteUncheckedCreateWithoutMateriaInput>
-    where?: UserDocenteWhereInput
+  export type DiasHorariosClasesCreateWithoutMateriaInput = {
+    dias?: DiasHorariosClasesCreatediasInput | $Enums.Dias[]
+    horaInicio: string
+    duracionMinutos: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    deletedAt?: Date | string | null
   }
 
-  export type UserDocenteUpdateToOneWithWhereWithoutMateriaInput = {
-    where?: UserDocenteWhereInput
-    data: XOR<UserDocenteUpdateWithoutMateriaInput, UserDocenteUncheckedUpdateWithoutMateriaInput>
+  export type DiasHorariosClasesUncheckedCreateWithoutMateriaInput = {
+    id?: number
+    dias?: DiasHorariosClasesCreatediasInput | $Enums.Dias[]
+    horaInicio: string
+    duracionMinutos: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    deletedAt?: Date | string | null
   }
 
-  export type UserDocenteUpdateWithoutMateriaInput = {
+  export type DiasHorariosClasesCreateOrConnectWithoutMateriaInput = {
+    where: DiasHorariosClasesWhereUniqueInput
+    create: XOR<DiasHorariosClasesCreateWithoutMateriaInput, DiasHorariosClasesUncheckedCreateWithoutMateriaInput>
+  }
+
+  export type DiasHorariosClasesCreateManyMateriaInputEnvelope = {
+    data: DiasHorariosClasesCreateManyMateriaInput | DiasHorariosClasesCreateManyMateriaInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UsersDocentesUpsertWithoutMateriasInput = {
+    update: XOR<UsersDocentesUpdateWithoutMateriasInput, UsersDocentesUncheckedUpdateWithoutMateriasInput>
+    create: XOR<UsersDocentesCreateWithoutMateriasInput, UsersDocentesUncheckedCreateWithoutMateriasInput>
+    where?: UsersDocentesWhereInput
+  }
+
+  export type UsersDocentesUpdateToOneWithWhereWithoutMateriasInput = {
+    where?: UsersDocentesWhereInput
+    data: XOR<UsersDocentesUpdateWithoutMateriasInput, UsersDocentesUncheckedUpdateWithoutMateriasInput>
+  }
+
+  export type UsersDocentesUpdateWithoutMateriasInput = {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     nombre?: StringFieldUpdateOperationsInput | string
@@ -10994,7 +14069,7 @@ export namespace Prisma {
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type UserDocenteUncheckedUpdateWithoutMateriaInput = {
+  export type UsersDocentesUncheckedUpdateWithoutMateriasInput = {
     id?: IntFieldUpdateOperationsInput | number
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
@@ -11006,92 +14081,198 @@ export namespace Prisma {
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type CursoUpsertWithoutMateriaInput = {
-    update: XOR<CursoUpdateWithoutMateriaInput, CursoUncheckedUpdateWithoutMateriaInput>
-    create: XOR<CursoCreateWithoutMateriaInput, CursoUncheckedCreateWithoutMateriaInput>
-    where?: CursoWhereInput
+  export type CursosUpsertWithoutMateriasInput = {
+    update: XOR<CursosUpdateWithoutMateriasInput, CursosUncheckedUpdateWithoutMateriasInput>
+    create: XOR<CursosCreateWithoutMateriasInput, CursosUncheckedCreateWithoutMateriasInput>
+    where?: CursosWhereInput
   }
 
-  export type CursoUpdateToOneWithWhereWithoutMateriaInput = {
-    where?: CursoWhereInput
-    data: XOR<CursoUpdateWithoutMateriaInput, CursoUncheckedUpdateWithoutMateriaInput>
+  export type CursosUpdateToOneWithWhereWithoutMateriasInput = {
+    where?: CursosWhereInput
+    data: XOR<CursosUpdateWithoutMateriasInput, CursosUncheckedUpdateWithoutMateriasInput>
   }
 
-  export type CursoUpdateWithoutMateriaInput = {
+  export type CursosUpdateWithoutMateriasInput = {
     nombre?: StringFieldUpdateOperationsInput | string
+    turno?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    alumnos?: AlumnoUpdateManyWithoutCursosNestedInput
+    Alumnos?: AlumnosUpdateManyWithoutCursosNestedInput
   }
 
-  export type CursoUncheckedUpdateWithoutMateriaInput = {
+  export type CursosUncheckedUpdateWithoutMateriasInput = {
     id?: IntFieldUpdateOperationsInput | number
     nombre?: StringFieldUpdateOperationsInput | string
+    turno?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    alumnos?: AlumnoUncheckedUpdateManyWithoutCursosNestedInput
+    Alumnos?: AlumnosUncheckedUpdateManyWithoutCursosNestedInput
   }
 
-  export type ClaseUpsertWithWhereUniqueWithoutMateriaInput = {
-    where: ClaseWhereUniqueInput
-    update: XOR<ClaseUpdateWithoutMateriaInput, ClaseUncheckedUpdateWithoutMateriaInput>
-    create: XOR<ClaseCreateWithoutMateriaInput, ClaseUncheckedCreateWithoutMateriaInput>
+  export type ClasesUpsertWithWhereUniqueWithoutMateriaInput = {
+    where: ClasesWhereUniqueInput
+    update: XOR<ClasesUpdateWithoutMateriaInput, ClasesUncheckedUpdateWithoutMateriaInput>
+    create: XOR<ClasesCreateWithoutMateriaInput, ClasesUncheckedCreateWithoutMateriaInput>
   }
 
-  export type ClaseUpdateWithWhereUniqueWithoutMateriaInput = {
-    where: ClaseWhereUniqueInput
-    data: XOR<ClaseUpdateWithoutMateriaInput, ClaseUncheckedUpdateWithoutMateriaInput>
+  export type ClasesUpdateWithWhereUniqueWithoutMateriaInput = {
+    where: ClasesWhereUniqueInput
+    data: XOR<ClasesUpdateWithoutMateriaInput, ClasesUncheckedUpdateWithoutMateriaInput>
   }
 
-  export type ClaseUpdateManyWithWhereWithoutMateriaInput = {
-    where: ClaseScalarWhereInput
-    data: XOR<ClaseUpdateManyMutationInput, ClaseUncheckedUpdateManyWithoutMateriaInput>
+  export type ClasesUpdateManyWithWhereWithoutMateriaInput = {
+    where: ClasesScalarWhereInput
+    data: XOR<ClasesUpdateManyMutationInput, ClasesUncheckedUpdateManyWithoutMateriaInput>
   }
 
-  export type ClaseScalarWhereInput = {
-    AND?: ClaseScalarWhereInput | ClaseScalarWhereInput[]
-    OR?: ClaseScalarWhereInput[]
-    NOT?: ClaseScalarWhereInput | ClaseScalarWhereInput[]
-    id?: IntFilter<"Clase"> | number
-    fechaHora?: DateTimeFilter<"Clase"> | Date | string
-    idMateria?: IntFilter<"Clase"> | number
-    createdAt?: DateTimeFilter<"Clase"> | Date | string
-    updatedAt?: DateTimeNullableFilter<"Clase"> | Date | string | null
-    deletedAt?: DateTimeNullableFilter<"Clase"> | Date | string | null
+  export type ClasesScalarWhereInput = {
+    AND?: ClasesScalarWhereInput | ClasesScalarWhereInput[]
+    OR?: ClasesScalarWhereInput[]
+    NOT?: ClasesScalarWhereInput | ClasesScalarWhereInput[]
+    id?: IntFilter<"Clases"> | number
+    fechaHora?: DateTimeFilter<"Clases"> | Date | string
+    idMateria?: IntFilter<"Clases"> | number
+    suspendida?: BoolFilter<"Clases"> | boolean
+    motivo?: StringNullableFilter<"Clases"> | string | null
+    createdAt?: DateTimeFilter<"Clases"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Clases"> | Date | string | null
+    deletedAt?: DateTimeNullableFilter<"Clases"> | Date | string | null
   }
 
-  export type MateriaCreateWithoutCursoInput = {
+  export type DiasHorariosClasesUpsertWithWhereUniqueWithoutMateriaInput = {
+    where: DiasHorariosClasesWhereUniqueInput
+    update: XOR<DiasHorariosClasesUpdateWithoutMateriaInput, DiasHorariosClasesUncheckedUpdateWithoutMateriaInput>
+    create: XOR<DiasHorariosClasesCreateWithoutMateriaInput, DiasHorariosClasesUncheckedCreateWithoutMateriaInput>
+  }
+
+  export type DiasHorariosClasesUpdateWithWhereUniqueWithoutMateriaInput = {
+    where: DiasHorariosClasesWhereUniqueInput
+    data: XOR<DiasHorariosClasesUpdateWithoutMateriaInput, DiasHorariosClasesUncheckedUpdateWithoutMateriaInput>
+  }
+
+  export type DiasHorariosClasesUpdateManyWithWhereWithoutMateriaInput = {
+    where: DiasHorariosClasesScalarWhereInput
+    data: XOR<DiasHorariosClasesUpdateManyMutationInput, DiasHorariosClasesUncheckedUpdateManyWithoutMateriaInput>
+  }
+
+  export type DiasHorariosClasesScalarWhereInput = {
+    AND?: DiasHorariosClasesScalarWhereInput | DiasHorariosClasesScalarWhereInput[]
+    OR?: DiasHorariosClasesScalarWhereInput[]
+    NOT?: DiasHorariosClasesScalarWhereInput | DiasHorariosClasesScalarWhereInput[]
+    id?: IntFilter<"DiasHorariosClases"> | number
+    idMateria?: IntFilter<"DiasHorariosClases"> | number
+    dias?: EnumDiasNullableListFilter<"DiasHorariosClases">
+    horaInicio?: StringFilter<"DiasHorariosClases"> | string
+    duracionMinutos?: IntFilter<"DiasHorariosClases"> | number
+    createdAt?: DateTimeFilter<"DiasHorariosClases"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"DiasHorariosClases"> | Date | string | null
+    deletedAt?: DateTimeNullableFilter<"DiasHorariosClases"> | Date | string | null
+  }
+
+  export type MateriasCreateWithoutDiasHorariosClasesInput = {
     nombre: string
+    fechaInicio: Date | string
+    fechaFin: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
-    userDocente: UserDocenteCreateNestedOneWithoutMateriaInput
-    Clase?: ClaseCreateNestedManyWithoutMateriaInput
+    userDocente: UsersDocentesCreateNestedOneWithoutMateriasInput
+    curso: CursosCreateNestedOneWithoutMateriasInput
+    Clases?: ClasesCreateNestedManyWithoutMateriaInput
   }
 
-  export type MateriaUncheckedCreateWithoutCursoInput = {
+  export type MateriasUncheckedCreateWithoutDiasHorariosClasesInput = {
     id?: number
     nombre: string
     idUserDocente: number
+    idCurso: number
+    fechaInicio: Date | string
+    fechaFin: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
-    Clase?: ClaseUncheckedCreateNestedManyWithoutMateriaInput
+    Clases?: ClasesUncheckedCreateNestedManyWithoutMateriaInput
   }
 
-  export type MateriaCreateOrConnectWithoutCursoInput = {
-    where: MateriaWhereUniqueInput
-    create: XOR<MateriaCreateWithoutCursoInput, MateriaUncheckedCreateWithoutCursoInput>
+  export type MateriasCreateOrConnectWithoutDiasHorariosClasesInput = {
+    where: MateriasWhereUniqueInput
+    create: XOR<MateriasCreateWithoutDiasHorariosClasesInput, MateriasUncheckedCreateWithoutDiasHorariosClasesInput>
   }
 
-  export type MateriaCreateManyCursoInputEnvelope = {
-    data: MateriaCreateManyCursoInput | MateriaCreateManyCursoInput[]
+  export type MateriasUpsertWithoutDiasHorariosClasesInput = {
+    update: XOR<MateriasUpdateWithoutDiasHorariosClasesInput, MateriasUncheckedUpdateWithoutDiasHorariosClasesInput>
+    create: XOR<MateriasCreateWithoutDiasHorariosClasesInput, MateriasUncheckedCreateWithoutDiasHorariosClasesInput>
+    where?: MateriasWhereInput
+  }
+
+  export type MateriasUpdateToOneWithWhereWithoutDiasHorariosClasesInput = {
+    where?: MateriasWhereInput
+    data: XOR<MateriasUpdateWithoutDiasHorariosClasesInput, MateriasUncheckedUpdateWithoutDiasHorariosClasesInput>
+  }
+
+  export type MateriasUpdateWithoutDiasHorariosClasesInput = {
+    nombre?: StringFieldUpdateOperationsInput | string
+    fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
+    fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    userDocente?: UsersDocentesUpdateOneRequiredWithoutMateriasNestedInput
+    curso?: CursosUpdateOneRequiredWithoutMateriasNestedInput
+    Clases?: ClasesUpdateManyWithoutMateriaNestedInput
+  }
+
+  export type MateriasUncheckedUpdateWithoutDiasHorariosClasesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    nombre?: StringFieldUpdateOperationsInput | string
+    idUserDocente?: IntFieldUpdateOperationsInput | number
+    idCurso?: IntFieldUpdateOperationsInput | number
+    fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
+    fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    Clases?: ClasesUncheckedUpdateManyWithoutMateriaNestedInput
+  }
+
+  export type MateriasCreateWithoutCursoInput = {
+    nombre: string
+    fechaInicio: Date | string
+    fechaFin: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    deletedAt?: Date | string | null
+    userDocente: UsersDocentesCreateNestedOneWithoutMateriasInput
+    Clases?: ClasesCreateNestedManyWithoutMateriaInput
+    DiasHorariosClases?: DiasHorariosClasesCreateNestedManyWithoutMateriaInput
+  }
+
+  export type MateriasUncheckedCreateWithoutCursoInput = {
+    id?: number
+    nombre: string
+    idUserDocente: number
+    fechaInicio: Date | string
+    fechaFin: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    deletedAt?: Date | string | null
+    Clases?: ClasesUncheckedCreateNestedManyWithoutMateriaInput
+    DiasHorariosClases?: DiasHorariosClasesUncheckedCreateNestedManyWithoutMateriaInput
+  }
+
+  export type MateriasCreateOrConnectWithoutCursoInput = {
+    where: MateriasWhereUniqueInput
+    create: XOR<MateriasCreateWithoutCursoInput, MateriasUncheckedCreateWithoutCursoInput>
+  }
+
+  export type MateriasCreateManyCursoInputEnvelope = {
+    data: MateriasCreateManyCursoInput | MateriasCreateManyCursoInput[]
     skipDuplicates?: boolean
   }
 
-  export type AlumnoCreateWithoutCursosInput = {
+  export type AlumnosCreateWithoutCursosInput = {
     legajo: string
     nombre: string
     apellido: string
@@ -11099,10 +14280,10 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
-    Asistencia?: AsistenciaCreateNestedManyWithoutAlumnoInput
+    Asistencias?: AsistenciasCreateNestedManyWithoutAlumnoInput
   }
 
-  export type AlumnoUncheckedCreateWithoutCursosInput = {
+  export type AlumnosUncheckedCreateWithoutCursosInput = {
     id?: number
     legajo: string
     nombre: string
@@ -11111,271 +14292,341 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
-    Asistencia?: AsistenciaUncheckedCreateNestedManyWithoutAlumnoInput
+    Asistencias?: AsistenciasUncheckedCreateNestedManyWithoutAlumnoInput
   }
 
-  export type AlumnoCreateOrConnectWithoutCursosInput = {
-    where: AlumnoWhereUniqueInput
-    create: XOR<AlumnoCreateWithoutCursosInput, AlumnoUncheckedCreateWithoutCursosInput>
+  export type AlumnosCreateOrConnectWithoutCursosInput = {
+    where: AlumnosWhereUniqueInput
+    create: XOR<AlumnosCreateWithoutCursosInput, AlumnosUncheckedCreateWithoutCursosInput>
   }
 
-  export type MateriaUpsertWithWhereUniqueWithoutCursoInput = {
-    where: MateriaWhereUniqueInput
-    update: XOR<MateriaUpdateWithoutCursoInput, MateriaUncheckedUpdateWithoutCursoInput>
-    create: XOR<MateriaCreateWithoutCursoInput, MateriaUncheckedCreateWithoutCursoInput>
+  export type MateriasUpsertWithWhereUniqueWithoutCursoInput = {
+    where: MateriasWhereUniqueInput
+    update: XOR<MateriasUpdateWithoutCursoInput, MateriasUncheckedUpdateWithoutCursoInput>
+    create: XOR<MateriasCreateWithoutCursoInput, MateriasUncheckedCreateWithoutCursoInput>
   }
 
-  export type MateriaUpdateWithWhereUniqueWithoutCursoInput = {
-    where: MateriaWhereUniqueInput
-    data: XOR<MateriaUpdateWithoutCursoInput, MateriaUncheckedUpdateWithoutCursoInput>
+  export type MateriasUpdateWithWhereUniqueWithoutCursoInput = {
+    where: MateriasWhereUniqueInput
+    data: XOR<MateriasUpdateWithoutCursoInput, MateriasUncheckedUpdateWithoutCursoInput>
   }
 
-  export type MateriaUpdateManyWithWhereWithoutCursoInput = {
-    where: MateriaScalarWhereInput
-    data: XOR<MateriaUpdateManyMutationInput, MateriaUncheckedUpdateManyWithoutCursoInput>
+  export type MateriasUpdateManyWithWhereWithoutCursoInput = {
+    where: MateriasScalarWhereInput
+    data: XOR<MateriasUpdateManyMutationInput, MateriasUncheckedUpdateManyWithoutCursoInput>
   }
 
-  export type AlumnoUpsertWithWhereUniqueWithoutCursosInput = {
-    where: AlumnoWhereUniqueInput
-    update: XOR<AlumnoUpdateWithoutCursosInput, AlumnoUncheckedUpdateWithoutCursosInput>
-    create: XOR<AlumnoCreateWithoutCursosInput, AlumnoUncheckedCreateWithoutCursosInput>
+  export type AlumnosUpsertWithWhereUniqueWithoutCursosInput = {
+    where: AlumnosWhereUniqueInput
+    update: XOR<AlumnosUpdateWithoutCursosInput, AlumnosUncheckedUpdateWithoutCursosInput>
+    create: XOR<AlumnosCreateWithoutCursosInput, AlumnosUncheckedCreateWithoutCursosInput>
   }
 
-  export type AlumnoUpdateWithWhereUniqueWithoutCursosInput = {
-    where: AlumnoWhereUniqueInput
-    data: XOR<AlumnoUpdateWithoutCursosInput, AlumnoUncheckedUpdateWithoutCursosInput>
+  export type AlumnosUpdateWithWhereUniqueWithoutCursosInput = {
+    where: AlumnosWhereUniqueInput
+    data: XOR<AlumnosUpdateWithoutCursosInput, AlumnosUncheckedUpdateWithoutCursosInput>
   }
 
-  export type AlumnoUpdateManyWithWhereWithoutCursosInput = {
-    where: AlumnoScalarWhereInput
-    data: XOR<AlumnoUpdateManyMutationInput, AlumnoUncheckedUpdateManyWithoutCursosInput>
+  export type AlumnosUpdateManyWithWhereWithoutCursosInput = {
+    where: AlumnosScalarWhereInput
+    data: XOR<AlumnosUpdateManyMutationInput, AlumnosUncheckedUpdateManyWithoutCursosInput>
   }
 
-  export type AlumnoScalarWhereInput = {
-    AND?: AlumnoScalarWhereInput | AlumnoScalarWhereInput[]
-    OR?: AlumnoScalarWhereInput[]
-    NOT?: AlumnoScalarWhereInput | AlumnoScalarWhereInput[]
-    id?: IntFilter<"Alumno"> | number
-    legajo?: StringFilter<"Alumno"> | string
-    nombre?: StringFilter<"Alumno"> | string
-    apellido?: StringFilter<"Alumno"> | string
-    celular?: StringFilter<"Alumno"> | string
-    createdAt?: DateTimeFilter<"Alumno"> | Date | string
-    updatedAt?: DateTimeNullableFilter<"Alumno"> | Date | string | null
-    deletedAt?: DateTimeNullableFilter<"Alumno"> | Date | string | null
+  export type AlumnosScalarWhereInput = {
+    AND?: AlumnosScalarWhereInput | AlumnosScalarWhereInput[]
+    OR?: AlumnosScalarWhereInput[]
+    NOT?: AlumnosScalarWhereInput | AlumnosScalarWhereInput[]
+    id?: IntFilter<"Alumnos"> | number
+    legajo?: StringFilter<"Alumnos"> | string
+    nombre?: StringFilter<"Alumnos"> | string
+    apellido?: StringFilter<"Alumnos"> | string
+    celular?: StringFilter<"Alumnos"> | string
+    createdAt?: DateTimeFilter<"Alumnos"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Alumnos"> | Date | string | null
+    deletedAt?: DateTimeNullableFilter<"Alumnos"> | Date | string | null
   }
 
-  export type AsistenciaCreateManyAlumnoInput = {
+  export type AsistenciasCreateManyAlumnoInput = {
     id?: number
     idClase: number
-    estado?: $Enums.Estado
+    estado?: $Enums.Estados
     nota?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
   }
 
-  export type AsistenciaUpdateWithoutAlumnoInput = {
-    estado?: EnumEstadoFieldUpdateOperationsInput | $Enums.Estado
+  export type AsistenciasUpdateWithoutAlumnoInput = {
+    estado?: EnumEstadosFieldUpdateOperationsInput | $Enums.Estados
     nota?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    clase?: ClaseUpdateOneRequiredWithoutAsistenciaNestedInput
+    clase?: ClasesUpdateOneRequiredWithoutAsistenciasNestedInput
   }
 
-  export type AsistenciaUncheckedUpdateWithoutAlumnoInput = {
+  export type AsistenciasUncheckedUpdateWithoutAlumnoInput = {
     id?: IntFieldUpdateOperationsInput | number
     idClase?: IntFieldUpdateOperationsInput | number
-    estado?: EnumEstadoFieldUpdateOperationsInput | $Enums.Estado
+    estado?: EnumEstadosFieldUpdateOperationsInput | $Enums.Estados
     nota?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type AsistenciaUncheckedUpdateManyWithoutAlumnoInput = {
+  export type AsistenciasUncheckedUpdateManyWithoutAlumnoInput = {
     id?: IntFieldUpdateOperationsInput | number
     idClase?: IntFieldUpdateOperationsInput | number
-    estado?: EnumEstadoFieldUpdateOperationsInput | $Enums.Estado
+    estado?: EnumEstadosFieldUpdateOperationsInput | $Enums.Estados
     nota?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type CursoUpdateWithoutAlumnosInput = {
+  export type CursosUpdateWithoutAlumnosInput = {
     nombre?: StringFieldUpdateOperationsInput | string
+    turno?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Materia?: MateriaUpdateManyWithoutCursoNestedInput
+    Materias?: MateriasUpdateManyWithoutCursoNestedInput
   }
 
-  export type CursoUncheckedUpdateWithoutAlumnosInput = {
+  export type CursosUncheckedUpdateWithoutAlumnosInput = {
     id?: IntFieldUpdateOperationsInput | number
     nombre?: StringFieldUpdateOperationsInput | string
+    turno?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Materia?: MateriaUncheckedUpdateManyWithoutCursoNestedInput
+    Materias?: MateriasUncheckedUpdateManyWithoutCursoNestedInput
   }
 
-  export type CursoUncheckedUpdateManyWithoutAlumnosInput = {
+  export type CursosUncheckedUpdateManyWithoutAlumnosInput = {
     id?: IntFieldUpdateOperationsInput | number
     nombre?: StringFieldUpdateOperationsInput | string
+    turno?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type AsistenciaCreateManyClaseInput = {
+  export type AsistenciasCreateManyClaseInput = {
     id?: number
     idAlumno: number
-    estado?: $Enums.Estado
+    estado?: $Enums.Estados
     nota?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
   }
 
-  export type AsistenciaUpdateWithoutClaseInput = {
-    estado?: EnumEstadoFieldUpdateOperationsInput | $Enums.Estado
+  export type AsistenciasUpdateWithoutClaseInput = {
+    estado?: EnumEstadosFieldUpdateOperationsInput | $Enums.Estados
     nota?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    alumno?: AlumnoUpdateOneRequiredWithoutAsistenciaNestedInput
+    alumno?: AlumnosUpdateOneRequiredWithoutAsistenciasNestedInput
   }
 
-  export type AsistenciaUncheckedUpdateWithoutClaseInput = {
+  export type AsistenciasUncheckedUpdateWithoutClaseInput = {
     id?: IntFieldUpdateOperationsInput | number
     idAlumno?: IntFieldUpdateOperationsInput | number
-    estado?: EnumEstadoFieldUpdateOperationsInput | $Enums.Estado
+    estado?: EnumEstadosFieldUpdateOperationsInput | $Enums.Estados
     nota?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type AsistenciaUncheckedUpdateManyWithoutClaseInput = {
+  export type AsistenciasUncheckedUpdateManyWithoutClaseInput = {
     id?: IntFieldUpdateOperationsInput | number
     idAlumno?: IntFieldUpdateOperationsInput | number
-    estado?: EnumEstadoFieldUpdateOperationsInput | $Enums.Estado
+    estado?: EnumEstadosFieldUpdateOperationsInput | $Enums.Estados
     nota?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type MateriaCreateManyUserDocenteInput = {
+  export type MateriasCreateManyUserDocenteInput = {
     id?: number
     nombre: string
     idCurso: number
+    fechaInicio: Date | string
+    fechaFin: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
   }
 
-  export type MateriaUpdateWithoutUserDocenteInput = {
+  export type MateriasUpdateWithoutUserDocenteInput = {
     nombre?: StringFieldUpdateOperationsInput | string
+    fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
+    fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    curso?: CursoUpdateOneRequiredWithoutMateriaNestedInput
-    Clase?: ClaseUpdateManyWithoutMateriaNestedInput
+    curso?: CursosUpdateOneRequiredWithoutMateriasNestedInput
+    Clases?: ClasesUpdateManyWithoutMateriaNestedInput
+    DiasHorariosClases?: DiasHorariosClasesUpdateManyWithoutMateriaNestedInput
   }
 
-  export type MateriaUncheckedUpdateWithoutUserDocenteInput = {
+  export type MateriasUncheckedUpdateWithoutUserDocenteInput = {
     id?: IntFieldUpdateOperationsInput | number
     nombre?: StringFieldUpdateOperationsInput | string
     idCurso?: IntFieldUpdateOperationsInput | number
+    fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
+    fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Clase?: ClaseUncheckedUpdateManyWithoutMateriaNestedInput
+    Clases?: ClasesUncheckedUpdateManyWithoutMateriaNestedInput
+    DiasHorariosClases?: DiasHorariosClasesUncheckedUpdateManyWithoutMateriaNestedInput
   }
 
-  export type MateriaUncheckedUpdateManyWithoutUserDocenteInput = {
+  export type MateriasUncheckedUpdateManyWithoutUserDocenteInput = {
     id?: IntFieldUpdateOperationsInput | number
     nombre?: StringFieldUpdateOperationsInput | string
     idCurso?: IntFieldUpdateOperationsInput | number
+    fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
+    fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type ClaseCreateManyMateriaInput = {
+  export type ClasesCreateManyMateriaInput = {
     id?: number
     fechaHora: Date | string
+    suspendida?: boolean
+    motivo?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
   }
 
-  export type ClaseUpdateWithoutMateriaInput = {
+  export type DiasHorariosClasesCreateManyMateriaInput = {
+    id?: number
+    dias?: DiasHorariosClasesCreatediasInput | $Enums.Dias[]
+    horaInicio: string
+    duracionMinutos: number
+    createdAt?: Date | string
+    updatedAt?: Date | string | null
+    deletedAt?: Date | string | null
+  }
+
+  export type ClasesUpdateWithoutMateriaInput = {
     fechaHora?: DateTimeFieldUpdateOperationsInput | Date | string
+    suspendida?: BoolFieldUpdateOperationsInput | boolean
+    motivo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Asistencia?: AsistenciaUpdateManyWithoutClaseNestedInput
+    Asistencias?: AsistenciasUpdateManyWithoutClaseNestedInput
   }
 
-  export type ClaseUncheckedUpdateWithoutMateriaInput = {
+  export type ClasesUncheckedUpdateWithoutMateriaInput = {
     id?: IntFieldUpdateOperationsInput | number
     fechaHora?: DateTimeFieldUpdateOperationsInput | Date | string
+    suspendida?: BoolFieldUpdateOperationsInput | boolean
+    motivo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Asistencia?: AsistenciaUncheckedUpdateManyWithoutClaseNestedInput
+    Asistencias?: AsistenciasUncheckedUpdateManyWithoutClaseNestedInput
   }
 
-  export type ClaseUncheckedUpdateManyWithoutMateriaInput = {
+  export type ClasesUncheckedUpdateManyWithoutMateriaInput = {
     id?: IntFieldUpdateOperationsInput | number
     fechaHora?: DateTimeFieldUpdateOperationsInput | Date | string
+    suspendida?: BoolFieldUpdateOperationsInput | boolean
+    motivo?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type MateriaCreateManyCursoInput = {
+  export type DiasHorariosClasesUpdateWithoutMateriaInput = {
+    dias?: DiasHorariosClasesUpdatediasInput | $Enums.Dias[]
+    horaInicio?: StringFieldUpdateOperationsInput | string
+    duracionMinutos?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type DiasHorariosClasesUncheckedUpdateWithoutMateriaInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    dias?: DiasHorariosClasesUpdatediasInput | $Enums.Dias[]
+    horaInicio?: StringFieldUpdateOperationsInput | string
+    duracionMinutos?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type DiasHorariosClasesUncheckedUpdateManyWithoutMateriaInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    dias?: DiasHorariosClasesUpdatediasInput | $Enums.Dias[]
+    horaInicio?: StringFieldUpdateOperationsInput | string
+    duracionMinutos?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type MateriasCreateManyCursoInput = {
     id?: number
     nombre: string
     idUserDocente: number
+    fechaInicio: Date | string
+    fechaFin: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string | null
     deletedAt?: Date | string | null
   }
 
-  export type MateriaUpdateWithoutCursoInput = {
+  export type MateriasUpdateWithoutCursoInput = {
     nombre?: StringFieldUpdateOperationsInput | string
+    fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
+    fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    userDocente?: UserDocenteUpdateOneRequiredWithoutMateriaNestedInput
-    Clase?: ClaseUpdateManyWithoutMateriaNestedInput
+    userDocente?: UsersDocentesUpdateOneRequiredWithoutMateriasNestedInput
+    Clases?: ClasesUpdateManyWithoutMateriaNestedInput
+    DiasHorariosClases?: DiasHorariosClasesUpdateManyWithoutMateriaNestedInput
   }
 
-  export type MateriaUncheckedUpdateWithoutCursoInput = {
+  export type MateriasUncheckedUpdateWithoutCursoInput = {
     id?: IntFieldUpdateOperationsInput | number
     nombre?: StringFieldUpdateOperationsInput | string
     idUserDocente?: IntFieldUpdateOperationsInput | number
+    fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
+    fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Clase?: ClaseUncheckedUpdateManyWithoutMateriaNestedInput
+    Clases?: ClasesUncheckedUpdateManyWithoutMateriaNestedInput
+    DiasHorariosClases?: DiasHorariosClasesUncheckedUpdateManyWithoutMateriaNestedInput
   }
 
-  export type MateriaUncheckedUpdateManyWithoutCursoInput = {
+  export type MateriasUncheckedUpdateManyWithoutCursoInput = {
     id?: IntFieldUpdateOperationsInput | number
     nombre?: StringFieldUpdateOperationsInput | string
     idUserDocente?: IntFieldUpdateOperationsInput | number
+    fechaInicio?: DateTimeFieldUpdateOperationsInput | Date | string
+    fechaFin?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type AlumnoUpdateWithoutCursosInput = {
+  export type AlumnosUpdateWithoutCursosInput = {
     legajo?: StringFieldUpdateOperationsInput | string
     nombre?: StringFieldUpdateOperationsInput | string
     apellido?: StringFieldUpdateOperationsInput | string
@@ -11383,10 +14634,10 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Asistencia?: AsistenciaUpdateManyWithoutAlumnoNestedInput
+    Asistencias?: AsistenciasUpdateManyWithoutAlumnoNestedInput
   }
 
-  export type AlumnoUncheckedUpdateWithoutCursosInput = {
+  export type AlumnosUncheckedUpdateWithoutCursosInput = {
     id?: IntFieldUpdateOperationsInput | number
     legajo?: StringFieldUpdateOperationsInput | string
     nombre?: StringFieldUpdateOperationsInput | string
@@ -11395,10 +14646,10 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     deletedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Asistencia?: AsistenciaUncheckedUpdateManyWithoutAlumnoNestedInput
+    Asistencias?: AsistenciasUncheckedUpdateManyWithoutAlumnoNestedInput
   }
 
-  export type AlumnoUncheckedUpdateManyWithoutCursosInput = {
+  export type AlumnosUncheckedUpdateManyWithoutCursosInput = {
     id?: IntFieldUpdateOperationsInput | number
     legajo?: StringFieldUpdateOperationsInput | string
     nombre?: StringFieldUpdateOperationsInput | string

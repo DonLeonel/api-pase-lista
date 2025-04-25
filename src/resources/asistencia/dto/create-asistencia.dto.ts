@@ -1,8 +1,8 @@
-import { Estado } from "generated/prisma";
+import { Estados } from "generated/prisma";
 
 export class CreateAsistenciaDto {    
     idClase: number;
     idAlumno: number;
-    estado: Estado;
+    estado: Estados;
     nota: string;
 }
