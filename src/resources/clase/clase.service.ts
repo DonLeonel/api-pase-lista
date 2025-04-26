@@ -112,4 +112,20 @@ export class ClaseService {
       throw error // relanza el error para que el controller lo pueda manejar
     }
   }
+
+  async findClasesByMateria(id: number) {
+    try {
+      const clases = await this.prisma.clases.findMany({
+        where: {
+          deletedAt: null,
+          idMateria: id
+        }
+      })
+      if (!clases) throw new NotFoundException('Clases no encontradas')
+      return clases
+    } catch (error) {
+      console.error('Error al buscar la clase. ', error)
+      throw error // relanza el error para que el controller lo pueda manejar
+    }
+  }
 }

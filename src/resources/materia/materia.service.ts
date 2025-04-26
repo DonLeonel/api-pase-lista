@@ -3,12 +3,17 @@ import { CreateMateriaDto } from './dto/create-materia.dto';
 import { UpdateMateriaDto } from './dto/update-materia.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { construirDataActualizacion } from 'src/utils/construirDataActualizacion';
-import { CreateHorarioClaseDto } from './dto/create-diaHorarioClase.dto';
+import { CreateDiasHorarioClaseDto } from './dto/create-diaHorarioClase.dto';
+import { ClaseService } from '../clase/clase.service';
+import { formatearFecha } from 'src/utils/formatFechaLocal';
 
 @Injectable()
 export class MateriaService {
 
-  constructor(private readonly prisma: PrismaService) { }
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly claseService: ClaseService
+  ) { }
 
   async create(createMateriaDto: CreateMateriaDto) {
     try {
@@ -150,7 +155,104 @@ export class MateriaService {
     }
   }
 
-  async createDiasHorarioClase(createDiasHorarioClase: CreateHorarioClaseDto) {
+  async createClases(idMateria: number) {
+
+    const materia = await this.findOne(idMateria);
+    const fechasNoLectivas = await this.prisma.fechaNoLectivas.findMany();
+
+    // Generamos las clases basadas en la materia y las fechas no lectivas
+    const clases = this.generarClases(materia, fechasNoLectivas);
+
+    // Verificamos las clases ya existentes para la materia
+    const fechaClasesExistentes = await this.verificarClaseExistente(idMateria);
+
+    // Filtramos las clases que no existan en la base de datos para evitar duplicados
+    const clasesNuevas = clases.filter(clase =>
+      !fechaClasesExistentes.some(fClaseExistente => fClaseExistente.getTime() === clase.fechaHora.getTime())
+    );   
+
+    // Si no hay clases nuevas, retornamos un array vacío
+    if (clasesNuevas.length === 0) {
+      return [];
+    }
+
+    // Si hay clases nuevas, las insertamos en la base de datos
+    try {
+      // Retornamos las clases creadas
+      return await this.prisma.clases.createMany({
+        data: clasesNuevas,
+      })
+    } catch (error) {
+      console.error('Error al crear las clases. ', error)
+      throw new Error('Error al crear las clases. ' + error.message)
+    }
+  }
+
+  private generarClases(materia: any, fechasNoLectivas: any[]) {
+    const clases: { idMateria: number; fechaHora: Date }[] = [];
+
+    const inicio = formatearFecha(materia.fechaInicio);
+    const fin = formatearFecha(materia.fechaFin);
+
+    let actual = inicio.clone();
+
+    while (actual.isSameOrBefore(fin, 'day')) {
+      const diaSemana = actual.format('dddd').toUpperCase(); // día de la semana en español
+
+      if (this.esFechaNoLectiva(actual.toDate(), fechasNoLectivas)) {
+        actual = actual.add(1, 'day');
+        continue;
+      }
+
+      for (const config of materia.DiasHorariosClases) {
+        if (config.dias.includes(diaSemana)) {
+          const [hora, minutos] = config.horaInicio.split(':').map(Number);
+
+          const fechaHora = actual
+            .hour(hora)
+            .minute(minutos)
+            .second(0)
+            .millisecond(0);
+
+          clases.push({
+            idMateria: materia.id,
+            fechaHora: fechaHora.utc(true).toDate(),
+          });
+        }
+      }
+      actual = actual.add(1, 'day');
+    }
+
+    return clases;
+  }
+
+  private async verificarClaseExistente(idMateria: number) {
+    // Obtenemos las fechas y horarios de las clases ya generadas para la materia
+
+    const existentes = await this.prisma.clases.findMany({
+      where: {
+        deletedAt: null,
+        idMateria: idMateria, // Aseguramos que las clases son de la misma materia
+      },
+      select: {
+        fechaHora: true, // Seleccionamos solo el campo 'fechaHora'
+      },
+    });   
+
+    // Mapeamos y devolvemos solo el campo 'fechaHora' de las clases existentes
+    return existentes.map(clase => clase.fechaHora);
+  }
+
+  private esFechaNoLectiva(fecha: Date, fechas: any[]): boolean {
+    // Verificamos si la fecha está dentro de alguna fecha no lectiva
+    return fechas.some(f =>
+      fecha >= new Date(f.fechaInicio) &&
+      fecha <= new Date(f.fechaFin)
+    );
+  }
+
+
+  async createDiasHorarioClase(createDiasHorarioClase: CreateDiasHorarioClaseDto) {
     try {
       const { idMateria, ...resto } = createDiasHorarioClase
       return await this.prisma.diasHorariosClases.create({

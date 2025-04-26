@@ -1,5 +1,5 @@
 -- CreateEnum
-CREATE TYPE "Dias" AS ENUM ('LUNES', 'MARTES', 'MIERCOLES', 'JUEVES', 'VIERNES', 'SABADO', 'DOMINGO');
+CREATE TYPE "Dias" AS ENUM ('LUNES', 'MARTES', 'MIÉRCOLES', 'JUEVES', 'VIERNES', 'SÁBADO', 'DOMINGO');
 
 -- CreateEnum
 CREATE TYPE "Estados" AS ENUM ('PRESENTE', 'AUSENTE', 'JUSTIFICADO');
@@ -67,8 +67,8 @@ CREATE TABLE "Materias" (
     "nombre" VARCHAR(30) NOT NULL,
     "idUserDocente" INTEGER NOT NULL,
     "idCurso" INTEGER NOT NULL,
-    "fechaInicio" TIMESTAMP(3) NOT NULL,
-    "fechaFin" TIMESTAMP(3) NOT NULL,
+    "fechaInicio" DATE NOT NULL,
+    "fechaFin" DATE NOT NULL,
     "createdAt" TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP,
     "deletedAt" TIMESTAMP,
@@ -105,8 +105,8 @@ CREATE TABLE "Cursos" (
 -- CreateTable
 CREATE TABLE "FechaNoLectivas" (
     "id" SERIAL NOT NULL,
-    "fechaInicio" TIMESTAMP(3) NOT NULL,
-    "fechaFin" TIMESTAMP(3) NOT NULL,
+    "fechaInicio" DATE NOT NULL,
+    "fechaFin" DATE NOT NULL,
     "motivo" VARCHAR(100) NOT NULL,
 
     CONSTRAINT "FechaNoLectivas_pkey" PRIMARY KEY ("id")
@@ -125,9 +125,6 @@ CREATE UNIQUE INDEX "UsersDocentes_email_key" ON "UsersDocentes"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "FechaNoLectivas_fechaInicio_key" ON "FechaNoLectivas"("fechaInicio");
-
--- CreateIndex
-CREATE UNIQUE INDEX "FechaNoLectivas_fechaFin_key" ON "FechaNoLectivas"("fechaFin");
 
 -- CreateIndex
 CREATE INDEX "_AlumnosToCursos_B_index" ON "_AlumnosToCursos"("B");

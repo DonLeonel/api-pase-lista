@@ -1,6 +1,6 @@
 import { Dias } from "generated/prisma";
 
-export class CreateHorarioClaseDto {
+export class CreateDiasHorarioClaseDto {
     idMateria: number;
     dias: Dias[];
     horaInicio: string;

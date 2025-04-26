@@ -61,10 +61,10 @@ export namespace $Enums {
   export const Dias: {
   LUNES: 'LUNES',
   MARTES: 'MARTES',
-  MIERCOLES: 'MIERCOLES',
+  MIÉRCOLES: 'MIÉRCOLES',
   JUEVES: 'JUEVES',
   VIERNES: 'VIERNES',
-  SABADO: 'SABADO',
+  SÁBADO: 'SÁBADO',
   DOMINGO: 'DOMINGO'
 };
 
@@ -11665,12 +11665,12 @@ export namespace Prisma {
   export type FechaNoLectivasWhereUniqueInput = Prisma.AtLeast<{
     id?: number
     fechaInicio?: Date | string
-    fechaFin?: Date | string
     AND?: FechaNoLectivasWhereInput | FechaNoLectivasWhereInput[]
     OR?: FechaNoLectivasWhereInput[]
     NOT?: FechaNoLectivasWhereInput | FechaNoLectivasWhereInput[]
+    fechaFin?: DateTimeFilter<"FechaNoLectivas"> | Date | string
     motivo?: StringFilter<"FechaNoLectivas"> | string
-  }, "id" | "fechaInicio" | "fechaFin">
+  }, "id" | "fechaInicio">
 
   export type FechaNoLectivasOrderByWithAggregationInput = {
     id?: SortOrder

@@ -224,10 +224,10 @@ exports.Estados = exports.$Enums.Estados = {
 exports.Dias = exports.$Enums.Dias = {
   LUNES: 'LUNES',
   MARTES: 'MARTES',
-  MIERCOLES: 'MIERCOLES',
+  MIÉRCOLES: 'MIÉRCOLES',
   JUEVES: 'JUEVES',
   VIERNES: 'VIERNES',
-  SABADO: 'SABADO',
+  SÁBADO: 'SÁBADO',
   DOMINGO: 'DOMINGO'
 };
 

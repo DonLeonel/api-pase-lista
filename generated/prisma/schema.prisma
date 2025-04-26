@@ -71,8 +71,8 @@ model Materias {
   nombre             String               @db.VarChar(30)
   idUserDocente      Int
   idCurso            Int
-  fechaInicio        DateTime
-  fechaFin           DateTime
+  fechaInicio        DateTime             @db.Date
+  fechaFin           DateTime             @db.Date
   createdAt          DateTime             @default(now()) @db.Timestamp()
   updatedAt          DateTime?            @db.Timestamp()
   deletedAt          DateTime?            @db.Timestamp()
@@ -107,18 +107,18 @@ model Cursos {
 
 model FechaNoLectivas {
   id          Int      @id @default(autoincrement())
-  fechaInicio DateTime @unique
-  fechaFin    DateTime @unique
+  fechaInicio DateTime @unique @db.Date()
+  fechaFin    DateTime @db.Date()
   motivo      String   @db.VarChar(100)
 }
 
 enum Dias {
   LUNES
   MARTES
-  MIERCOLES
+  MIÉRCOLES
   JUEVES
   VIERNES
-  SABADO
+  SÁBADO
   DOMINGO
 }
 
