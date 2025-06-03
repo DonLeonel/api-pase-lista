@@ -169,7 +169,7 @@ export class MateriaService {
     // Filtramos las clases que no existan en la base de datos para evitar duplicados
     const clasesNuevas = clases.filter(clase =>
       !fechaClasesExistentes.some(fClaseExistente => fClaseExistente.getTime() === clase.fechaHora.getTime())
-    );   
+    );
 
     // Si no hay clases nuevas, retornamos un array vacío
     if (clasesNuevas.length === 0) {
@@ -237,7 +237,7 @@ export class MateriaService {
       select: {
         fechaHora: true, // Seleccionamos solo el campo 'fechaHora'
       },
-    });   
+    });
 
     // Mapeamos y devolvemos solo el campo 'fechaHora' de las clases existentes
     return existentes.map(clase => clase.fechaHora);

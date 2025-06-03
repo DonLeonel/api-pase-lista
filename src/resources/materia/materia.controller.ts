@@ -13,9 +13,9 @@ export class MateriaController {
     return this.materiaService.create(createMateriaDto);
   }
 
-  @Post("create-clases/:idMateria")
-  createClases(@Param("idMateria") idMateria: number) {
-    return this.materiaService.createClases(+idMateria);  
+  @Post(":id/create-clases")
+  createClases(@Param("id") id: number) {
+    return this.materiaService.createClases(+id);  
   }  
 
   @Post('dias-horario-clase')
