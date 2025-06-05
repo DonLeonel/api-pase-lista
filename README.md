@@ -20,11 +20,9 @@ Este proyecto forma parte de una tesis que tiene como objetivo desarrollar un si
 
 ## 👨‍💻 Tecnologías Utilizadas
 
-- **Frontend:** ASTRO
 - **Backend:** NestJS
 - **Base de datos:** PostgreSQL
 - **ORM:** Prisma
-- **Estilo:** Tailwind CSS
 - **Control de versiones:** Git + GitHub
 
 ## 🚀 Estado del Proyecto

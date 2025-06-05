@@ -1,11 +1,12 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 
-const _PORT = process.env.PORT ?? 3000
+const _PORT = process.env.PORT_APP ?? 3000
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   await app.listen(_PORT);
-  console.log(`Servido corriendo. http://localhost:${_PORT}/`);  
+  console.log(`Servido corriendo. ${_PORT}`);  
+  
 }
 bootstrap();
