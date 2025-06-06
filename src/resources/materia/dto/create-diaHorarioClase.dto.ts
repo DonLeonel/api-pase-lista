@@ -1,7 +1,6 @@
-import { Dias } from "generated/prisma";
+import { Dias } from "@prisma/client";
 
-export class CreateDiasHorarioClaseDto {
-    idMateria: number;
+export class CreateDiasHorarioClaseDto {    
     dias: Dias[];
     horaInicio: string;
     duracionMinutos: number;

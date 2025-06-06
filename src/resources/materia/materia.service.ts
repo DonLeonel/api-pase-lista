@@ -162,14 +162,17 @@ export class MateriaService {
 
     // Generamos las clases basadas en la materia y las fechas no lectivas
     const clases = this.generarClases(materia, fechasNoLectivas);
-
+    console.log('clases generadas:', clases);
     // Verificamos las clases ya existentes para la materia
     const fechaClasesExistentes = await this.verificarClaseExistente(idMateria);
+    console.log('fechas exis:', fechaClasesExistentes);
 
     // Filtramos las clases que no existan en la base de datos para evitar duplicados
     const clasesNuevas = clases.filter(clase =>
       !fechaClasesExistentes.some(fClaseExistente => fClaseExistente.getTime() === clase.fechaHora.getTime())
     );
+
+    console.log('nuevas clases:', clasesNuevas);
 
     // Si no hay clases nuevas, retornamos un array vacío
     if (clasesNuevas.length === 0) {
@@ -192,7 +195,7 @@ export class MateriaService {
     const clases: { idMateria: number; fechaHora: Date }[] = [];
 
     const inicio = formatearFecha(materia.fechaInicio);
-    const fin = formatearFecha(materia.fechaFin);
+    const fin = formatearFecha(materia.fechaFin);   
 
     let actual = inicio.clone();
 
@@ -252,15 +255,14 @@ export class MateriaService {
   }
 
 
-  async createDiasHorarioClase(createDiasHorarioClase: CreateDiasHorarioClaseDto) {
-    try {
-      const { idMateria, ...resto } = createDiasHorarioClase
+  async createDiasHorarioClase(id: number,createDiasHorarioClase: CreateDiasHorarioClaseDto) {
+    try {      
       return await this.prisma.diasHorariosClases.create({
         data: {
-          ...resto,
+          ...createDiasHorarioClase,
           materia: {
             connect: {
-              id: +idMateria,
+              id,
             },
           },
         }

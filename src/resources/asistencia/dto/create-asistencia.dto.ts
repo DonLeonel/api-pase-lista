@@ -1,4 +1,5 @@
-import { Estados } from "generated/prisma";
+import { Estados } from "@prisma/client";
+
 
 export class CreateAsistenciaDto {    
     idClase: number;
