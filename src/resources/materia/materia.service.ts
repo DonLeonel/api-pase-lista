@@ -162,10 +162,9 @@ export class MateriaService {
 
     // Generamos las clases basadas en la materia y las fechas no lectivas
     const clases = this.generarClases(materia, fechasNoLectivas);
-    console.log('clases generadas:', clases);
+    
     // Verificamos las clases ya existentes para la materia
     const fechaClasesExistentes = await this.verificarClaseExistente(idMateria);
-    console.log('fechas exis:', fechaClasesExistentes);
 
     // Filtramos las clases que no existan en la base de datos para evitar duplicados
     const clasesNuevas = clases.filter(clase =>

@@ -18,7 +18,7 @@ export class MateriaController {
     return this.materiaService.createClases(+id);  
   }  
 
-  @Post('id/dias-horario-clase')
+  @Post(':id/dias-horario-clase')
   createDiasHorarioClase(@Param("id") id: number, @Body() createDiasHorarioClase: CreateDiasHorarioClaseDto) {
     return this.materiaService.createDiasHorarioClase(+id ,createDiasHorarioClase);
   }
